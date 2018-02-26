@@ -6,15 +6,25 @@ import kitchen.Ingredient;
 public class MenuItem {
     private HashMap<Ingredient, Integer> ingredients;
     private int price;
+    private double discount; //Discounted price
 
-
+// TODO: Add discount.
     public MenuItem(HashMap<Ingredient, Integer> ingredients, int price){
         this.price = price;
         this.ingredients = ingredients;
+        this.discount = 1.0;
     }
 
-    public int getPrice() {
+    public int getOriginalPrice() {
         return price;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount -= discount;
+    }
+
+    public double getDiscountedPrice(){
+        return discount * price; // TODO: added DiscountedPrice
     }
 
     public HashMap<Ingredient, Integer> getIngredients() {
