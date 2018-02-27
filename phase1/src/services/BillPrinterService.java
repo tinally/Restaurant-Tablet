@@ -1,6 +1,8 @@
 package services;
 
 import payment.Bill;
+import services.framework.Service;
+import services.framework.ServiceConstructor;
 
 import java.util.ArrayList;
 
@@ -8,10 +10,11 @@ import java.util.ArrayList;
  * This Service prints one or more Bills according to specification.
  */
 // TODO: Extend Service class?
-public class BillPrinterService {
+public class BillPrinterService extends Service {
 
     private ArrayList<Bill> bills;
 
+    @ServiceConstructor
     public BillPrinterService() {
         bills = new ArrayList<>();
     }
