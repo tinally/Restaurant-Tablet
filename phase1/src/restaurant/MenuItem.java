@@ -14,13 +14,13 @@ public class MenuItem {
     /**
      * The price of the item
      */
-    private int price;
+    private double price;
     /**
      * A discount to be applied. If there is no discount, then the default value is 1
      */
     private double discount; //Discounted price
 
-    public MenuItem(HashMap<Ingredient, Integer> ingredients, int price){
+    public MenuItem(HashMap<Ingredient, Integer> ingredients, double price){
         this.price = price;
         this.ingredients = ingredients;
         this.discount = 1.0;
@@ -30,7 +30,7 @@ public class MenuItem {
      *
      * @return The original price of the item
      */
-    public int getOriginalPrice() {
+    public double getOriginalPrice() {
         return price;
     }
 
@@ -71,7 +71,7 @@ public class MenuItem {
      *
      * @param price the original price to be set
      */
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -79,7 +79,7 @@ public class MenuItem {
      * Increase the price by this factor
      * @param factor the factor by which the price is increased.
      */
-    public void increasePrice(int factor){
+    public void increasePrice(double factor){
         this.price += price;
     }
 
