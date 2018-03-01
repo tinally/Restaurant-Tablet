@@ -23,14 +23,13 @@ public class OrderItem {
     private ArrayList<Ingredient> removedIngredients;
 
 
-    public OrderItem(MenuItem menuItem, HashMap<Ingredient, Integer> add, ArrayList<Ingredient> removedIngredients){
+    public OrderItem(MenuItem menuItem, HashMap<Ingredient, Integer> add, ArrayList<Ingredient> removedIngredients) {
         this.menuItem = menuItem;
         this.addIngredients = add;
         this.removedIngredients = removedIngredients;
     }
 
     /**
-     *
      * @return The menuItem that was ordered.
      */
     public MenuItem getMenuItem() {
@@ -38,7 +37,6 @@ public class OrderItem {
     }
 
     /**
-     *
      * @param menuItem to be set
      */
     public void setMenuItem(MenuItem menuItem) {
@@ -46,23 +44,34 @@ public class OrderItem {
     }
 
     /**
-     *
      * @param add Ingredient to be added
      */
-    public void addIngredient(HashMap<Ingredient, Integer> add) {
+    public void addIngredients(HashMap<Ingredient, Integer> add) {
         this.addIngredients = add;
+//        this.menuItem.increasePrice(); //TODO: some sort of for loop
+        // TODO: Add a retail price for adding an ingredient in Ingredient class.
     }
 
     /**
+     * Add one type of Ingredient at a time
      *
+     * @param ingredient the Ingredient to be added
+     * @param quantity   the amount of that Ingredient to be added
+     */
+    public void addIngredient(Ingredient ingredient, int quantity) {
+        addIngredients.put(ingredient, quantity);
+        // menuItem.increasePrice(); //TODO: Add a retail price for adding an ingredient in Ingredient class.
+    }
+
+
+    /**
      * @param unwantedIngredient Ingredient to be removed
      */
-    public void removeIngredient(Ingredient unwantedIngredient){
+    public void removeIngredient(Ingredient unwantedIngredient) {
         removedIngredients.add(unwantedIngredient);
     }
 
     /**
-     *
      * @return Ingredients to be removed.
      */
     public ArrayList<Ingredient> getRemovedIngredients() {
