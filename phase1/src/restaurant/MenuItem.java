@@ -75,6 +75,14 @@ public class MenuItem {
         this.price = price;
     }
 
+    /**
+     * Increase the price by this factor
+     * @param factor the factor by which the price is increased.
+     */
+    public void increasePrice(int factor){
+        this.price += price;
+    }
+
     @Override
     public String toString() {
         return "This may be useful"; //TODO: May be useful
