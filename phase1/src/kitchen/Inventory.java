@@ -26,6 +26,7 @@ public class Inventory {
 
     /**
      * Checks the remaining amount of ingredient
+     *
      * @param ingredient the ingredient to be checked.
      * @return the remaining amount of ingredient.
      */
@@ -35,6 +36,7 @@ public class Inventory {
 
     /**
      * Returns the full inventory of the amount of remaining items for each ingredient.
+     *
      * @return the inventory HashMap
      */
     public HashMap<Ingredient, Integer> getInventory() {
@@ -43,6 +45,7 @@ public class Inventory {
 
     /**
      * Returns the full map of threshold accordingly for each ingredient.
+     *
      * @return the threshold HashMap
      */
     public HashMap<Ingredient, Integer> getThreshold() {
@@ -52,6 +55,7 @@ public class Inventory {
     /**
      * Checks if needing to reorder ingredient.
      * If so, reorders the ingredient when the amount of remaining items is below the threshold.
+     *
      * @param ingredient the ingredient to be checked for reorder
      * @return true if needing to reorder ingredient; false otherwise
      */
@@ -63,6 +67,7 @@ public class Inventory {
 
     /**
      * Returns the string representation of this.
+     *
      * @return the string representation of the full inventory
      */
     public String toString() {
