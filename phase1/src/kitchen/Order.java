@@ -4,20 +4,20 @@ import restaurant.OrderItem;
 import java.util.*;
 
 public class Order {
-    private List<OrderItem> orders;
+    private List<OrderItem> items;
     private int tableNumber;
     private Server server;
     private boolean isDelivered;
 
-    public Order(List<OrderItem> orders, int tableNumber, Server server) {
-        this.orders = orders;
+    public Order(List<OrderItem> items, int tableNumber, Server server) {
+        this.items = items;
         this.tableNumber = tableNumber;
         this.server = server;
         this.isDelivered = false;
     }
 
-    public List<OrderItem> getOrders() {
-        return orders;
+    public List<OrderItem> getItems() {
+        return items;
     }
 
     public int getTableNumber() {
@@ -33,14 +33,14 @@ public class Order {
     }
 
     public void add(OrderItem oi) {
-        orders.add(oi);
+        items.add(oi);
     }
 
     public boolean subtract(OrderItem oi) {
         if (isDelivered) {
             return false;
         } else {
-            orders.remove(oi);
+            items.remove(oi);
             return true;
         }
     }
