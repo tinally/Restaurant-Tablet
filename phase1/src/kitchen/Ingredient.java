@@ -16,9 +16,15 @@ public class Ingredient {
     private Double cost;
 
     /**
+     * The price of each unit of the ingredient.
+     */
+    private Double pricing;
+
+    /**
      * Class constructor specifying the name and cost of this ingredient.
-     * @param name  name of the ingredient
-     * @param cost  cost of the ingredient in dollars
+     *
+     * @param name name of the ingredient
+     * @param cost cost of the ingredient in dollars
      */
     public Ingredient(String name, Double cost) {
         this.name = name;
@@ -26,7 +32,8 @@ public class Ingredient {
     }
 
     /**
-     * Finds the name of this ingredient.
+     * Returns the name of this ingredient.
+     *
      * @return the name of the ingredient
      */
     public String getName() {
@@ -34,10 +41,20 @@ public class Ingredient {
     }
 
     /**
-     * Finds the cost of this ingredient.
-     * @return
+     * Returns the cost of this ingredient.
+     *
+     * @return the cost of the ingredient.
      */
     public Double getCost() {
         return this.cost;
+    }
+
+    /**
+     * Returns the price of this ingredient.
+     *
+     * @return the pricing of the ingredient.
+     */
+    public Double getPricing() {
+        return this.pricing;
     }
 }
