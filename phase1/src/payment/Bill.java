@@ -1,6 +1,7 @@
 package payment;
 
-import restaurant.MenuItem;
+import kitchen.Order;
+import restaurant.OrderItem;
 
 import java.util.ArrayList;
 
@@ -13,27 +14,33 @@ public class Bill {
     /**
      * The MenuItems that are to be paid for with this Bill.
      */
-    private ArrayList<MenuItem> menuItems;
+    private ArrayList<OrderItem> orderItems;
 
-    /**
-     * The number of ways to split this Bill among customers at the Table.
-     */
-    private int splits;
+//    /**
+//     * The number of ways to split this Bill among customers at the Table.
+//     */
+//    // TODO: Move this to PaymentManagerService
+//    private int splits;
 
     /**
      * Bill constructor.
      */
     public Bill() {
-        menuItems = new ArrayList<>();
-        splits = 1;
+        orderItems = new ArrayList<>();
     }
 
-    public void addMenuItem(MenuItem menuItem) {
-        menuItems.add(menuItem);
+    /**
+     * @return the OrderItems associated with this Bill.
+     */
+    public ArrayList<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public ArrayList<MenuItem> getMenuItems() {
-        return menuItems;
+    /**
+     * @param order the Order to be added to this Bill.
+     */
+    public void addOrder(Order order) {
+        orderItems.addAll(order.getItems());
     }
 
 }

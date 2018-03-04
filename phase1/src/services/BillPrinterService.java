@@ -1,7 +1,7 @@
 package services;
 
 import payment.Bill;
-import restaurant.MenuItem;
+import restaurant.OrderItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
@@ -17,10 +17,10 @@ public class BillPrinterService extends Service {
      */
     private HashMap<Integer, Bill> bills;
 
-    @ServiceConstructor
     /**
      * BillPrinterService constructor.
      */
+    @ServiceConstructor
     public BillPrinterService() {
         bills = new HashMap<>();
     }
@@ -37,6 +37,25 @@ public class BillPrinterService extends Service {
             bills.put(id, bill);
             return true;
         }
+    }
+
+    // TODO: Decide how to format this
+    /**
+     * @param bill the Bill to be printed.
+     * @return a String representation of the Bill.
+     */
+    public String printBill(Bill bill) {
+        StringBuilder accumulator = new StringBuilder();
+        // Format: ITEM:PRICE
+        for (OrderItem orderItem : bill.getOrderItems()) {
+            accumulator.append('\t');
+            accumulator.append(orderItem.toString());
+            accumulator.append(':');
+            // TODO: Change to getPrice() - discount should always be applied
+            accumulator.append(orderItem.getMenuItem().getOriginalPrice());
+            accumulator.append(System.lineSeparator());
+        }
+        return accumulator.toString();
     }
 
     /**
@@ -62,13 +81,12 @@ public class BillPrinterService extends Service {
         accumulator.append(System.lineSeparator());
         // Then, print each menu item of the bill (indent included) in format
         // ITEM:PRICE
-        for (MenuItem menuItem : bill.getMenuItems()) {
+        for (OrderItem orderItem : bill.getOrderItems()) {
             accumulator.append('\t');
-            accumulator.append(menuItem.toString());
+            accumulator.append(orderItem.toString());
             accumulator.append(':');
             // TODO: Change to getPrice() - discount should always be applied
-            // TODO: (default 1.0)
-            accumulator.append(menuItem.getOriginalPrice());
+            accumulator.append(orderItem.getMenuItem().getOriginalPrice());
             accumulator.append(System.lineSeparator());
         }
         return accumulator.toString();
