@@ -8,7 +8,7 @@ import services.framework.ServiceConstructor;
 import java.util.ArrayList;
 
 /**
- * A service that prints bills according to specifications.
+ * A BillPrinterService prints bills according to user-defined specification.
  */
 public class BillPrinterService extends Service {
 
@@ -21,6 +21,7 @@ public class BillPrinterService extends Service {
 
     /**
      * Returns a string printing of a bill.
+     *
      * @param bill the bill to be printed.
      * @return a string representation of the specified bill.
      */
@@ -40,6 +41,7 @@ public class BillPrinterService extends Service {
 
     /**
      * Returns a string printing of a collection of bills.
+     *
      * @param bills the collection of bills to be printed.
      * @return a string representation of the specified bills.
      */
@@ -54,6 +56,7 @@ public class BillPrinterService extends Service {
 
     /**
      * Returns a string printing of a collection of bills.
+     *
      * @param bills the collection of bills to be printed.
      * @return a string representation of the specified bills.
      */

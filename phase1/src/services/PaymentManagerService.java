@@ -8,18 +8,18 @@ import services.framework.ServiceConstructor;
 import java.util.HashMap;
 
 /**
- * A PaymentManagerService keeps track of all Tables within the Restaurant and
- * the Bill associated with each Table.
+ * A PaymentManagerService keeps track of all tables within the restaurant and
+ * the bill associated with each table.
  */
 public class PaymentManagerService {
 
     /**
-     * A mapping of Orders by Tables.
+     * A mapping of orders by tables.
      */
     private HashMap<Table, Bill> billsByTable;
 
     /**
-     * PaymentManagerService constructor.
+     * Constructs a new PaymentManagerService.
      */
     @ServiceConstructor
     public PaymentManagerService() {
@@ -27,8 +27,9 @@ public class PaymentManagerService {
     }
 
     /**
-     * Registers a Table.
-     * @param table the Table to be registered.
+     * Registers a table.
+     *
+     * @param table the table to be registered.
      * @return true iff the Table is not already registered.
      */
     public boolean registerTable(Table table) {
@@ -41,18 +42,20 @@ public class PaymentManagerService {
     }
 
     /**
-     * Unregisters a Table.
-     * @param table the Table to be unregistered.
+     * Unregisters a table.
+     *
+     * @param table the table to be unregistered.
      */
     public void unregisterTable(Table table) {
         billsByTable.remove(table);
     }
 
     /**
-     * Registers an Order placed by a Table.
-     * @param table the Table from which the Order originated.
-     * @param order the Order placed by the Table.
-     * @return
+     * Registers an order placed by a table.
+     *
+     * @param table the table from which the order originated.
+     * @param order the order placed by the table.
+     * @return true iff the specified table is registered.
      */
     public boolean registerOrder(Table table, Order order) {
         if (billsByTable.containsKey(table)) {
@@ -64,8 +67,11 @@ public class PaymentManagerService {
     }
 
     /**
-     * @param table
-     * @return the Bill of the specified Table.
+     * Returns the bill associated with a table.
+     *
+     * @param table the table from which the bill should be retrieved.
+     * @return the bill of the specified table or null if the table is
+     *         unregistered.
      */
     public Bill getBill(Table table) {
         return billsByTable.get(table);
