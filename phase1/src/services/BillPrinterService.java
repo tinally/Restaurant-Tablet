@@ -13,29 +13,12 @@ import java.util.ArrayList;
 public class BillPrinterService extends Service {
 
     /**
-     * The Bills to be printed.
-     */
-//    private HashMap<Integer, Bill> bills;
-
-    private ArrayList<Bill> bills;
-
-    /**
      * BillPrinterService constructor.
      */
     @ServiceConstructor
     public BillPrinterService() {
-        bills = new ArrayList<>();
     }
 
-    /**
-     * Add a new Bill to be printed.
-     * @param bill the Bill to be added.
-     */
-    public void addBill(Bill bill) {
-        bills.add(bill);
-    }
-
-    // TODO: Decide how to format this
     /**
      * @param bill the Bill to be printed.
      * @return a String representation of the Bill.
@@ -55,9 +38,10 @@ public class BillPrinterService extends Service {
     }
 
     /**
-     * @return a String representation of all bills.
+     * @return a String representation of a collection of Bills.
+     * @param bills an ArrayList of Bills.
      */
-    public String printBills() {
+    public String printBills(ArrayList<Bill> bills) {
         StringBuilder accumulator = new StringBuilder();
         for (Bill bill : bills) {
             accumulator.append(printBill(bill));
@@ -66,27 +50,17 @@ public class BillPrinterService extends Service {
         return accumulator.toString();
     }
 
-//    /**
-//     * @param id the ID of the Bill to print.
-//     * @return a String representation of the Bill with the specified ID.
-//     */
-//    public String printBill(Integer id) {
-//        StringBuilder accumulator = new StringBuilder();
-//        Bill bill = bills.get(id);
-//        // First, print out the ID of the bill being printed
-//        accumulator.append(id);
-//        accumulator.append(System.lineSeparator());
-//        // Then, print each menu item of the bill (indent included) in format
-//        // ITEM:PRICE
-//        for (OrderItem orderItem : bill.getOrderItems()) {
-//            accumulator.append('\t');
-//            accumulator.append(orderItem.toString());
-//            accumulator.append(':');
-//            // TODO: Change to getPrice() - discount should always be applied
-//            accumulator.append(orderItem.getMenuItem().getOriginalPrice());
-//            accumulator.append(System.lineSeparator());
-//        }
-//        return accumulator.toString();
-//    }
+    /**
+     * @return a String representation of a collection of Bills.
+     * @param bills an Array of Bills.
+     */
+    public String printBills(Bill[] bills) {
+        StringBuilder accumulator = new StringBuilder();
+        for (Bill bill : bills) {
+            accumulator.append(printBill(bill));
+        }
+
+        return accumulator.toString();
+    }
 
 }
