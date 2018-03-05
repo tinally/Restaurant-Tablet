@@ -16,12 +16,6 @@ public class Bill {
      */
     private ArrayList<OrderItem> orderItems;
 
-//    /**
-//     * The number of ways to split this Bill among customers at the Table.
-//     */
-//    // TODO: Move this to PaymentManagerService
-//    private int splits;
-
     /**
      * Bill constructor.
      */
