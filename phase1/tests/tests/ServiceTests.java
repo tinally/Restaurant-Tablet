@@ -7,6 +7,8 @@ import services.framework.Service;
 import services.framework.ServiceConstructor;
 import services.framework.ServiceContainer;
 
+import java.util.Stack;
+
 public class ServiceTests {
 
   @Test
@@ -31,6 +33,11 @@ public class ServiceTests {
     Assert.assertNull(dps);
   }
 
+  @Test(expected = StackOverflowError.class)
+  public void testFailRecursiveDependency() {
+    ServiceContainer container = new ServiceContainer();
+    RecursiveDependentServiceOne dps = container.getInstance(RecursiveDependentServiceOne.class);
+  }
 }
 
 class DependentService extends Service {
@@ -42,6 +49,20 @@ class DependentService extends Service {
   }
 }
 
+
+class RecursiveDependentServiceOne extends Service {
+  @ServiceConstructor
+  public RecursiveDependentServiceOne(RecursiveDependentServiceTwo dependency) {
+
+  }
+}
+
+class RecursiveDependentServiceTwo extends Service {
+  @ServiceConstructor
+  public RecursiveDependentServiceTwo(RecursiveDependentServiceOne dependency) {
+
+  }
+}
 
 class DependentManuallyInstantiatedService extends Service {
   BillPrinterService dependentService;

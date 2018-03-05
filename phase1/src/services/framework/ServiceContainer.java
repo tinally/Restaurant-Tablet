@@ -20,7 +20,7 @@ public final class ServiceContainer {
    * Registers a previously instantiated instance of a
    * {@link Service} to this container, if one was not already
    * registered.
-   * 
+   *
    * @param serviceInstance The instance of the {@link Service}.
    * @param <T> The type of the {@link Service}.
    */
@@ -64,6 +64,10 @@ public final class ServiceContainer {
    * constructor so long as each dependency can be instantiated through
    * its {@link ServiceConstructor}.
    *
+   * Attempting to instantiate a {@link Service} with a circular dependency
+   * will throw StackOverflowError.
+   *
+   * @throws StackOverflowError if the class attempting to be instantiated has a circular dependency.
    * @see ServiceConstructor
    * @param serviceClass The class of the {@link Service} to instantiate.
    * @param <T> The type of class of the {@link Service} to instantiate.

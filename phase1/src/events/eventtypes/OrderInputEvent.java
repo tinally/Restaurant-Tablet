@@ -1,16 +1,17 @@
 package events.eventtypes;
 
 import events.EventArgs;
+import kitchen.Order;
 
 public class OrderInputEvent extends EventArgs<OrderInputEvent> {
-  private String order;
+  private final Order order;
 
-  public OrderInputEvent(String order) {
+  public OrderInputEvent(Order order) {
     super(OrderInputEvent.class);
     this.order = order;
   }
 
-  public String getOrder() {
+  public Order getOrder() {
     return order;
   }
 }

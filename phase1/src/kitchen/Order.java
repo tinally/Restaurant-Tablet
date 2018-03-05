@@ -18,7 +18,7 @@ public class Order {
     /**
      * The server responsible for this Order.
      */
-    private Server server;
+//    private Server server;
 
     /**
      * True if the order is delivered and false otherwise.
@@ -30,12 +30,12 @@ public class Order {
      *
      * @param items       the OrderItems being ordered
      * @param tableNumber the table number of the table that sends this Order
-     * @param server      the server responsible for this Order
+    / * @param server      the server responsible for this Order
      */
-    public Order(List<OrderItem> items, int tableNumber, Server server) {
+    public Order(List<OrderItem> items, int tableNumber/*, Server server*/) {
         this.items = items;
         this.tableNumber = tableNumber;
-        this.server = server;
+//        this.server = server;
         this.isDelivered = false;
     }
 
@@ -62,9 +62,9 @@ public class Order {
      *
      * @return the server
      */
-    public Server getServer() {
-        return server;
-    }
+//    public Server getServer() {
+//        return server;
+//    }
 
     /**
      * Checks whether the Order has been delivered to the table.

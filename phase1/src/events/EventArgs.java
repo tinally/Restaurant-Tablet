@@ -2,7 +2,7 @@ package events;
 
 public abstract class EventArgs<T extends EventArgs> {
 
-  private Class<T> eventClass;
+  private transient Class<T> eventClass;
 
   public EventArgs(Class<T> eventClass) {
 
