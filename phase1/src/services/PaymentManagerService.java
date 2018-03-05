@@ -35,7 +35,7 @@ public class PaymentManagerService {
         if (billsByTable.containsKey(table)) {
             return false;
         } else {
-            billsByTable.put(table, new Bill());
+            billsByTable.put(table, new Bill(table));
             return true;
         }
     }

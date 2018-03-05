@@ -2,6 +2,7 @@ package payment;
 
 import kitchen.Order;
 import restaurant.OrderItem;
+import restaurant.Table;
 
 import java.util.ArrayList;
 
@@ -17,10 +18,17 @@ public class Bill {
     private ArrayList<OrderItem> orderItems;
 
     /**
-     * Bill constructor.
+     * The Table to which this Bill belongs.
      */
-    public Bill() {
+    private Table table;
+
+    /**
+     * Constructs a new Bill for the specified Table.
+     * @param table the Table to which this Bill belongs.
+     */
+    public Bill(Table table) {
         orderItems = new ArrayList<>();
+        this.table = table;
     }
 
     /**

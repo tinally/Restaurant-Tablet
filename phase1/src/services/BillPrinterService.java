@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class BillPrinterService extends Service {
 
     /**
-     * Constructs a BillPrinterService.
+     * Constructs a new BillPrinterService.
      */
     @ServiceConstructor
     public BillPrinterService() {
