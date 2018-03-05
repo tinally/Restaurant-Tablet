@@ -47,7 +47,7 @@ public class MenuItem {
      *
      * @return the price of the item with the discount applied
      */
-    public double getDiscountPrice(){
+    public double getPrice(){
         return discount * price; // TODO: added DiscountedPrice
     }
 
