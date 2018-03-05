@@ -8,20 +8,21 @@ import services.framework.ServiceConstructor;
 import java.util.ArrayList;
 
 /**
- * This Service prints one or more Bills according to specification.
+ * A service that prints bills according to specifications.
  */
 public class BillPrinterService extends Service {
 
     /**
-     * BillPrinterService constructor.
+     * Constructs a BillPrinterService.
      */
     @ServiceConstructor
     public BillPrinterService() {
     }
 
     /**
-     * @param bill the Bill to be printed.
-     * @return a String representation of the Bill.
+     * Returns a string printing of a bill.
+     * @param bill the bill to be printed.
+     * @return a string representation of the specified bill.
      */
     public String printBill(Bill bill) {
         StringBuilder accumulator = new StringBuilder();
@@ -38,8 +39,9 @@ public class BillPrinterService extends Service {
     }
 
     /**
-     * @return a String representation of a collection of Bills.
-     * @param bills an ArrayList of Bills.
+     * Returns a string printing of a collection of bills.
+     * @param bills the collection of bills to be printed.
+     * @return a string representation of the specified bills.
      */
     public String printBills(ArrayList<Bill> bills) {
         StringBuilder accumulator = new StringBuilder();
@@ -51,8 +53,9 @@ public class BillPrinterService extends Service {
     }
 
     /**
-     * @return a String representation of a collection of Bills.
-     * @param bills an Array of Bills.
+     * Returns a string printing of a collection of bills.
+     * @param bills the collection of bills to be printed.
+     * @return a string representation of the specified bills.
      */
     public String printBills(Bill[] bills) {
         StringBuilder accumulator = new StringBuilder();
