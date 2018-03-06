@@ -1,8 +1,10 @@
 package services;
 
 import events.EventEmitter;
+import events.newevents.OrderChangedEvent;
 import events.newevents.OrderCreatedEvent;
 import kitchen.Order;
+import kitchen.OrderStatus;
 import restaurant.MenuItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
@@ -11,6 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrderManagerService extends Service {
+
     private final EventEmitter emitter;
     private Map<Integer, Order> orders;
 
@@ -44,5 +47,12 @@ public class OrderManagerService extends Service {
 
     public List<Order> getOrdersForTableNumber(int tableNumber) {
         return orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList());
+    }
+
+    public void notifyOrderStatusChanged(int orderNumber, OrderStatus newStatus, String sender) {
+        OrderChangedEvent event = new OrderChangedEvent(orderNumber, newStatus);
+        event.setSender(sender);
+        this.getOrder(orderNumber).setStatus(newStatus);
+        emitter.onEvent(event);
     }
 }

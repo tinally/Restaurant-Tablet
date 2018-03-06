@@ -3,8 +3,9 @@ package kitchen;
 import java.util.*;
 
 import events.EventEmitter;
-import events.eventtypes.*;
-import restaurant.*;
+import events.newevents.OrderChangedEvent;
+import events.newevents.OrderCreatedEvent;
+import restaurant.MenuItem;
 import services.OrderManagerService;
 
 public class Chef {
@@ -45,21 +46,12 @@ public class Chef {
     }
 
     /**
-     * Handles an OrderInputEvent.
-     *
-     * @param event the event called after an order is inputted
-     */
-    public void handle(OrderInputEvent event) {
-        this.receiveOrder(event.getOrder());
-    }
-
-    /**
      * The Chef receives an order from a Server.
      *
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        order.setStatus(OrderStatus.RECEIVED);
+        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.RECEIVED, "Chef " + name);
     }
 
     /**
@@ -76,13 +68,9 @@ public class Chef {
                 int deduct = ingredients.get(i);
                 int current = inventory.get(i);
                 if (current >= deduct) {
-                    OrderCompleteEvent event = new OrderCompleteEvent(order);
-                    emitter.onEvent(event);
-                    order.setStatus(OrderStatus.COMPLETED);
+                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.FILLED,"Chef " + name);
                 } else {
-                    OrderRejectEvent event = new OrderRejectEvent(order);
-                    emitter.onEvent(event);
-                    order.setStatus(OrderStatus.REJECTED);
+                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.REJECTED,"Chef " + name);
                 }
             }
         }
