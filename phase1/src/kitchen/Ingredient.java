@@ -25,15 +25,20 @@ public class Ingredient implements Serializable {
     private Double pricing;
 
     /**
+     * Amount to be reordered when stock is low. It is 20 by default.
+     */
+    private int reorderAmount = 20;
+
+    /**
      * Class constructor specifying the name and cost of this ingredient.
      *
      * @param name name of the ingredient
      * @param cost cost of the ingredient in dollars
      */
     public Ingredient(
-        @JsonProperty("name") String name,
-        @JsonProperty("cost") Double cost,
-        @JsonProperty("pricing") Double pricing) {
+            @JsonProperty("name") String name,
+            @JsonProperty("cost") Double cost,
+            @JsonProperty("pricing") Double pricing) {
         this.name = name;
         this.cost = cost;
         this.pricing = pricing;
@@ -65,4 +70,10 @@ public class Ingredient implements Serializable {
     public Double getPricing() {
         return this.pricing;
     }
+
+    /**
+     *
+     */
+    public void setReorderAmount(int amount) { this.reorderAmount = amount; }
+
 }
