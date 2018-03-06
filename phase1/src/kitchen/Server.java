@@ -50,13 +50,13 @@ public class Server extends Service {
     /**
      * Class constructor specifying the emitter, printer, name, table, inventory, and manager.
      *
-     * @param emitter     main event handler
-     * @param printer     the printer responsible for this bill
-     * @param name        name of the Server
-     * @param table the table number the Server is responsible for
-     * @param inventory   inventory of all ingredients
-     * @param orderManager     manager of the orders
-     * @param paymentManager    manager of the payment
+     * @param emitter        main event handler
+     * @param printer        the printer responsible for this bill
+     * @param name           name of the Server
+     * @param table          the table number the Server is responsible for
+     * @param inventory      inventory of all ingredients
+     * @param orderManager   manager of the orders
+     * @param paymentManager manager of the payment
      */
     @ServiceConstructor
     public Server(EventEmitter emitter, BillPrinterService printer, String name, Table table, Inventory inventory,
@@ -71,6 +71,7 @@ public class Server extends Service {
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
     }
+
     /**
      * Updates the ingredient when an OrderCompleteEvent is filed.
      *
@@ -79,7 +80,8 @@ public class Server extends Service {
     private void updateIngredient(OrderChangedEvent event) {
         if (event.getNewStatus() != OrderStatus.COMPLETED) return;
         Order order = orderManager.getOrder(event.getOrderNumber());
-        if (order == null) return;;
+        if (order == null) return;
+        ;
         MenuItem mi = order.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {
@@ -94,13 +96,14 @@ public class Server extends Service {
      * @param event the event called after an order is rejected by the Chef
      */
     private void rejectOrderItem(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.REJECTED) return;
-        Order order = orderManager.getOrder(event.getOrderNumber());
-        System.out.println(order.getOrderNumber() + " is rejected.");
+        if (event.getNewStatus() == OrderStatus.REJECTED) {
+            Order order = orderManager.getOrder(event.getOrderNumber());
+            System.out.println(order.getOrderNumber() + " is rejected.");
+        }
     }
 
     public void addOrder() {
-        // Adds the order to the managers
+
     }
 
     public void serve() {
@@ -108,6 +111,6 @@ public class Server extends Service {
     }
 
     public void checkout() {
-        printer.printBill();
+
     }
 }
