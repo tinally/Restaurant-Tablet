@@ -92,7 +92,7 @@ public class Server extends Service {
     }
 
     public void addOrder() {
-        // Send orders to Chef
+
     }
 
     public void serve() {

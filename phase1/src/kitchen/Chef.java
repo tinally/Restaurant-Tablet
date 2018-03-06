@@ -50,7 +50,7 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        order.setStatus(OrderStatus.RECEIVE);
+        order.setStatus(OrderStatus.RECEIVED);
         OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.RECEIVE);
     }
 
@@ -69,11 +69,10 @@ public class Chef {
                 int current = inventory.get(i);
                 if (current >= deduct) {
                     OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.COMPLETE);
-                    order.setStatus(OrderStatus.COMPLETE);
+                    order.setStatus(OrderStatus.COMPLETED);
                     emitter.onEvent(event);
                 } else {
                     OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.REJECT);
-                    order.setStatus(OrderStatus.REJECT);
                     emitter.onEvent(event);
                 }
             }
