@@ -1,5 +1,7 @@
 package restaurant;
 
+import kitchen.Server;
+
 public class Table {
     /**
      * The table number
@@ -12,7 +14,7 @@ public class Table {
     /**
      * The Server serving this table
      */
-//    private Server server;
+    private Server server;
 
     public Table(int tableNumber, int numCustomers){
         this.tableNumber = tableNumber;
@@ -56,14 +58,14 @@ public class Table {
      *
      * @return Return the server serving this table
      */
-//    public Server getServer() {
-//        return server;
-//    }
+    public Server getServer() {
+        return server;
+    }
     /**
      *
      * @param server set to serve this table
      */
-//    public void setServer(Server server) {
-//        this.server = server;
-//    }
+    public void setServer(Server server) {
+        this.server = server;
+    }
 }
