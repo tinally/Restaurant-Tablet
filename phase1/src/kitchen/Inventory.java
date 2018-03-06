@@ -1,6 +1,6 @@
 package kitchen;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Inventory represents the stock of Ingredients.
@@ -9,12 +9,12 @@ public class Inventory {
     /**
      * The HashMap of each Ingredient with the amount of remaining items in stock.
      */
-    private HashMap<Ingredient, Integer> inventory;
+    private Map<Ingredient, Integer> inventory;
 
     /**
      * The HashMap of each Ingredient with its threshold for restock.
      */
-    private HashMap<Ingredient, Integer> threshold;
+    private Map<Ingredient, Integer> threshold;
 
     /**
      * Class constructor of an Inventory.
@@ -39,7 +39,7 @@ public class Inventory {
      *
      * @return the inventory HashMap
      */
-    public HashMap<Ingredient, Integer> getInventory() {
+    public Map<Ingredient, Integer> getInventory() {
         return inventory;
     }
 
@@ -48,8 +48,20 @@ public class Inventory {
      *
      * @return the threshold HashMap
      */
-    public HashMap<Ingredient, Integer> getThreshold() {
+    public Map<Ingredient, Integer> getThreshold() {
         return threshold;
+    }
+
+    public void addToInventory(Ingredient ingredient, int num) {
+        int leftover = inventory.get(ingredient);
+        inventory.put(ingredient, leftover + num);
+    }
+
+    public void removeFromInventory(Ingredient ingredient, int num) {
+        int leftover = inventory.get(ingredient);
+        if (leftover > num) {
+            inventory.put(ingredient, leftover - num);
+        }
     }
 
     /**
@@ -57,12 +69,13 @@ public class Inventory {
      * If so, reorders the ingredient when the amount of remaining items is below the threshold.
      *
      * @param ingredient the ingredient to be checked for reorder
-     * @return true if needing to reorder ingredient; false otherwise
      */
-    public boolean reOrder(Ingredient ingredient) {
+    public void reOrder(Ingredient ingredient) {
         int num = inventory.get(ingredient);
         int limit = threshold.get(ingredient);
-        return num < limit;     // TODO: update requests.txt
+        if (num < limit) {
+            // TODO: update requests.txt and call for new items
+        }
     }
 
     /**
