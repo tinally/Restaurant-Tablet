@@ -3,9 +3,6 @@ package kitchen;
 import java.util.*;
 
 import events.EventEmitter;
-import events.eventtypes.OrderCompleteEvent;
-import events.eventtypes.OrderInputEvent;
-import restaurant.*;
 
 public class Chef {
 

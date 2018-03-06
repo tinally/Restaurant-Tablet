@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import events.EventArgs;
 import events.EventEmitter;
-import events.eventtypes.OrderInputEvent;
 import kitchen.Ingredient;
 import kitchen.Order;
 import org.junit.Assert;

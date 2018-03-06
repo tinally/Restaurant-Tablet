@@ -27,7 +27,10 @@ public class Order {
      * @param menuItem       the OrderItems being ordered
      * @param tableNumber the table number of the table that sends this Order
      */
-    public Order(MenuItem menuItem, int tableNumber, String serverName, int orderNumber) {
+    public Order(MenuItem menuItem,
+                 int tableNumber,
+                 String serverName,
+                 int orderNumber) {
         this.menuItem = menuItem;
         this.tableNumber = tableNumber;
         this.status = OrderStatus.CREATED;

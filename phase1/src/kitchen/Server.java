@@ -1,11 +1,8 @@
 package kitchen;
 
 import events.EventEmitter;
-import events.RestaurantEventHandler;
-import events.eventtypes.IngredientRequiresReorderEvent;
-import events.eventtypes.OrderCompleteEvent;
-import events.eventtypes.OrderInputEvent;
 import events.eventtypes.OrderRejectEvent;
+import events.newevents.OrderChangedEvent;
 import services.BillPrinterService;
 import services.framework.*;
 import restaurant.*;
@@ -29,11 +26,11 @@ public class Server extends Service {
         this.name = name;
         this.tableNumber = tableNumber;
         this.inventory = inventory;
-        em.registerEventHandler(this::updateIngredient, OrderCompleteEvent.class);
-        em.registerEventHandler(this::rejectOrderItem, OrderRejectEvent.class);
-    }
+        em.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
+     }
 
-    private void updateIngredient(OrderCompleteEvent event) {
+    private void updateIngredient(OrderChangedEvent event) {
+        if(!event.getNewStatus() == OrderStatus.)
         OrderItem oi = event.getOrderItem();
         MenuItem mi = oi.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
