@@ -11,7 +11,6 @@ import kitchen.Order;
 import org.junit.Assert;
 import org.junit.Test;
 import restaurant.MenuItem;
-import restaurant.OrderItem;
 import services.ResourceResolverService;
 import services.framework.ServiceContainer;
 import services.serialization.YamlDeserializerService;

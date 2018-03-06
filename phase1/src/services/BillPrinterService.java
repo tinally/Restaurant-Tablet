@@ -1,7 +1,6 @@
 package services;
 
 import payment.Bill;
-import restaurant.OrderItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
