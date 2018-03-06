@@ -3,8 +3,9 @@ package kitchen;
 public enum OrderStatus {
     CREATED,
     BILLABLE,
-    RECEIVED,
+    SEEN,
     COMPLETED,
     REJECTED,
-  FILLED, DELIVERED
+  FILLED,
+    DELIVERED
 }

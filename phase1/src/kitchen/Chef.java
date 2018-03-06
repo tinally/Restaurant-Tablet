@@ -51,7 +51,7 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.RECEIVED, "Chef " + name);
+        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.SEEN, "Chef " + name);
     }
 
     /**
