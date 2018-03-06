@@ -3,15 +3,16 @@ package services;
 import kitchen.Order;
 import payment.Bill;
 import restaurant.Table;
+import services.framework.Service;
 import services.framework.ServiceConstructor;
 
 import java.util.HashMap;
 
-/**
+/**s
  * A PaymentManagerService keeps track of all tables within the restaurant and
  * the bill associated with each table.
  */
-public class PaymentManagerService {
+public class PaymentManagerService extends Service {
 
   /**
    * A mapping of orders by tables.

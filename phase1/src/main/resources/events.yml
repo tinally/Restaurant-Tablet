@@ -20,11 +20,11 @@
 - event: OrderChangedEvent
   payload:
     orderNumber: 1
-    newStatus: RECEIVED
+    newStatus: FILLED
     sender: System
 
 - event: OrderChangedEvent
   payload:
     orderNumber: 1
-    newStatus: RECEIVED
+    newStatus: BILLABLE
     sender: System

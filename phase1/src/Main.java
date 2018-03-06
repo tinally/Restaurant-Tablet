@@ -3,6 +3,7 @@ import events.EventArgs;
 import events.EventEmitter;
 import kitchen.Inventory;
 import kitchen.Server;
+import restaurant.Table;
 import services.*;
 import services.framework.ServiceContainer;
 import services.serialization.YamlDeserializerService;
@@ -20,13 +21,13 @@ public class Main {
 
     EventEmitter em = container.getInstance(EventEmitter.class);
     OrderManagerService om = container.getInstance(OrderManagerService.class);
-
+    PaymentManagerService pm = container.getInstance(PaymentManagerService.class);
     Inventory im = new Inventory(em);
 
     ObjectMapper mapper = yds.getMapper();
     List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
         mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
-    Server s = new Server(em, bps, "Server Bob", 15, im, om);
+    Server s = new Server(em, bps, "Server Bob", new Table(15, 10), im, om, pm);
     for (EventArgs e : events) {
       em.onEvent(e);
     }
