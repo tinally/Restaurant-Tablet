@@ -78,7 +78,7 @@ public class Server extends Service {
      * @param event the event called after an order is completed by the Chef
      */
     private void updateIngredient(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.COMPLETED) return;
+        if (event.getNewStatus() != OrderStatus.FILLED) return;
         Order order = orderManager.getOrder(event.getOrderNumber());
         if (order == null) return;
         ;
@@ -107,10 +107,11 @@ public class Server extends Service {
 
     public void serve() {
         // Change status of the order
+        // The customer can send the food back possibly because the food was too cold,
+        // the order was wrong and needs to be adjusted, etc.
     }
 
-//    public void checkout() {
-
-//        printer.printBill();
-//    }
+    public void checkout() {
+        // Print the bill
+    }
 }
