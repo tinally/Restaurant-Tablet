@@ -1,0 +1,15 @@
+- event: OrderInputEvent
+  payload:
+    order:
+      items:
+        - menuItem: Toast Sandwich
+      tableNumber: 15
+      isDelivered: False
+
+- event: OrderInputEvent
+  payload:
+    order:
+      items:
+        - menuItem: BLT Sandwich
+      tableNumber: 15
+      isDelivered: False

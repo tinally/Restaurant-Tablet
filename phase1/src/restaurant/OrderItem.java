@@ -1,5 +1,6 @@
 package restaurant;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import kitchen.Ingredient;
 
 import java.util.ArrayList;
@@ -12,15 +13,19 @@ public class OrderItem {
     /**
      * The MenuItem the customer ordered.
      */
-    private MenuItem menuItem;
+    @JsonProperty("menuItem") private MenuItem menuItem;
     /**
      * A HashMap showing how much each Ingredient should be added.
      */
-    private HashMap<Ingredient, Integer> addIngredients;
+    @JsonProperty("addIngredients") private HashMap<Ingredient, Integer> addIngredients;
     /**
      * An ArrayList showing the unwanted Ingredients from the MenuItem.
      */
-    private ArrayList<Ingredient> removedIngredients;
+    @JsonProperty("removedIngredients") private ArrayList<Ingredient> removedIngredients;
+
+    private OrderItem() {
+
+    }
 
     public OrderItem(MenuItem menuItem) {
         this(menuItem, new HashMap<>(), new ArrayList<>());
