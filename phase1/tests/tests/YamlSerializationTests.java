@@ -49,18 +49,10 @@ public class YamlSerializationTests {
     ObjectMapper mapper = yds.getMapper();
     AtomicBoolean eventsTriggered = new AtomicBoolean(false);
     EventEmitter em = container.getInstance(EventEmitter.class);
-    em.registerEventHandler((e, s) -> {
-      try {
-        System.out.println(mapper.writeValueAsString(e));
-      } catch (JsonProcessingException e1) {
-        e1.printStackTrace();
-      }
-      eventsTriggered.set(true);
-    }, OrderInputEvent.class);
+
 
     try {
-      List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
-          mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
+
       events.forEach(e -> em.onEvent(e, null));
     } catch (IOException e) {
       e.printStackTrace();

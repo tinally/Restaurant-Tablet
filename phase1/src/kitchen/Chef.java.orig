@@ -4,7 +4,6 @@ import java.util.*;
 
 import events.EventEmitter;
 import events.newevents.OrderChangedEvent;
-import events.newevents.OrderCreatedEvent;
 import restaurant.MenuItem;
 import services.OrderManagerService;
 
@@ -43,7 +42,6 @@ public class Chef {
         this.emitter = emitter;
         this.inventory = inventory;
         this.manager = manager;
-
     }
 
     /**
@@ -52,7 +50,12 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.RECEIVED, "Chef " + name);
+<<<<<<< HEAD
+        order.setStatus(OrderStatus.RECEIVE);
+        OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.RECEIVE);
+=======
+        order.setStatus(OrderStatus.RECEIVED);
+>>>>>>> 5465d8f27c4505e77b5c7ed68e15d58bd62d5256
     }
 
     /**
@@ -69,9 +72,23 @@ public class Chef {
                 int deduct = ingredients.get(i);
                 int current = inventory.get(i);
                 if (current >= deduct) {
-                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.FILLED,"Chef " + name);
+<<<<<<< HEAD
+                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.COMPLETE);
+                    order.setStatus(OrderStatus.COMPLETE);
+                    emitter.onEvent(event);
                 } else {
-                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.REJECTED,"Chef " + name);
+                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.REJECT);
+                    order.setStatus(OrderStatus.REJECT);
+                    emitter.onEvent(event);
+=======
+                    OrderCompleteEvent event = new OrderCompleteEvent(order);
+                    emitter.onEvent(event);
+                    order.setStatus(OrderStatus.COMPLETED);
+                } else {
+                    OrderRejectEvent event = new OrderRejectEvent(order);
+                    emitter.onEvent(event);
+                    order.setStatus(OrderStatus.REJECTED);
+>>>>>>> 5465d8f27c4505e77b5c7ed68e15d58bd62d5256
                 }
             }
         }

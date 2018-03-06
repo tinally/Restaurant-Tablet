@@ -1,6 +1,8 @@
 package restaurant;
 
 import java.util.HashMap;
+import java.util.Map;
+
 import kitchen.Ingredient;
 
 /**
@@ -15,7 +17,7 @@ public class MenuItem {
     /**
      * A HashMap storing how much Ingredient is needed
      */
-    private HashMap<Ingredient, Integer> ingredients;
+    private Map<Ingredient, Integer> ingredients;
     /**
      * The price of the item
      */
@@ -25,7 +27,7 @@ public class MenuItem {
      */
     private double discount; //Discounted price
 
-    public MenuItem(String name, HashMap<Ingredient, Integer> ingredients, double price){
+    public MenuItem(String name, Map<Ingredient, Integer> ingredients, double price){
         this.name = name;
         this.price = price;
         this.ingredients = ingredients;
@@ -69,7 +71,7 @@ public class MenuItem {
      *
      * @return the HashMap containing how many ingredients the item needs
      */
-    public HashMap<Ingredient, Integer> getIngredients() {
+    public Map<Ingredient, Integer> getIngredients() {
         return ingredients;
     }
 
@@ -77,7 +79,7 @@ public class MenuItem {
      *
      * @param ingredients The ingredients to be set
      */
-    public void setIngredients(HashMap<Ingredient, Integer> ingredients) {
+    public void setIngredients(Map<Ingredient, Integer> ingredients) {
         this.ingredients = ingredients;
     }
 

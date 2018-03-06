@@ -33,7 +33,7 @@ public class EventDeserializer extends StdDeserializer<EventArgs> {
     String eventClassName = node.get("event").asText();
     try {
       Class<? extends EventArgs> eventClass =
-          (Class<? extends EventArgs>) Class.forName("events.eventtypes." + eventClassName);
+          (Class<? extends EventArgs>) Class.forName("events.newevents." + eventClassName);
       EventArgs object = this.yamlDeserializerService.getMapper()
           .treeToValue(node.get("payload"), eventClass);
       return object;
