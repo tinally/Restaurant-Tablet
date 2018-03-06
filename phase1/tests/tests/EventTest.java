@@ -1,5 +1,6 @@
 package tests;
 
+import events.eventtypes.OrderInputEvent;
 import org.junit.Assert;
 import org.junit.Test;
 import events.EventEmitter;
@@ -14,6 +15,7 @@ public class EventTest {
     AtomicBoolean eventRaised = new AtomicBoolean(false);
     EventEmitter emitter = new EventEmitter();
     OrderInputStringEvent event = new OrderInputStringEvent("My Order!");
+    emitter.registerEventHandler(this::doStuff, OrderInputEvent.class);
     emitter.registerEventHandler(
         (e, s) -> {
           Assert.assertEquals(e.getOrder(), "My Order!");
@@ -23,6 +25,10 @@ public class EventTest {
     emitter.onEvent(event, null);
     Assert.assertTrue(eventRaised.get());
    }
+
+  public void doStuff(OrderInputEvent e, Object sender) {
+
+  }
 
   @Test
   public void testMultipleEventHandling() {
