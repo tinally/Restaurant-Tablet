@@ -28,6 +28,7 @@ public class Inventory {
         this.em = em;
         inventory = new HashMap<>();
         threshold = new HashMap<>();
+        Request.addToRequests("Ingredients to be reordered:");
     }
 
     /**
@@ -82,7 +83,7 @@ public class Inventory {
         int limit = threshold.get(ingredient);
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
-            // TODO: update requests.txt
+            Request.addToRequests(ingredient.getName() + ": " + 20); //TODO: Add 20 as the ingredient
         }
     }
 
