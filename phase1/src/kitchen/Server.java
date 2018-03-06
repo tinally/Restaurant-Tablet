@@ -98,7 +98,6 @@ public class Server extends Service {
     private void rejectOrderItem(OrderChangedEvent event) {
         if (event.getNewStatus() == OrderStatus.REJECTED) {
             Order order = orderManager.getOrder(event.getOrderNumber());
-            System.out.println(order.getOrderNumber() + " is rejected.");
         }
     }
 

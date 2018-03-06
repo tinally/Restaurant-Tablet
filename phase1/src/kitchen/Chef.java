@@ -1,79 +1,70 @@
 package kitchen;
 
-import java.util.*;
-
 import events.EventEmitter;
 import events.newevents.OrderChangedEvent;
-import events.newevents.OrderCreatedEvent;
 import restaurant.MenuItem;
 import services.OrderManagerService;
 
+import java.util.Map;
+
 public class Chef {
 
-    /**
-     * Name the of the Chef.
-     */
-    private String name;
+  /**
+   * Name the of the Chef.
+   */
+  private String name;
 
-    /**
-     * Manages the orders.
-     */
-    private OrderManagerService manager;
+  /**
+   * Manages the orders.
+   */
+  private OrderManagerService manager;
 
-    /**
-     * Handles the events.
-     */
-    private EventEmitter emitter;
+  /**
+   * Handles the events.
+   */
+  private EventEmitter emitter;
 
-    /**
-     * Inventory of all the ingredients of this restaurant.
-     */
-    private Inventory inventory;
+  /**
+   * Inventory of all the ingredients of this restaurant.
+   */
+  private Inventory inventory;
 
-    /**
-     * Class constructor specifying the name, emitter, inventory, and manager.
-     *
-     * @param name      name of the Chef
-     * @param emitter   main event handler
-     * @param inventory inventory of all ingredients
-     * @param manager   manager of the orders
-     */
-    public Chef(String name, EventEmitter emitter, Inventory inventory, OrderManagerService manager) {
-        this.name = name;
-        this.emitter = emitter;
-        this.inventory = inventory;
-        this.manager = manager;
+  /**
+   * Class constructor specifying the name, emitter, inventory, and manager.
+   *
+   * @param name      name of the Chef
+   * @param emitter   main event handler
+   * @param inventory inventory of all ingredients
+   * @param manager   manager of the orders
+   */
+  public Chef(String name, EventEmitter emitter, Inventory inventory, OrderManagerService manager) {
+    this.name = name;
+    this.emitter = emitter;
+    this.inventory = inventory;
+    this.manager = manager;
+    this.emitter.registerEventHandler(e -> {
+      if (e.getNewStatus() == OrderStatus.SEEN) {
+        completeOrder(manager.getOrder(e.getOrderNumber()));
+      }
+    }, OrderChangedEvent.class);
+  }
 
+
+  /**
+   * The Chef completes an order and creates an OrderCompleteEvent if the inventory has enough ingredients needed.
+   * Otherwise, the Chef ends the order and creates an OrderRejectEvent.
+   */
+  private void completeOrder(Order order) {
+    MenuItem mi = order.getMenuItem();
+    Map<Ingredient, Integer> ingredients = mi.getIngredients();
+    for (Ingredient i : ingredients.keySet()) {
+      int deduct = ingredients.get(i);
+      int current = this.inventory.getAmountRemaining(i);
+      if (current < deduct) {
+        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.REJECTED, "Chef " + name);
+        return;
+      }
     }
-
-    /**
-     * The Chef receives an order from a Server.
-     *
-     * @param order order received
-     */
-    private void receiveOrder(Order order) {
-        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.SEEN, "Chef " + name);
-    }
-
-    /**
-     * The Chef completes an order and creates an OrderCompleteEvent if the inventory has enough ingredients needed.
-     * Otherwise, the Chef ends the order and creates an OrderRejectEvent.
-     */
-    public void completeOrder() {
-        Collection<Order> orders = manager.getAllOrders();
-        for (Order order : orders) {
-            MenuItem mi = order.getMenuItem();
-            Map<Ingredient, Integer> inventory = this.inventory.getInventory();
-            Map<Ingredient, Integer> ingredients = mi.getIngredients();
-            for (Ingredient i : ingredients.keySet()) {
-                int deduct = ingredients.get(i);
-                int current = inventory.get(i);
-                if (current >= deduct) {
-                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.FILLED,"Chef " + name);
-                } else {
-                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.REJECTED,"Chef " + name);
-                }
-            }
-        }
-    }
+    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.FILLED, "Chef " + name);
+  }
 }

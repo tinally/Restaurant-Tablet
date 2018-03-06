@@ -10,21 +10,13 @@
       tableNumber: 15
       orderNumber: 1
       status: CREATED
-
 - event: OrderChangedEvent
   payload:
     orderNumber: 1
-    newStatus: RECEIVED
-    sender: System
-
+    newStatus: PUSHED
+    sender: Server Bob
 - event: OrderChangedEvent
   payload:
     orderNumber: 1
-    newStatus: FILLED
-    sender: System
-
-- event: OrderChangedEvent
-  payload:
-    orderNumber: 1
-    newStatus: BILLABLE
-    sender: System
+    newStatus: SEEN
+    sender: Chef Joe

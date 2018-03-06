@@ -18,7 +18,7 @@ public class OrderManagerService extends Service {
     private Map<Integer, Order> orders;
 
     @ServiceConstructor
-    OrderManagerService(EventEmitter emitter) {
+    public OrderManagerService(EventEmitter emitter) {
         this.emitter = emitter;
         emitter.registerEventHandler(this::saveOrder, OrderCreatedEvent.class);
         this.orders = new HashMap<>();
