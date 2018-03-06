@@ -1,8 +1,10 @@
 package services;
 
 import events.EventEmitter;
+import events.newevents.OrderChangedEvent;
 import events.newevents.OrderCreatedEvent;
 import kitchen.Order;
+import kitchen.OrderStatus;
 import restaurant.MenuItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
@@ -36,6 +38,13 @@ public class OrderManagerService extends Service {
 
   public Order getOrder(int orderNumber) {
     return orders.get(orderNumber);
+  }
+
+  public void notifyOrderStatusChanged(int orderNumber, OrderStatus newStatus, String sender) {
+    OrderChangedEvent event = new OrderChangedEvent(orderNumber, newStatus);
+    event.setSender(sender);
+    this.getOrder(orderNumber).setStatus(newStatus);
+    em.onEvent(event);
   }
 
   public Collection<Order> getAllOrders() {

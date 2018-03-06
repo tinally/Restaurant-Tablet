@@ -4,6 +4,7 @@ import java.util.*;
 
 import events.EventEmitter;
 import events.newevents.OrderChangedEvent;
+import events.newevents.OrderCreatedEvent;
 import restaurant.MenuItem;
 import services.OrderManagerService;
 
@@ -50,8 +51,7 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        order.setStatus(OrderStatus.RECEIVED);
-        OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.RECEIVE);
+        manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.RECEIVED, "Chef " + name);
     }
 
     /**
@@ -68,12 +68,9 @@ public class Chef {
                 int deduct = ingredients.get(i);
                 int current = inventory.get(i);
                 if (current >= deduct) {
-                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.COMPLETE);
-                    order.setStatus(OrderStatus.COMPLETED);
-                    emitter.onEvent(event);
+                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.FILLED,"Chef " + name);
                 } else {
-                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.REJECT);
-                    emitter.onEvent(event);
+                    manager.notifyOrderStatusChanged(order.getOrderNumber(), OrderStatus.REJECTED,"Chef " + name);
                 }
             }
         }
