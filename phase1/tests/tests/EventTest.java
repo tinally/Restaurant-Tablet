@@ -3,7 +3,6 @@ package tests;
 import org.junit.Assert;
 import org.junit.Test;
 import events.EventEmitter;
-import events.eventtypes.OrderInputStringEvent;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
