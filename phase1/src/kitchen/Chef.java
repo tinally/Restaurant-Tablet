@@ -3,42 +3,80 @@ package kitchen;
 import java.util.*;
 
 import events.EventEmitter;
+import events.newevents.OrderChangedEvent;
+import restaurant.MenuItem;
+import services.OrderManagerService;
 
 public class Chef {
 
+    /**
+     * Name the of the Chef.
+     */
     private String name;
-    private Queue<Order> items;
-    private EventEmitter em;
 
-    public Chef(String name, EventEmitter em) {
+    /**
+     * Manages the orders.
+     */
+    private OrderManagerService manager;
+
+    /**
+     * Handles the events.
+     */
+    private EventEmitter emitter;
+
+    /**
+     * Inventory of all the ingredients of this restaurant.
+     */
+    private Inventory inventory;
+
+    /**
+     * Class constructor specifying the name, emitter, inventory, and manager.
+     *
+     * @param name      name of the Chef
+     * @param emitter   main event handler
+     * @param inventory inventory of all ingredients
+     * @param manager   manager of the orders
+     */
+    public Chef(String name, EventEmitter emitter, Inventory inventory, OrderManagerService manager) {
         this.name = name;
-        this.em = em;
-        items = new Queue<Order>();
+        this.emitter = emitter;
+        this.inventory = inventory;
+        this.manager = manager;
     }
 
-    public void handle(OrderInputEvent event) {
-        this.receiveOrder(event.getOrder());
+    /**
+     * The Chef receives an order from a Server.
+     *
+     * @param order order received
+     */
+    private void receiveOrder(Order order) {
+        order.setStatus(OrderStatus.RECEIVE);
+        OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.RECEIVE);
     }
 
-    private void receiveOrder(Order o) {
-        items.add(o);
-    }
-
+    /**
+     * The Chef completes an order and creates an OrderCompleteEvent if the inventory has enough ingredients needed.
+     * Otherwise, the Chef ends the order and creates an OrderRejectEvent.
+     */
     public void completeOrder() {
-        for (Order o : items) {
-            List<OrderItem> oi = o.getItems();
-            for (OrderItem item : oi) {
-                OrderCompleteEvent event = new OrderCompleteEvent(item);
-                em.onEvent(event, this);
+        Collection<Order> orders = manager.getAllOrders();
+        for (Order order : orders) {
+            MenuItem mi = order.getMenuItem();
+            Map<Ingredient, Integer> inventory = this.inventory.getInventory();
+            Map<Ingredient, Integer> ingredients = mi.getIngredients();
+            for (Ingredient i : ingredients.keySet()) {
+                int deduct = ingredients.get(i);
+                int current = inventory.get(i);
+                if (current >= deduct) {
+                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.COMPLETE);
+                    order.setStatus(OrderStatus.COMPLETE);
+                    emitter.onEvent(event);
+                } else {
+                    OrderChangedEvent event = new OrderChangedEvent(order.getOrderNumber(), OrderStatus.REJECT);
+                    order.setStatus(OrderStatus.REJECT);
+                    emitter.onEvent(event);
+                }
             }
         }
     }
-
-    public Queue<Order> getOrders(String name) {
-        if (this.name.equals(name)) {
-            return items;
-        }
-        return null;
-    }
-
 }
