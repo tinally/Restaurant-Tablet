@@ -7,7 +7,10 @@ import services.framework.ServiceConstructor;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class OrderManagerService extends Service {
   private Map<Integer, Order> orders;
@@ -24,5 +27,9 @@ public class OrderManagerService extends Service {
 
   public Order getOrder(int orderNumber) {
     return orders.get(orderNumber);
+  }
+
+  public List<Order> getOrdersForTableNumber(int tableNumber) {
+    return orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList());
   }
 }
