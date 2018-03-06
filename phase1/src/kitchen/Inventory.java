@@ -1,6 +1,6 @@
 package kitchen;
 
-import events.eventtypes.IngredientRequiresReorderEvent;
+import events.ingredientevents.IngredientRequiresReorderEvent;
 
 import java.util.*;
 import events.*;

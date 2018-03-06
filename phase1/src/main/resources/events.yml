@@ -1,22 +1,30 @@
-- event: OrderInputEvent
+- event: OrderCreatedEvent
   payload:
-    order:
-      items:
-        - menuItem: Toast Sandwich
-          removedIngredients:
-            - Toast
-          addIngredients:
-            Tomato: 10
+    newOrder:
+      serverName: Server Bob
+      menuItem: Toast Sandwich
+      removedIngredients:
+        - Toast
+      addIngredients:
+        Tomato: 10
       tableNumber: 15
-      isDelivered: False
-- event: OrderInputEvent
+      orderNumber: 1
+      status: CREATED
+
+- event: OrderChangedEvent
   payload:
-    order:
-      items:
-        - menuItem: BLT Sandwich
-          removedIngredients:
-            - Tomato
-          addIngredients:
-            Bacon: 10
-      tableNumber: 15
-      isDelivered: False
+    orderNumber: 1
+    newStatus: RECEIVED
+    sender: System
+
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: FILLED
+    sender: System
+
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: BILLABLE
+    sender: System
