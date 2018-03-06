@@ -6,14 +6,23 @@ import kitchen.Order;
 
 public class OrderInputEvent extends EventArgs<OrderInputEvent> {
 
-  private final Order order;
+  private Order order;
 
-  public OrderInputEvent(@JsonProperty("order") Order order) {
+  public OrderInputEvent(Order order) {
     super(OrderInputEvent.class);
     this.order = order;
+  }
+
+  public OrderInputEvent() {
+    super(OrderInputEvent.class);
   }
 
   public Order getOrder() {
     return order;
   }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
 }

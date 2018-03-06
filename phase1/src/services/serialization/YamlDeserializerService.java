@@ -27,8 +27,10 @@ public class YamlDeserializerService extends Service {
     module.addDeserializer(MenuItem.class, new MenuItemDeserializer(menuItems));
     module.addDeserializer(Ingredient.class, new IngredientDeserializer(ingredients));
     module.addKeyDeserializer(Ingredient.class, new IngredientKeyDeserializer(ingredients));
+    module.addKeySerializer(Ingredient.class, new IngredientKeySerializer(null));
     mapper.registerModule(module);
 
+    // We need to instantiate the EventDeserializer separately. Perhaps we can take this out of the service?
     SimpleModule eventArgsModule = new SimpleModule();
     eventArgsModule.addDeserializer(EventArgs.class, new EventDeserializer(this));
     mapper.registerModule(eventArgsModule);

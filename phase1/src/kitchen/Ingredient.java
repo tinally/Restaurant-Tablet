@@ -36,6 +36,7 @@ public class Ingredient implements Serializable {
         @JsonProperty("pricing") Double pricing) {
         this.name = name;
         this.cost = cost;
+        this.pricing = pricing;
     }
 
     /**
