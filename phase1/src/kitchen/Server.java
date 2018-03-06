@@ -78,7 +78,7 @@ public class Server extends Service {
      * @param event the event called after an order is completed by the Chef
      */
     private void updateIngredient(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.COMPLETED) return;
+        if (event.getNewStatus() != OrderStatus.FILLED) return;
         Order order = orderManager.getOrder(event.getOrderNumber());
         if (order == null) return;
         ;
