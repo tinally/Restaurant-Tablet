@@ -69,7 +69,7 @@ public class Server extends Service {
      * @param event the event called after an order is completed by the Chef
      */
     private void updateIngredient(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.COMPLETE) return;
+        if (event.getNewStatus() != OrderStatus.COMPLETED) return;
         Order order = manager.getOrder(event.getOrderNumber());
         if (order == null) return;;
         MenuItem mi = order.getMenuItem();
@@ -86,7 +86,7 @@ public class Server extends Service {
      * @param event the event called after an order is rejected by the Chef
      */
     private void rejectOrderItem(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.REJECT) return;
+        if (event.getNewStatus() != OrderStatus.REJECTED) return;
         Order order = manager.getOrder(event.getOrderNumber());
         System.out.println(order.getOrderNumber() + " is rejected.");
     }
