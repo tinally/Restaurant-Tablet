@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import events.EventArgs;
-import events.simulator.EventDeserializer;
 import kitchen.Ingredient;
 import restaurant.MenuItem;
 import services.IngredientListService;

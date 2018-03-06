@@ -3,13 +3,12 @@ package services;
 import events.EventEmitter;
 import events.newevents.OrderCreatedEvent;
 import kitchen.Order;
-import restaurant.OrderItem;
+import restaurant.MenuItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class OrderManagerService extends Service {
   private final EventEmitter em;
@@ -22,8 +21,8 @@ public class OrderManagerService extends Service {
     this.orders = new HashMap<>();
   }
 
-  public Order createOrder(int tableNumber, String serverName, OrderItem... orderItems) {
-    Order order = new Order(Arrays.asList(orderItems), tableNumber, serverName, new Random().nextInt());
+  public Order createOrder(int tableNumber, String serverName, MenuItem menuItem) {
+    Order order = new Order(menuItem, tableNumber, serverName, new Random().nextInt());
     OrderCreatedEvent event = new OrderCreatedEvent();
     event.setNewOrder(order);
     em.onEvent(event);
