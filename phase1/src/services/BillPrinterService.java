@@ -5,44 +5,25 @@ import restaurant.OrderItem;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
- * This Service prints one or more Bills according to specification.
+ * A BillPrinterService prints bills according to user-defined specification.
  */
 public class BillPrinterService extends Service {
 
     /**
-     * The Bills to be printed.
-     */
-    private HashMap<Integer, Bill> bills;
-
-    /**
-     * BillPrinterService constructor.
+     * Constructs a new BillPrinterService.
      */
     @ServiceConstructor
     public BillPrinterService() {
-        bills = new HashMap<>();
     }
 
     /**
-     * Add a new Bill to be printed.
-     * @param id the ID with which this Bill will be associated.
-     * @return false iff the given ID is already associated with a Bill.
-     */
-    public boolean addBill(Integer id, Bill bill) {
-        if (bills.containsKey(id)) {
-            return false;
-        } else {
-            bills.put(id, bill);
-            return true;
-        }
-    }
-
-    // TODO: Decide how to format this
-    /**
-     * @param bill the Bill to be printed.
-     * @return a String representation of the Bill.
+     * Returns a string printing of a bill.
+     *
+     * @param bill the bill to be printed.
+     * @return a string representation of the specified bill.
      */
     public String printBill(Bill bill) {
         StringBuilder accumulator = new StringBuilder();
@@ -59,36 +40,32 @@ public class BillPrinterService extends Service {
     }
 
     /**
-     * @return a String representation of all bills.
+     * Returns a string printing of a collection of bills.
+     *
+     * @param bills the collection of bills to be printed.
+     * @return a string representation of the specified bills.
      */
-    public String printBills() {
+    public String printBills(ArrayList<Bill> bills) {
         StringBuilder accumulator = new StringBuilder();
-        for (Integer billId : bills.keySet()) {
-            accumulator.append(printBill(billId));
+        for (Bill bill : bills) {
+            accumulator.append(printBill(bill));
         }
+
         return accumulator.toString();
     }
 
     /**
-     * @param id the ID of the Bill to print.
-     * @return a String representation of the Bill with the specified ID.
+     * Returns a string printing of a collection of bills.
+     *
+     * @param bills the collection of bills to be printed.
+     * @return a string representation of the specified bills.
      */
-    public String printBill(Integer id) {
+    public String printBills(Bill[] bills) {
         StringBuilder accumulator = new StringBuilder();
-        Bill bill = bills.get(id);
-        // First, print out the ID of the bill being printed
-        accumulator.append(id);
-        accumulator.append(System.lineSeparator());
-        // Then, print each menu item of the bill (indent included) in format
-        // ITEM:PRICE
-        for (OrderItem orderItem : bill.getOrderItems()) {
-            accumulator.append('\t');
-            accumulator.append(orderItem.toString());
-            accumulator.append(':');
-            // TODO: Change to getPrice() - discount should always be applied
-            accumulator.append(orderItem.getMenuItem().getOriginalPrice());
-            accumulator.append(System.lineSeparator());
+        for (Bill bill : bills) {
+            accumulator.append(printBill(bill));
         }
+
         return accumulator.toString();
     }
 

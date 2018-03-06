@@ -1,6 +1,9 @@
 package restaurant;
 
 import java.util.HashMap;
+import java.util.Map;
+
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import kitchen.Ingredient;
 
 /**
@@ -10,17 +13,24 @@ public class MenuItem {
     /**
      * A HashMap storing how much Ingredient is needed
      */
-    private HashMap<Ingredient, Integer> ingredients;
+    private Map<Ingredient, Integer> ingredients;
     /**
      * The price of the item
      */
     private double price;
+
+    /**
+     * The name of the item
+     */
+    private String name;
+
     /**
      * A discount to be applied. If there is no discount, then the default value is 1
      */
     private double discount; //Discounted price
 
-    public MenuItem(HashMap<Ingredient, Integer> ingredients, double price){
+    public MenuItem(String name, Map<Ingredient, Integer> ingredients, double price) {
+        this.name = name;
         this.price = price;
         this.ingredients = ingredients;
         this.discount = 1.0;
@@ -55,7 +65,7 @@ public class MenuItem {
      *
      * @return the HashMap containing how many ingredients the item needs
      */
-    public HashMap<Ingredient, Integer> getIngredients() {
+    public Map<Ingredient, Integer> getIngredients() {
         return ingredients;
     }
 
@@ -63,7 +73,7 @@ public class MenuItem {
      *
      * @param ingredients The ingredients to be set
      */
-    public void setIngredients(HashMap<Ingredient, Integer> ingredients) {
+    public void setIngredients(Map<Ingredient, Integer> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -86,5 +96,9 @@ public class MenuItem {
     @Override
     public String toString() {
         return "This may be useful"; //TODO: May be useful
+    }
+
+    public String getName() {
+        return name;
     }
 }

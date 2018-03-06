@@ -1,9 +1,13 @@
 package kitchen;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
+
 /**
  * Ingredient represents the ingredient of OrderItems.
  */
-public class Ingredient {
+public class Ingredient implements Serializable {
 
     /**
      * The name of the ingredient.
@@ -26,7 +30,10 @@ public class Ingredient {
      * @param name name of the ingredient
      * @param cost cost of the ingredient in dollars
      */
-    public Ingredient(String name, Double cost) {
+    public Ingredient(
+        @JsonProperty("name") String name,
+        @JsonProperty("cost") Double cost,
+        @JsonProperty("pricing") Double pricing) {
         this.name = name;
         this.cost = cost;
     }

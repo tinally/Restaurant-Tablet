@@ -22,6 +22,9 @@ public class OrderItem {
      */
     private ArrayList<Ingredient> removedIngredients;
 
+    public OrderItem(MenuItem menuItem) {
+        this(menuItem, new HashMap<>(), new ArrayList<>());
+    }
 
     public OrderItem(MenuItem menuItem, HashMap<Ingredient, Integer> add, ArrayList<Ingredient> removedIngredients) {
         this.menuItem = menuItem;

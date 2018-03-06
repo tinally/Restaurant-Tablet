@@ -2,42 +2,49 @@ package payment;
 
 import kitchen.Order;
 import restaurant.OrderItem;
+import restaurant.Table;
 
 import java.util.ArrayList;
 
 /**
- * A Bill represents a collection of Bill Items that must be paid for
- * by a Table.
+ * A Bill represents a collection of outstanding order items to be paid by
+ * a table of customers.
  */
 public class Bill {
 
     /**
-     * The MenuItems that are to be paid for with this Bill.
+     * The order items that are outstanding (to be paid for) with this bill.
      */
     private ArrayList<OrderItem> orderItems;
 
-//    /**
-//     * The number of ways to split this Bill among customers at the Table.
-//     */
-//    // TODO: Move this to PaymentManagerService
-//    private int splits;
+    /**
+     * The table to which this bill belongs.
+     */
+    private Table table;
 
     /**
-     * Bill constructor.
+     * Constructs a new Bill for the specified table.
+     *
+     * @param table the table to which this bill belongs.
      */
-    public Bill() {
+    public Bill(Table table) {
         orderItems = new ArrayList<>();
+        this.table = table;
     }
 
     /**
-     * @return the OrderItems associated with this Bill.
+     * Returns the order items associated with this bill.
+     *
+     * @return the order items associated with this bill.
      */
     public ArrayList<OrderItem> getOrderItems() {
         return orderItems;
     }
 
     /**
-     * @param order the Order to be added to this Bill.
+     * Adds an order to this bill.
+     *
+     * @param order the order to be added to this bill.
      */
     public void addOrder(Order order) {
         orderItems.addAll(order.getItems());
