@@ -6,7 +6,7 @@ public class Receiver {
     private Inventory inventory;
 
     public void scanItem(Ingredient ingredient){
-        inventory.addToInventory(ingredient, 20); //20 is the default value.
+        inventory.addToInventory(ingredient, ingredient.getReorderAmount());
     }
 
     public void ScanItems(List<Ingredient> ingredients){
