@@ -1,6 +1,10 @@
 package kitchen;
 
+import events.eventtypes.IngredientRequiresReorderEvent;
+import org.yaml.snakeyaml.emitter.Emitter;
+
 import java.util.*;
+import events.*;
 
 /**
  * Inventory represents the stock of Ingredients.
@@ -15,11 +19,13 @@ public class Inventory {
      * The HashMap of each Ingredient with its threshold for restock.
      */
     private Map<Ingredient, Integer> threshold;
+    private EventEmitter em;
 
     /**
      * Class constructor of an Inventory.
      */
-    public Inventory() {
+    public Inventory(EventEmitter em) {
+        this.em = em;
         inventory = new HashMap<>();
         threshold = new HashMap<>();
     }
@@ -62,6 +68,7 @@ public class Inventory {
         if (leftover > num) {
             inventory.put(ingredient, leftover - num);
         }
+        reOrder(ingredient);
     }
 
     /**
@@ -74,7 +81,8 @@ public class Inventory {
         int num = inventory.get(ingredient);
         int limit = threshold.get(ingredient);
         if (num < limit) {
-            // TODO: update requests.txt and call for new items
+            em.onEvent(new IngredientRequiresReorderEvent(ingredient));
+            // TODO: update requests.txt
         }
     }
 
