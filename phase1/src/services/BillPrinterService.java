@@ -1,5 +1,6 @@
 package services;
 
+import kitchen.Order;
 import payment.Bill;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
@@ -31,11 +32,11 @@ public class BillPrinterService extends Service {
     accumulator.append(bill.getTable().getTableNumber());
     accumulator.append(System.lineSeparator());
     // Format: Item:Price
-    for (OrderItem orderItem : bill.getOrderItems()) {
+    for (Order order : bill.getOrders()) {
       accumulator.append('\t');
-      accumulator.append(orderItem.toString());
+      accumulator.append(order.toString());
       accumulator.append(":\t$");
-      accumulator.append(orderItem.getMenuItem().getPrice());
+      accumulator.append(order.getMenuItem().getPrice());
       accumulator.append(System.lineSeparator());
     }
     return accumulator.toString();

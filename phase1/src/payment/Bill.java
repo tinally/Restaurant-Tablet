@@ -14,7 +14,7 @@ public class Bill {
   /**
    * The order items that are outstanding (to be paid for) with this bill.
    */
-  private ArrayList<Order> orderItems;
+  private ArrayList<Order> orders;
 
   /**
    * The table to which this bill belongs.
@@ -27,7 +27,7 @@ public class Bill {
    * @param table the table to which this bill belongs.
    */
   public Bill(Table table) {
-    orderItems = new ArrayList<>();
+    orders = new ArrayList<>();
     this.table = table;
   }
 
@@ -36,8 +36,12 @@ public class Bill {
    *
    * @return the order items associated with this bill.
    */
-  public ArrayList<Order> getOrderItems() {
-    return orderItems;
+  public ArrayList<Order> getOrders() {
+    return orders;
+  }
+
+  public void addOrder(Order order) {
+    orders.add(order);
   }
 
   /**
