@@ -46,6 +46,7 @@ public class Chef {
 
     /**
      * Handles an OrderInputEvent.
+     *
      * @param event the event called after an order is inputted
      */
     public void handle(OrderInputEvent event) {
@@ -58,33 +59,32 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        manager.createOrder(order);
+        order.setStatus(OrderStatus.RECEIVED);
     }
 
     /**
      * The Chef completes an order and creates an OrderCompleteEvent if the inventory has enough ingredients needed.
-     * Otherwise, the Chef creates an OrderRejectEvent and doesn't make the order.
+     * Otherwise, the Chef ends the order and creates an OrderRejectEvent.
      */
     public void completeOrder() {
-        for (Order o : ) {
-            List<OrderItem> oi = o.getItems();
-            for (OrderItem item : oi) {
-                MenuItem mi = item.getMenuItem();
-                Map<Ingredient, Integer> inventory = this.inventory.getInventory();
-                Map<Ingredient, Integer> ingredients = mi.getIngredients();
-                for (Ingredient i : ingredients.keySet()) {
-                    int deduct = ingredients.get(i);
-                    int current = inventory.get(i);
-                    if (current >= deduct) {
-                        OrderCompleteEvent event = new OrderCompleteEvent(item);
-                        emitter.onEvent(event);
-                    } else {
-                        OrderRejectEvent event = new OrderRejectEvent(item);
-                        emitter.onEvent(event);
-                    }
+        Collection<Order> orders = manager.getAllOrders();
+        for (Order order : orders) {
+            MenuItem mi = order.getMenuItem();
+            Map<Ingredient, Integer> inventory = this.inventory.getInventory();
+            Map<Ingredient, Integer> ingredients = mi.getIngredients();
+            for (Ingredient i : ingredients.keySet()) {
+                int deduct = ingredients.get(i);
+                int current = inventory.get(i);
+                if (current >= deduct) {
+                    OrderCompleteEvent event = new OrderCompleteEvent(order);
+                    emitter.onEvent(event);
+                    order.setStatus(OrderStatus.COMPLETED);
+                } else {
+                    OrderRejectEvent event = new OrderRejectEvent(order);
+                    emitter.onEvent(event);
+                    order.setStatus(OrderStatus.REJECTED);
                 }
             }
         }
     }
-
 }

@@ -2,27 +2,27 @@ package events.eventtypes;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import events.EventArgs;
-import restaurant.*;
+import kitchen.*;
 
 public class OrderRejectEvent extends EventArgs<OrderRejectEvent> {
 
-    private OrderItem oi;
+    private Order order;
 
-    public OrderRejectEvent(OrderItem oi) {
+    public OrderRejectEvent(Order order) {
         super(OrderRejectEvent.class);
-        this.oi = oi;
+        this.order = order;
     }
 
     public OrderRejectEvent() {
         super(OrderRejectEvent.class);
     }
 
-    public OrderItem getOrder() {
-        return oi;
+    public Order getOrder() {
+        return order;
     }
 
     public String reason() {
-        return "Sorry, " + oi.getMenuItem().getName() + " is sold out.";
+        return "Sorry, " + order.getMenuItem().getName() + " is sold out.";
     }
 
 }

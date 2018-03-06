@@ -1,20 +1,12 @@
 package kitchen;
 
-//<<<<<<< HEAD
-//import com.fasterxml.jackson.annotation.JsonIgnore;
-//import com.fasterxml.jackson.annotation.JsonProperty;
-//=======
-//>>>>>>> 9b46a503f79f55ed0190923a1f467fa42c4264bd
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import restaurant.MenuItem;
 
 import java.util.*;
 
 public class Order {
-//<<<<<<< HEAD
-//=======
-
-    private MenuItem menuItem;
-//>>>>>>> 9b46a503f79f55ed0190923a1f467fa42c4264bd
 
   /**
    * The table number of the table that sends this Order.
@@ -23,22 +15,20 @@ public class Order {
 
   private int orderNumber;
 
-//<<<<<<< HEAD
-//  /**
-//   * The MenuItem the customer ordered.
-//   */
-//  @JsonProperty("menuItem") private MenuItem menuItem;
-//  /**
-//   * A HashMap showing how much each Ingredient should be added.
-//   */
-//  @JsonProperty("addIngredients") private HashMap<Ingredient, Integer> addIngredients;
-//  /**
-//   * An ArrayList showing the unwanted Ingredients from the MenuItem.
-//   */
-//  @JsonProperty("removedIngredients") private ArrayList<Ingredient> removedIngredients;
-//=======
+  /**
+   * The MenuItem the customer ordered.
+   */
+  @JsonProperty("menuItem") private MenuItem menuItem;
+  /**
+   * A HashMap showing how much each Ingredient should be added.
+   */
+  @JsonProperty("addIngredients") private HashMap<Ingredient, Integer> addIngredients;
+  /**
+   * An ArrayList showing the unwanted Ingredients from the MenuItem.
+   */
+  @JsonProperty("removedIngredients") private ArrayList<Ingredient> removedIngredients;
     private OrderStatus status;
-    
+
   /**
    * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
    *
@@ -51,42 +41,26 @@ public class Order {
     this.status = OrderStatus.CREATED;
   }
 
-//=======
-//    /**
-//     * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
-//     *
-//     * @param menuItem       the OrderItems being ordered
-//     * @param tableNumber the table number of the table that sends this Order
-//     */
-//    public Order(MenuItem menuItem, int tableNumber, String serverName, int orderNumber) {
-//        this.menuItem = menuItem;
-//        this.tableNumber = tableNumber;
-//        this.status = OrderStatus.CREATED;
-//    }
-//
-//>>>>>>> 9b46a503f79f55ed0190923a1f467fa42c4264bd
-    /**
-     * Returns the table number of the table that sends this Order.
-     *
-     * @return the table number
-     */
-    public int getTableNumber() {
-        return tableNumber;
-    }
+  /**
+   * Returns the table number of the table that sends this Order.
+   *
+   * @return the table number
+   */
+  public int getTableNumber() {
+    return tableNumber;
+  }
 
-    public OrderStatus getStatus() {
-        return status;
-    }
+  public OrderStatus getStatus() {
+    return status;
+  }
 
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
+  public void setStatus(OrderStatus status) {
+    this.status = status;
+  }
 
-    public int getOrderNumber() {
-        return orderNumber;
-    }
-
-//<<<<<<< HEAD
+  public int getOrderNumber() {
+    return orderNumber;
+  }
 
 //    /**
 //     * @param add Ingredient to be added
@@ -137,5 +111,4 @@ public class Order {
     public void setMenuItem(MenuItem menuItem) {
         this.menuItem = menuItem;
     }
-//>>>>>>> 9b46a503f79f55ed0190923a1f467fa42c4264bd
 }
