@@ -66,8 +66,11 @@ public class Server extends Service {
         this.name = name;
         this.table = table;
         this.inventory = inventory;
+<<<<<<< HEAD
+=======
         this.orderManager = orderManager;
         this.paymentManager = paymentManager;
+>>>>>>> fd3c2ba2e7674bf1f9b0f3f239c45f1f8e6affa5
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
     }
@@ -103,15 +106,20 @@ public class Server extends Service {
     }
 
     public void addOrder() {
-        // Enter menu items from the customers
+
     }
 
     public void serve() {
         // Change status
     }
 
+<<<<<<< HEAD
 //    public void checkout() {
-
 //        printer.printBill();
 //    }
+=======
+    public void checkout() {
+
+    }
+>>>>>>> fd3c2ba2e7674bf1f9b0f3f239c45f1f8e6affa5
 }

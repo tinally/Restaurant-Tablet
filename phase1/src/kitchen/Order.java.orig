@@ -8,13 +8,12 @@ import java.util.*;
 
 public class Order {
 
-  @JsonProperty("serverName") private String serverName;
   /**
    * The table number of the table that sends this Order.
    */
-  @JsonProperty("tableNumber") private int tableNumber;
+  private int tableNumber;
 
-  @JsonProperty("orderNumber") private int orderNumber;
+  private int orderNumber;
 
   /**
    * The MenuItem the customer ordered.
@@ -28,27 +27,60 @@ public class Order {
    * An ArrayList showing the unwanted Ingredients from the MenuItem.
    */
   @JsonProperty("removedIngredients") private ArrayList<Ingredient> removedIngredients;
+    private OrderStatus status;
 
-  @JsonProperty("status") private OrderStatus status;
+<<<<<<< HEAD
+    private Order() {
 
-  private Order() {
+    }
 
-  }
+    /**
+     * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
+     *
+     * @param menuItem       the OrderItems being ordered
+     * @param tableNumber the table number of the table that sends this Order
+     */
+    public Order(MenuItem menuItem,
+                 int tableNumber,
+                 String serverName,
+                 int orderNumber) {
+        this.menuItem = menuItem;
+        this.tableNumber = tableNumber;
+        this.status = OrderStatus.CREATED;
+    }
 
+    /**
+     * Returns the table number of the table that sends this Order.
+     *
+     * @return the table number
+     */
+    public int getTableNumber() {
+        return tableNumber;
+    }
+
+    public OrderStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(OrderStatus status) {
+        this.status = status;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+=======
   /**
    * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
    *
    * @param menuItem       the menu item being ordered
    * @param tableNumber the table number of the table that sends this Order
    */
-    public Order(MenuItem menuItem,
-                 int tableNumber,
-                 String serverName,
-                 int orderNumber) {
+  public Order(MenuItem menuItem, int tableNumber, String serverName, int orderNumber) {
     this.tableNumber = tableNumber;
     this.menuItem = menuItem;
     this.status = OrderStatus.CREATED;
-    this.serverName = serverName;
   }
 
   /**
@@ -114,6 +146,7 @@ public class Order {
 //        return removedIngredients;
 //    }
 //=======
+>>>>>>> 5b89a52bfd78ad0a6a857f3e43d5cf9c271f933b
     public MenuItem getMenuItem() {
         return menuItem;
     }
@@ -121,8 +154,4 @@ public class Order {
     public void setMenuItem(MenuItem menuItem) {
         this.menuItem = menuItem;
     }
-
-  public String getServerName() {
-    return serverName;
-  }
 }
