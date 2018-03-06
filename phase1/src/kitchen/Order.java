@@ -1,16 +1,12 @@
 package kitchen;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import restaurant.OrderItem;
+import restaurant.MenuItem;
 
 import java.util.*;
 
 public class Order {
-    /**
-     * List of OrderItems that are ordered.
-     */
-    private List<OrderItem> items;
+
+    private MenuItem menuItem;
 
     /**
      * The table number of the table that sends this Order.
@@ -20,6 +16,7 @@ public class Order {
     private int orderNumber;
 
     private OrderStatus status;
+
     private Order() {
 
     }
@@ -27,22 +24,13 @@ public class Order {
     /**
      * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
      *
-     * @param items       the OrderItems being ordered
+     * @param menuItem       the OrderItems being ordered
      * @param tableNumber the table number of the table that sends this Order
      */
-    public Order(List<OrderItem> items, int tableNumber, String serverName, int orderNumber) {
-        this.items = items;
+    public Order(MenuItem menuItem, int tableNumber, String serverName, int orderNumber) {
+        this.menuItem = menuItem;
         this.tableNumber = tableNumber;
         this.status = OrderStatus.CREATED;
-    }
-
-    /**
-     * Returns the list of OrderItems being ordered.
-     *
-     * @return the items being ordered
-     */
-    public List<OrderItem> getItems() {
-        return items;
     }
 
     /**
@@ -60,5 +48,17 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public MenuItem getMenuItem() {
+        return menuItem;
+    }
+
+    public void setMenuItem(MenuItem menuItem) {
+        this.menuItem = menuItem;
     }
 }

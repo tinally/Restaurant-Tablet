@@ -1,7 +1,6 @@
 package payment;
 
 import kitchen.Order;
-import restaurant.OrderItem;
 import restaurant.Table;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class Bill {
   /**
    * The order items that are outstanding (to be paid for) with this bill.
    */
-  private ArrayList<OrderItem> orderItems;
+  private ArrayList<Order> orderItems;
 
   /**
    * The table to which this bill belongs.
@@ -37,7 +36,7 @@ public class Bill {
    *
    * @return the order items associated with this bill.
    */
-  public ArrayList<OrderItem> getOrderItems() {
+  public ArrayList<Order> getOrderItems() {
     return orderItems;
   }
 
@@ -48,15 +47,6 @@ public class Bill {
    */
   public Table getTable() {
     return table;
-  }
-
-  /**
-   * Adds an order to this bill.
-   *
-   * @param order the order whose items will be added to this bill.
-   */
-  public void addOrder(Order order) {
-    orderItems.addAll(order.getItems());
   }
 
 }
