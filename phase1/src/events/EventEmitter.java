@@ -48,14 +48,13 @@ public class EventEmitter extends Service {
   /**
    * Fires the given event from the given sender, making all registered event handlers run.
    * @param eventArgs The arguments of the event to fire.
-   * @param sender The sender of the event. Usually a reference to 'this'
    * @param <T> The type of the event to fire.
    */
   @SuppressWarnings("unchecked")
-  public <T extends EventArgs> void onEvent(T eventArgs, Object sender) {
+  public <T extends EventArgs> void onEvent(T eventArgs) {
     for (RestaurantEventHandler<?> eventHandler : this.eventHandlers.get(eventArgs.getEventClass())) {
       if (!eventArgs.isCancelled() && eventHandler != null) {
-        ((RestaurantEventHandler<T>) eventHandler).handle(eventArgs, sender);
+        ((RestaurantEventHandler<T>) eventHandler).handle(eventArgs);
       }
     }
   }
