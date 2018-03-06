@@ -1,17 +1,17 @@
 package events.eventtypes;
 
 import events.EventArgs;
-import restaurant.*;
+import kitchen.*;
 
 public class OrderCompleteEvent extends EventArgs<OrderCompleteEvent> {
-    private OrderItem oi;
+    private Order order;
 
-    public OrderCompleteEvent(OrderItem oi) {
+    public OrderCompleteEvent(Order order) {
         super(OrderCompleteEvent.class);
-        this.oi = oi;
+        this.order = order;
     }
 
-    public OrderItem getOrderItem() {
-        return this.oi;
+    public Order getOrder() {
+        return this.order;
     }
 }

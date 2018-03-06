@@ -75,8 +75,8 @@ public class Server extends Service {
      * @param event the event called after an order is completed by the Chef
      */
     private void updateIngredient(OrderCompleteEvent event) {
-        OrderItem oi = event.getOrderItem();
-        MenuItem mi = oi.getMenuItem();
+        Order order = event.getOrder();
+        MenuItem mi = order.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {
             int deduct = ingredients.get(i);

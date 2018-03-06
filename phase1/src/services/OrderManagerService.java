@@ -38,6 +38,10 @@ public class OrderManagerService extends Service {
     return orders.get(orderNumber);
   }
 
+  public Collection<Order> getAllOrders() {
+      return orders.values();
+  }
+
   public List<Order> getOrdersForTableNumber(int tableNumber) {
     return orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList());
   }
