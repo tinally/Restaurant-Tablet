@@ -52,10 +52,17 @@ public class Table {
         this.tableNumber = tableNumber;
     }
 
+    /**
+     *
+     * @return Return the server serving this table
+     */
 //    public Server getServer() {
 //        return server;
 //    }
-//
+    /**
+     *
+     * @param server set to serve this table
+     */
 //    public void setServer(Server server) {
 //        this.server = server;
 //    }

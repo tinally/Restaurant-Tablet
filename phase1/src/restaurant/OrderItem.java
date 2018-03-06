@@ -5,6 +5,7 @@ import kitchen.Ingredient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * An OrderItem represents the order that the customer took.
@@ -56,8 +57,14 @@ public class OrderItem {
      */
     public void addIngredients(HashMap<Ingredient, Integer> add) {
         this.addIngredients = add;
-//        this.menuItem.increasePrice(); //TODO: some sort of for loop
-        // TODO: Add a retail price for adding an ingredient in Ingredient class.
+        Iterator it = add.entrySet().iterator();
+
+        while (it.hasNext()) {
+            HashMap.Entry pair = (HashMap.Entry) it.next();
+            double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
+            menuItem.increasePrice(extraPrice);
+            //TODO: Check if this works
+        }
     }
 
     /**
@@ -68,7 +75,8 @@ public class OrderItem {
      */
     public void addIngredient(Ingredient ingredient, int quantity) {
         addIngredients.put(ingredient, quantity);
-        // menuItem.increasePrice(); //TODO: Add a retail price for adding an ingredient in Ingredient class.
+        double extraPrice = quantity * ingredient.getPricing();
+        menuItem.increasePrice(extraPrice);
     }
 
 
