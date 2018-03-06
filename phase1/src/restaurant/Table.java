@@ -1,6 +1,7 @@
 package restaurant;
 
 import kitchen.Server;
+import payment.*;
 
 public class Table {
     /**
@@ -16,9 +17,15 @@ public class Table {
      */
     private Server server;
 
+    /**
+     * The bill of this Table of customers.
+     */
+    private Bill bill;
+
     public Table(int tableNumber, int numCustomers){
         this.tableNumber = tableNumber;
         this.numCustomers = numCustomers;
+        bill = new Bill(this);
     }
 
     /**
