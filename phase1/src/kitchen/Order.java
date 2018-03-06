@@ -1,5 +1,6 @@
 package kitchen;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import restaurant.OrderItem;
 
@@ -16,16 +17,9 @@ public class Order {
      */
     private int tableNumber;
 
-    /**
-     * The server responsible for this Order.
-     */
-//    private Server server;
+    private int orderNumber;
 
-    /**
-     * True if the order is delivered and false otherwise.
-     */
-    @JsonProperty("isDelivered") private boolean isDelivered;
-
+    private OrderStatus status;
     private Order() {
 
     }
@@ -35,13 +29,11 @@ public class Order {
      *
      * @param items       the OrderItems being ordered
      * @param tableNumber the table number of the table that sends this Order
-    / * @param server      the server responsible for this Order
      */
-    public Order(List<OrderItem> items, int tableNumber/*, Server server*/) {
+    public Order(List<OrderItem> items, int tableNumber, String serverName, int orderNumber) {
         this.items = items;
         this.tableNumber = tableNumber;
-//        this.server = server;
-        this.isDelivered = false;
+        this.status = OrderStatus.CREATED;
     }
 
     /**
@@ -62,44 +54,11 @@ public class Order {
         return tableNumber;
     }
 
-    /**
-     * Returns the server responsible for this Order.
-     *
-     * @return the server
-     */
-//    public Server getServer() {
-//        return server;
-//    }
-
-    /**
-     * Checks whether the Order has been delivered to the table.
-     *
-     * @return true if it is delivered; false otherwise
-     */
-    public boolean delivered() {
-        return isDelivered;
+    public OrderStatus getStatus() {
+        return status;
     }
 
-    /**
-     * Adds a new OrderItem to the order.
-     *
-     * @param oi the OrderItem to be added to the order
-     */
-    public void add(OrderItem oi) {
-        items.add(oi);
-    }
-
-    /**
-     * Subtracts an OrderItem that was ordered only when the OrderItem hasn't been delivered yet.
-     * @param oi the OrderItem to be removed from the order
-     * @return true if the OrderItem can be removed; false otherwise
-     */
-    public boolean subtract(OrderItem oi) {
-        if (isDelivered) {
-            return false;
-        } else {
-            items.remove(oi);
-            return true;
-        }
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 }
