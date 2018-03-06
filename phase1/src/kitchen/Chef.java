@@ -59,7 +59,7 @@ public class Chef {
      * @param order order received
      */
     private void receiveOrder(Order order) {
-        order.setStatus(OrderStatus.RECEIVE);
+        order.setStatus(OrderStatus.RECEIVED);
     }
 
     /**
@@ -78,11 +78,11 @@ public class Chef {
                 if (current >= deduct) {
                     OrderCompleteEvent event = new OrderCompleteEvent(order);
                     emitter.onEvent(event);
-                    order.setStatus(OrderStatus.COMPLETE);
+                    order.setStatus(OrderStatus.COMPLETED);
                 } else {
                     OrderRejectEvent event = new OrderRejectEvent(order);
                     emitter.onEvent(event);
-                    order.setStatus(OrderStatus.REJECT);
+                    order.setStatus(OrderStatus.REJECTED);
                 }
             }
         }
