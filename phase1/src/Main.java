@@ -1,6 +1,7 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import events.EventArgs;
 import events.EventEmitter;
+import kitchen.Chef;
 import kitchen.Inventory;
 import kitchen.Server;
 import restaurant.Table;
@@ -28,8 +29,11 @@ public class Main {
     List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
         mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
     Server s = new Server(em, bps, "Server Bob", new Table(15, 10), im, om, pm);
+    Chef c = new Chef("Joe", em, im, om);
     for (EventArgs e : events) {
       em.onEvent(e);
     }
+
+
   }
 }

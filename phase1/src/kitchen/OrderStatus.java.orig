@@ -2,8 +2,12 @@ package kitchen;
 
 public enum OrderStatus {
     CREATED,
+<<<<<<< HEAD
     INPUTTED,
     PUSHED,
+    BILLABLE,
+=======
+>>>>>>> bca6f66d3b057f08dd36d5910f459a6bbddce55b
     SEEN,
     FILLED, REJECTED,
     DELIVERED, RETURNED,

@@ -44,8 +44,11 @@ public class Inventory {
      *
      * @return the inventory HashMap
      */
-    public Map<Ingredient, Integer> getInventory() {
-        return inventory;
+    public int getAmountRemaining(Ingredient i) {
+        if (inventory.containsKey(i)) {
+            return inventory.get(i);
+        }
+        return 0;
     }
 
     /**
@@ -53,8 +56,11 @@ public class Inventory {
      *
      * @return the threshold HashMap
      */
-    public Map<Ingredient, Integer> getThreshold() {
-        return threshold;
+    public int getReorderThreshold(Ingredient i) {
+        if (threshold.containsKey(i)) {
+            return threshold.get(i);
+        }
+        return 0;
     }
 
     public void addToInventory(Ingredient ingredient, int num) {
@@ -91,10 +97,14 @@ public class Inventory {
      * @return the string representation of the full inventory
      */
     public String toString() {
-        String s = "{";
+        StringBuilder sBuilder = new StringBuilder("{");
         for (Ingredient ingredient : inventory.keySet()) {
-            s += "( " + ingredient.getName() + ", " + inventory.get(ingredient) + " ), ";
+            sBuilder.append("( ")
+                .append(ingredient.getName())
+                .append(", ")
+                .append(inventory.get(ingredient)).append(" ), ");
         }
+        String s = sBuilder.toString();
         return s.substring(0, s.length() - 2) + "}";
     }
 }
