@@ -16,6 +16,7 @@ public class Chef {
     public Chef(String name, EventEmitter em) {
         this.name = name;
         this.em = em;
+        items = new Queue<Order>();
     }
 
     public void handle(OrderInputEvent event) {
