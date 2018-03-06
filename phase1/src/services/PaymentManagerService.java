@@ -30,7 +30,7 @@ public class PaymentManagerService {
      * Registers a table.
      *
      * @param table the table to be registered.
-     * @return true iff the Table is not already registered.
+     * @return true iff the table is not already registered.
      */
     public boolean registerTable(Table table) {
         if (billsByTable.containsKey(table)) {

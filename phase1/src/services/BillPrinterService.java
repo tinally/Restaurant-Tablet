@@ -27,7 +27,11 @@ public class BillPrinterService extends Service {
      */
     public String printBill(Bill bill) {
         StringBuilder accumulator = new StringBuilder();
-        // Format: ITEM:PRICE
+        // Format: Bill for Table #TableNumber
+        accumulator.append("Bill for Table #");
+        accumulator.append(bill.getTable().getTableNumber());
+        accumulator.append(System.lineSeparator());
+        // Format: Item:Price
         for (OrderItem orderItem : bill.getOrderItems()) {
             accumulator.append('\t');
             accumulator.append(orderItem.toString());

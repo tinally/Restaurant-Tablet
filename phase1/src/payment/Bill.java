@@ -41,10 +41,19 @@ public class Bill {
         return orderItems;
     }
 
+  /**
+   * Returns the table associated with this bill.
+   *
+   * @return the table associated with this bill.
+   */
+  public Table getTable() {
+      return table;
+    }
+
     /**
      * Adds an order to this bill.
      *
-     * @param order the order to be added to this bill.
+     * @param order the order whose items will be added to this bill.
      */
     public void addOrder(Order order) {
         orderItems.addAll(order.getItems());
