@@ -1,7 +1,6 @@
 package kitchen;
 
-import events.eventtypes.IngredientRequiresReorderEvent;
-import org.yaml.snakeyaml.emitter.Emitter;
+import events.ingredientevents.IngredientRequiresReorderEvent;
 
 import java.util.*;
 import events.*;

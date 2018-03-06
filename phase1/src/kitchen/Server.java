@@ -4,6 +4,7 @@ import events.EventEmitter;
 import events.newevents.OrderChangedEvent;
 import services.BillPrinterService;
 import services.OrderManagerService;
+import services.PaymentManagerService;
 import services.framework.*;
 import restaurant.*;
 
@@ -17,9 +18,9 @@ public class Server extends Service {
     private String name;
 
     /**
-     * The table table the Server is responsible for.
+     * The table the Server is responsible for.
      */
-    private int tableNumber;
+    private Table table;
 
     /**
      * Handles the events.
@@ -39,29 +40,37 @@ public class Server extends Service {
     /**
      * Manages the orders.
      */
-    private OrderManagerService manager;
+    private OrderManagerService orderManager;
 
     /**
-     * Class constructor specifying the emitter, printer, name, tableNumber, inventoyr, and manager.
+     * Manages the payment.
+     */
+    private PaymentManagerService paymentManager;
+
+    /**
+     * Class constructor specifying the emitter, printer, name, table, inventory, and manager.
      *
-     * @param emitter     main event handler
-     * @param printer     the printer responsible for this bill
-     * @param name        name of the Server
-     * @param tableNumber the table number the Server is responsible for
-     * @param inventory   inventory of all ingredients
-     * @param manager     manager of the orders
+     * @param emitter        main event handler
+     * @param printer        the printer responsible for this bill
+     * @param name           name of the Server
+     * @param table          the table number the Server is responsible for
+     * @param inventory      inventory of all ingredients
+     * @param orderManager   manager of the orders
+     * @param paymentManager manager of the payment
      */
     @ServiceConstructor
-    public Server(EventEmitter emitter, BillPrinterService printer, String name, int tableNumber, Inventory inventory,
-                  OrderManagerService manager) {
+    public Server(EventEmitter emitter, BillPrinterService printer, String name, Table table, Inventory inventory,
+                  OrderManagerService orderManager, PaymentManagerService paymentManager) {
         this.emitter = emitter;
         this.printer = printer;
         this.name = name;
-        this.tableNumber = tableNumber;
+        this.table = table;
         this.inventory = inventory;
+        this.orderManager = orderManager;
+        this.paymentManager = paymentManager;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
-     }
+    }
 
     /**
      * Updates the ingredient when an OrderCompleteEvent is filed.
@@ -70,8 +79,9 @@ public class Server extends Service {
      */
     private void updateIngredient(OrderChangedEvent event) {
         if (event.getNewStatus() != OrderStatus.COMPLETED) return;
-        Order order = manager.getOrder(event.getOrderNumber());
-        if (order == null) return;;
+        Order order = orderManager.getOrder(event.getOrderNumber());
+        if (order == null) return;
+        ;
         MenuItem mi = order.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {
@@ -86,9 +96,10 @@ public class Server extends Service {
      * @param event the event called after an order is rejected by the Chef
      */
     private void rejectOrderItem(OrderChangedEvent event) {
-        if (event.getNewStatus() != OrderStatus.REJECTED) return;
-        Order order = manager.getOrder(event.getOrderNumber());
-        System.out.println(order.getOrderNumber() + " is rejected.");
+        if (event.getNewStatus() == OrderStatus.REJECTED) {
+            Order order = orderManager.getOrder(event.getOrderNumber());
+            System.out.println(order.getOrderNumber() + " is rejected.");
+        }
     }
 
     public void addOrder() {
@@ -100,6 +111,7 @@ public class Server extends Service {
     }
 
 //    public void checkout() {
+
 //        printer.printBill();
 //    }
 }
