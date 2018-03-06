@@ -1,6 +1,5 @@
 package tests;
 
-import events.eventtypes.OrderInputEvent;
 import org.junit.Assert;
 import org.junit.Test;
 import events.EventEmitter;

@@ -1,16 +1,11 @@
 package kitchen;
 
 import events.EventEmitter;
-import events.RestaurantEventHandler;
-import events.eventtypes.IngredientRequiresReorderEvent;
-import events.eventtypes.OrderCompleteEvent;
-import events.eventtypes.OrderInputEvent;
-import events.eventtypes.OrderRejectEvent;
+import events.newevents.OrderChangedEvent;
 import services.BillPrinterService;
 import services.OrderManagerService;
 import services.framework.*;
 import restaurant.*;
-import payment.*;
 
 import java.util.*;
 
@@ -64,18 +59,19 @@ public class Server extends Service {
         this.name = name;
         this.tableNumber = tableNumber;
         this.inventory = inventory;
-        this.manager = manager;
-        emitter.registerEventHandler(this::updateIngredient, OrderCompleteEvent.class);
-        emitter.registerEventHandler(this::rejectOrderItem, OrderRejectEvent.class);
-    }
+        em.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
+        emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
+     }
 
     /**
      * Updates the ingredient when an OrderCompleteEvent is filed.
      *
      * @param event the event called after an order is completed by the Chef
      */
-    private void updateIngredient(OrderCompleteEvent event) {
-        Order order = event.getOrder();
+    private void updateIngredient(OrderChangedEvent event) {
+        if (event.getNewStatus() != OrderStatus.COMPLETED) return;
+        Order order = manager.getOrder(event.getOrderNumber());
+        if (order == null) return;;
         MenuItem mi = order.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {
@@ -89,8 +85,10 @@ public class Server extends Service {
      *
      * @param event the event called after an order is rejected by the Chef
      */
-    private void rejectOrderItem(OrderRejectEvent event) {
-
+    private void rejectOrderItem(OrderChangedEvent event) {
+        if (event.getNewStatus() != OrderStatus.REJECTED) return;
+        Order order = manager.getOrder(event.getOrderNumber());
+        System.out.println(order.getOrderNumber() + " is rejected.");
     }
 
     public void addOrder() {
