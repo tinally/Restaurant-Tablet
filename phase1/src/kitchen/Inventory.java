@@ -1,7 +1,6 @@
 package kitchen;
 
 import events.eventtypes.IngredientRequiresReorderEvent;
-import org.yaml.snakeyaml.emitter.Emitter;
 
 import java.util.*;
 import events.*;
@@ -21,6 +20,8 @@ public class Inventory {
     private Map<Ingredient, Integer> threshold;
     private EventEmitter em;
 
+    private Request request = new Request();
+
     /**
      * Class constructor of an Inventory.
      */
@@ -28,7 +29,6 @@ public class Inventory {
         this.em = em;
         inventory = new HashMap<>();
         threshold = new HashMap<>();
-        Request.addToRequests("Ingredients to be reordered:");
     }
 
     /**
@@ -62,6 +62,7 @@ public class Inventory {
     public void addToInventory(Ingredient ingredient, int num) {
         int leftover = inventory.get(ingredient);
         inventory.put(ingredient, leftover + num);
+        request.remove(ingredient);
     }
 
     public void removeFromInventory(Ingredient ingredient, int num) {
@@ -83,7 +84,7 @@ public class Inventory {
         int limit = threshold.get(ingredient);
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
-            Request.addToRequests(ingredient.getName() + ": " + 20); //TODO: Add 20 as the ingredient
+            request.write(ingredient);
         }
     }
 
