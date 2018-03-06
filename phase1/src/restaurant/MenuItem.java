@@ -1,8 +1,6 @@
 package restaurant;
 
-import java.util.HashMap;
 import java.util.Map;
-
 import kitchen.Ingredient;
 
 /**
@@ -15,7 +13,7 @@ public class MenuItem {
      */
     private String name;
     /**
-     * A HashMap storing how much Ingredient is needed
+     * A Map storing how much Ingredient is needed
      */
     private Map<Ingredient, Integer> ingredients;
     /**
@@ -69,7 +67,7 @@ public class MenuItem {
 
     /**
      *
-     * @return the HashMap containing how many ingredients the item needs
+     * @return the Map containing how many ingredients the item needs
      */
     public Map<Ingredient, Integer> getIngredients() {
         return ingredients;

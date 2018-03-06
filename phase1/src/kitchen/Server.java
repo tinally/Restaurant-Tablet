@@ -103,7 +103,7 @@ public class Server extends Service {
     }
 
     public void addOrder() {
-
+        // Enter menu items from the customers
     }
 
     public void serve() {
