@@ -107,7 +107,7 @@ public class Server extends Service {
     }
 
     public void serve() {
-        // Change status
+        // Change status of the order
     }
 
 //    public void checkout() {
