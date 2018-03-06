@@ -9,7 +9,8 @@ public class Request {
 
     public Request(){
         data = new Writer();
-        try {
+        ingredients = new HashMap<>();
+        try { //TODO: It only adds the last line. To be fixed.
             data.writeToFile("Ingredients to be reordered:");
         }
         catch (IOException e){
@@ -36,7 +37,7 @@ public class Request {
 }
 
     class Writer {
-        private String path = "kitchen/requests.txt";
+        private String path = "requests.txt"; //TODO: Update this
 
         public void writeToFile(String textLine) throws IOException {
             FileWriter write = new FileWriter(path);
