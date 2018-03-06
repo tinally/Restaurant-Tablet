@@ -1,5 +1,6 @@
 package kitchen;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import restaurant.OrderItem;
 
 import java.util.*;
@@ -23,7 +24,11 @@ public class Order {
     /**
      * True if the order is delivered and false otherwise.
      */
-    private boolean isDelivered;
+    @JsonProperty("isDelivered") private boolean isDelivered;
+
+    private Order() {
+
+    }
 
     /**
      * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.

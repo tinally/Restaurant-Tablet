@@ -1,5 +1,6 @@
 package services;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import kitchen.Ingredient;
 import restaurant.MenuItem;
 import services.framework.Service;
@@ -13,15 +14,14 @@ import java.util.List;
 public class MenuItemsListService extends Service {
 
   private static class IntermediateMenuItem {
-    public String name;
-    public Map<String, Integer> ingredients;
-    public Double price;
+    @JsonProperty("name") String name;
+    @JsonProperty("ingredients") Map<String, Integer> ingredients;
+    @JsonProperty("price") Double price;
   }
 
   private List<MenuItem> menuItems;
 
   // TODO: Optimize this with a custom serializer?
-
   @SuppressWarnings("unchecked")
   @ServiceConstructor
   public MenuItemsListService(ResourceResolverService resources,
@@ -46,5 +46,10 @@ public class MenuItemsListService extends Service {
 
   public List<MenuItem> getMenuItems() {
     return Collections.unmodifiableList(menuItems);
+  }
+
+  // TODO: Optimize this with a HashMap?
+  public MenuItem getMenuItem(String name) {
+    return menuItems.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
   }
 }

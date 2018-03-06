@@ -1,4 +1,4 @@
-package events.eventtypes;
+package tests;
 
 import events.EventArgs;
 

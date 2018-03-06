@@ -1,0 +1,22 @@
+- event: OrderInputEvent
+  payload:
+    order:
+      items:
+        - menuItem: Toast Sandwich
+          removedIngredients:
+            - Toast
+          addIngredients:
+            Tomato: 10
+      tableNumber: 15
+      isDelivered: False
+- event: OrderInputEvent
+  payload:
+    order:
+      items:
+        - menuItem: BLT Sandwich
+          removedIngredients:
+            - Tomato
+          addIngredients:
+            Bacon: 10
+      tableNumber: 15
+      isDelivered: False

@@ -1,15 +1,16 @@
 package events;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public abstract class EventArgs<T extends EventArgs> {
 
-  private transient Class<T> eventClass;
+  @JsonIgnore private transient Class<T> eventClass;
 
   public EventArgs(Class<T> eventClass) {
-
     this.eventClass = eventClass;
   }
 
-  private boolean isCancelled = false;
+  @JsonIgnore private transient boolean isCancelled = false;
 
   public final boolean isCancelled() {
     return isCancelled;
