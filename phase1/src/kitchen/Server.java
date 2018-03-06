@@ -5,9 +5,11 @@ import events.RestaurantEventHandler;
 import events.eventtypes.IngredientRequiresReorderEvent;
 import events.eventtypes.OrderCompleteEvent;
 import events.eventtypes.OrderInputEvent;
+import events.eventtypes.OrderRejectEvent;
 import services.BillPrinterService;
 import services.framework.*;
 import restaurant.*;
+
 import java.util.*;
 
 public class Server extends Service {
@@ -18,7 +20,7 @@ public class Server extends Service {
     private EventEmitter em;
     private BillPrinterService bp;
     private Inventory inventory;
-    private Queue<OrderItem> delivery;
+    private PriorityQueue<Order> delivery;
 
     @ServiceConstructor
     public Server(EventEmitter em, BillPrinterService bp, String name, int tableNumber, Inventory inventory) {
@@ -28,23 +30,21 @@ public class Server extends Service {
         this.tableNumber = tableNumber;
         this.inventory = inventory;
         em.registerEventHandler(this::updateIngredient, OrderCompleteEvent.class);
+        em.registerEventHandler(this::rejectOrderItem, OrderRejectEvent.class);
     }
 
-    private void updateIngredient(OrderCompleteEvent event, Object obj) {
+    private void updateIngredient(OrderCompleteEvent event) {
         OrderItem oi = event.getOrderItem();
         MenuItem mi = oi.getMenuItem();
-        Map<Ingredient, Integer> inventory = this.inventory.getInventory();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {
             int deduct = ingredients.get(i);
-            int current = inventory.get(i);
-            if (current >= deduct) {
-                inventory.put(i, current - deduct);
-                em.onEvent(new IngredientRequiresReorderEvent(i),this);
-            } else {
-                // TODO:
-            }
+            this.inventory.removeFromInventory(i, deduct);
         }
+    }
+
+    private void rejectOrderItem(OrderRejectEvent event) {
+        
     }
 
     public void addOrder() {
