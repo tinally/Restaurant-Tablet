@@ -52,6 +52,18 @@ public class Inventory {
         return threshold;
     }
 
+    public void addToInventory(Ingredient ingredient, int num) {
+        int leftover = inventory.get(ingredient);
+        inventory.put(ingredient, leftover + num);
+    }
+
+    public void removeFromInventory(Ingredient ingredient, int num) {
+        int leftover = inventory.get(ingredient);
+        if (leftover > num) {
+            inventory.put(ingredient, leftover - num);
+        }
+    }
+
     /**
      * Checks if needing to reorder ingredient.
      * If so, reorders the ingredient when the amount of remaining items is below the threshold.
