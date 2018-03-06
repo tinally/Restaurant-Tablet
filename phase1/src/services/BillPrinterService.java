@@ -35,9 +35,8 @@ public class BillPrinterService extends Service {
     for (OrderItem orderItem : bill.getOrderItems()) {
       accumulator.append('\t');
       accumulator.append(orderItem.toString());
-      accumulator.append(':');
-      // TODO: Change to getPrice() - discount should always be applied
-      accumulator.append(orderItem.getMenuItem().getOriginalPrice());
+      accumulator.append(":\t$");
+      accumulator.append(orderItem.getMenuItem().getPrice());
       accumulator.append(System.lineSeparator());
     }
     return accumulator.toString();
