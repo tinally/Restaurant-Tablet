@@ -69,8 +69,13 @@ public class Inventory {
         return i.getReorderThreshold();
     }
 
+    /**
+     * Add the ingredient to the inventory
+     * @param ingredient the ingredient to be added
+     * @param num the number of units to be added
+     */
     public void addToInventory(Ingredient ingredient, int num) {
-        int leftover = inventory.get(ingredient);
+        int leftover = inventory.get(ingredient); //TODO: num could be changed to ingredient.getReorderAmount()
         inventory.put(ingredient, leftover + num);
         ingToReorder.remove(ingredient);
         Request.write(ingToReorder);
@@ -85,8 +90,7 @@ public class Inventory {
     }
 
     /**
-     * Checks if needing to reorder ingredient.
-     * If so, reorders the ingredient when the amount of remaining items is below the threshold.
+     * Add the ingredient to a request file if the ingredient is below the threshold.
      *
      * @param ingredient the ingredient to be checked for reorder
      */
