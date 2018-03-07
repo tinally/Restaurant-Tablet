@@ -17,6 +17,11 @@ public class Inventory {
     private EventEmitter em;
 
     /**
+     * Ingredients to reorder
+     */
+    private ArrayList<Ingredient> ingToReorder;
+
+    /**
      * Class constructor of an Inventory.
      */
     public Inventory(EventEmitter em, Map<Ingredient, Integer> initialInventory) {
@@ -59,6 +64,8 @@ public class Inventory {
     public void addToInventory(Ingredient ingredient, int num) {
         int leftover = inventory.get(ingredient);
         inventory.put(ingredient, leftover + num);
+        ingToReorder.remove(ingredient);
+        Request.write(ingToReorder);
     }
 
     public void removeFromInventory(Ingredient ingredient, int num) {
@@ -80,7 +87,8 @@ public class Inventory {
         int limit = ingredient.getReorderThreshold();
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
-            // TODO: update requests.txt
+            ingToReorder.add(ingredient);
+            Request.write(ingToReorder);
         }
     }
 

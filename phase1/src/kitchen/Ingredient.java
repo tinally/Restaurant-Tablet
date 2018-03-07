@@ -27,14 +27,19 @@ public class Ingredient implements Serializable {
     private Integer threshold;
 
     /**
+     * Amount to be reordered when stock is low. It is 20 by default.
+     */
+    private int reorderAmount = 20;
+
+    /**
      * Class constructor specifying the name and cost of this ingredient.
      * @param name name of the ingredient
      * @param cost cost of the ingredient in dollars
      * @param reorderThreshold the threshold to trigger a reorder of this item.
      */
     public Ingredient(
-        @JsonProperty("name") String name,
-        @JsonProperty("cost") Double cost,
+            @JsonProperty("name") String name,
+            @JsonProperty("cost") Double cost,
         @JsonProperty("pricing") Double pricing,
         @JsonProperty("threshold") Integer reorderThreshold) {
         this.name = name;
@@ -77,5 +82,10 @@ public class Ingredient implements Serializable {
     @Override
     public String toString() {
         return this.getName();
+    }
+     * @return The reorderAmount for the ingredient
+     */
+    public int getReorderAmount() {
+        return reorderAmount;
     }
 }
