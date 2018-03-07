@@ -1,5 +1,6 @@
 package services;
 
+import events.EventArgs;
 import events.EventEmitter;
 import events.newevents.OrderChangedEvent;
 import events.newevents.OrderCreatedEvent;
@@ -21,7 +22,14 @@ public class OrderManagerService extends Service {
     public OrderManagerService(EventEmitter emitter) {
         this.emitter = emitter;
         emitter.registerEventHandler(this::saveOrder, OrderCreatedEvent.class);
+        emitter.registerEventHandler(this::updateOrder, OrderChangedEvent.class);
         this.orders = new HashMap<>();
+    }
+
+    private void updateOrder(OrderChangedEvent e) {
+        // Ensure that the order status matches with the event status.
+        // May not need this after removing event.txt
+        this.getOrder(e.getOrderNumber()).setStatus(e.getNewStatus());
     }
 
     public Order createOrder(int tableNumber, String serverName, MenuItem menuItem) {
@@ -52,7 +60,6 @@ public class OrderManagerService extends Service {
     public void notifyOrderStatusChanged(int orderNumber, OrderStatus newStatus, String sender) {
         OrderChangedEvent event = new OrderChangedEvent(orderNumber, newStatus);
         event.setSender(sender);
-        this.getOrder(orderNumber).setStatus(newStatus);
         emitter.onEvent(event);
     }
 }

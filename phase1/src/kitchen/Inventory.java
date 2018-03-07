@@ -14,19 +14,14 @@ public class Inventory {
      */
     private Map<Ingredient, Integer> inventory;
 
-    /**
-     * The HashMap of each Ingredient with its threshold for restock.
-     */
-    private Map<Ingredient, Integer> threshold;
     private EventEmitter em;
 
     /**
      * Class constructor of an Inventory.
      */
-    public Inventory(EventEmitter em) {
+    public Inventory(EventEmitter em, Map<Ingredient, Integer> initialInventory) {
         this.em = em;
-        inventory = new HashMap<>();
-        threshold = new HashMap<>();
+        this.inventory = initialInventory;
     }
 
     /**
@@ -56,11 +51,9 @@ public class Inventory {
      *
      * @return the threshold HashMap
      */
+    // todo: refactor this out.
     public int getReorderThreshold(Ingredient i) {
-        if (threshold.containsKey(i)) {
-            return threshold.get(i);
-        }
-        return 0;
+        return i.getReorderThreshold();
     }
 
     public void addToInventory(Ingredient ingredient, int num) {
@@ -84,7 +77,7 @@ public class Inventory {
      */
     public void reOrder(Ingredient ingredient) {
         int num = inventory.get(ingredient);
-        int limit = threshold.get(ingredient);
+        int limit = ingredient.getReorderThreshold();
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
             // TODO: update requests.txt

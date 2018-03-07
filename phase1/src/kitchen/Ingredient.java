@@ -24,19 +24,23 @@ public class Ingredient implements Serializable {
      */
     private Double pricing;
 
+    private Integer threshold;
+
     /**
      * Class constructor specifying the name and cost of this ingredient.
-     *
      * @param name name of the ingredient
      * @param cost cost of the ingredient in dollars
+     * @param reorderThreshold the threshold to trigger a reorder of this item.
      */
     public Ingredient(
         @JsonProperty("name") String name,
         @JsonProperty("cost") Double cost,
-        @JsonProperty("pricing") Double pricing) {
+        @JsonProperty("pricing") Double pricing,
+        @JsonProperty("threshold") Integer reorderThreshold) {
         this.name = name;
         this.cost = cost;
         this.pricing = pricing;
+        this.threshold = reorderThreshold;
     }
 
     /**
@@ -64,5 +68,14 @@ public class Ingredient implements Serializable {
      */
     public Double getPricing() {
         return this.pricing;
+    }
+
+    public Integer getReorderThreshold() {
+        return threshold;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 }

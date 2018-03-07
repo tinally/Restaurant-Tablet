@@ -99,6 +99,6 @@ public class MenuItem {
 
     @Override
     public String toString() {
-        return "This may be useful"; //TODO: May be useful
+        return this.getName();
     }
 }

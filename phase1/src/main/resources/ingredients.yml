@@ -2,19 +2,24 @@
 - name: "Tomato"
   cost: 10.0
   pricing: 1.0
+  threshold: 20
 
 - name: "Bacon"
   cost: 12.0
   pricing: 2.0
+  threshold: 15
 
 - name: "Lettuce"
   cost: 6.0
   pricing: 2.0
+  threshold: 25
 
 - name: "Bread"
   cost: 12.0
   pricing: 10.0
+  threshold: 10
 
 - name: "Toast"
   cost: 13.0
   pricing: 10.0
+  threshold: 4

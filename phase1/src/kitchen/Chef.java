@@ -42,11 +42,11 @@ public class Chef {
     this.emitter = emitter;
     this.inventory = inventory;
     this.manager = manager;
-    this.emitter.registerEventHandler(e -> {
-      if (e.getNewStatus() == OrderStatus.SEEN) {
-        completeOrder(manager.getOrder(e.getOrderNumber()));
-      }
-    }, OrderChangedEvent.class);
+//    this.emitter.registerEventHandler(e -> {
+//      if (e.getNewStatus() == OrderStatus.SEEN) {
+//        completeOrder(manager.getOrder(e.getOrderNumber()));
+//      }
+//    }, OrderChangedEvent.class);
   }
 
 

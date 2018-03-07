@@ -20,6 +20,7 @@ public class IngredientListService extends Service {
       this.ingredients =
           resources.getYamlDeserializedCollectionResource("ingredients.yml", List.class, Ingredient.class);
     } catch (IOException e) {
+      e.printStackTrace();
       this.ingredients = new ArrayList<>();
     }
   }

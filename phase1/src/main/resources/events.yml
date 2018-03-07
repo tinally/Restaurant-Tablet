@@ -20,3 +20,16 @@
     orderNumber: 1
     newStatus: SEEN
     sender: Chef Joe
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: FILLED
+    sender: Chef Joe
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: DELIVERED
+    sender: Server Bob
+- event: BillPrintEvent
+  payload:
+    tableNumber: 15

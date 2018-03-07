@@ -1,6 +1,7 @@
 package kitchen;
 
 import events.EventEmitter;
+import events.newevents.BillPrintEvent;
 import events.newevents.OrderChangedEvent;
 import services.BillPrinterService;
 import services.OrderManagerService;
@@ -70,6 +71,20 @@ public class Server extends Service {
         this.paymentManager = paymentManager;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
+
+
+        // Mark as Billable
+        emitter.registerEventHandler(e -> {
+            if (e.getNewStatus() == OrderStatus.DELIVERED) {
+                orderManager.notifyOrderStatusChanged(e.getOrderNumber(), OrderStatus.BILLABLE, this.name);
+            }
+        }, OrderChangedEvent.class);
+
+        // Print the bill
+        // todo: do this properly with the table?
+        emitter.registerEventHandler(e -> {
+            System.out.println(printer.printBill(new Table(e.getTableNumber(), 1)));
+        }, BillPrintEvent.class);
     }
 
     /**

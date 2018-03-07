@@ -23,8 +23,7 @@ public class Main {
     EventEmitter em = container.getInstance(EventEmitter.class);
     OrderManagerService om = container.getInstance(OrderManagerService.class);
     PaymentManagerService pm = container.getInstance(PaymentManagerService.class);
-    Inventory im = new Inventory(em);
-
+    Inventory im = container.getInstance(InventoryFactoryService.class).getInventory();
     ObjectMapper mapper = yds.getMapper();
     List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
         mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
@@ -33,7 +32,6 @@ public class Main {
     for (EventArgs e : events) {
       em.onEvent(e);
     }
-
 
   }
 }

@@ -27,7 +27,7 @@ public class BillPrinterService extends Service {
   /**
    * Returns a string printing of a bill.
    *
-   * @param bill the bill to be printed.
+   * @param table the bill to be printed.
    * @return a string representation of the specified bill.
    */
   public String printBill(Table table) {
@@ -40,27 +40,11 @@ public class BillPrinterService extends Service {
     for (Order order : this.orderManagerService.getOrdersForTableNumber(table.getTableNumber())) {
       if (order.getStatus() != OrderStatus.BILLABLE) continue;
       accumulator.append('\t');
-      accumulator.append(order.toString());
+      accumulator.append(order.getMenuItem().getName());
       accumulator.append(":\t$");
       accumulator.append(order.getMenuItem().getPrice());
       accumulator.append(System.lineSeparator());
     }
     return accumulator.toString();
   }
-
-//  /**
-//   * Returns a string printing of a collection of bills.
-//   *
-//   * @param bills the collection of bills to be printed.
-//   * @return a string representation of the specified bills.
-//   */
-//  public String printBills(ArrayList<Table> tables) {
-//    StringBuilder accumulator = new StringBuilder();
-//    for (Table table : tables) {
-//      accumulator.append(printBill(table));
-//    }
-//
-//    return accumulator.toString();
-//  }
-
 }
