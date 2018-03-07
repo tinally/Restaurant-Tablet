@@ -99,7 +99,7 @@ public class Server extends Service {
 
     public void addOrder(OrderChangedEvent event) {
         if (event.getNewStatus() == OrderStatus.CREATED) {
-          paymentManager.registerOrder(table, orderManager.getOrder(event.getOrderNumber()));
+          orderManager.createOrder(table.getTableNumber(), name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
         }
 
     }
