@@ -1,40 +1,46 @@
 package services;
 
 import events.EventEmitter;
-import events.newevents.IngredientReorderEvent;
-import events.newevents.IngredientRestockEvent;
-import events.newevents.OrderChangedEvent;
-import events.newevents.OrderCreatedEvent;
+import events.newevents.*;
 import kitchen.Order;
+import restaurant.Table;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 /**
- * A {@link Service} that outputs the results of events to the console.
+ * A {@link Service} that outputs the results of events to the console and event.txt
  */
-public class ConsoleOutputService extends Service {
+public class LoggingOutputService extends Service {
 
   /**
-   * Service Constructor to instantiate a {@link ConsoleOutputService} from
+   * Service Constructor to instantiate a {@link LoggingOutputService} from
    *  {@link services.framework.ServiceContainer}.
    * @param emitter {@link EventEmitter} dependency intended
    *        to be resolved by the {@link services.framework.ServiceContainer}
    */
   @ServiceConstructor
-  public ConsoleOutputService(EventEmitter emitter) {
+  public LoggingOutputService(EventEmitter emitter, BillPrinterService printer) {
+
     emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
     emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);
     emitter.registerEventHandler(this::printEvent, IngredientReorderEvent.class);
     emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
+    // Print the bill
+    // todo: do this properly with the table?
 
   }
 
   private void printEvent(IngredientReorderEvent e) {
-    System.out.println(e.getIngredient() + " needs to reorder!");
+    logger.info(e.getIngredient() + " needs to reorder!");
   }
 
   private void printEvent(IngredientRestockEvent e) {
-    System.out.println(e.getIngredient() + " was restocked by " + e.getRestockedAmount());
+    logger.info(e.getIngredient() + " was restocked by " + e.getIngredient().getReorderAmount());
   }
   /**
    * Print output when an order is created
@@ -42,7 +48,7 @@ public class ConsoleOutputService extends Service {
    */
   private void printEvent (OrderCreatedEvent e) {
     Order order = e.getNewOrder();
-    System.out.println("Order # "
+    logger.info("Order # "
         + order.getOrderNumber()
         + " was CREATED by "
         + order.getServerName()
@@ -55,6 +61,8 @@ public class ConsoleOutputService extends Service {
    * @param e The event that occurred.
    */
   private void printEvent (OrderChangedEvent e) {
-    System.out.println("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
+    logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
   }
+
+
 }

@@ -71,22 +71,8 @@ public class Server extends Service {
         this.paymentManager = paymentManager;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
-
-
-        // Mark as Billable
-        emitter.registerEventHandler(e -> {
-            if (e.getNewStatus() == OrderStatus.DELIVERED) {
-                orderManager.notifyOrderStatusChanged(e.getOrderNumber(), OrderStatus.BILLABLE, this.name);
-            }
-        }, OrderChangedEvent.class);
-
-        // Print the bill
-        // todo: do this properly with the table?
-        emitter.registerEventHandler(e -> {
-            if (e.getTableNumber() == this.table.getTableNumber()) {
-                logger.info(printer.printBill(this.table));
-            }
-        }, BillPrintEvent.class);
+        serve();
+        checkout();
     }
 
     /**
@@ -118,17 +104,30 @@ public class Server extends Service {
         }
     }
 
-    public void addOrder() {
-        // Enter menu items from the customers
+    public void addOrder(OrderChangedEvent event) {
+        if (event.getNewStatus() == OrderStatus.CREATED) {
+
+        }
+
     }
 
-    public void serve() {
-        // Change status of the order
-        // The customer can send the food back possibly because the food was too cold,
-        // the order was wrong and needs to be adjusted, etc.
+    private void serve() {
+        // Mark as Billable
+        // TODO: add the price onto the bill
+        emitter.registerEventHandler(e -> {
+            if (e.getNewStatus() == OrderStatus.DELIVERED) {
+                orderManager.notifyOrderStatusChanged(e.getOrderNumber(), OrderStatus.BILLABLE, this.name);
+            }
+        }, OrderChangedEvent.class);
     }
 
-    public void checkout() {
+    private void checkout() {
         // Print the bill
+        // todo: do this properly with the table?
+        emitter.registerEventHandler(e -> {
+            if (e.getTableNumber() == this.table.getTableNumber()) {
+                logger.info(printer.printBill(new Table(e.getTableNumber(), 1)));
+            }
+        }, BillPrintEvent.class);
     }
 }
