@@ -5,7 +5,9 @@ public enum OrderStatus {
     INPUTTED,
     PUSHED,
     SEEN,
-    FILLED, REJECTED,
-    DELIVERED, RETURNED,
+    FILLED,
+    REJECTED,
+    DELIVERED,
+    RETURNED,
     BILLABLE
 }
