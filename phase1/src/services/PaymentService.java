@@ -89,7 +89,7 @@ public class PaymentService extends Service {
     accumulator.append(table.getTableNumber());
     accumulator.append(System.lineSeparator());
     // Format: Item:Price
-    for (Order order : this.orderManagerService.getOrdersForTableNumber(table.getTableNumber())) {
+    for (Order order : billsByTable.get(table).getOrders()) {
       accumulator.append('\t');
       accumulator.append(order.getMenuItem().getName());
       accumulator.append(":\t$");
