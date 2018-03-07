@@ -3,9 +3,8 @@ package kitchen;
 import events.EventEmitter;
 import events.newevents.BillPrintEvent;
 import events.newevents.OrderChangedEvent;
-import services.BillPrinterService;
 import services.OrderManagerService;
-import services.PaymentManagerService;
+import services.serialization.PaymentService;
 import services.framework.*;
 import restaurant.*;
 
@@ -29,11 +28,6 @@ public class Server extends Service {
     private EventEmitter emitter;
 
     /**
-     * Prints the bill for the Server.
-     */
-    private BillPrinterService printer;
-
-    /**
      * Inventory of all ingredients of this restaurant.
      */
     private Inventory inventory;
@@ -46,13 +40,12 @@ public class Server extends Service {
     /**
      * Manages the payment.
      */
-    private PaymentManagerService paymentManager;
+    private PaymentService paymentManager;
 
     /**
      * Class constructor specifying the emitter, printer, name, table, inventory, and manager.
      *
      * @param emitter        main event handler
-     * @param printer        the printer responsible for this bill
      * @param name           name of the Server
      * @param table          the table number the Server is responsible for
      * @param inventory      inventory of all ingredients
@@ -60,10 +53,9 @@ public class Server extends Service {
      * @param paymentManager manager of the payment
      */
     @ServiceConstructor
-    public Server(EventEmitter emitter, BillPrinterService printer, String name, Table table, Inventory inventory,
-                  OrderManagerService orderManager, PaymentManagerService paymentManager) {
+    public Server(EventEmitter emitter, String name, Table table, Inventory inventory,
+                  OrderManagerService orderManager, PaymentService paymentManager) {
         this.emitter = emitter;
-        this.printer = printer;
         this.name = name;
         this.table = table;
         this.inventory = inventory;
@@ -127,7 +119,7 @@ public class Server extends Service {
         // todo: do this properly with the table?
         emitter.registerEventHandler(e -> {
             if (e.getTableNumber() == this.table.getTableNumber()) {
-                logger.info(printer.printBill(table));
+                logger.info(paymentManager.printBill(table));
             }
         }, BillPrintEvent.class);
     }

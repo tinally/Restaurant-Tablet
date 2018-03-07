@@ -6,6 +6,7 @@ import kitchen.Order;
 import restaurant.Table;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
+import services.serialization.PaymentService;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;
@@ -24,7 +25,7 @@ public class LoggingOutputService extends Service {
    *        to be resolved by the {@link services.framework.ServiceContainer}
    */
   @ServiceConstructor
-  public LoggingOutputService(EventEmitter emitter, BillPrinterService printer) {
+  public LoggingOutputService(EventEmitter emitter, PaymentService paymentService) {
 
     emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
     emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);

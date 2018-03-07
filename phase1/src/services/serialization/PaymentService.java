@@ -1,30 +1,28 @@
-package services;
+package services.serialization;
 
 import kitchen.Order;
+import kitchen.OrderStatus;
 import payment.Bill;
 import restaurant.Table;
+import services.OrderManagerService;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 
 import java.util.HashMap;
 
-/**s
- * A PaymentManagerService keeps track of all tables within the restaurant and
- * the bill associated with each table.
- */
-public class PaymentManagerService extends Service {
+public class PaymentService extends Service {
 
   /**
    * A mapping of orders by tables.
    */
   private HashMap<Table, Bill> billsByTable;
 
-  /**
-   * Constructs a new PaymentManagerService.
-   */
+  private OrderManagerService orderManagerService;
+
   @ServiceConstructor
-  public PaymentManagerService() {
+  public PaymentService(OrderManagerService orderManagerService) {
     billsByTable = new HashMap<>();
+    this.orderManagerService = orderManagerService;
   }
 
   /**
@@ -76,6 +74,30 @@ public class PaymentManagerService extends Service {
    */
   public Bill getBill(Table table) {
     return billsByTable.get(table);
+  }
+
+  /**
+   * Returns a string printing of a bill.
+   *
+   * @param table the bill to be printed.
+   * @return a string representation of the specified bill.
+   */
+  public String printBill(Table table) {
+    StringBuilder accumulator = new StringBuilder();
+    // Format: Bill for Table #TableNumber
+    accumulator.append("Bill for Table #");
+    accumulator.append(table.getTableNumber());
+    accumulator.append(System.lineSeparator());
+    // Format: Item:Price
+    for (Order order : this.orderManagerService.getOrdersForTableNumber(table.getTableNumber())) {
+      if (order.getStatus() != OrderStatus.BILLABLE) continue;
+      accumulator.append('\t');
+      accumulator.append(order.getMenuItem().getName());
+      accumulator.append(":\t$");
+      accumulator.append(order.getMenuItem().getPrice());
+      accumulator.append(System.lineSeparator());
+    }
+    return accumulator.toString();
   }
 
 }

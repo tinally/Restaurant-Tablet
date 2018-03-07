@@ -6,6 +6,7 @@ import kitchen.Server;
 import restaurant.Table;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
+import services.serialization.PaymentService;
 
 /**
  * A {@link Service} to create instances of {@link Server} and
@@ -14,24 +15,21 @@ import services.framework.ServiceConstructor;
 public class KitchenFactoryService extends Service {
 
   private final EventEmitter eventEmitter;
-  private final BillPrinterService billPrinterService;
   private final InventoryFactoryService inventoryFactoryService;
   private final OrderManagerService orderManagerService;
-  private final PaymentManagerService paymentManagerService;
+  private final PaymentService paymentService;
 
   @ServiceConstructor
   public KitchenFactoryService(EventEmitter eventEmitter,
-                               BillPrinterService billPrinterService,
                                InventoryFactoryService inventoryFactoryService,
                                OrderManagerService orderManagerService,
-                               PaymentManagerService paymentManagerService) {
+                               PaymentService paymentService) {
 
 
     this.eventEmitter = eventEmitter;
-    this.billPrinterService = billPrinterService;
     this.inventoryFactoryService = inventoryFactoryService;
     this.orderManagerService = orderManagerService;
-    this.paymentManagerService = paymentManagerService;
+    this.paymentService = paymentService;
   }
 
   /**
@@ -42,12 +40,11 @@ public class KitchenFactoryService extends Service {
    */
   public Server createServer(String name, Table table) {
     return new Server(eventEmitter,
-        billPrinterService,
         name,
         table,
         inventoryFactoryService.getInventory(),
         orderManagerService,
-        paymentManagerService);
+        paymentService);
 
   }
 
