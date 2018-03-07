@@ -1,4 +1,4 @@
-package services.serialization;
+package services;
 
 import kitchen.Order;
 import kitchen.OrderStatus;

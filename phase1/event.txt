@@ -138,3 +138,23 @@ Mar 07, 2018 4:53:45 PM services.LoggingOutputService printEvent
 INFO: Tomato needs to reorder!
 Mar 07, 2018 4:53:45 PM services.LoggingOutputService printEvent
 INFO: Tomato was restocked by 20
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was CREATED by Server Bob for a Toast Sandwich
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was PUSHED by Server Bob
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was SEEN by Chef Joe
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was FILLED by Chef Joe
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was DELIVERED by Server Bob
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Order # 1 was BILLABLE by Bob
+Mar 07, 2018 4:56:10 PM kitchen.Server lambda$checkout$1
+INFO: Bill for Table #15
+	Toast Sandwich:	$120.0
+
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Tomato needs to reorder!
+Mar 07, 2018 4:56:10 PM services.LoggingOutputService printEvent
+INFO: Tomato was restocked by 20

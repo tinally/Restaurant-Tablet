@@ -3,15 +3,8 @@ package services;
 import events.EventEmitter;
 import events.newevents.*;
 import kitchen.Order;
-import restaurant.Table;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
-import services.serialization.PaymentService;
-
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
 /**
  * A {@link Service} that outputs the results of events to the console and event.txt
