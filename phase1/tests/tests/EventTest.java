@@ -14,20 +14,16 @@ public class EventTest {
     AtomicBoolean eventRaised = new AtomicBoolean(false);
     EventEmitter emitter = new EventEmitter();
     OrderInputStringEvent event = new OrderInputStringEvent("My Order!");
-    emitter.registerEventHandler(this::doStuff, OrderInputEvent.class);
     emitter.registerEventHandler(
-        (e, s) -> {
+        (e) -> {
           Assert.assertEquals(e.getOrder(), "My Order!");
           eventRaised.set(true);
         },
         OrderInputStringEvent.class);
-    emitter.onEvent(event, null);
+    emitter.onEvent(event);
     Assert.assertTrue(eventRaised.get());
    }
 
-  public void doStuff(OrderInputEvent e, Object sender) {
-
-  }
 
   @Test
   public void testMultipleEventHandling() {
@@ -35,18 +31,18 @@ public class EventTest {
     EventEmitter emitter = new EventEmitter();
     OrderInputStringEvent event = new OrderInputStringEvent("My Order!");
     emitter.registerEventHandler(
-        (e, s) -> {
+        (e) -> {
           Assert.assertEquals(e.getOrder(), "My Order!");
           eventRaisedCount.incrementAndGet();
         },
         OrderInputStringEvent.class);
     emitter.registerEventHandler(
-        (e, s) -> {
+        (e) -> {
           Assert.assertEquals(e.getOrder(), "My Order!");
           eventRaisedCount.incrementAndGet();
         },
         OrderInputStringEvent.class);
-    emitter.onEvent(event, null);
+    emitter.onEvent(event);
     Assert.assertEquals(eventRaisedCount.get(),2);
   }
 

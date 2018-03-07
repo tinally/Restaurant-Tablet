@@ -1,50 +1,46 @@
 package tests;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import events.EventArgs;
 import events.EventEmitter;
-import kitchen.Ingredient;
-import kitchen.Order;
+import events.newevents.BillPrintEvent;
 import org.junit.Assert;
 import org.junit.Test;
 import restaurant.MenuItem;
-import services.ResourceResolverService;
+import services.EventDriverService;
+import services.IngredientListService;
+import services.MenuItemsListService;
 import services.framework.ServiceContainer;
 import services.serialization.YamlDeserializerService;
 
 import java.io.IOException;
-import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class YamlSerializationTests {
-//  @Test
-//  public void testEventDeserialization() {
-//    ServiceContainer container = new ServiceContainer();
-//    ResourceResolverService rrs = container.getInstance(ResourceResolverService.class);
-//    YamlDeserializerService yds = container.getInstance(YamlDeserializerService.class);
-//    ObjectMapper mapper = yds.getMapper();
-//    AtomicBoolean eventsTriggered = new AtomicBoolean(false);
-//    EventEmitter em = container.getInstance(EventEmitter.class);
-//    em.registerEventHandler((e, s) -> {
-//      try {
-//        System.out.println(mapper.writeValueAsString(e));
-//      } catch (JsonProcessingException e1) {
-//        e1.printStackTrace();
-//      }
-//      eventsTriggered.set(true);
-//    }, OrderInputEvent.class);
 
-//    try {
-//      List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
-//          mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
-//      events.forEach(e -> em.onEvent(e, null));
-//    } catch (IOException e) {
-//      e.printStackTrace();
-//      Assert.fail();
-//    }
-//    Assert.assertTrue(eventsTriggered.get());
+  @Test
+  public void testIngredientListSerialization() {
+    ServiceContainer container = new ServiceContainer();
+    IngredientListService ils = container.getInstance(IngredientListService.class);
+    Assert.assertFalse(ils.getIngredients().isEmpty());
+  }
+
+  @Test
+  public void testMenuItemListSerialization() {
+    ServiceContainer container = new ServiceContainer();
+    MenuItemsListService mls = container.getInstance(MenuItemsListService.class);
+    Assert.assertFalse(mls.getMenuItems().isEmpty());
+  }
+
+  @Test
+  public void testEventDriverService() {
+    ServiceContainer container = new ServiceContainer();
+    EventDriverService eds = container.getInstance(EventDriverService.class);
+    EventEmitter em = container.getInstance(EventEmitter.class);
+    AtomicBoolean eventsWereRun = new AtomicBoolean(false);
+    em.registerEventHandler(e -> eventsWereRun.set(true), BillPrintEvent.class);
+    eds.run();
+    Assert.assertTrue(eventsWereRun.get());
+  }
 
   @Test
   public void testMenuItemContainingSerializable() {

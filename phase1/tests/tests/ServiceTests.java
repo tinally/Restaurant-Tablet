@@ -1,8 +1,12 @@
 package tests;
 
+import kitchen.Chef;
+import kitchen.Server;
 import org.junit.Assert;
 import org.junit.Test;
+import restaurant.Table;
 import services.BillPrinterService;
+import services.KitchenFactoryService;
 import services.framework.Service;
 import services.framework.ServiceConstructor;
 import services.framework.ServiceContainer;
@@ -11,6 +15,16 @@ import java.util.Stack;
 
 public class ServiceTests {
 
+  @Test
+  public void testKitchenFactory() {
+    ServiceContainer container = new ServiceContainer();
+    KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
+
+    Server bob = kitchen.createServer("Bob", new Table(15, 10));
+    Chef joe = kitchen.createChef("Joe");
+    Assert.assertNotNull(bob);
+    Assert.assertNotNull(joe);
+  }
   @Test
   public void testInstantiateParameterlessService() {
     ServiceContainer container = new ServiceContainer();

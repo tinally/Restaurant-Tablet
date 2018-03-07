@@ -63,6 +63,4 @@ public class LoggingOutputService extends Service {
   private void printEvent (OrderChangedEvent e) {
     logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
   }
-
-
 }
