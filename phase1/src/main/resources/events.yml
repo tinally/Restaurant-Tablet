@@ -39,4 +39,3 @@
 - event: IngredientRestockEvent
   payload:
     ingredient: Tomato
-    restockedAmount: 100

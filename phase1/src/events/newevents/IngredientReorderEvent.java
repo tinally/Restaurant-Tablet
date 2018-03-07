@@ -23,4 +23,5 @@ public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
   public void setIngredient(Ingredient ingredient) {
     this.ingredient = ingredient;
   }
+
 }

@@ -30,7 +30,7 @@ public class Inventory {
         this.inventory = initialInventory;
         this.ingToReorder = new ArrayList<>();
         em.registerEventHandler(e -> {
-            this.addToInventory(e.getIngredient(), e.getRestockedAmount());
+            this.addToInventory(e.getIngredient(), e.getIngredient().getReorderAmount());
         }, IngredientRestockEvent.class);
         em.removeEventHandler(e -> {
             this.reOrder(e.getIngredient());
