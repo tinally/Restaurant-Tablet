@@ -1,6 +1,8 @@
 package services;
 
 import events.EventEmitter;
+import events.newevents.IngredientReorderEvent;
+import events.newevents.IngredientRestockEvent;
 import events.newevents.OrderChangedEvent;
 import events.newevents.OrderCreatedEvent;
 import kitchen.Order;
@@ -22,8 +24,18 @@ public class ConsoleOutputService extends Service {
   public ConsoleOutputService(EventEmitter emitter) {
     emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
     emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);
+    emitter.registerEventHandler(this::printEvent, IngredientReorderEvent.class);
+    emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
+
   }
 
+  private void printEvent(IngredientReorderEvent e) {
+    System.out.println(e.getIngredient() + " needs to reorder!");
+  }
+
+  private void printEvent(IngredientRestockEvent e) {
+    System.out.println(e.getIngredient() + " was restocked by " + e.getRestockedAmount());
+  }
   /**
    * Print output when an order is created
    * @param e The event that occurred.

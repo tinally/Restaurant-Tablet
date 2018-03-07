@@ -96,7 +96,7 @@ public class Server extends Service {
         if (event.getNewStatus() != OrderStatus.FILLED) return;
         Order order = orderManager.getOrder(event.getOrderNumber());
         if (order == null) return;
-        ;
+
         MenuItem mi = order.getMenuItem();
         Map<Ingredient, Integer> ingredients = mi.getIngredients();
         for (Ingredient i : ingredients.keySet()) {

@@ -3,19 +3,19 @@ package events.newevents;
 import events.EventArgs;
 import kitchen.Ingredient;
 
-public class IngredientReceivedEvent extends EventArgs<IngredientReceivedEvent> {
+public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
 
   private Ingredient ingredient;
   private int restockedAmount;
 
-  public IngredientReceivedEvent(Ingredient ingredient, int restockedAmount) {
-    super(IngredientReceivedEvent.class);
+  public IngredientRestockEvent(Ingredient ingredient, int restockedAmount) {
+    super(IngredientRestockEvent.class);
     this.ingredient = ingredient;
     this.restockedAmount = restockedAmount;
   }
 
-  public IngredientReceivedEvent() {
-    super(IngredientReceivedEvent.class);
+  public IngredientRestockEvent() {
+    super(IngredientRestockEvent.class);
   }
 
   public Ingredient getIngredient() {

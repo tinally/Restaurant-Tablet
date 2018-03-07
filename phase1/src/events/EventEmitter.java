@@ -52,7 +52,10 @@ public class EventEmitter extends Service {
    */
   @SuppressWarnings("unchecked")
   public <T extends EventArgs> void onEvent(T eventArgs) {
-    for (RestaurantEventHandler<?> eventHandler : this.eventHandlers.get(eventArgs.getEventClass())) {
+    List<RestaurantEventHandler<? extends EventArgs>> eventHandlers
+        = this.eventHandlers.get(eventArgs.getEventClass());
+    if (eventHandlers == null) return;
+    for (RestaurantEventHandler<?> eventHandler : eventHandlers) {
       if (!eventArgs.isCancelled() && eventHandler != null) {
         ((RestaurantEventHandler<T>) eventHandler).handle(eventArgs);
       }

@@ -1,9 +1,10 @@
 package kitchen;
 
-import events.newevents.IngredientRequiresReorderEvent;
+import events.newevents.IngredientReorderEvent;
 
 import java.util.*;
 import events.*;
+import events.newevents.IngredientRestockEvent;
 
 /**
  * Inventory represents the stock of Ingredients.
@@ -27,6 +28,13 @@ public class Inventory {
     public Inventory(EventEmitter em, Map<Ingredient, Integer> initialInventory) {
         this.em = em;
         this.inventory = initialInventory;
+        this.ingToReorder = new ArrayList<>();
+        em.registerEventHandler(e -> {
+            this.addToInventory(e.getIngredient(), e.getRestockedAmount());
+        }, IngredientRestockEvent.class);
+        em.removeEventHandler(e -> {
+            this.reOrder(e.getIngredient());
+        }, IngredientReorderEvent.class);
     }
 
     /**
@@ -86,8 +94,8 @@ public class Inventory {
         int num = inventory.get(ingredient);
         int limit = ingredient.getReorderThreshold();
         if (num < limit) {
-            em.onEvent(new IngredientRequiresReorderEvent(ingredient));
-            ingToReorder.add(ingredient);
+//            em.onEvent(new IngredientReorderEvent(ingredient));
+//            ingToReorder.add(ingredient);
             Request.write(ingToReorder);
         }
     }

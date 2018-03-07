@@ -33,3 +33,10 @@
 - event: BillPrintEvent
   payload:
     tableNumber: 15
+- event: IngredientReorderEvent
+  payload:
+    ingredient: Tomato
+- event: IngredientRestockEvent
+  payload:
+    ingredient: Tomato
+    restockedAmount: 100

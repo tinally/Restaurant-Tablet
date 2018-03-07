@@ -3,17 +3,17 @@ package events.newevents;
 import events.EventArgs;
 import kitchen.Ingredient;
 
-public class IngredientRequiresReorderEvent extends EventArgs<IngredientRequiresReorderEvent> {
+public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
 
   private Ingredient ingredient;
 
-  public IngredientRequiresReorderEvent(Ingredient ingredient) {
-    super(IngredientRequiresReorderEvent.class);
+  public IngredientReorderEvent(Ingredient ingredient) {
+    super(IngredientReorderEvent.class);
     this.ingredient = ingredient;
   }
 
-  public IngredientRequiresReorderEvent() {
-    super(IngredientRequiresReorderEvent.class);
+  public IngredientReorderEvent() {
+    super(IngredientReorderEvent.class);
   }
 
   public Ingredient getIngredient() {
