@@ -1,4 +1,4 @@
-package events.ingredientevents;
+package events.newevents;
 
 import events.EventArgs;
 import kitchen.Ingredient;

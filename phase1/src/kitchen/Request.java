@@ -2,7 +2,7 @@ package kitchen;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Request {
+public class    Request {
     public static void write(ArrayList<Ingredient> ingredients) {
         StringBuilder string = new StringBuilder("Ingredients to be reordered: \r\n");
 

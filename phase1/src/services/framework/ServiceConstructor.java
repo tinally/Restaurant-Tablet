@@ -9,9 +9,8 @@ import java.lang.annotation.Target;
  * Marks a constructor to be used when instantiating a {@link Service}
  * through a {@link ServiceContainer}.
  *
- * A constructor marked by this attribute will be accessible regardless of
- * any access modifiers by the {@link ServiceContainer} when instantiating
- * the instance.
+ * A constructor marked by this attribute must be marked as public
+ * in order for instantiation to succeed.
  *
  * Any constructors marked by this attribute must take in either no
  * parameters, or only parameters of objects that extend {@link Service}.

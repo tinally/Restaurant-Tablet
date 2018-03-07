@@ -7,10 +7,30 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+/**
+ * A ServiceContainer serves as the context when initializing
+ * {@link Service} instances.
+ *
+ * The ServiceContainer is responsible for resolving all dependencies
+ * automatically of requested {@link Service} instances. It also ensures
+ * that there is only one instance of a given {@link Service} per container,
+ * and that each subsequent request of an instantiated {@link Service}
+ * provides the same instance.
+ *
+ * In essence, the ServiceContainer encapsulates singleton objects
+ * into a single context, and handles all instantiation of such
+ * singletons within the context.
+ */
 public final class ServiceContainer {
 
+  /**
+   * The instances of each {@link Service}
+   */
   private Map<Class<? extends Service>, Service> serviceInstances;
 
+  /**
+   * Class constructor for {@link ServiceContainer}
+   */
   public ServiceContainer()
   {
     this.serviceInstances = new HashMap<>();
@@ -78,12 +98,16 @@ public final class ServiceContainer {
   private <T extends Service> T instantiateNewFromExistingMembers(Class<T> serviceClass) {
       // Get the ServiceConstructor
       return Stream.of(serviceClass.getConstructors())
-          .filter(c -> c.getAnnotation(ServiceConstructor.class) != null)
+          .filter(constructor -> {
+            // Forcibly expose the ServiceConstructor regardless of access modifiers.
+            constructor.setAccessible(true);
+            return constructor.getAnnotation(ServiceConstructor.class) != null;
+          })
           .findFirst()
-          .map(c -> {
+          .map(constructor -> {
 
             // Get an instance of all its dependent services.
-            Object[] componentServices = Stream.of(c.getParameterTypes())
+            Object[] componentServices = Stream.of(constructor.getParameterTypes())
                 .map(parameter -> this.getInstance((Class<? extends Service>) parameter))
 
                 // We will ignore any nulls or any non-Service dependencies
@@ -100,12 +124,9 @@ public final class ServiceContainer {
                 .toArray();
 
             try {
-              // Forcibly expose the ServiceConstructor regardless of access modifiers.
-              c.setAccessible(true);
-
               // This will fail if there were any nulls or non-Service dependencies
               // when attempting to resolve services above.
-              return (T) c.newInstance(componentServices);
+              return (T) constructor.newInstance(componentServices);
             } catch (IllegalArgumentException
                 | ReflectiveOperationException ex) {
               // Either the arguments are mismatched (non-'pure' constructor),

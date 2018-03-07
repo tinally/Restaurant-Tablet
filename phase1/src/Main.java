@@ -16,22 +16,12 @@ public class Main {
   public static void main(String[] args) throws IOException {
     ServiceContainer container = new ServiceContainer();
     container.getInstance(ConsoleOutputService.class);
-    ResourceResolverService rrs = container.getInstance(ResourceResolverService.class);
-    YamlDeserializerService yds = container.getInstance(YamlDeserializerService.class);
-    BillPrinterService bps = container.getInstance(BillPrinterService.class);
+    KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
-    EventEmitter em = container.getInstance(EventEmitter.class);
-    OrderManagerService om = container.getInstance(OrderManagerService.class);
-    PaymentManagerService pm = container.getInstance(PaymentManagerService.class);
-    Inventory im = container.getInstance(InventoryFactoryService.class).getInventory();
-    ObjectMapper mapper = yds.getMapper();
-    List<EventArgs> events = mapper.readValue(rrs.getResource("events.yml"),
-        mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
-    Server s = new Server(em, bps, "Server Bob", new Table(15, 10), im, om, pm);
-    Chef c = new Chef("Joe", em, im, om);
-    for (EventArgs e : events) {
-      em.onEvent(e);
-    }
+    Server bob = kitchen.createServer("Bob", new Table(15, 10));
+    Chef joe = kitchen.createChef("Joe");
 
+    EventDriverService eventDriver = container.getInstance(EventDriverService.class);
+    eventDriver.run();
   }
 }

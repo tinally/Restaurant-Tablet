@@ -83,6 +83,8 @@ public class Ingredient implements Serializable {
     public String toString() {
         return this.getName();
     }
+
+    /*
      * @return The reorderAmount for the ingredient
      */
     public int getReorderAmount() {
