@@ -109,7 +109,7 @@ public class Server extends Service {
         // TODO: add the price onto the bill
         emitter.registerEventHandler(e -> {
             if (e.getNewStatus() == OrderStatus.DELIVERED) {
-                orderManager.notifyOrderStatusChanged(e.getOrderNumber(), OrderStatus.BILLABLE, this.name);
+                paymentManager.registerOrder(table, orderManager.getOrder(e.getOrderNumber()));
             }
         }, OrderChangedEvent.class);
     }

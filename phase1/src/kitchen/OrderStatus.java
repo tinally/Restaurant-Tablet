@@ -8,6 +8,5 @@ public enum OrderStatus {
     FILLED,
     REJECTED,
     DELIVERED,
-    RETURNED,
-    BILLABLE
+    RETURNED
 }

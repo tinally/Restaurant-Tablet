@@ -90,7 +90,6 @@ public class PaymentService extends Service {
     accumulator.append(System.lineSeparator());
     // Format: Item:Price
     for (Order order : this.orderManagerService.getOrdersForTableNumber(table.getTableNumber())) {
-      if (order.getStatus() != OrderStatus.BILLABLE) continue;
       accumulator.append('\t');
       accumulator.append(order.getMenuItem().getName());
       accumulator.append(":\t$");
