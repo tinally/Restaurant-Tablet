@@ -71,6 +71,7 @@ public class Server extends Service {
         this.paymentManager = paymentManager;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
+        paymentManager.registerTable(table);
         serve();
         checkout();
     }
@@ -106,7 +107,7 @@ public class Server extends Service {
 
     public void addOrder(OrderChangedEvent event) {
         if (event.getNewStatus() == OrderStatus.CREATED) {
-
+          paymentManager.registerOrder(table, orderManager.getOrder(event.getOrderNumber()));
         }
 
     }
@@ -126,7 +127,7 @@ public class Server extends Service {
         // todo: do this properly with the table?
         emitter.registerEventHandler(e -> {
             if (e.getTableNumber() == this.table.getTableNumber()) {
-                logger.info(printer.printBill(new Table(e.getTableNumber(), 1)));
+                logger.info(printer.printBill(table));
             }
         }, BillPrintEvent.class);
     }
