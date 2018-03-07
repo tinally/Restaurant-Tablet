@@ -24,7 +24,6 @@ public class Inventory {
      * Ingredients to reorder
      */
     private ArrayList<Ingredient> ingToReorder;
-    private Request request = new Request(); //TODO: make this static??
 
     /**
      * Class constructor of an Inventory.
@@ -73,7 +72,7 @@ public class Inventory {
         int leftover = inventory.get(ingredient);
         inventory.put(ingredient, leftover + num);
         ingToReorder.remove(ingredient);
-        request.write(ingToReorder);
+        Request.write(ingToReorder);
     }
 
     public void removeFromInventory(Ingredient ingredient, int num) {
@@ -96,7 +95,7 @@ public class Inventory {
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
             ingToReorder.add(ingredient);
-            request.write(ingToReorder);
+            Request.write(ingToReorder);
         }
     }
 

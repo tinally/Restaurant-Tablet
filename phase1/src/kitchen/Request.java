@@ -3,9 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Request {
-    public Request() {}
-
-    public void write(ArrayList<Ingredient> ingredients) {
+    public static void write(ArrayList<Ingredient> ingredients) {
         StringBuilder string = new StringBuilder("Ingredients to be reordered: \r\n");
 
         for (Ingredient ingredient : ingredients) {
@@ -18,7 +16,7 @@ public class Request {
         }
     }
 
-    private void writeToFile(String textLine, String path) throws IOException {
+    private static void writeToFile(String textLine, String path) throws IOException {
         FileWriter write = new FileWriter(path);
         PrintWriter printLine = new PrintWriter(write);
         printLine.printf("%s" + "%n", textLine);
