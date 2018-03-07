@@ -6,12 +6,10 @@ import kitchen.Ingredient;
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
 
   private Ingredient ingredient;
-  private int restockedAmount;
 
   public IngredientRestockEvent(Ingredient ingredient, int restockedAmount) {
     super(IngredientRestockEvent.class);
     this.ingredient = ingredient;
-    this.restockedAmount = restockedAmount;
   }
 
   public IngredientRestockEvent() {
@@ -26,11 +24,4 @@ public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
     this.ingredient = ingredient;
   }
 
-  public int getRestockedAmount() {
-    return restockedAmount;
-  }
-
-  public void setRestockedAmount(int restockedAmount) {
-    this.restockedAmount = restockedAmount;
-  }
 }
