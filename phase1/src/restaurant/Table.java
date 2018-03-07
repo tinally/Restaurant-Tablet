@@ -25,7 +25,7 @@ public class Table {
     public Table(int tableNumber, int numCustomers){
         this.tableNumber = tableNumber;
         this.numCustomers = numCustomers;
-        bill = new Bill(this);
+        bill = new Bill();
     }
 
     /**

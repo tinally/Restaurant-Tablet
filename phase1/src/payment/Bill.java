@@ -17,18 +17,12 @@ public class Bill {
   private ArrayList<Order> orders;
 
   /**
-   * The table to which this bill belongs.
-   */
-  private Table table;
-
-  /**
    * Constructs a new Bill for the specified table.
    *
    * @param table the table to which this bill belongs.
    */
-  public Bill(Table table) {
+  public Bill() {
     orders = new ArrayList<>();
-    this.table = table;
   }
 
   /**
@@ -42,15 +36,6 @@ public class Bill {
 
   public void addOrder(Order order) {
     orders.add(order);
-  }
-
-  /**
-   * Returns the table associated with this bill.
-   *
-   * @return the table associated with this bill.
-   */
-  public Table getTable() {
-    return table;
   }
 
 }
