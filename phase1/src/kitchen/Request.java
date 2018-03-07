@@ -1,77 +1,28 @@
 package kitchen;
 import java.io.*;
-import java.util.HashMap;
+import java.util.ArrayList;
 
 public class Request {
-    private Writer data;
-    private int lineNumber = 0;
-    private HashMap<Ingredient, String > ingredients; //TODO: Update this for requests.
+    public Request() {}
 
-    public Request(){
-        data = new Writer();
-        ingredients = new HashMap<>();
-        try { //TODO: It only adds the last line. To be fixed.
-            data.writeToFile("Ingredients to be reordered:");
-        }
-        catch (IOException e){
-            System.err.println(e.getMessage());
-        }
-    }
+    public void write(ArrayList<Ingredient> ingredients) {
+        StringBuilder string = new StringBuilder("Ingredients to be reordered: \r\n");
 
-    public void write(Ingredient ingredient) {
-        String line = ingredient.getName() + ": " + ingredient.getReorderAmount();
+        for (Ingredient ingredient : ingredients) {
+            string.append(ingredient.getName()).append(": ").append(ingredient.getReorderAmount()).append("\r\n");
+        }
         try {
-            data.writeToFile(line);
-            ingredients.put(ingredient, line);
-            }
-        catch (IOException e){
+            writeToFile(string.toString(), "src/kitchen/requests.txt");
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }
 
-    public void remove(Ingredient ingredient){
-        String line = ingredients.remove(ingredient);
-        data.removeLine(line);
+    private void writeToFile(String textLine, String path) throws IOException {
+        FileWriter write = new FileWriter(path);
+        PrintWriter printLine = new PrintWriter(write);
+        printLine.printf("%s" + "%n", textLine);
+        printLine.close();
     }
 
 }
-
-    class Writer {
-        private String path = "requests.txt"; //TODO: Update this
-
-        public void writeToFile(String textLine) throws IOException {
-            FileWriter write = new FileWriter(path);
-            PrintWriter printLine = new PrintWriter(write);
-            printLine.printf("%s" + "%n", textLine);
-            printLine.close();
-        }
-
-        public void removeLine(String removeLine) {
-            try {
-                File currFile = new File(path);
-                File tempFile = new File(currFile.getAbsolutePath() + ".tmp");
-                BufferedReader lineReader = new BufferedReader(new FileReader(path));
-                PrintWriter lineWriter = new PrintWriter(new FileWriter(tempFile));
-
-                String line;
-
-                while((line = lineReader.readLine()) != null) {
-                    if (!line.trim().equals(removeLine)) {
-                        lineWriter.println(line);
-                    }
-                }
-
-                if (!currFile.delete()) {
-                    System.out.println("Could not delete file");
-                }
-
-                if (!tempFile.renameTo(currFile)) {
-                    System.out.println("Could not rename file");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-}
-

@@ -20,7 +20,11 @@ public class Inventory {
     private Map<Ingredient, Integer> threshold;
     private EventEmitter em;
 
-    private Request request = new Request();
+    /**
+     * Ingredients to reorder
+     */
+    private ArrayList<Ingredient> ingToReorder;
+    private Request request = new Request(); //TODO: make this static??
 
     /**
      * Class constructor of an Inventory.
@@ -68,7 +72,8 @@ public class Inventory {
     public void addToInventory(Ingredient ingredient, int num) {
         int leftover = inventory.get(ingredient);
         inventory.put(ingredient, leftover + num);
-        request.remove(ingredient);
+        ingToReorder.remove(ingredient);
+        request.write(ingToReorder);
     }
 
     public void removeFromInventory(Ingredient ingredient, int num) {
@@ -90,7 +95,8 @@ public class Inventory {
         int limit = threshold.get(ingredient);
         if (num < limit) {
             em.onEvent(new IngredientRequiresReorderEvent(ingredient));
-            request.write(ingredient);
+            ingToReorder.add(ingredient);
+            request.write(ingToReorder);
         }
     }
 
