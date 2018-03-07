@@ -83,7 +83,9 @@ public class Server extends Service {
         // Print the bill
         // todo: do this properly with the table?
         emitter.registerEventHandler(e -> {
-            System.out.println(printer.printBill(new Table(e.getTableNumber(), 1)));
+            if (e.getTableNumber() == this.table.getTableNumber()) {
+                logger.info(printer.printBill(this.table));
+            }
         }, BillPrintEvent.class);
     }
 
