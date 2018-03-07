@@ -24,12 +24,10 @@ public class Ingredient implements Serializable {
      */
     private Double pricing;
 
-    private Integer threshold;
-
     /**
      * Amount to be reordered when stock is low. It is 20 by default.
      */
-    private int reorderAmount = 20;
+    private Integer threshold;
 
     /**
      * Class constructor specifying the name and cost of this ingredient.
@@ -84,10 +82,4 @@ public class Ingredient implements Serializable {
         return this.getName();
     }
 
-    /*
-     * @return The reorderAmount for the ingredient
-     */
-    public int getReorderAmount() {
-        return reorderAmount;
-    }
 }
