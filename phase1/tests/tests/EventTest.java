@@ -2,7 +2,7 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import events.EventEmitter;
+import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;

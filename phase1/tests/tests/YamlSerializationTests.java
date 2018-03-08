@@ -1,16 +1,16 @@
 package tests;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import events.EventEmitter;
-import events.newevents.BillPrintEvent;
+import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
+import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.BillPrintEvent;
 import org.junit.Assert;
 import org.junit.Test;
-import restaurant.MenuItem;
-import services.EventDriverService;
-import services.IngredientListService;
-import services.MenuItemsListService;
-import services.framework.ServiceContainer;
-import services.serialization.YamlDeserializerService;
+import edu.toronto.csc207.restaurantsolution.data.MenuItem;
+import edu.toronto.csc207.restaurantsolution.services.EventDriverService;
+import edu.toronto.csc207.restaurantsolution.services.IngredientListService;
+import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
+import edu.toronto.csc207.restaurantsolution.framework.serialization.YamlDeserializerService;
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;

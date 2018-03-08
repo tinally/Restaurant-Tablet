@@ -1,11 +1,10 @@
 package tests;
 
-import kitchen.Ingredient;
 import org.junit.Assert;
 import org.junit.Test;
-import services.IngredientListService;
-import services.MenuItemsListService;
-import services.framework.ServiceContainer;
+import edu.toronto.csc207.restaurantsolution.services.IngredientListService;
+import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 
 public class ResourceListTests {
 

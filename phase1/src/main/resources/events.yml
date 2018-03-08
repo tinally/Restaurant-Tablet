@@ -36,6 +36,9 @@
 - event: IngredientReorderEvent
   payload:
     ingredient: Tomato
+- event: InventoryPrintEvent
+  payload:
+    emptyEvent: true
 - event: IngredientRestockEvent
   payload:
     ingredient: Tomato

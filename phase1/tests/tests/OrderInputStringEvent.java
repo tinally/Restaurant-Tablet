@@ -1,6 +1,6 @@
 package tests;
 
-import events.EventArgs;
+import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 
 public class OrderInputStringEvent extends EventArgs<OrderInputStringEvent> {
   private String order;

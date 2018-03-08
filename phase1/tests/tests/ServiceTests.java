@@ -1,17 +1,15 @@
 package tests;
 
-import kitchen.Chef;
-import kitchen.Server;
+import edu.toronto.csc207.restaurantsolution.model.Chef;
+import edu.toronto.csc207.restaurantsolution.model.Server;
+import edu.toronto.csc207.restaurantsolution.services.PaymentService;
 import org.junit.Assert;
 import org.junit.Test;
-import restaurant.Table;
-import services.BillPrinterService;
-import services.KitchenFactoryService;
-import services.framework.Service;
-import services.framework.ServiceConstructor;
-import services.framework.ServiceContainer;
-
-import java.util.Stack;
+import edu.toronto.csc207.restaurantsolution.model.Table;
+import edu.toronto.csc207.restaurantsolution.services.KitchenFactoryService;
+import edu.toronto.csc207.restaurantsolution.framework.services.Service;
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 
 public class ServiceTests {
 
@@ -28,7 +26,7 @@ public class ServiceTests {
   @Test
   public void testInstantiateParameterlessService() {
     ServiceContainer container = new ServiceContainer();
-    BillPrinterService bps = container.getInstance(BillPrinterService.class);
+    PaymentService bps = container.getInstance(PaymentService.class);
     Assert.assertNotNull(bps);
   }
 
@@ -37,7 +35,7 @@ public class ServiceTests {
     ServiceContainer container = new ServiceContainer();
     DependentService dps = container.getInstance(DependentService.class);
     Assert.assertNotNull(dps);
-    Assert.assertTrue(dps.dependentService == container.getInstance(BillPrinterService.class));
+    Assert.assertTrue(dps.dependentService == container.getInstance(PaymentService.class));
   }
 
   @Test
@@ -55,9 +53,9 @@ public class ServiceTests {
 }
 
 class DependentService extends Service {
-  BillPrinterService dependentService;
+  PaymentService dependentService;
   @ServiceConstructor
-  public DependentService(BillPrinterService dependentService) {
+  public DependentService(PaymentService dependentService) {
     Assert.assertNotNull(dependentService);
     this.dependentService = dependentService;
   }
@@ -79,9 +77,9 @@ class RecursiveDependentServiceTwo extends Service {
 }
 
 class DependentManuallyInstantiatedService extends Service {
-  BillPrinterService dependentService;
+  PaymentService dependentService;
   @ServiceConstructor
-  public DependentManuallyInstantiatedService(BillPrinterService dependentService, int integer) {
+  public DependentManuallyInstantiatedService(PaymentService dependentService, int integer) {
     Assert.assertNotNull(dependentService);
     this.dependentService = dependentService;
   }
