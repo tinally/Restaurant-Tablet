@@ -3,11 +3,12 @@ package kitchen;
 import events.newevents.IngredientReorderEvent;
 
 import java.util.*;
+
 import events.*;
 import events.newevents.IngredientRestockEvent;
 
 /**
- * Inventory represents the stock of Ingredients.
+ * Inventory represents the stock of Ingredients of this restaurant.
  */
 public class Inventory {
     /**
@@ -15,7 +16,7 @@ public class Inventory {
      */
     private Map<Ingredient, Integer> inventory;
 
-    private EventEmitter em;
+    private EventEmitter emitter;
 
     /**
      * Ingredients to reorder
@@ -25,14 +26,14 @@ public class Inventory {
     /**
      * Class constructor of an Inventory.
      */
-    public Inventory(EventEmitter em, Map<Ingredient, Integer> initialInventory) {
-        this.em = em;
+    public Inventory(EventEmitter emitter, Map<Ingredient, Integer> initialInventory) {
+        this.emitter = emitter;
         this.inventory = initialInventory;
         this.ingToReorder = new ArrayList<>();
-        em.registerEventHandler(e -> {
+        emitter.registerEventHandler(e -> {
             this.addToInventory(e.getIngredient(), e.getIngredient().getReorderAmount());
         }, IngredientRestockEvent.class);
-        em.removeEventHandler(e -> {
+        emitter.removeEventHandler(e -> {
             this.reOrder(e.getIngredient());
         }, IngredientReorderEvent.class);
     }
@@ -71,8 +72,9 @@ public class Inventory {
 
     /**
      * Add the ingredient to the inventory
+     *
      * @param ingredient the ingredient to be added
-     * @param num the number of units to be added
+     * @param num        the number of units to be added
      */
     public void addToInventory(Ingredient ingredient, int num) {
         int leftover = inventory.get(ingredient); //TODO: num could be changed to ingredient.getReorderAmount()
@@ -81,6 +83,12 @@ public class Inventory {
         Request.write(ingToReorder);
     }
 
+    /**
+     * Remove the ingredient from the inventory when they are used by the chef.
+     *
+     * @param ingredient ingredient used
+     * @param num        number of ingredient used
+     */
     public void removeFromInventory(Ingredient ingredient, int num) {
         int leftover = inventory.get(ingredient);
         if (leftover > num) {
@@ -94,11 +102,11 @@ public class Inventory {
      *
      * @param ingredient the ingredient to be checked for reorder
      */
-    public void reOrder(Ingredient ingredient) {
+    private void reOrder(Ingredient ingredient) {
         int num = inventory.get(ingredient);
         int limit = ingredient.getReorderThreshold();
         if (num < limit) {
-//            em.onEvent(new IngredientReorderEvent(ingredient));
+//            emitter.onEvent(new IngredientReorderEvent(ingredient));
 //            ingToReorder.add(ingredient);
             Request.write(ingToReorder);
         }
@@ -113,9 +121,9 @@ public class Inventory {
         StringBuilder sBuilder = new StringBuilder("{");
         for (Ingredient ingredient : inventory.keySet()) {
             sBuilder.append("( ")
-                .append(ingredient.getName())
-                .append(", ")
-                .append(inventory.get(ingredient)).append(" ), ");
+                    .append(ingredient.getName())
+                    .append(", ")
+                    .append(inventory.get(ingredient)).append(" ), ");
         }
         String s = sBuilder.toString();
         return s.substring(0, s.length() - 2) + "}";

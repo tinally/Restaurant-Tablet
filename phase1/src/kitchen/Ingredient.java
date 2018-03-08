@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 
 /**
- * Ingredient represents the ingredient of OrderItems.
+ * Ingredient represents the ingredient of Order in this restaurant.
  */
 public class Ingredient implements Serializable {
 
@@ -33,15 +33,16 @@ public class Ingredient implements Serializable {
 
     /**
      * Class constructor specifying the name and cost of this ingredient.
-     * @param name name of the ingredient
-     * @param cost cost of the ingredient in dollars
+     *
+     * @param name             name of the ingredient
+     * @param cost             cost of the ingredient in dollars
      * @param reorderThreshold the threshold to trigger a reorder of this item.
      */
     public Ingredient(
             @JsonProperty("name") String name,
             @JsonProperty("cost") Double cost,
-        @JsonProperty("pricing") Double pricing,
-        @JsonProperty("threshold") Integer reorderThreshold) {
+            @JsonProperty("pricing") Double pricing,
+            @JsonProperty("threshold") Integer reorderThreshold) {
         this.name = name;
         this.cost = cost;
         this.pricing = pricing;

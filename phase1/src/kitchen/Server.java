@@ -10,6 +10,9 @@ import restaurant.*;
 
 import java.util.*;
 
+/**
+ * Server represents the server of this restaurant.
+ */
 public class Server extends Service {
 
     /**
@@ -97,16 +100,24 @@ public class Server extends Service {
         }
     }
 
+    /**
+     * Adds an order after the order is created.
+     *
+     * @param event the event called after an order is created
+     */
     public void addOrder(OrderChangedEvent event) {
         if (event.getNewStatus() == OrderStatus.CREATED) {
-          orderManager.createOrder(table.getTableNumber(), name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
+            orderManager.createOrder(table.getTableNumber(), name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
         }
 
     }
 
+    /**
+     * Serves an order to the table.
+     */
     private void serve() {
         // Mark as Billable
-        // TODO: add the price onto the bill
+        // TODO: add the price onto the bill & the possibility of returning the order
         emitter.registerEventHandler(e -> {
             if (e.getNewStatus() == OrderStatus.DELIVERED) {
                 paymentManager.registerOrder(table, orderManager.getOrder(e.getOrderNumber()));
@@ -114,6 +125,9 @@ public class Server extends Service {
         }, OrderChangedEvent.class);
     }
 
+    /**
+     * Prints out the bill upon the request of checkout from the customers.
+     */
     private void checkout() {
         // Print the bill
         // todo: do this properly with the table?

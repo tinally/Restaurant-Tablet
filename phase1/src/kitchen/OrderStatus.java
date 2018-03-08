@@ -1,5 +1,8 @@
 package kitchen;
 
+/**
+ * OrderStatus contains all the possible statuses of an Order.
+ */
 public enum OrderStatus {
     CREATED,
     INPUTTED,
