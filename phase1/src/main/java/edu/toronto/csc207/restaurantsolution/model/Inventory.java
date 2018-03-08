@@ -39,18 +39,7 @@ public class Inventory {
                 e.getIngredient().getReorderAmount()), IngredientRestockEvent.class);
         emitter.registerEventHandler(e -> this.reOrder(e.getIngredient()), IngredientReorderEvent.class);
     }
-
-    /**
-     * Checks the remaining amount of ingredient
-     *
-     * @param ingredient the ingredient to be checked.
-     * @return the remaining amount of ingredient.
-     */
-    public int getLeftOver(Ingredient ingredient) {
-        return inventory.get(ingredient);
-    }
-    //TODO: The above is the same as the method below.
-
+    
     /**
      * Returns the full inventory of the amount of remaining items for each ingredient.
      *
