@@ -21,7 +21,7 @@ public class Order {
   private int tableNumber;
 
   /**
-   * The
+   * The number of this order.
    */
   @JsonProperty("orderNumber")
   private int orderNumber;
@@ -66,6 +66,7 @@ public class Order {
     this.menuItem = menuItem;
     this.status = OrderStatus.CREATED;
     this.serverName = serverName;
+    this.orderNumber = orderNumber;
   }
 
   /**
