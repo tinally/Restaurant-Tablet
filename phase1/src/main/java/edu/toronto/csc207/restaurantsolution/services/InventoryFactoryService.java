@@ -25,39 +25,22 @@ public class InventoryFactoryService extends Service {
      */
     private final Inventory inventory;
 
-<<<<<<< HEAD:phase1/src/services/InventoryFactoryService.java
+
     /**
      * ServiceConstructor to instantiate a InventoryFactoryService
      *
      * @param emitter      {@link EventEmitter} dependency intended
-     *                     to be resolved by the {@link services.framework.ServiceContainer}
+     *                     to be resolved by the {@link ServiceContainer}
      * @param deserializer {@link YamlDeserializerService} dependency intended
-     *                     to be resolved by the {@link services.framework.ServiceContainer}
+     *                     to be resolved by the {@link ServiceContainer}
      * @param resource     {@link ResourceResolverService} dependency intended
-     *                     to be resolved by the {@link services.framework.ServiceContainer}
+     *                     to be resolved by the {@link ServiceContainer}
      */
     @ServiceConstructor
     public InventoryFactoryService(EventEmitter emitter,
                                    YamlDeserializerService deserializer,
-                                   ResourceResolverService resource) {
-=======
-  /**
-   * ServiceConstructor to instantiate a InventoryFactoryService
-   * @param emitter {@link EventEmitter} dependency intended
-   *        to be resolved by the {@link ServiceContainer}
-   * @param deserializer {@link YamlDeserializerService} dependency intended
-   *        to be resolved by the {@link ServiceContainer}
-   * @param resource {@link ResourceResolverService} dependency intended
-   *        to be resolved by the {@link ServiceContainer}
-   */
-  @ServiceConstructor
-  public InventoryFactoryService(EventEmitter emitter,
-                                 YamlDeserializerService deserializer,
-                                 ResourceResolverService resource,
-                                 RequestEmailWriterService request) {
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/services/InventoryFactoryService.java
-
-
+                                   ResourceResolverService resource,
+                                   RequestEmailWriterService request) {
         // load the initial inventory from inventory.yl
         ObjectMapper mapper = deserializer.getMapper();
         InputStream inventoryConfig = resource.getResource("inventory.yml");
@@ -70,13 +53,8 @@ public class InventoryFactoryService extends Service {
         } catch (IOException ignored) {
         }
 
-<<<<<<< HEAD:phase1/src/services/InventoryFactoryService.java
-        inventory = new Inventory(emitter, initialInventory);
+        inventory = new Inventory(emitter, request, initialInventory);
     }
-=======
-    inventory = new Inventory(emitter, request, initialInventory);
-  }
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/services/InventoryFactoryService.java
 
     /**
      * Gets the instantiated inventory instance.

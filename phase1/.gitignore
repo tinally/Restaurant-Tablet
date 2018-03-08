@@ -2,3 +2,5 @@
 .out/
 .idea/
 .gradle/
+event.txt
+requests.txt

@@ -22,12 +22,12 @@ public class RequestEmailWriterService extends Service {
     }
 
     /**
-     * Write an ingredient to be reordered on requests.txt file.
-     * This file is stored in the kitchen package
+     * Write a text file called requests.txt that shows the ingredients
+     * to be reordered.
      *
      * @param ingredient ingredient to be written on the text file.
      */
-    public void write(Ingredient ingredient) {
+    public void write(Ingredient ingredient) { //TODO: This is not going to work if you add another ingredient
         StringBuilder string = new StringBuilder();
         string.append(ingredient.getName());
         string.append(": ");
@@ -44,6 +44,9 @@ public class RequestEmailWriterService extends Service {
     /**
      * Given a text and a path of the file to be written, create a file
      * on the path and add the given text to it.
+     * <p>
+     * Note: This method only overwrites a file. Any data that was previously
+     * stored will be removed.
      *
      * @param text text to be written on the text file.
      * @param path the path in which the file is stored

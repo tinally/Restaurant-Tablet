@@ -39,14 +39,13 @@ public class MenuItemsListService extends Service {
      */
     private List<MenuItem> menuItems;
 
-<<<<<<< HEAD:phase1/src/services/MenuItemsListService.java
     /**
      * ServiceConstructor to instantiate a MenuItemsListService
      *
      * @param resources             {@link ResourceResolverService} dependency to be
-     *                              resolved by the {@link services.framework.ServiceContainer};
+     *                              resolved by the {@link ServiceContainer};
      * @param ingredientListService {@link IngredientListService} dependency to be
-     *                              resolved by the {@link services.framework.ServiceContainer};
+     *                              resolved by the {@link ServiceContainer};
      */
     // TODO: Optimize this with a custom serializer?
     @SuppressWarnings("unchecked")
@@ -54,22 +53,6 @@ public class MenuItemsListService extends Service {
     public MenuItemsListService(ResourceResolverService resources,
                                 IngredientListService ingredientListService) {
         try {
-=======
-  /**
-   * ServiceConstructor to instantiate a MenuItemsListService
-   * @param resources {@link ResourceResolverService} dependency to be
-   *                  resolved by the {@link ServiceContainer};
-   * @param ingredientListService {@link IngredientListService} dependency to be
-   *                  resolved by the {@link ServiceContainer};
-   */
-  // TODO: Optimize this with a custom serializer?
-  @SuppressWarnings("unchecked")
-  @ServiceConstructor
-  public MenuItemsListService(ResourceResolverService resources,
-                              IngredientListService ingredientListService) {
-    try {
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/services/MenuItemsListService.java
-
             // We're going to deserialize menuitems.yml into
             // a list of IntermediateMenuItems.
             ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());

@@ -49,6 +49,7 @@ public class Inventory {
     public int getLeftOver(Ingredient ingredient) {
         return inventory.get(ingredient);
     }
+    //TODO: The above is the same as the method below.
 
     /**
      * Returns the full inventory of the amount of remaining items for each ingredient.
@@ -89,6 +90,7 @@ public class Inventory {
         //reOrder(ingredient);
     }
 
+    //TODO: This does not add the ingredient IF IT IS BELOW THRESHOLD
     /**
      * Add the ingredient to a request file if the ingredient is below the threshold.
      *
@@ -99,7 +101,6 @@ public class Inventory {
     }
 
     /**
-     * Returns the string representation of this.
      *
      * @return the string representation of the full inventory
      */

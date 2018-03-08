@@ -30,8 +30,9 @@ public class OrderManagerService extends Service {
 
     /**
      * ServiceConstructor to instantiate a OrderManagerService.
+     *
      * @param emitter {@link EventEmitter} dependency intended
-     *        to be resolved by the {@link ServiceContainer}
+     *                to be resolved by the {@link ServiceContainer}
      * @see ServiceContainer#getInstance(Class)
      */
     @ServiceConstructor
@@ -49,6 +50,7 @@ public class OrderManagerService extends Service {
 
     /**
      * Updates the corresponding {@link Order} whenever an {@link OrderChangedEvent} happens.
+     *
      * @param event The {@link OrderChangedEvent} that occured
      */
     private void updateOrder(OrderChangedEvent event) {
@@ -59,9 +61,10 @@ public class OrderManagerService extends Service {
 
     /**
      * Factory method that creates an {@link Order}
+     *
      * @param tableNumber The table number of the order.
-     * @param serverName The name of the server this order was assigned to.
-     * @param menuItem The menu item for this order.
+     * @param serverName  The name of the server this order was assigned to.
+     * @param menuItem    The menu item for this order.
      * @return The created order.
      */
     public Order createOrder(int tableNumber, String serverName, MenuItem menuItem) {
@@ -76,6 +79,7 @@ public class OrderManagerService extends Service {
      * Saves an order to the cache {@link #orders} when an {@link OrderCreatedEvent}
      * occurs. Intended mostly for event.txt tooling to retain orders created from
      * external events (such as event deserialization).
+     *
      * @param event The event that occurred.
      */
     private void saveOrder(OrderCreatedEvent event) {
@@ -85,6 +89,7 @@ public class OrderManagerService extends Service {
 
     /**
      * Gets an {@link Order} from the cache with the given order number.
+     *
      * @param orderNumber The order number of the order.
      * @return The order with the given order number, or null otherwise.
      */
@@ -95,8 +100,9 @@ public class OrderManagerService extends Service {
     /**
      * Gets a read-only view of all the {@link Order} instances
      * currently managed.
+     *
      * @return A read-only view of all the {@link Order} instances
-     *         currently managed.
+     * currently managed.
      */
     public Collection<Order> getAllOrders() {
         return Collections.unmodifiableCollection(orders.values());
@@ -105,21 +111,23 @@ public class OrderManagerService extends Service {
     /**
      * Gets a read-only view of all the {@link Order} instances
      * with the given table number.
+     *
      * @param tableNumber The table number
      * @return All the orders for the given table number.
      */
     public List<Order> getOrdersForTableNumber(int tableNumber) {
         return Collections.unmodifiableList(
-            orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList())
+                orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList())
         );
     }
 
     /**
      * Fire an {@link OrderChangedEvent} that notifies listeners that an
      * order was changed.
+     *
      * @param orderNumber The order number of the order to update the status of.
-     * @param newStatus The new status to change the order.
-     * @param sender The name of the object that sent the event.
+     * @param newStatus   The new status to change the order.
+     * @param sender      The name of the object that sent the event.
      */
     public void notifyOrderStatusChanged(int orderNumber, OrderStatus newStatus, String sender) {
         OrderChangedEvent event = new OrderChangedEvent(orderNumber, newStatus);

@@ -35,13 +35,11 @@ public class KitchenFactoryService extends Service {
      * Create a {@link Server} with the given name and table.
      *
      * @param name  The name of the server.
-     * @param table The table that the server will handle initially.
      * @return The newly instantiated Server.
      */
-    public Server createServer(String name, Table table) {
+    public Server createServer(String name) {
         return new Server(eventEmitter,
                 name,
-                table,
                 inventoryFactoryService.getInventory(),
                 orderManagerService,
                 paymentService);

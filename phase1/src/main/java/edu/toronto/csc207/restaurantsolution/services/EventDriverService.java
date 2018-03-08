@@ -29,16 +29,15 @@ public class EventDriverService extends Service implements Runnable {
      */
     private final EventEmitter emitter;
 
-<<<<<<< HEAD:phase1/src/services/EventDriverService.java
     /**
      * ServiceConstructor to instantiate a EventDriverService
      *
      * @param resources    {@link ResourceResolverService} dependency to be
-     *                     resolved by the {@link services.framework.ServiceContainer};
+     *                     resolved by the {@link ServiceContainer};
      * @param deserializer {@link YamlDeserializerService} dependency to be
-     *                     resolved by the {@link services.framework.ServiceContainer};
+     *                     resolved by the {@link ServiceContainer};
      * @param emitter      {@link EventEmitter} dependency to be
-     *                     resolved by the {@link services.framework.ServiceContainer};
+     *                     resolved by the {@link ServiceContainer};
      */
     @ServiceConstructor
     public EventDriverService(YamlDeserializerService deserializer,
@@ -49,39 +48,13 @@ public class EventDriverService extends Service implements Runnable {
         // Read all the events from file.
         ObjectMapper mapper = deserializer.getMapper();
         try {
-            this.events = mapper.readValue(resources.getResource("events.yml"),
+            this.events = mapper.readValue(resources.getResource("events.txt"),
                     mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
         } catch (IOException e) {
-
+            e.printStackTrace();
             // If something happens, then we will just return an empty list.
             this.events = new ArrayList<>();
         }
-=======
-  /**
-   * ServiceConstructor to instantiate a EventDriverService
-   * @param resources {@link ResourceResolverService} dependency to be
-   *                  resolved by the {@link ServiceContainer};
-   * @param deserializer {@link YamlDeserializerService} dependency to be
-   *                  resolved by the {@link ServiceContainer};
-   * @param emitter {@link EventEmitter} dependency to be
-   *                  resolved by the {@link ServiceContainer};
-   */
-  @ServiceConstructor
-  public EventDriverService(YamlDeserializerService deserializer,
-                            ResourceResolverService resources,
-                            EventEmitter emitter) {
-    this.emitter = emitter;
-
-    // Read all the events from file.
-    ObjectMapper mapper = deserializer.getMapper();
-    try {
-      this.events = mapper.readValue(resources.getResource("events.txt"),
-          mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
-    } catch (IOException e) {
-        e.printStackTrace();
-      // If something happens, then we will just return an empty list.
-      this.events = new ArrayList<>();
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/services/EventDriverService.java
     }
 
     /**
