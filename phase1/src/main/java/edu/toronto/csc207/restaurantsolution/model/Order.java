@@ -6,7 +6,6 @@ import edu.toronto.csc207.restaurantsolution.data.MenuItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * Order represents the order from each table in this restaurant.

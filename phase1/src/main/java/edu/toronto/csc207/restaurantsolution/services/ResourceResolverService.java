@@ -11,22 +11,22 @@ import java.io.InputStream;
  */
 public final class ResourceResolverService extends Service {
 
-    /**
-     * Service Constructor to instantiate a {@link ResourceResolverService} from
-     * {@link ServiceContainer}.
-     */
-    @ServiceConstructor
-    public ResourceResolverService() {
+  /**
+   * Service Constructor to instantiate a {@link ResourceResolverService} from
+   * {@link ServiceContainer}.
+   */
+  @ServiceConstructor
+  public ResourceResolverService() {
 
-    }
+  }
 
-    /**
-     * Gets a resource as an {@link InputStream}
-     *
-     * @param resourceName The file name of the resource.
-     * @return The resource as a {@link InputStream}
-     */
-    public InputStream getResource(String resourceName) {
-        return this.getClass().getClassLoader().getResourceAsStream(resourceName);
-    }
+  /**
+   * Gets a resource as an {@link InputStream}
+   *
+   * @param resourceName The file name of the resource.
+   * @return The resource as a {@link InputStream}
+   */
+  public InputStream getResource(String resourceName) {
+    return this.getClass().getClassLoader().getResourceAsStream(resourceName);
+  }
 }

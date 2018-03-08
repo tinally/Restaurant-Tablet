@@ -20,21 +20,21 @@ import java.io.IOException;
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
 
-    private IngredientListService ingredientListService;
+  private IngredientListService ingredientListService;
 
-    IngredientDeserializer(IngredientListService ingredientList) {
-        this((Class<?>) null);
-        this.ingredientListService = ingredientList;
-    }
+  IngredientDeserializer(IngredientListService ingredientList) {
+    this((Class<?>) null);
+    this.ingredientListService = ingredientList;
+  }
 
-    private IngredientDeserializer(Class<?> vc) {
-        super(vc);
-    }
+  private IngredientDeserializer(Class<?> vc) {
+    super(vc);
+  }
 
-    @Override
-    public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
-            throws IOException, JsonProcessingException {
-        String ingredientName = p.getValueAsString();
-        return ingredientListService.getIngredient(ingredientName);
-    }
+  @Override
+  public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    String ingredientName = p.getValueAsString();
+    return ingredientListService.getIngredient(ingredientName);
+  }
 }

@@ -11,32 +11,32 @@ import java.util.logging.SimpleFormatter;
  */
 public abstract class Service {
 
-    /**
-     * Logger of Service.
-     */
-    protected final Logger logger;
+  // Set up the "Kitchen" logger.
+  static {
+    Logger logger = Logger.getLogger("Kitchen");
 
-    // Set up the "Kitchen" logger.
-    static {
-        Logger logger = Logger.getLogger("Kitchen");
+    // Adapted from https://stackoverflow.com/questions/15758685/
+    FileHandler fileHandler;
+    try {
+      fileHandler = new FileHandler("event.txt", true);
+      logger.addHandler(fileHandler);
+      SimpleFormatter formatter = new SimpleFormatter();
+      fileHandler.setFormatter(formatter);
 
-        // Adapted from https://stackoverflow.com/questions/15758685/
-        FileHandler fileHandler;
-        try {
-            fileHandler = new FileHandler("event.txt", true);
-            logger.addHandler(fileHandler);
-            SimpleFormatter formatter = new SimpleFormatter();
-            fileHandler.setFormatter(formatter);
-
-        } catch (SecurityException | IOException ignored) {
-        }
+    } catch (SecurityException | IOException ignored) {
     }
+  }
 
-    /**
-     * Default constructor setting up the logger.
-     */
-    public Service() {
-        this.logger = Logger.getLogger("Kitchen");
+  /**
+   * Logger of Service.
+   */
+  protected final Logger logger;
 
-    }
+  /**
+   * Default constructor setting up the logger.
+   */
+  public Service() {
+    this.logger = Logger.getLogger("Kitchen");
+
+  }
 }

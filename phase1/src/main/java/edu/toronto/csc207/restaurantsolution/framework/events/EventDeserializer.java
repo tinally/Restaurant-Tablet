@@ -9,8 +9,6 @@ import edu.toronto.csc207.restaurantsolution.framework.serialization.YamlDeseria
 
 import java.io.IOException;
 
-import static java.lang.Class.forName;
-
 /**
  * Jackson deserializer to deserialize arbitrary {@link EventArgs} from
  * events.txt
@@ -32,7 +30,7 @@ public class EventDeserializer extends StdDeserializer<EventArgs> {
     try {
       Class<? extends EventArgs> eventClass =
           (Class<? extends EventArgs>)
-                  Class.forName("edu.toronto.csc207.restaurantsolution.framework.events.eventargs." + eventClassName);
+              Class.forName("edu.toronto.csc207.restaurantsolution.framework.events.eventargs." + eventClassName);
       EventArgs object = this.yamlDeserializerService.getMapper()
           .treeToValue(node.get("payload"), eventClass);
       return object;

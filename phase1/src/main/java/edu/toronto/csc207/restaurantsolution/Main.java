@@ -1,11 +1,9 @@
 package edu.toronto.csc207.restaurantsolution;
 
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 import edu.toronto.csc207.restaurantsolution.services.EventDriverService;
 import edu.toronto.csc207.restaurantsolution.services.KitchenFactoryService;
 import edu.toronto.csc207.restaurantsolution.services.LoggingOutputService;
-import edu.toronto.csc207.restaurantsolution.model.Chef;
-import edu.toronto.csc207.restaurantsolution.model.Server;
-import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 
 import java.io.IOException;
 

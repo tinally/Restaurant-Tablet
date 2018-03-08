@@ -1,7 +1,5 @@
 package edu.toronto.csc207.restaurantsolution.services;
 
-import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
-import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.BillPrintEvent;
 import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
 import edu.toronto.csc207.restaurantsolution.model.Bill;

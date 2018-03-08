@@ -7,11 +7,11 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  */
 public class InventoryPrintEvent extends EventArgs<InventoryPrintEvent> {
 
-    /**
-     * Default constructor for InventoryPrintEvent.
-     */
-    public InventoryPrintEvent() {
-        super(InventoryPrintEvent.class);
-    }
+  /**
+   * Default constructor for InventoryPrintEvent.
+   */
+  public InventoryPrintEvent() {
+    super(InventoryPrintEvent.class);
+  }
 }
 

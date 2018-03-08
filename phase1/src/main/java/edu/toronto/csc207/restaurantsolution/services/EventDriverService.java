@@ -18,51 +18,50 @@ import java.util.List;
  */
 public class EventDriverService extends Service implements Runnable {
 
-    /**
-     * A list of loaded events.
-     */
-    private List<EventArgs> events;
+  /**
+   * The {@link EventEmitter} to emit the deserialized
+   * events via.
+   */
+  private final EventEmitter emitter;
+  /**
+   * A list of loaded events.
+   */
+  private List<EventArgs> events;
 
-    /**
-     * The {@link EventEmitter} to emit the deserialized
-     * events via.
-     */
-    private final EventEmitter emitter;
+  /**
+   * ServiceConstructor to instantiate a EventDriverService
+   *
+   * @param resources    {@link ResourceResolverService} dependency to be
+   *                     resolved by the {@link ServiceContainer};
+   * @param deserializer {@link YamlDeserializerService} dependency to be
+   *                     resolved by the {@link ServiceContainer};
+   * @param emitter      {@link EventEmitter} dependency to be
+   *                     resolved by the {@link ServiceContainer};
+   */
+  @ServiceConstructor
+  public EventDriverService(YamlDeserializerService deserializer,
+                            ResourceResolverService resources,
+                            EventEmitter emitter) {
+    this.emitter = emitter;
 
-    /**
-     * ServiceConstructor to instantiate a EventDriverService
-     *
-     * @param resources    {@link ResourceResolverService} dependency to be
-     *                     resolved by the {@link ServiceContainer};
-     * @param deserializer {@link YamlDeserializerService} dependency to be
-     *                     resolved by the {@link ServiceContainer};
-     * @param emitter      {@link EventEmitter} dependency to be
-     *                     resolved by the {@link ServiceContainer};
-     */
-    @ServiceConstructor
-    public EventDriverService(YamlDeserializerService deserializer,
-                              ResourceResolverService resources,
-                              EventEmitter emitter) {
-        this.emitter = emitter;
-
-        // Read all the events from file.
-        ObjectMapper mapper = deserializer.getMapper();
-        try {
-            this.events = mapper.readValue(resources.getResource("events.txt"),
-                    mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
-        } catch (IOException e) {
-            e.printStackTrace();
-            // If something happens, then we will just return an empty list.
-            this.events = new ArrayList<>();
-        }
+    // Read all the events from file.
+    ObjectMapper mapper = deserializer.getMapper();
+    try {
+      this.events = mapper.readValue(resources.getResource("events.txt"),
+          mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
+    } catch (IOException e) {
+      e.printStackTrace();
+      // If something happens, then we will just return an empty list.
+      this.events = new ArrayList<>();
     }
+  }
 
-    /**
-     * Execute the events that were loaded from events.txt in order.
-     */
-    public void run() {
-        for (EventArgs e : events) {
-            emitter.onEvent(e);
-        }
+  /**
+   * Execute the events that were loaded from events.txt in order.
+   */
+  public void run() {
+    for (EventArgs e : events) {
+      emitter.onEvent(e);
     }
+  }
 }
