@@ -16,30 +16,18 @@ public class PaymentService extends Service {
    */
   private HashMap<Table, Bill> billsByTable;
 
-  // TODO: Remove this
-  private OrderManagerService orderManagerService;
-
   @ServiceConstructor
-  public PaymentService(OrderManagerService orderManagerService) {
+  public PaymentService() {
     billsByTable = new HashMap<>();
-    this.orderManagerService = orderManagerService;
   }
 
   /**
-   * Registers a table.
+   * Registers a table with an empty bill if it has not already been registered.
    *
    * @param table the table to be registered.
-   * @return true iff the table is not already registered.
    */
-  public boolean registerTable(Table table) {
-    // TODO: Use putIfAbsent
-    // TODO: Remove boolean?
-    if (billsByTable.containsKey(table)) {
-      return false;
-    } else {
-      billsByTable.put(table, new Bill());
-      return true;
-    }
+  public void registerTable(Table table) {
+    billsByTable.putIfAbsent(table, new Bill());
   }
 
   /**
@@ -52,18 +40,15 @@ public class PaymentService extends Service {
   }
 
   /**
-   * Registers an order placed by a table.
+   * Registers an order placed by a table on that table's bill if it has
+   * been registered.
    *
    * @param table the table from which the order originated.
    * @param order the order placed by the table.
-   * @return true iff the specified table is registered.
    */
-  public boolean registerOrder(Table table, Order order) {
+  public void registerOrder(Table table, Order order) {
     if (billsByTable.containsKey(table)) {
       billsByTable.get(table).addOrder(order);
-      return true;
-    } else {
-      return false;
     }
   }
 
