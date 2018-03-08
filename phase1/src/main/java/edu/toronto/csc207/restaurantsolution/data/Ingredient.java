@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 /**
  * Ingredient represents the ingredient of Order in this restaurant.
+ * This class is serializable to JSON or YAML.
  */
 public class Ingredient implements Serializable {
 

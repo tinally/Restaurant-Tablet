@@ -13,9 +13,13 @@ import java.io.IOException;
 public class Main {
   public static void main(String[] args) throws IOException {
     ServiceContainer container = new ServiceContainer();
+
+    // Getting an instance also creates one from the container.
     container.getInstance(LoggingOutputService.class);
+
     KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
+    // Creating servers and chefs registers event handlers.
     kitchen.createServer("Bob", new Table(15, 10));
     kitchen.createChef("Joe");
 

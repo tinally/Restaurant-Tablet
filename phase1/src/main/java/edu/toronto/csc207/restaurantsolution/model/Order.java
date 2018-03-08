@@ -8,6 +8,7 @@ import java.util.*;
 
 /**
  * Order represents the order from each table in this restaurant.
+ * This class is serializable to JSON or YAML.
  */
 public class Order {
 
@@ -19,6 +20,9 @@ public class Order {
     @JsonProperty("tableNumber")
     private int tableNumber;
 
+    /**
+     * The
+     */
     @JsonProperty("orderNumber")
     private int orderNumber;
 

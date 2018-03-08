@@ -3,7 +3,8 @@ package edu.toronto.csc207.restaurantsolution.data;
 import java.util.Map;
 
 /**
- * MenuItem represents the item in the menu
+ * MenuItem represents the item in the menu.
+ * This class is serializable to JSON or YAML.
  */
 public class MenuItem {
 

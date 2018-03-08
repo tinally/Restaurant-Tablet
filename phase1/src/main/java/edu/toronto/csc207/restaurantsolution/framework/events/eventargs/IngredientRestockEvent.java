@@ -3,6 +3,10 @@ package edu.toronto.csc207.restaurantsolution.framework.events.eventargs;
 import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.data.Ingredient;
 
+
+/**
+ * An event to trigger a restock of an ingredient.
+ */
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
 
   private Ingredient ingredient;

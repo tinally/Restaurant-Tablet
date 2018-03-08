@@ -13,6 +13,9 @@ import java.io.IOException;
  * Jackson deserializer for representing previously loaded {@link Ingredient}
  * instances as strings in configuration files.
  *
+ * Simply maps a string as a key to the name of an existing Ingredient
+ * from {@link IngredientListService}.
+ *
  * Mostly used when deserializing events.txt
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {

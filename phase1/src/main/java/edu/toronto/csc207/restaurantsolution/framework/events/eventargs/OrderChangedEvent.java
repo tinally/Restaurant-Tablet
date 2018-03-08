@@ -3,6 +3,9 @@ package edu.toronto.csc207.restaurantsolution.framework.events.eventargs;
 import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.model.OrderStatus;
 
+/**
+ * An event to trigger the status of an order changing.
+ */
 public class OrderChangedEvent extends EventArgs<OrderChangedEvent> {
   private int orderNumber;
   private OrderStatus newStatus;

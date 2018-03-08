@@ -7,6 +7,14 @@ import edu.toronto.csc207.restaurantsolution.data.Ingredient;
 
 import java.io.IOException;
 
+/**
+ * Jackson serializer for representing {@link Ingredient}
+ * instances as strings in configuration files.
+ *
+ * Simply maps an Ingredient instance to its name.
+ *
+ * Used when outputting configuration files to console or disk.
+ */
 public class IngredientKeySerializer extends StdSerializer<Ingredient> {
 
   protected IngredientKeySerializer(Class<Ingredient> t) {
