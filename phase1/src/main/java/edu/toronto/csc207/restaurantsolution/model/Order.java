@@ -137,11 +137,8 @@ public class Order {
    * @param add Ingredient to be added
    */
   public void addIngredients(HashMap<Ingredient, Integer> add) {
-    this.addIngredients = add;
-    Iterator it = add.entrySet().iterator();
-
     for (HashMap.Entry<Ingredient, Integer> pair : add.entrySet()) {
-      double extraPrice = pair.getValue() * pair.getKey().getPricing();
+      addIngredient(pair.getKey(), pair.getValue());
     }
   }
 
@@ -151,7 +148,7 @@ public class Order {
    * @param ingredient the Ingredient to be added
    * @param quantity   the amount of that Ingredient to be added
    */
-  public void addIngredient(Ingredient ingredient, int quantity) {
+  private void addIngredient(Ingredient ingredient, int quantity) {
     addIngredients.put(ingredient, quantity);
     double extraPrice = quantity * ingredient.getPricing();
     menuItem.increasePrice(extraPrice);
