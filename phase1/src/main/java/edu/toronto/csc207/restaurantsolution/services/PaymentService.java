@@ -9,16 +9,16 @@ import java.util.HashMap;
 import java.util.StringJoiner;
 
 /**
- * Manages all active tableNumbers (deemed "registered") and keeps track of bills
- * associated with those tableNumbers.
- * <p>
+ * Manages all active tables by number and allows for registration of orders
+ * with those tables.
+ *
  * Provides bill modification and printing functionality.
  */
 public class PaymentService extends Service {
 
 
     /**
-     * A mapping of orders by tableNumbers.
+     * A mapping of orders by table numbers.
      */
     private HashMap<Integer, Bill> billsByTableNumber;
 
@@ -31,29 +31,29 @@ public class PaymentService extends Service {
     }
 
     /**
-     * Registers a tableNumber with an empty bill if it has not already been registered.
+     * Registers a table with an empty bill if a table with the specified
+     * number has not yet been registered.
      *
-     * @param tableNumber the tableNumber to be registered.
+     * @param tableNumber the number of the table to be registered.
      */
     public void registerTable(int tableNumber) {
         billsByTableNumber.putIfAbsent(tableNumber, new Bill());
     }
 
     /**
-     * Unregisters a tableNumber.
+     * Unregisters a table.
      *
-     * @param tableNumber the tableNumber to be unregistered.
+     * @param tableNumber the number of the table to be unregistered.
      */
     public void unregisterTable(int tableNumber) {
         billsByTableNumber.remove(tableNumber);
     }
 
     /**
-     * Registers an order placed by a tableNumber on that tableNumber's bill if that tableNumber
-     * has been registered.
+     * Registers an order placed by a table if that table has been registered.
      *
-     * @param tableNumber the tableNumber from which the order originated.
-     * @param order the order placed by the tableNumber.
+     * @param tableNumber the table number of the originating table.
+     * @param order the order placed by the table.
      */
     public void registerOrder(int tableNumber, Order order) {
         if (billsByTableNumber.containsKey(tableNumber)) {
@@ -62,10 +62,10 @@ public class PaymentService extends Service {
     }
 
     /**
-     * Returns the bill associated with a tableNumber.
+     * Returns the bill associated with a table.
      *
-     * @param tableNumber the tableNumber from which the bill should be retrieved.
-     * @return the bill of the specified tableNumber or null if the tableNumber is
+     * @param tableNumber the number of the table.
+     * @return the bill of the specified table or null if the table is
      * unregistered.
      */
     public Bill getBill(int tableNumber) {
