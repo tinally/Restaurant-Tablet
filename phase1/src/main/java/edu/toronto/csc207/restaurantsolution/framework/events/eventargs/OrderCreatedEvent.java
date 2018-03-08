@@ -4,11 +4,7 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.model.Order;
 
 /**
-<<<<<<< HEAD:phase1/src/events/newevents/OrderCreatedEvent.java
  * OrderCreatedEvent represents the event for creating the order.
-=======
- * An event to trigger creation of an order.
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/framework/events/eventargs/OrderCreatedEvent.java
  */
 public class OrderCreatedEvent extends EventArgs<OrderCreatedEvent> {
 

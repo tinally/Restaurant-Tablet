@@ -12,29 +12,29 @@ import java.io.IOException;
 /**
  * Jackson deserializer for representing previously loaded {@link Ingredient}
  * instances as strings in configuration files.
- *
+ * <p>
  * Simply maps a string as a key to the name of an existing Ingredient
  * from {@link IngredientListService}.
- *
+ * <p>
  * Mostly used when deserializing events.txt
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
 
-  private IngredientListService ingredientListService;
+    private IngredientListService ingredientListService;
 
-  IngredientDeserializer(IngredientListService ingredientList) {
-    this((Class<?>) null);
-    this.ingredientListService = ingredientList;
-  }
+    IngredientDeserializer(IngredientListService ingredientList) {
+        this((Class<?>) null);
+        this.ingredientListService = ingredientList;
+    }
 
-  private IngredientDeserializer(Class<?> vc) {
-    super(vc);
-  }
+    private IngredientDeserializer(Class<?> vc) {
+        super(vc);
+    }
 
-  @Override
-  public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
-    String ingredientName = p.getValueAsString();
-    return ingredientListService.getIngredient(ingredientName);
-  }
+    @Override
+    public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
+            throws IOException, JsonProcessingException {
+        String ingredientName = p.getValueAsString();
+        return ingredientListService.getIngredient(ingredientName);
+    }
 }

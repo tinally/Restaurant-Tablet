@@ -41,21 +41,6 @@ public class PaymentService extends Service {
     }
 
     /**
-     * Registers a table.
-     *
-     * @param table the table to be registered.
-     * @return true iff the table is not already registered.
-     */
-    public boolean registerTable(Table table) {
-        if (billsByTable.containsKey(table)) {
-            return false;
-        } else {
-            billsByTable.put(table, new Bill());
-            return true;
-        }
-    }
-
-    /**
      * Unregisters a table.
      *
      * @param table the table to be unregistered.

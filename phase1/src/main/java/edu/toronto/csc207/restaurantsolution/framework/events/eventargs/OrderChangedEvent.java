@@ -4,11 +4,7 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.model.OrderStatus;
 
 /**
-<<<<<<< HEAD:phase1/src/events/newevents/OrderChangedEvent.java
  * OrderChangedEvent represents the event for changing the status of the order.
-=======
- * An event to trigger the status of an order changing.
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/framework/events/eventargs/OrderChangedEvent.java
  */
 public class OrderChangedEvent extends EventArgs<OrderChangedEvent> {
 

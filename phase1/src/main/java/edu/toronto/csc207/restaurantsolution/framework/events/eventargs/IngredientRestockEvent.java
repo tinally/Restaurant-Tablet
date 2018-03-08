@@ -3,14 +3,8 @@ package edu.toronto.csc207.restaurantsolution.framework.events.eventargs;
 import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.data.Ingredient;
 
-<<<<<<< HEAD:phase1/src/events/newevents/IngredientRestockEvent.java
 /**
  * IngredientRestockEvent represents the event for restocking the ingredient.
-=======
-
-/**
- * An event to trigger a restock of an ingredient.
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/framework/events/eventargs/IngredientRestockEvent.java
  */
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
 

@@ -10,22 +10,38 @@ import java.io.IOException;
 /**
  * Jackson key deserializer for representing previously loaded {@link Ingredient}
  * instances as strings in configuration files.
- *
+ * <p>
  * Simply maps a string as a key to the name of an existing Ingredient
  * from {@link IngredientListService}.
- *
+ * <p>
  * Mostly used when deserializing events.txt
  */
 public class IngredientKeyDeserializer extends KeyDeserializer {
 
-  private IngredientListService ingredientListService;
+    /**
+     * The list of ingredient services.
+     */
+    private IngredientListService ingredientListService;
 
-  IngredientKeyDeserializer(IngredientListService ingredientList) {
-    this.ingredientListService = ingredientList;
-  }
+    /**
+     * Class constructor specifying the ingredientList.
+     *
+     * @param ingredientList the list of ingredients
+     */
+    IngredientKeyDeserializer(IngredientListService ingredientList) {
+        this.ingredientListService = ingredientList;
+    }
 
-  @Override
-  public Object deserializeKey(String key, DeserializationContext ctxt) throws IOException {
-    return ingredientListService.getIngredient(key);
-  }
+    /**
+     * Deserializes the key.
+     *
+     * @param key
+     * @param ctxt
+     * @return
+     * @throws IOException
+     */
+    @Override
+    public Object deserializeKey(String key, DeserializationContext ctxt) throws IOException {
+        return ingredientListService.getIngredient(key);
+    }
 }

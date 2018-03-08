@@ -4,7 +4,6 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
 import edu.toronto.csc207.restaurantsolution.data.Ingredient;
 
 /**
-<<<<<<< HEAD:phase1/src/events/newevents/IngredientReorderEvent.java
  * IngredientReorderEvent represents the event for reordering the ingredient.
  */
 public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
@@ -48,32 +47,4 @@ public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
     public void setIngredient(Ingredient ingredient) {
         this.ingredient = ingredient;
     }
-=======
- * An event to trigger reordering an ingredient.
- */
-public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
-
-  /**
-   * The ingredient to reorder.
-   */
-  private Ingredient ingredient;
-
-  public IngredientReorderEvent(Ingredient ingredient) {
-    super(IngredientReorderEvent.class);
-    this.ingredient = ingredient;
-  }
-
-  public IngredientReorderEvent() {
-    super(IngredientReorderEvent.class);
-  }
-
-  public Ingredient getIngredient() {
-    return ingredient;
-  }
-
-  public void setIngredient(Ingredient ingredient) {
-    this.ingredient = ingredient;
-  }
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/framework/events/eventargs/IngredientReorderEvent.java
-
 }

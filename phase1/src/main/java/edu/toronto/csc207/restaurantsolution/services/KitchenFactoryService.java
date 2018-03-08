@@ -37,9 +37,10 @@ public class KitchenFactoryService extends Service {
      * @param name  The name of the server.
      * @return The newly instantiated Server.
      */
-    public Server createServer(String name) {
+    public Server createServer(String name, int tableNumber) {
         return new Server(eventEmitter,
                 name,
+                tableNumber,
                 inventoryFactoryService.getInventory(),
                 orderManagerService,
                 paymentService);
