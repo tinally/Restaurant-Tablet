@@ -7,9 +7,7 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  * IngredientReorderEvent represents the event for reordering the ingredient.
  */
 public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
-  /**
-   * The ingredient to be reordered.
-   */
+  /** The ingredient to be reordered. */
   private Ingredient ingredient;
 
   /**
@@ -22,9 +20,7 @@ public class IngredientReorderEvent extends EventArgs<IngredientReorderEvent> {
     this.ingredient = ingredient;
   }
 
-  /**
-   * Default constructor of IngredientReorderEvent.
-   */
+  /** Default constructor of IngredientReorderEvent. */
   public IngredientReorderEvent() {
     super(IngredientReorderEvent.class);
   }

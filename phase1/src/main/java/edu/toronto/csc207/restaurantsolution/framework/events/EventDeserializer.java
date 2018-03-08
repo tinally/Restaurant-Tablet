@@ -22,6 +22,7 @@ public class EventDeserializer extends StdDeserializer<EventArgs> {
   }
 
   @Override
+  // TODO: Use in phase 2
   public EventArgs deserialize(JsonParser p, DeserializationContext ctxt)
       throws IOException, JsonProcessingException {
     JsonNode node = p.getCodec().readTree(p);

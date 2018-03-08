@@ -21,8 +21,6 @@ public class KitchenFactoryService extends Service {
                                InventoryFactoryService inventoryFactoryService,
                                OrderManagerService orderManagerService,
                                PaymentService paymentService) {
-
-
     this.eventEmitter = eventEmitter;
     this.inventoryFactoryService = inventoryFactoryService;
     this.orderManagerService = orderManagerService;

@@ -20,14 +20,10 @@ import java.util.stream.Stream;
  * singletons within the context.
  */
 public final class ServiceContainer {
-  /**
-   * The instances of each {@link Service}
-   */
+  /** The instances of each {@link Service}. */
   private Map<Class<? extends Service>, Service> serviceInstances;
 
-  /**
-   * Class constructor for {@link ServiceContainer}
-   */
+  /** Class constructor for {@link ServiceContainer}. */
   public ServiceContainer() {
     this.serviceInstances = new HashMap<>();
   }

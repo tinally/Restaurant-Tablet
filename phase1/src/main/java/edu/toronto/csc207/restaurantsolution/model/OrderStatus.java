@@ -1,8 +1,6 @@
 package edu.toronto.csc207.restaurantsolution.model;
 
-/**
- * OrderStatus contains all the possible statuses of an Order.
- */
+/** OrderStatus contains all the possible statuses of an Order. */
 public enum OrderStatus {
   /**
    * The initial state of an order.

@@ -17,9 +17,7 @@ import java.io.IOException;
  * Mostly used when deserializing events.txt
  */
 public class IngredientKeyDeserializer extends KeyDeserializer {
-  /**
-   * The list of ingredient services.
-   */
+  /** The ingredient list service. */
   private IngredientListService ingredientListService;
 
   /**
@@ -40,6 +38,7 @@ public class IngredientKeyDeserializer extends KeyDeserializer {
    * @throws IOException
    */
   @Override
+  // TODO: Use in phase 2
   public Object deserializeKey(String key, DeserializationContext ctxt) throws IOException {
     return ingredientListService.getIngredient(key);
   }

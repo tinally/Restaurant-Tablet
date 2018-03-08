@@ -11,24 +11,13 @@ import java.util.Map;
  * Chef represents the cook of the restaurant.
  */
 public class Chef {
-  /**
-   * Name the of the Chef.
-   */
+  /** Name the of the Chef. */
   private String name;
-
-  /**
-   * Manages the orders.
-   */
+  /** Manages the orders. */
   private OrderManagerService manager;
-
-  /**
-   * Handles the events.
-   */
+  /** Handles the events. */
   private EventEmitter emitter;
-
-  /**
-   * Inventory of all the ingredients of this restaurant.
-   */
+  /** Inventory of all the ingredients of this restaurant. */
   private Inventory inventory;
 
   /**

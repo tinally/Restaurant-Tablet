@@ -19,11 +19,8 @@ import java.util.Map;
  * initial values seeded by inventory.yml
  */
 public class InventoryFactoryService extends Service {
-  /**
-   * The {@link Inventory} instance to cache.
-   */
+  /** The {@link Inventory} instance to cache. */
   private final Inventory inventory;
-
 
   /**
    * ServiceConstructor to instantiate a InventoryFactoryService

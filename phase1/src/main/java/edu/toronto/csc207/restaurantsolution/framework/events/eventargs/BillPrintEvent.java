@@ -6,14 +6,10 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  * BillPrintEvent represents the event for printing the bill.
  */
 public class BillPrintEvent extends EventArgs<BillPrintEvent> {
-  /**
-   * The table number of the bill to print.
-   */
+  /** The table number of the bill to print. */
   private Integer tableNumber;
 
-  /**
-   * Default constructor for BillPrintEvent.
-   */
+  /** Default constructor for BillPrintEvent. */
   public BillPrintEvent() {
     super(BillPrintEvent.class);
   }

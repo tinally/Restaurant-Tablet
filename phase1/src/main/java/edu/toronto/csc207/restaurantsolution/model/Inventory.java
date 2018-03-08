@@ -16,7 +16,6 @@ public class Inventory {
    * The HashMap of each Ingredient with the amount of remaining items in stock.
    */
   private Map<Ingredient, Integer> inventory;
-
   private EventEmitter emitter;
 
   /**

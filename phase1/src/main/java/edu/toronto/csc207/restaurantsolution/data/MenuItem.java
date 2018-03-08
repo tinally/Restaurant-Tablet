@@ -7,21 +7,13 @@ import java.util.Map;
  * This class is serializable to JSON or YAML.
  */
 public class MenuItem {
-  /**
-   * The name of the menuItem to be shown on the menu
-   */
+  /** The name of the menuItem to be shown on the menu. */
   private String name;
-  /**
-   * A Map storing how much Ingredient is needed
-   */
+  /** A map storing how much Ingredient is needed. */
   private Map<Ingredient, Integer> ingredients;
-  /**
-   * The price of the item
-   */
+  /** The price of the item. */
   private double price;
-  /**
-   * A discount to be applied. If there is no discount, then the default value is 1
-   */
+  /** A discount to be applied. */
   private double discount;
 
   /**
@@ -52,6 +44,7 @@ public class MenuItem {
    *
    * @return The original price of this MenuItem
    */
+  // TODO: Use in phase 2
   public double getOriginalPrice() {
     return price;
   }
@@ -62,6 +55,7 @@ public class MenuItem {
    *
    * @param discount The discount to be set
    */
+  // TODO: Use in phase 2
   public void setDiscount(double discount) {
     this.discount -= discount;
   }
@@ -80,6 +74,7 @@ public class MenuItem {
    *
    * @param price the price to be set
    */
+  // TODO: Use in phase 2
   public void setPrice(double price) {
     this.price = price;
   }
@@ -103,12 +98,12 @@ public class MenuItem {
   }
 
   /**
-   * Increases the price by this factor.
+   * Increases the price of this menu item.
    *
-   * @param factor the factor by which the price is increased.
+   * @param addedPrice the amount by which to increase the price.
    */
-  public void increasePrice(double factor) {
-    this.price += price;
+  public void increasePrice(double addedPrice) {
+    this.price += addedPrice;
   }
 
   /**

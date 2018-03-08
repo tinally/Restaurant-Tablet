@@ -17,14 +17,10 @@ import java.util.stream.Collectors;
  * A {@link Service} to manage the creation and retention of {@link Order} instances.
  */
 public class OrderManagerService extends Service {
-  /**
-   * The {@link EventEmitter} that will emit events to respond to.
-   */
+  /** The {@link EventEmitter} that will emit events to respond to. */
   private final EventEmitter emitter;
 
-  /**
-   * The Map that keeps track of orders.
-   */
+  /** The Map that keeps track of orders. */
   private Map<Integer, Order> orders;
 
   /**
@@ -64,14 +60,13 @@ public class OrderManagerService extends Service {
    * @param tableNumber The table number of the order.
    * @param serverName  The name of the server this order was assigned to.
    * @param menuItem    The menu item for this order.
-   * @return The created order.
    */
-  public Order createOrder(int tableNumber, String serverName, MenuItem menuItem) {
+  // TODO: Use in phase 2
+  public void createOrder(int tableNumber, String serverName, MenuItem menuItem) {
     Order order = new Order(menuItem, tableNumber, serverName, new Random().nextInt());
     OrderCreatedEvent event = new OrderCreatedEvent();
     event.setNewOrder(order);
     emitter.onEvent(event);
-    return order;
   }
 
   /**
@@ -103,6 +98,7 @@ public class OrderManagerService extends Service {
    * @return A read-only view of all the {@link Order} instances
    * currently managed.
    */
+  // TODO: Use in phase 2
   public Collection<Order> getAllOrders() {
     return Collections.unmodifiableCollection(orders.values());
   }
@@ -114,6 +110,7 @@ public class OrderManagerService extends Service {
    * @param tableNumber The table number
    * @return All the orders for the given table number.
    */
+  // TODO: Use in phase 2
   public List<Order> getOrdersForTableNumber(int tableNumber) {
     return Collections.unmodifiableList(
         orders.values().stream().filter(o -> o.getTableNumber() == tableNumber).collect(Collectors.toList())

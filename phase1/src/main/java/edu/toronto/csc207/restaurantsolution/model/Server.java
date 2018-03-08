@@ -16,34 +16,17 @@ import java.util.Map;
  * Server represents the server of this restaurant.
  */
 public class Server extends Service {
-  /**
-   * Name of the Server.
-   */
+  /** Name of the Server. */
   private String name;
-
-  /**
-   * The table number of the table that the Server is responsible for.
-   */
+  /** The table number of the table that the Server is responsible for. */
   private int tableNumber;
-
-  /**
-   * Handles the events.
-   */
+  /** Handles the events. */
   private EventEmitter emitter;
-
-  /**
-   * Inventory of all ingredients of this restaurant.
-   */
+  /** Inventory of all ingredients of this restaurant. */
   private Inventory inventory;
-
-  /**
-   * Manages the orders.
-   */
+  /** Manages the orders. */
   private OrderManagerService orderManager;
-
-  /**
-   * Manages the payment.
-   */
+  /** Manages the payment. */
   private PaymentService paymentService;
 
   /**
@@ -133,6 +116,7 @@ public class Server extends Service {
   /**
    * Prints out the bill upon the request of checkout from the customers.
    */
+  // TODO: Use in phase 2
   private void checkout() {
     BillPrintEvent event = new BillPrintEvent();
     event.setTableNumber(tableNumber);

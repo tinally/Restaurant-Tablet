@@ -15,14 +15,10 @@ import java.util.StringJoiner;
  * Provides bill modification and printing functionality.
  */
 public class PaymentService extends Service {
-  /**
-   * A mapping of orders by table numbers.
-   */
+  /** A mapping of orders by table numbers. */
   private HashMap<Integer, Bill> billsByTableNumber;
 
-  /**
-   * Constructs a new payment service.
-   */
+  /** Constructs a new payment service. */
   @ServiceConstructor
   public PaymentService() {
     billsByTableNumber = new HashMap<>();
@@ -43,6 +39,7 @@ public class PaymentService extends Service {
    *
    * @param tableNumber the number of the table to be unregistered.
    */
+  // TODO: Use in phase 2
   public void unregisterTable(int tableNumber) {
     billsByTableNumber.remove(tableNumber);
   }
@@ -66,6 +63,7 @@ public class PaymentService extends Service {
    * @return the bill of the specified table or null if the table is
    * unregistered.
    */
+  // TODO: Use in phase 2
   public Bill getBill(int tableNumber) {
     return billsByTableNumber.get(tableNumber);
   }
