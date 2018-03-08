@@ -1,12 +1,9 @@
 package edu.toronto.csc207.restaurantsolution.model;
 
-import edu.toronto.csc207.restaurantsolution.model.Order;
-
 import java.util.ArrayList;
 
 /**
- * A Bill represents a collection of outstanding order items to be paid by
- * a table of customers.
+ * A collection of outstanding orders that are to be paid.
  */
 public class Bill {
 
@@ -16,9 +13,7 @@ public class Bill {
   private ArrayList<Order> orders;
 
   /**
-   * Constructs a new Bill for the specified table.
-   *
-   * @param table the table to which this bill belongs.
+   * Constructs a new empty bill.
    */
   public Bill() {
     orders = new ArrayList<>();
@@ -27,12 +22,17 @@ public class Bill {
   /**
    * Returns the order items associated with this bill.
    *
-   * @return the order items associated with this bill.
+   * @return the order items on this bill.
    */
   public ArrayList<Order> getOrders() {
     return orders;
   }
 
+  /**
+   * Adds an order to this bill.
+   *
+   * @param order the order to be added.
+   */
   public void addOrder(Order order) {
     orders.add(order);
   }
