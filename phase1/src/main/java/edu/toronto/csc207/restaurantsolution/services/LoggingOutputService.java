@@ -7,6 +7,11 @@ import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstruct
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 import edu.toronto.csc207.restaurantsolution.model.Order;
 
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
 /**
  * A {@link Service} that outputs the results of events to the console and event.txt
  */
@@ -15,6 +20,8 @@ public class LoggingOutputService extends Service {
    * The payment service to be used in printing bills.
    */
   private PaymentService paymentService;
+
+  private Logger logger;
 
   /**
    * Service Constructor to instantiate a {@link LoggingOutputService} from
@@ -34,6 +41,23 @@ public class LoggingOutputService extends Service {
     emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
     emitter.registerEventHandler(this::printBill, BillPrintEvent.class);
 
+    logger = Logger.getLogger("Kitchen");
+
+    // Adapted from https://stackoverflow.com/questions/15758685/
+    FileHandler fileHandler;
+    try {
+      fileHandler = new FileHandler("event.txt", true);
+      logger.addHandler(fileHandler);
+      SimpleFormatter formatter = new SimpleFormatter();
+      fileHandler.setFormatter(formatter);
+
+    } catch (SecurityException | IOException ignored) {
+    }
+
+  }
+
+  public void printString(String string) {
+    logger.info(string);
   }
 
   /**

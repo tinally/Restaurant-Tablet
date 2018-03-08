@@ -12,8 +12,11 @@ import java.io.PrintWriter;
  * RequestEmailWriterService keeps track of requests.txt.
  */
 public class RequestEmailWriterService extends Service {
+  private LoggingOutputService loggingOutputService;
+
   @ServiceConstructor
-  public RequestEmailWriterService() {
+  public RequestEmailWriterService(LoggingOutputService loggingOutputService) {
+    this.loggingOutputService = loggingOutputService;
     try {
       writeToFile("Ingredients to be reordered: \r\n", "requests.txt", false);
     } catch (IOException ignored) {
@@ -32,10 +35,9 @@ public class RequestEmailWriterService extends Service {
     string.append(ingredient.getName());
     string.append(": ");
     string.append(ingredient.getReorderAmount());
-    string.append("\r\n");
     try {
       writeToFile(string.toString(), "requests.txt", true);
-      logger.info(string.toString());
+      loggingOutputService.printString(string.toString());
     } catch (IOException e) {
       System.err.println(e.getMessage());
     }

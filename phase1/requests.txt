@@ -1,4 +1,5 @@
 Ingredients to be reordered: 
 
+Toast: 20
+Bread: 20
 Tomato: 20
-
