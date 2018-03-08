@@ -30,7 +30,7 @@ public class RequestEmailWriterService extends Service {
    *
    * @param ingredient ingredient to be written on the text file.
    */
-  public void write(Ingredient ingredient) { //TODO: This is not going to work if you add another ingredient
+  public void write(Ingredient ingredient) {
     StringBuilder string = new StringBuilder();
     string.append(ingredient.getName());
     string.append(": ");
@@ -46,12 +46,10 @@ public class RequestEmailWriterService extends Service {
   /**
    * Given a text and a path of the file to be written, create a file
    * on the path and add the given text to it.
-   * <p>
-   * Note: This method only overwrites a file. Any data that was previously
-   * stored will be removed.
    *
    * @param text text to be written on the text file.
    * @param path the path in which the file is stored
+   * @param append boolean to indicate whether you want to append to the file or overwrite it.
    */
   private void writeToFile(String text, String path, boolean append) throws IOException {
     FileWriter write = new FileWriter(path, append);
