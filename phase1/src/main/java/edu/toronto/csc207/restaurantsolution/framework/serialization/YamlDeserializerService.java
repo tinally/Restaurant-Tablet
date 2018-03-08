@@ -19,39 +19,39 @@ import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
  */
 public class YamlDeserializerService extends Service {
 
-    /**
-     * The mapper.
-     */
-    private final ObjectMapper mapper;
+  /**
+   * The mapper.
+   */
+  private final ObjectMapper mapper;
 
-    /**
-     * Class constructor specifying menuItems and ingredients.
-     *
-     * @param menuItems   list of services with MenuItems to be deserialized
-     * @param ingredients list of services with Ingredients to be deserialized
-     */
-    @ServiceConstructor
-    public YamlDeserializerService(MenuItemsListService menuItems, IngredientListService ingredients) {
-        this.mapper = new ObjectMapper(new YAMLFactory());
-        SimpleModule module = new SimpleModule();
-        module.addDeserializer(MenuItem.class, new MenuItemDeserializer(menuItems));
-        module.addDeserializer(Ingredient.class, new IngredientDeserializer(ingredients));
-        module.addKeyDeserializer(Ingredient.class, new IngredientKeyDeserializer(ingredients));
-        module.addKeySerializer(Ingredient.class, new IngredientKeySerializer(null));
-        mapper.registerModule(module);
+  /**
+   * Class constructor specifying menuItems and ingredients.
+   *
+   * @param menuItems   list of services with MenuItems to be deserialized
+   * @param ingredients list of services with Ingredients to be deserialized
+   */
+  @ServiceConstructor
+  public YamlDeserializerService(MenuItemsListService menuItems, IngredientListService ingredients) {
+    this.mapper = new ObjectMapper(new YAMLFactory());
+    SimpleModule module = new SimpleModule();
+    module.addDeserializer(MenuItem.class, new MenuItemDeserializer(menuItems));
+    module.addDeserializer(Ingredient.class, new IngredientDeserializer(ingredients));
+    module.addKeyDeserializer(Ingredient.class, new IngredientKeyDeserializer(ingredients));
+    module.addKeySerializer(Ingredient.class, new IngredientKeySerializer(null));
+    mapper.registerModule(module);
 
-        // We need to instantiate the EventDeserializer separately. Perhaps we can take this out of the service?
-        SimpleModule eventArgsModule = new SimpleModule();
-        eventArgsModule.addDeserializer(EventArgs.class, new EventDeserializer(this));
-        mapper.registerModule(eventArgsModule);
-    }
+    // We need to instantiate the EventDeserializer separately. Perhaps we can take this out of the service?
+    SimpleModule eventArgsModule = new SimpleModule();
+    eventArgsModule.addDeserializer(EventArgs.class, new EventDeserializer(this));
+    mapper.registerModule(eventArgsModule);
+  }
 
-    /**
-     * Returns the mapper.
-     *
-     * @return the mapper
-     */
-    public ObjectMapper getMapper() {
-        return this.mapper;
-    }
+  /**
+   * Returns the mapper.
+   *
+   * @return the mapper
+   */
+  public ObjectMapper getMapper() {
+    return this.mapper;
+  }
 }

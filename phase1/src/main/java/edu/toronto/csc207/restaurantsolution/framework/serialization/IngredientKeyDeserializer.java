@@ -34,7 +34,7 @@ public class IngredientKeyDeserializer extends KeyDeserializer {
   /**
    * Creates an object from key and ctxt.
    *
-   * @param key the key to be deserialized
+   * @param key  the key to be deserialized
    * @param ctxt the context to be deserialized
    * @return an Object
    * @throws IOException halts the program

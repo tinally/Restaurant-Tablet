@@ -17,25 +17,25 @@ import java.io.IOException;
  */
 public class IngredientKeySerializer extends StdSerializer<Ingredient> {
 
-    /**
-     * Default constructor.
-     *
-     * @param t the class to serialize as
-     */
-    IngredientKeySerializer(Class<Ingredient> t) {
-        super(t);
-    }
+  /**
+   * Default constructor.
+   *
+   * @param t the class to serialize as
+   */
+  IngredientKeySerializer(Class<Ingredient> t) {
+    super(t);
+  }
 
-    /**
-     * Writes the file from value, gen and provider.
-     *
-     * @param value    the value to be written in file
-     * @param gen      generator
-     * @param provider provides the serialization
-     * @throws IOException halts the program
-     */
-    @Override
-    public void serialize(Ingredient value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        gen.writeFieldName(value.getName());
-    }
+  /**
+   * Writes the file from value, gen and provider.
+   *
+   * @param value    the value to be written in file
+   * @param gen      generator
+   * @param provider provides the serialization
+   * @throws IOException halts the program
+   */
+  @Override
+  public void serialize(Ingredient value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    gen.writeFieldName(value.getName());
+  }
 }

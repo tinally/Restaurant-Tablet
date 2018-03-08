@@ -20,43 +20,43 @@ import java.io.IOException;
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
 
-    /**
-     * The list of services with ingredients.
-     **/
-    private IngredientListService ingredientListService;
+  /**
+   * The list of services with ingredients.
+   **/
+  private IngredientListService ingredientListService;
 
-    /**
-     * Class constructor specifying ingredientList.
-     *
-     * @param ingredientList the list of services with ingredients
-     */
-    IngredientDeserializer(IngredientListService ingredientList) {
-        this((Class<?>) null);
-        this.ingredientListService = ingredientList;
-    }
+  /**
+   * Class constructor specifying ingredientList.
+   *
+   * @param ingredientList the list of services with ingredients
+   */
+  IngredientDeserializer(IngredientListService ingredientList) {
+    this((Class<?>) null);
+    this.ingredientListService = ingredientList;
+  }
 
-    /**
-     * Default constructor.
-     *
-     * @param vc the class to deserialize as
-     */
-    private IngredientDeserializer(Class<?> vc) {
-        super(vc);
-    }
+  /**
+   * Default constructor.
+   *
+   * @param vc the class to deserialize as
+   */
+  private IngredientDeserializer(Class<?> vc) {
+    super(vc);
+  }
 
-    /**
-     * Creates an instance of Ingredient from p and ctxt.
-     *
-     * @param p    parsing the file
-     * @param ctxt context to be deserialized
-     * @return an instance of Ingredient
-     * @throws IOException             halts the program
-     * @throws JsonProcessingException a more general exception
-     */
-    @Override
-    public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
-            throws IOException, JsonProcessingException {
-        String ingredientName = p.getValueAsString();
-        return ingredientListService.getIngredient(ingredientName);
-    }
+  /**
+   * Creates an instance of Ingredient from p and ctxt.
+   *
+   * @param p    parsing the file
+   * @param ctxt context to be deserialized
+   * @return an instance of Ingredient
+   * @throws IOException             halts the program
+   * @throws JsonProcessingException a more general exception
+   */
+  @Override
+  public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
+    String ingredientName = p.getValueAsString();
+    return ingredientListService.getIngredient(ingredientName);
+  }
 }

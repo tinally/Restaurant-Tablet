@@ -12,25 +12,25 @@ import java.io.IOException;
  */
 public class Main {
 
-    /**
-     * Main method of this restaurant program.
-     *
-     * @param args an array of string
-     * @throws IOException halts the program
-     */
-    public static void main(String[] args) throws IOException {
-        ServiceContainer container = new ServiceContainer();
+  /**
+   * Main method of this restaurant program.
+   *
+   * @param args an array of string
+   * @throws IOException halts the program
+   */
+  public static void main(String[] args) throws IOException {
+    ServiceContainer container = new ServiceContainer();
 
-        // Getting an instance also creates one from the container.
-        container.getInstance(LoggingOutputService.class);
+    // Getting an instance also creates one from the container.
+    container.getInstance(LoggingOutputService.class);
 
-        KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
+    KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
-        // Creating servers and chefs registers event handlers.
-        kitchen.createServer("Bob", 15);
-        kitchen.createChef("Joe");
+    // Creating servers and chefs registers event handlers.
+    kitchen.createServer("Bob", 15);
+    kitchen.createChef("Joe");
 
-        EventDriverService eventDriver = container.getInstance(EventDriverService.class);
-        eventDriver.run();
-    }
+    EventDriverService eventDriver = container.getInstance(EventDriverService.class);
+    eventDriver.run();
+  }
 }
