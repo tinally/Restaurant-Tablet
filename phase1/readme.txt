@@ -6,6 +6,9 @@ This project is set up using Gradle, and as such should be imported as a Gradle 
 choose a Gradle installation, select the option to "Use default gradle wrapper". Once Gradle has finished syncing, the
 main entrypoint to the program is the class `edu.toronto.csc207.restaurantsolution.Main`.
 
+## UML
+The UML diagram and PlantUML sources are in the design folder.
+
 ## Resources
 
 Resources are stored in the `src/main/resources` folder. All the resources currently are configuration files in the
