@@ -40,3 +40,8 @@ Most of the code is contained in Services, located in the `edu.toronto.csc207.re
 These services are instantiated as needed by a single `ServiceContainer` instance in the main entry point using
 reflection. This architecture allows us to encapsulate what would usually be singleton objects, and instantiate
 multiple dependent objects without having to manually create the dependency tree.
+
+## Tests
+
+There are an incomplete set of unit tests in the unittest folder, which can also be built with Gradle. These tests
+mostly test the infrastructure to support Services, and deserialization of objects and events from the resources.
