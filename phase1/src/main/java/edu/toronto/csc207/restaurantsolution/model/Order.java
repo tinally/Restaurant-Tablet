@@ -94,80 +94,80 @@ public class Order {
         this.status = status;
     }
 
-    /**
-     * Returns the unique order number of this Order.
-     *
-     * @return the order number of this
-     */
-    public int getOrderNumber() {
-        return orderNumber;
-    }
+  /**
+   * Returns the unique order number of this Order.
+   *
+   * @return the order number of this
+   */
+  public int getOrderNumber() {
+    return orderNumber;
+  }
 
-    //    /**
-//     * @param add Ingredient to be added
-//     */
-//    public void addIngredients(HashMap<Ingredient, Integer> add) {
-//        this.addIngredients = add;
-//        Iterator it = add.entrySet().iterator();
-//
-//        while (it.hasNext()) {
-//            HashMap.Entry pair = (HashMap.Entry) it.next();
-//            double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
-//            menuItem.increasePrice(extraPrice);
-//            //TODO: Check if this works
-//        }
-//    }
-//
-//    /**
-//     * Add one type of Ingredient at a time
-//     *
-//     * @param ingredient the Ingredient to be added
-//     * @param quantity   the amount of that Ingredient to be added
-//     */
-//    public void addIngredient(Ingredient ingredient, int quantity) {
-//        addIngredients.put(ingredient, quantity);
-//        double extraPrice = quantity * ingredient.getPricing();
-//        menuItem.increasePrice(extraPrice);
-//    }
-//
-//    /**
-//     * @param unwantedIngredient Ingredient to be removed
-//     */
-//    public void removeIngredient(Ingredient unwantedIngredient) {
-//        removedIngredients.add(unwantedIngredient);
-//    }
-//
-//    /**
-//     * @return Ingredients to be removed.
-//     */
-//    public ArrayList<Ingredient> getRemovedIngredients() {
-//        return removedIngredients;
-//    }
+  /**
+   * Returns the menu item corresponding to this Order.
+   *
+   * @return the MenuItem of this
+   */
+  public MenuItem getMenuItem() {
+    return menuItem;
+  }
 
-    /**
-     * Returns the menu item corresponding to this Order.
-     *
-     * @return the MenuItem of this
-     */
-    public MenuItem getMenuItem() {
-        return menuItem;
-    }
+  /**
+   * Modifies the menu item corresponding to this Order.
+   *
+   * @param menuItem new menu item to be set
+   */
+  public void setMenuItem(MenuItem menuItem) {
+    this.menuItem = menuItem;
+  }
 
-    /**
-     * Modifies the menu item corresponding to this Order.
-     *
-     * @param menuItem new menu item to be set
-     */
-    public void setMenuItem(MenuItem menuItem) {
-        this.menuItem = menuItem;
-    }
+  /**
+   * Returns the name of the Server responsible for this Order.
+   *
+   * @return name of the Server
+   */
+  public String getServerName() {
+    return serverName;
+  }
 
-    /**
-     * Returns the name of the Server responsible for this Order.
-     *
-     * @return name of the Server
-     */
-    public String getServerName() {
-        return serverName;
+  /**
+   * @param add Ingredient to be added
+   */
+  public void addIngredients(HashMap<Ingredient, Integer> add) {
+    this.addIngredients = add;
+    Iterator it = add.entrySet().iterator();
+
+      while (it.hasNext()) {
+        HashMap.Entry pair = (HashMap.Entry) it.next();
+        double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
+        menuItem.increasePrice(extraPrice);
     }
+  }
+
+  /**
+   * Add one type of Ingredient at a time
+   *
+   * @param ingredient the Ingredient to be added
+   * @param quantity   the amount of that Ingredient to be added
+   */
+  public void addIngredient(Ingredient ingredient, int quantity) {
+    addIngredients.put(ingredient, quantity);
+    double extraPrice = quantity * ingredient.getPricing();
+    menuItem.increasePrice(extraPrice);
+  }
+
+  /**
+   * @param unwantedIngredient Ingredient to be removed
+   */
+  public void removeIngredient(Ingredient unwantedIngredient) {
+    removedIngredients.add(unwantedIngredient);
+  }
+
+  /**
+   * @return Ingredients to be removed.
+   */
+  public ArrayList<Ingredient> getRemovedIngredients() {
+    return removedIngredients;
+  }
+
 }
