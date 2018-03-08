@@ -86,10 +86,19 @@ public class Ingredient implements Serializable {
         return this.getName();
     }
 
-    /*
+    /**
+     *
      * @return The reorderAmount for the ingredient
      */
     public int getReorderAmount() {
         return reorderAmount;
+    }
+
+    /**
+     * Change the reorderAmount of the ingredient.
+     * @param reorderAmount the reorderAmount to be changed instead
+     */
+    public void changeReorderAmount(int reorderAmount) {
+        this.reorderAmount = reorderAmount;
     }
 }
