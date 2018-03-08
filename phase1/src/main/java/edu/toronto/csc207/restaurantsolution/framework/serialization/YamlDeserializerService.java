@@ -18,8 +18,18 @@ import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
  * or {@link Ingredient}.
  */
 public class YamlDeserializerService extends Service {
+
+    /**
+     * The mapper.
+     */
     private final ObjectMapper mapper;
 
+    /**
+     * Class constructor specifying menuItems and ingredients.
+     *
+     * @param menuItems   list of services with MenuItems to be deserialized
+     * @param ingredients list of services with Ingredients to be deserialized
+     */
     @ServiceConstructor
     public YamlDeserializerService(MenuItemsListService menuItems, IngredientListService ingredients) {
         this.mapper = new ObjectMapper(new YAMLFactory());
@@ -36,6 +46,11 @@ public class YamlDeserializerService extends Service {
         mapper.registerModule(eventArgsModule);
     }
 
+    /**
+     * Returns the mapper.
+     *
+     * @return the mapper
+     */
     public ObjectMapper getMapper() {
         return this.mapper;
     }
