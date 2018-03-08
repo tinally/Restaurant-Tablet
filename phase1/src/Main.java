@@ -1,8 +1,8 @@
-import kitchen.Chef;
-import kitchen.Server;
-import restaurant.Table;
-import services.*;
-import services.framework.ServiceContainer;
+import edu.toronto.csc207.restaurantsolution.model.Chef;
+import edu.toronto.csc207.restaurantsolution.model.Server;
+import edu.toronto.csc207.restaurantsolution.model.Table;
+import edu.toronto.csc207.restaurantsolution.services.*;
+import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class Main {
         container.getInstance(LoggingOutputService.class);
         KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
-        Server bob = kitchen.createServer("Bob", new Table(15, 10));
+        Server bob = kitchen.createServer("Bob", 15);
         Chef joe = kitchen.createChef("Joe");
 
         EventDriverService eventDriver = container.getInstance(EventDriverService.class);

@@ -1,11 +1,6 @@
 package edu.toronto.csc207.restaurantsolution.data;
 
 import java.util.Map;
-<<<<<<< HEAD:phase1/src/restaurant/MenuItem.java
-
-import kitchen.Ingredient;
-=======
->>>>>>> 6c2ba67e6d43c990817f7455d710287af5146462:phase1/src/main/java/edu/toronto/csc207/restaurantsolution/data/MenuItem.java
 
 /**
  * MenuItem represents the item in the menu.

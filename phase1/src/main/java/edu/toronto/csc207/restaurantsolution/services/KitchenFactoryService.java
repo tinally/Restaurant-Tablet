@@ -3,7 +3,6 @@ package edu.toronto.csc207.restaurantsolution.services;
 import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
 import edu.toronto.csc207.restaurantsolution.model.Chef;
 import edu.toronto.csc207.restaurantsolution.model.Server;
-import edu.toronto.csc207.restaurantsolution.model.Table;
 import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
 

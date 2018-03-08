@@ -20,7 +20,7 @@ public class Main {
     KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
     // Creating servers and chefs registers event handlers.
-    kitchen.createServer("Bob", new Table(15, 10));
+    kitchen.createServer("Bob", 15);
     kitchen.createChef("Joe");
 
     EventDriverService eventDriver = container.getInstance(EventDriverService.class);

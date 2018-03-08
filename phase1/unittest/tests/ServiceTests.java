@@ -18,7 +18,7 @@ public class ServiceTests {
     ServiceContainer container = new ServiceContainer();
     KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
-    Server bob = kitchen.createServer("Bob", new Table(15, 10));
+    Server bob = kitchen.createServer("Bob", 15);
     Chef joe = kitchen.createChef("Joe");
     Assert.assertNotNull(bob);
     Assert.assertNotNull(joe);
