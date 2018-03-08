@@ -6,9 +6,14 @@ import edu.toronto.csc207.restaurantsolution.model.Table;
 import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Manages all active tables (deemed "registered") and keeps track of bills
+ * associated with those tables.
+ *
+ * Provides bill modification and printing functionality.
+ */
 public class PaymentService extends Service {
 
   /**
@@ -16,6 +21,9 @@ public class PaymentService extends Service {
    */
   private HashMap<Table, Bill> billsByTable;
 
+  /**
+   * Constructs a new payment service.
+   */
   @ServiceConstructor
   public PaymentService() {
     billsByTable = new HashMap<>();
@@ -40,8 +48,8 @@ public class PaymentService extends Service {
   }
 
   /**
-   * Registers an order placed by a table on that table's bill if it has
-   * been registered.
+   * Registers an order placed by a table on that table's bill if that table
+   * has been registered.
    *
    * @param table the table from which the order originated.
    * @param order the order placed by the table.
