@@ -7,11 +7,13 @@ import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.Ingredie
 import java.util.*;
 
 import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.IngredientRestockEvent;
+import edu.toronto.csc207.restaurantsolution.services.RequestEmailWriterService;
 
 /**
  * Inventory represents the stock of Ingredients of this restaurant.
  */
 public class Inventory {
+    private RequestEmailWriterService request;
     /**
      * The HashMap of each Ingredient with the amount of remaining items in stock.
      */
@@ -27,16 +29,15 @@ public class Inventory {
     /**
      * Class constructor of an Inventory.
      */
-    public Inventory(EventEmitter emitter, Map<Ingredient, Integer> initialInventory) {
+    public Inventory(EventEmitter emitter,
+                     RequestEmailWriterService request, Map<Ingredient, Integer> initialInventory) {
         this.emitter = emitter;
+        this.request = request;
         this.inventory = initialInventory;
         this.ingToReorder = new ArrayList<>();
-        emitter.registerEventHandler(e -> {
-            this.addToInventory(e.getIngredient(), e.getIngredient().getReorderAmount());
-        }, IngredientRestockEvent.class);
-        emitter.removeEventHandler(e -> {
-            this.reOrder(e.getIngredient());
-        }, IngredientReorderEvent.class);
+        emitter.registerEventHandler(e -> this.addToInventory(e.getIngredient(),
+                e.getIngredient().getReorderAmount()), IngredientRestockEvent.class);
+        emitter.registerEventHandler(e -> this.reOrder(e.getIngredient()), IngredientReorderEvent.class);
     }
 
     /**
@@ -62,16 +63,6 @@ public class Inventory {
     }
 
     /**
-     * Returns the full map of threshold accordingly for each ingredient.
-     *
-     * @return the threshold HashMap
-     */
-    // todo: refactor this out.
-    public int getReorderThreshold(Ingredient i) {
-        return i.getReorderThreshold();
-    }
-
-    /**
      * Add the ingredient to the inventory
      *
      * @param ingredient the ingredient to be added
@@ -81,7 +72,7 @@ public class Inventory {
         int leftover = inventory.get(ingredient); //TODO: num could be changed to ingredient.getReorderAmount()
         inventory.put(ingredient, leftover + num);
         ingToReorder.remove(ingredient);
-        Request.write(ingToReorder);
+        //this.request.write(ingToReorder);
     }
 
     /**
@@ -95,7 +86,7 @@ public class Inventory {
         if (leftover > num) {
             inventory.put(ingredient, leftover - num);
         }
-        reOrder(ingredient);
+        //reOrder(ingredient);
     }
 
     /**
@@ -104,13 +95,7 @@ public class Inventory {
      * @param ingredient the ingredient to be checked for reorder
      */
     private void reOrder(Ingredient ingredient) {
-        int num = inventory.get(ingredient);
-        int limit = ingredient.getReorderThreshold();
-        if (num < limit) {
-//            emitter.onEvent(new IngredientReorderEvent(ingredient));
-//            ingToReorder.add(ingredient);
-            Request.write(ingToReorder);
-        }
+        this.request.write(ingredient);
     }
 
     /**

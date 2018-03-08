@@ -37,7 +37,8 @@ public class InventoryFactoryService extends Service {
   @ServiceConstructor
   public InventoryFactoryService(EventEmitter emitter,
                                  YamlDeserializerService deserializer,
-                                 ResourceResolverService resource) {
+                                 ResourceResolverService resource,
+                                 RequestEmailWriterService request) {
 
 
     // load the initial inventory from inventory.yl
@@ -52,7 +53,7 @@ public class InventoryFactoryService extends Service {
     } catch (IOException ignored) {
     }
 
-    inventory = new Inventory(emitter, initialInventory);
+    inventory = new Inventory(emitter, request, initialInventory);
   }
 
   /**
