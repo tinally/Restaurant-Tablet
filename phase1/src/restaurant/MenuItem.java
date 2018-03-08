@@ -1,6 +1,7 @@
 package restaurant;
 
 import java.util.Map;
+
 import kitchen.Ingredient;
 
 /**
@@ -23,9 +24,16 @@ public class MenuItem {
     /**
      * A discount to be applied. If there is no discount, then the default value is 1
      */
-    private double discount; //Discounted price
+    private double discount;
 
-    public MenuItem(String name, Map<Ingredient, Integer> ingredients, double price){
+    /**
+     * Class constructor specifying name, ingredients and price.
+     *
+     * @param name        the name of this MenuItem
+     * @param ingredients the ingredients needed for this MenuItem
+     * @param price       the price of this MenuItem
+     */
+    public MenuItem(String name, Map<Ingredient, Integer> ingredients, double price) {
         this.name = name;
         this.price = price;
         this.ingredients = ingredients;
@@ -33,16 +41,18 @@ public class MenuItem {
     }
 
     /**
+     * Returns the name of this MenuItem.
      *
-     * @return the name of this menuItem
+     * @return the name of this MenuItem
      */
     public String getName() {
         return name;
     }
 
     /**
+     * Returns the original price of this MenuItem.
      *
-     * @return The original price of the item
+     * @return The original price of this MenuItem
      */
     public double getOriginalPrice() {
         return price;
@@ -51,6 +61,7 @@ public class MenuItem {
     /**
      * Discount is the adjustment factor to be set. For example for 30% off you would
      * need to put 0.3 as discount
+     *
      * @param discount The discount to be set
      */
     public void setDiscount(double discount) {
@@ -58,14 +69,16 @@ public class MenuItem {
     }
 
     /**
+     * Returns the price after discount.
      *
      * @return the price of the item with the discount applied
      */
-    public double getPrice(){
-        return discount * price; // TODO: added DiscountedPrice
+    public double getPrice() {
+        return discount * price;
     }
 
     /**
+     * Returns the ingredients needed for this MenuItem.
      *
      * @return the Map containing how many ingredients the item needs
      */
@@ -74,6 +87,7 @@ public class MenuItem {
     }
 
     /**
+     * Sets the ingredients needed for this MenuItem.
      *
      * @param ingredients The ingredients to be set
      */
@@ -82,21 +96,28 @@ public class MenuItem {
     }
 
     /**
+     * Sets the price of this MenuItem.
      *
-     * @param price the original price to be set
+     * @param price the price to be set
      */
     public void setPrice(double price) {
         this.price = price;
     }
 
     /**
-     * Increase the price by this factor
+     * Increases the price by this factor.
+     *
      * @param factor the factor by which the price is increased.
      */
-    public void increasePrice(double factor){
+    public void increasePrice(double factor) {
         this.price += price;
     }
 
+    /**
+     * Returns the string representation of this MenuItem.
+     *
+     * @return the string representation of this MenuItem
+     */
     @Override
     public String toString() {
         return this.getName();

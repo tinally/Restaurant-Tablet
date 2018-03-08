@@ -3,18 +3,38 @@ package events.newevents;
 import events.EventArgs;
 import kitchen.Order;
 
+/**
+ * OrderCreatedEvent represents the event for creating the order.
+ */
 public class OrderCreatedEvent extends EventArgs<OrderCreatedEvent> {
-  private Order newOrder;
 
-  public OrderCreatedEvent() {
-    super(OrderCreatedEvent.class);
-  }
+    /**
+     * The new Order to be created.
+     */
+    private Order newOrder;
 
-  public Order getNewOrder() {
-    return newOrder;
-  }
+    /**
+     * Default constructor for OrderCreatedEvent.
+     */
+    public OrderCreatedEvent() {
+        super(OrderCreatedEvent.class);
+    }
 
-  public void setNewOrder(Order newOrder) {
-    this.newOrder = newOrder;
-  }
+    /**
+     * Returns the Order created.
+     *
+     * @return the Order created
+     */
+    public Order getNewOrder() {
+        return newOrder;
+    }
+
+    /**
+     * Sets the Order created.
+     *
+     * @param newOrder the Order to be set
+     */
+    public void setNewOrder(Order newOrder) {
+        this.newOrder = newOrder;
+    }
 }

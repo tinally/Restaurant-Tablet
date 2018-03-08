@@ -18,44 +18,47 @@ import java.util.List;
  */
 public class IngredientListService extends Service {
 
-  /**
-   * The list of inigredients to store.
-   */
-  private List<Ingredient> ingredients;
+    /**
+     * The list of inigredients to store.
+     */
+    private List<Ingredient> ingredients;
 
-  /**
-   * ServiceConstructor to instantiate a MenuItemsListService
-   * @param resources {@link ResourceResolverService} dependency to be
-   *                  resolved by the {@link services.framework.ServiceContainer};
-   */
-  @SuppressWarnings("unchecked")
-  @ServiceConstructor
-  public IngredientListService(ResourceResolverService resources) {
-    try {
-      ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
-      InputStream ingredientsStream = resources.getResource("ingredients.yml");
-      this.ingredients = objectMapper.readValue(ingredientsStream,
-          objectMapper.getTypeFactory().constructCollectionType(List.class, Ingredient.class));
-    } catch (IOException e) {
-      this.ingredients = new ArrayList<>();
+    /**
+     * ServiceConstructor to instantiate a MenuItemsListService
+     *
+     * @param resources {@link ResourceResolverService} dependency to be
+     *                  resolved by the {@link services.framework.ServiceContainer};
+     */
+    @SuppressWarnings("unchecked")
+    @ServiceConstructor
+    public IngredientListService(ResourceResolverService resources) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
+            InputStream ingredientsStream = resources.getResource("ingredients.yml");
+            this.ingredients = objectMapper.readValue(ingredientsStream,
+                    objectMapper.getTypeFactory().constructCollectionType(List.class, Ingredient.class));
+        } catch (IOException e) {
+            this.ingredients = new ArrayList<>();
+        }
     }
-  }
 
-  /**
-   * Gets a read-only view on all the ingredients loaded.
-   * @return A read-only view on all the ingredients loaded.
-   */
-  public List<Ingredient> getIngredients() {
-    return Collections.unmodifiableList(ingredients);
-  }
+    /**
+     * Gets a read-only view on all the ingredients loaded.
+     *
+     * @return A read-only view on all the ingredients loaded.
+     */
+    public List<Ingredient> getIngredients() {
+        return Collections.unmodifiableList(ingredients);
+    }
 
-  /**
-   * Gets an ingredient with the given name.
-   * @param name The name of the ingredient.
-   * @return The ingredient with the given name, or null if it does not exist.
-   */
-  // TODO: Optimize this with a HashMap?
-  public Ingredient getIngredient(String name) {
-    return ingredients.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
-  }
+    /**
+     * Gets an ingredient with the given name.
+     *
+     * @param name The name of the ingredient.
+     * @return The ingredient with the given name, or null if it does not exist.
+     */
+    // TODO: Optimize this with a HashMap?
+    public Ingredient getIngredient(String name) {
+        return ingredients.stream().filter(i -> i.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+    }
 }

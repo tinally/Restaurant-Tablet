@@ -11,31 +11,33 @@ import java.util.ArrayList;
  */
 public class Bill {
 
-  /**
-   * The order items that are outstanding (to be paid for) with this bill.
-   */
-  private ArrayList<Order> orders;
+    /**
+     * The order items that are outstanding (to be paid for) with this bill.
+     */
+    private ArrayList<Order> orders;
 
-  /**
-   * Constructs a new Bill for the specified table.
-   *
-   * @param table the table to which this bill belongs.
-   */
-  public Bill() {
-    orders = new ArrayList<>();
-  }
+    /**
+     * Constructs a new Bill.
+     */
+    public Bill() {
+        orders = new ArrayList<>();
+    }
 
-  /**
-   * Returns the order items associated with this bill.
-   *
-   * @return the order items associated with this bill.
-   */
-  public ArrayList<Order> getOrders() {
-    return orders;
-  }
+    /**
+     * Returns the order items associated with this bill.
+     *
+     * @return the order items associated with this bill.
+     */
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
 
-  public void addOrder(Order order) {
-    orders.add(order);
-  }
-
+    /**
+     * Adds a new Order to the bill.
+     *
+     * @param order the Order to be added to the bill
+     */
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 }

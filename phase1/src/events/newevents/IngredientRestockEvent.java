@@ -3,25 +3,49 @@ package events.newevents;
 import events.EventArgs;
 import kitchen.Ingredient;
 
+/**
+ * IngredientRestockEvent represents the event for restocking the ingredient.
+ */
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
 
-  private Ingredient ingredient;
+    /**
+     * The ingredient to be reordered.
+     */
+    private Ingredient ingredient;
 
-  public IngredientRestockEvent(Ingredient ingredient, int restockedAmount) {
-    super(IngredientRestockEvent.class);
-    this.ingredient = ingredient;
-  }
+    /**
+     * Class constructor specifying the ingredient and restockedAmount.
+     *
+     * @param ingredient      the ingredient to be restocked
+     * @param restockedAmount the amount for restock
+     */
+    public IngredientRestockEvent(Ingredient ingredient, int restockedAmount) {
+        super(IngredientRestockEvent.class);
+        this.ingredient = ingredient;
+    }
 
-  public IngredientRestockEvent() {
-    super(IngredientRestockEvent.class);
-  }
+    /**
+     * Default constructor for IngredientRestockEvent.
+     */
+    public IngredientRestockEvent() {
+        super(IngredientRestockEvent.class);
+    }
 
-  public Ingredient getIngredient() {
-    return ingredient;
-  }
+    /**
+     * Returns the ingredient to be restocked.
+     *
+     * @return the ingredient to be restocked
+     */
+    public Ingredient getIngredient() {
+        return ingredient;
+    }
 
-  public void setIngredient(Ingredient ingredient) {
-    this.ingredient = ingredient;
-  }
-
+    /**
+     * Sets the ingredient to be restocked.
+     *
+     * @param ingredient the ingredient to be restocked
+     */
+    public void setIngredient(Ingredient ingredient) {
+        this.ingredient = ingredient;
+    }
 }

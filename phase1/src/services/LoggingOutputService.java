@@ -11,50 +11,64 @@ import services.framework.ServiceConstructor;
  */
 public class LoggingOutputService extends Service {
 
-  /**
-   * Service Constructor to instantiate a {@link LoggingOutputService} from
-   *  {@link services.framework.ServiceContainer}.
-   * @param emitter {@link EventEmitter} dependency intended
-   *        to be resolved by the {@link services.framework.ServiceContainer}
-   */
-  @ServiceConstructor
-  public LoggingOutputService(EventEmitter emitter, PaymentService paymentService) {
+    /**
+     * Service Constructor to instantiate a {@link LoggingOutputService} from
+     * {@link services.framework.ServiceContainer}.
+     *
+     * @param emitter {@link EventEmitter} dependency intended
+     *                to be resolved by the {@link services.framework.ServiceContainer}
+     */
+    @ServiceConstructor
+    public LoggingOutputService(EventEmitter emitter, PaymentService paymentService) {
 
-    emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
-    emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);
-    emitter.registerEventHandler(this::printEvent, IngredientReorderEvent.class);
-    emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
-    // Print the bill
-    // todo: do this properly with the table?
+        emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
+        emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);
+        emitter.registerEventHandler(this::printEvent, IngredientReorderEvent.class);
+        emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
+        // Print the bill
+        // todo: do this properly with the table?
 
-  }
+    }
 
-  private void printEvent(IngredientReorderEvent e) {
-    logger.info(e.getIngredient() + " needs to reorder!");
-  }
+    /**
+     * Prints out e.
+     *
+     * @param e the IngredientReorderEvent to be printed
+     */
+    private void printEvent(IngredientReorderEvent e) {
+        logger.info(e.getIngredient() + " needs to reorder!");
+    }
 
-  private void printEvent(IngredientRestockEvent e) {
-    logger.info(e.getIngredient() + " was restocked by " + e.getIngredient().getReorderAmount());
-  }
-  /**
-   * Print output when an order is created
-   * @param e The event that occurred.
-   */
-  private void printEvent (OrderCreatedEvent e) {
-    Order order = e.getNewOrder();
-    logger.info("Order # "
-        + order.getOrderNumber()
-        + " was CREATED by "
-        + order.getServerName()
-        + " for a "
-        + order.getMenuItem().getName());
-  }
+    /**
+     * Prints out e.
+     *
+     * @param e the IngredientRestockEvent to be printed
+     */
+    private void printEvent(IngredientRestockEvent e) {
+        logger.info(e.getIngredient() + " was restocked by " + e.getIngredient().getReorderAmount());
+    }
 
-  /**
-   * Print output when an order is changed.
-   * @param e The event that occurred.
-   */
-  private void printEvent (OrderChangedEvent e) {
-    logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
-  }
+    /**
+     * Print output when an order is created
+     *
+     * @param e The event that occurred.
+     */
+    private void printEvent(OrderCreatedEvent e) {
+        Order order = e.getNewOrder();
+        logger.info("Order # "
+                + order.getOrderNumber()
+                + " was CREATED by "
+                + order.getServerName()
+                + " for a "
+                + order.getMenuItem().getName());
+    }
+
+    /**
+     * Print output when an order is changed.
+     *
+     * @param e The event that occurred.
+     */
+    private void printEvent(OrderChangedEvent e) {
+        logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
+    }
 }

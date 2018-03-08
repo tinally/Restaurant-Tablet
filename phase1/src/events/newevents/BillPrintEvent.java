@@ -2,20 +2,39 @@ package events.newevents;
 
 import events.EventArgs;
 
+/**
+ * BillPrintEvent represents the event for printing the bill.
+ */
 public class BillPrintEvent extends EventArgs<BillPrintEvent> {
 
-  private Integer tableNumber;
+    /**
+     * Table number of the bill to be printed.
+     */
+    private Integer tableNumber;
 
-  public BillPrintEvent() {
-    super(BillPrintEvent.class);
-  }
+    /**
+     * Default constructor for BillPrintEvent.
+     */
+    public BillPrintEvent() {
+        super(BillPrintEvent.class);
+    }
 
-  public Integer getTableNumber() {
-    return tableNumber;
-  }
+    /**
+     * Returns the table number of the bill to be printed.
+     *
+     * @return the table number of the bill to be printed
+     */
+    public Integer getTableNumber() {
+        return tableNumber;
+    }
 
-  public void setTableNumber(Integer tableNumber) {
-    this.tableNumber = tableNumber;
-  }
+    /**
+     * Sets the table number of this bill.
+     *
+     * @param tableNumber the table number to be set
+     */
+    public void setTableNumber(Integer tableNumber) {
+        this.tableNumber = tableNumber;
+    }
 }
 
