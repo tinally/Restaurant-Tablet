@@ -17,6 +17,9 @@ public class LoggingOutputService extends Service {
    */
   private InventoryFactoryService inventory;
 
+  /**
+   * The payment service to be used in printing bills.
+   */
   private PaymentService paymentService;
 
   /**
@@ -81,6 +84,11 @@ public class LoggingOutputService extends Service {
     logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
   }
 
+  /**
+   * Prints a bill with a specified bill print event.
+   *
+   * @param e the bill print event that specifies which bill should be printed.
+   */
   private void printBill(BillPrintEvent e) {
     logger.info(paymentService.printBill(e.getTableNumber()));
   }

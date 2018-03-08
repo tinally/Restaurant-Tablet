@@ -942,3 +942,24 @@ INFO: Tomato: 20
 
 Mar 08, 2018 4:42:47 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
 INFO: Tomato was restocked by 20
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was CREATED by Server Bob for a Toast Sandwich
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was PUSHED by Server Bob
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was SEEN by Chef Joe
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was FILLED by Chef Joe
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was DELIVERED by Server Bob
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printBill
+INFO: Bill for int #15
+	Toast Sandwich:	$120.0
+Total:	$120.0
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Tomato needs to reorder!
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.RequestEmailWriterService write
+INFO: Tomato: 20
+
+Mar 08, 2018 4:46:46 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Tomato was restocked by 20
