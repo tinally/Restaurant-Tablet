@@ -7,6 +7,7 @@ import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
 
 import java.util.HashMap;
+import java.util.StringJoiner;
 
 /**
  * Manages all active tables (deemed "registered") and keeps track of bills
@@ -15,7 +16,6 @@ import java.util.HashMap;
  * Provides bill modification and printing functionality.
  */
 public class PaymentService extends Service {
-
   /**
    * A mapping of orders by tables.
    */
@@ -79,26 +79,21 @@ public class PaymentService extends Service {
    */
   public String printBill(Table table) {
     double total = 0.0;
-    StringBuilder accumulator = new StringBuilder();
+    StringJoiner accumulator = new StringJoiner(System.lineSeparator());
 
     // Bill for Table #TableNumber
-    accumulator.append("Bill for Table #");
-    accumulator.append(table.getTableNumber());
-    accumulator.append(System.lineSeparator());
+    accumulator.add("Bill for Table #" + table.getTableNumber());
 
     // Item: Price
     for (Order order : billsByTable.get(table).getOrders()) {
-      accumulator.append(printOrder(order));
-      accumulator.append(System.lineSeparator());
+      accumulator.add(printOrder(order));
 
       // Add price to the total
       total += order.getMenuItem().getPrice();
     }
 
     // Total: Price
-    accumulator.append("\tTotal");
-    accumulator.append(":\t$");
-    accumulator.append(total);
+    accumulator.add("Total:\t$" + total);
 
     return accumulator.toString();
   }
@@ -117,9 +112,7 @@ public class PaymentService extends Service {
     accumulator += order.getMenuItem().getName();
     accumulator += ":\t$";
     accumulator += order.getMenuItem().getPrice();
-    accumulator += System.lineSeparator();
 
     return accumulator;
   }
-
 }

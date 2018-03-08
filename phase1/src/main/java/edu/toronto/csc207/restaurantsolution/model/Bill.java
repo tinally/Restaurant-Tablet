@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * A collection of outstanding orders that are to be paid.
  */
 public class Bill {
-
   /**
    * The order items that are outstanding (to be paid for) with this bill.
    */
@@ -36,5 +35,4 @@ public class Bill {
   public void addOrder(Order order) {
     orders.add(order);
   }
-
 }
