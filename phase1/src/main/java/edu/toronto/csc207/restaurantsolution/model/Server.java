@@ -48,7 +48,8 @@ public class Server extends Service {
   private PaymentService paymentService;
 
   /**
-   * Class constructor specifying the emitter, printer, name, table, inventory, and manager.
+   * Class constructor specifying the emitter, printer, name, table, inventory,
+   * and manager.
    *
    * @param emitter        main event handler
    * @param name           name of the Server
@@ -58,16 +59,20 @@ public class Server extends Service {
    * @param paymentService manager of the payment
    */
   @ServiceConstructor
-  public Server(EventEmitter emitter, String name, int tableNumber, Inventory inventory,
-                OrderManagerService orderManager, PaymentService paymentService) {
+  public Server(EventEmitter emitter, String name, int tableNumber,
+                Inventory inventory,
+                OrderManagerService orderManager,
+                PaymentService paymentService) {
     this.emitter = emitter;
     this.name = name;
     this.tableNumber = tableNumber;
     this.inventory = inventory;
     this.orderManager = orderManager;
     this.paymentService = paymentService;
-    emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
-    emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
+    emitter.registerEventHandler(this::updateIngredient,
+        OrderChangedEvent.class);
+    emitter.registerEventHandler(this::rejectOrderItem,
+        OrderChangedEvent.class);
     paymentService.registerTable(tableNumber);
     serve();
   }
@@ -108,7 +113,8 @@ public class Server extends Service {
    */
   public void addOrder(OrderChangedEvent event) {
     if (event.getNewStatus() == OrderStatus.CREATED) {
-      orderManager.createOrder(tableNumber, name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
+      orderManager.createOrder(tableNumber, name,
+          orderManager.getOrder(event.getOrderNumber()).getMenuItem());
     }
 
   }
@@ -117,11 +123,10 @@ public class Server extends Service {
    * Serves an order to the table.
    */
   private void serve() {
-    // Mark as Billable
-    // TODO: add the price onto the bill & the possibility of returning the order
     emitter.registerEventHandler(e -> {
       if (e.getNewStatus() == OrderStatus.DELIVERED) {
-        paymentService.registerOrder(tableNumber, orderManager.getOrder(e.getOrderNumber()));
+        paymentService.registerOrder(tableNumber,
+            orderManager.getOrder(e.getOrderNumber()));
       }
     }, OrderChangedEvent.class);
   }
