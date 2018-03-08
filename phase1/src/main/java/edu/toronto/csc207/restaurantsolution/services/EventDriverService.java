@@ -47,7 +47,7 @@ public class EventDriverService extends Service implements Runnable {
     // Read all the events from file.
     ObjectMapper mapper = deserializer.getMapper();
     try {
-      this.events = mapper.readValue(resources.getResource("events.yml"),
+      this.events = mapper.readValue(resources.getResource("events.txt"),
           mapper.getTypeFactory().constructCollectionType(List.class, EventArgs.class));
     } catch (IOException e) {
         e.printStackTrace();
