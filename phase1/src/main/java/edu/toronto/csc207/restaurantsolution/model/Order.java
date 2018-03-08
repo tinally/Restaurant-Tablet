@@ -140,10 +140,8 @@ public class Order {
     this.addIngredients = add;
     Iterator it = add.entrySet().iterator();
 
-    while (it.hasNext()) {
-      HashMap.Entry pair = (HashMap.Entry) it.next();
-      double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
-      menuItem.increasePrice(extraPrice);
+    for (HashMap.Entry<Ingredient, Integer> pair : add.entrySet()) {
+      double extraPrice = pair.getValue() * pair.getKey().getPricing();
     }
   }
 

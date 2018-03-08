@@ -514,3 +514,29 @@ Mar 08, 2018 12:40:13 PM edu.toronto.csc207.restaurantsolution.services.LoggingO
 INFO: Tomato was restocked by 20
 Mar 08, 2018 12:40:13 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
 INFO: {( Toast, 24 ), ( Tomato, 30 ), ( Bread, 13 ), ( Lettuce, 18 ), ( Bacon, 20 )}
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was CREATED by Server Bob for a Toast Sandwich
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was PUSHED by Server Bob
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was SEEN by Chef Joe
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was FILLED by Chef Joe
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Order # 1 was DELIVERED by Server Bob
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.model.Server lambda$checkout$1
+INFO: Bill for Table #15
+	Toast Sandwich:	$120.0
+
+	Total:	$120.0
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.RequestEmailWriterService write
+INFO: Tomato: 20
+
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Tomato needs to reorder!
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: {( Toast, 24 ), ( Tomato, 10 ), ( Bread, 13 ), ( Lettuce, 18 ), ( Bacon, 20 )}
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: Tomato was restocked by 20
+Mar 08, 2018 12:43:30 PM edu.toronto.csc207.restaurantsolution.services.LoggingOutputService printEvent
+INFO: {( Toast, 24 ), ( Tomato, 30 ), ( Bread, 13 ), ( Lettuce, 18 ), ( Bacon, 20 )}
