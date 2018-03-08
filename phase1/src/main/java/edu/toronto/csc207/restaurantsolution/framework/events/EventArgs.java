@@ -20,20 +20,18 @@ public abstract class EventArgs<T extends EventArgs> {
    */
   @JsonIgnore private transient Class<T> eventClass;
 
+  /**
+   * Class constructor for an EventArg.
+   * @param eventClass The class of the event
+   */
   public EventArgs(Class<T> eventClass) {
     this.eventClass = eventClass;
   }
 
-  @JsonIgnore private transient boolean isCancelled = false;
-
-  public final boolean isCancelled() {
-    return isCancelled;
-  }
-
-  public final void setCancelled(boolean cancelled) {
-    isCancelled = cancelled;
-  }
-
+  /**
+   * Gets the class of the event
+   * @return The class of the event.
+   */
   public Class<T> getEventClass() {
     return eventClass;
   }

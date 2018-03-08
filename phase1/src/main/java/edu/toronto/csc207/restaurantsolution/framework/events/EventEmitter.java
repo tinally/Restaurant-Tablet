@@ -8,10 +8,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The EventEmitter is responsible for broadcasting events to registered event handlers.
+ */
 public class EventEmitter extends Service {
 
+  /**
+   * A map to store event handlers.
+   */
   private Map<Class<? extends EventArgs>, List<RestaurantEventHandler<? extends EventArgs>>> eventHandlers;
 
+  /**
+   * Class constructor for an EventEmitter.
+   */
   @ServiceConstructor
   public EventEmitter() {
     this.eventHandlers = new HashMap<>();
@@ -56,7 +65,7 @@ public class EventEmitter extends Service {
         = this.eventHandlers.get(eventArgs.getEventClass());
     if (eventHandlers == null) return;
     for (RestaurantEventHandler<?> eventHandler : eventHandlers) {
-      if (!eventArgs.isCancelled() && eventHandler != null) {
+      if (eventHandler != null) {
         ((RestaurantEventHandler<T>) eventHandler).handle(eventArgs);
       }
     }

@@ -9,6 +9,12 @@ import edu.toronto.csc207.restaurantsolution.services.IngredientListService;
 
 import java.io.IOException;
 
+/**
+ * Jackson deserializer for representing previously loaded {@link Ingredient}
+ * instances as strings in configuration files.
+ *
+ * Mostly used when deserializing events.txt
+ */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
 
   private IngredientListService ingredientListService;

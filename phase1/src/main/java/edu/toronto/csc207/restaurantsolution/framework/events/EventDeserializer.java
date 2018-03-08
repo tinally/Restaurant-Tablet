@@ -11,6 +11,10 @@ import java.io.IOException;
 
 import static java.lang.Class.forName;
 
+/**
+ * Jackson deserializer to deserialize arbitrary {@link EventArgs} from
+ * events.txt
+ */
 public class EventDeserializer extends StdDeserializer<EventArgs> {
 
   private YamlDeserializerService yamlDeserializerService;
