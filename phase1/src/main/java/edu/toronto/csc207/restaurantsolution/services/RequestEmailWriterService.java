@@ -47,8 +47,8 @@ public class RequestEmailWriterService extends Service {
    * Given a text and a path of the file to be written, create a file
    * on the path and add the given text to it.
    *
-   * @param text text to be written on the text file.
-   * @param path the path in which the file is stored
+   * @param text   text to be written on the text file.
+   * @param path   the path in which the file is stored
    * @param append boolean to indicate whether you want to append to the file or overwrite it.
    */
   private void writeToFile(String text, String path, boolean append) throws IOException {

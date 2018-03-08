@@ -17,9 +17,13 @@ import java.util.List;
  * fires each event in order of declaration.
  */
 public class EventDriverService extends Service implements Runnable {
-  /** The {@link EventEmitter} to emit the deserialized events. */
+  /**
+   * The {@link EventEmitter} to emit the deserialized events.
+   */
   private final EventEmitter emitter;
-  /** A list of loaded events. */
+  /**
+   * A list of loaded events.
+   */
   private List<EventArgs> events;
 
   /**
@@ -50,7 +54,9 @@ public class EventDriverService extends Service implements Runnable {
     }
   }
 
-  /** Execute the events that were loaded from events.txt in order. */
+  /**
+   * Execute the events that were loaded from events.txt in order.
+   */
   public void run() {
     for (EventArgs e : events) {
       emitter.onEvent(e);

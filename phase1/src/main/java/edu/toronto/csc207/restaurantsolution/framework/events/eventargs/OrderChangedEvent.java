@@ -7,14 +7,22 @@ import edu.toronto.csc207.restaurantsolution.model.OrderStatus;
  * OrderChangedEvent represents the event for changing the status of the order.
  */
 public class OrderChangedEvent extends EventArgs<OrderChangedEvent> {
-  /** The order number of the Order. */
+  /**
+   * The order number of the Order.
+   */
   private int orderNumber;
-  /** The new status of the Order. */
+  /**
+   * The new status of the Order.
+   */
   private OrderStatus newStatus;
-  /** The sender of this OrderChangedEvent. */
+  /**
+   * The sender of this OrderChangedEvent.
+   */
   private String sender;
 
-  /** Default constructor for OrderChangedEvent. */
+  /**
+   * Default constructor for OrderChangedEvent.
+   */
   public OrderChangedEvent() {
     super(OrderChangedEvent.class);
     this.setSender("System");

@@ -16,9 +16,13 @@ import java.util.logging.SimpleFormatter;
  * A {@link Service} that outputs the results of events to the console and event.txt
  */
 public class LoggingOutputService extends Service {
-  /** The payment service to be used in printing bills. */
+  /**
+   * The payment service to be used in printing bills.
+   */
   private PaymentService paymentService;
-  /** The logger used to print to console/file. */
+  /**
+   * The logger used to print to console/file.
+   */
   private Logger logger;
 
   /**

@@ -7,7 +7,9 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  * IngredientRestockEvent represents the event for restocking the ingredient.
  */
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
-  /** The ingredient to be reordered. */
+  /**
+   * The ingredient to be reordered.
+   */
   private Ingredient ingredient;
 
   /**
@@ -22,7 +24,9 @@ public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
     this.ingredient = ingredient;
   }
 
-  /** Default constructor for IngredientRestockEvent. */
+  /**
+   * Default constructor for IngredientRestockEvent.
+   */
   public IngredientRestockEvent() {
     super(IngredientRestockEvent.class);
   }

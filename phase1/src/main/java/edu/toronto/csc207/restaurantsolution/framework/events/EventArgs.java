@@ -11,10 +11,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public abstract class EventArgs<T extends EventArgs> {
 
-  /** Required to serialize empty events. */
+  /**
+   * Required to serialize empty events.
+   */
   private boolean emptyEvent;
 
-  /** The class of the event. */
+  /**
+   * The class of the event.
+   */
   @JsonIgnore
   private transient Class<T> eventClass;
 

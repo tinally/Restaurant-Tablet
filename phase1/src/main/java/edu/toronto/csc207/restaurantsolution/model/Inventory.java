@@ -5,6 +5,7 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
 import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.IngredientReorderEvent;
 import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.IngredientRestockEvent;
 import edu.toronto.csc207.restaurantsolution.services.RequestEmailWriterService;
+
 import java.util.Map;
 
 /**

@@ -7,13 +7,21 @@ import java.util.Map;
  * This class is serializable to JSON or YAML.
  */
 public class MenuItem {
-  /** The name of the menuItem to be shown on the menu. */
+  /**
+   * The name of the menuItem to be shown on the menu.
+   */
   private String name;
-  /** A map storing how much Ingredient is needed. */
+  /**
+   * A map storing how much Ingredient is needed.
+   */
   private Map<Ingredient, Integer> ingredients;
-  /** The price of the item. */
+  /**
+   * The price of the item.
+   */
   private double price;
-  /** A discount to be applied. */
+  /**
+   * A discount to be applied.
+   */
   private double discount;
 
   /**

@@ -7,10 +7,14 @@ import edu.toronto.csc207.restaurantsolution.model.Order;
  * OrderCreatedEvent represents the event for creating the order.
  */
 public class OrderCreatedEvent extends EventArgs<OrderCreatedEvent> {
-  /** The new Order to be created. */
+  /**
+   * The new Order to be created.
+   */
   private Order newOrder;
 
-  /** Default constructor for OrderCreatedEvent. */
+  /**
+   * Default constructor for OrderCreatedEvent.
+   */
   public OrderCreatedEvent() {
     super(OrderCreatedEvent.class);
   }

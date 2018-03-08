@@ -17,10 +17,14 @@ import java.util.stream.Collectors;
  * A {@link Service} to manage the creation and retention of {@link Order} instances.
  */
 public class OrderManagerService extends Service {
-  /** The {@link EventEmitter} that will emit events to respond to. */
+  /**
+   * The {@link EventEmitter} that will emit events to respond to.
+   */
   private final EventEmitter emitter;
 
-  /** The Map that keeps track of orders. */
+  /**
+   * The Map that keeps track of orders.
+   */
   private Map<Integer, Order> orders;
 
   /**

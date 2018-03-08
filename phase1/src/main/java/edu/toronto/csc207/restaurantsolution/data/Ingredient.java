@@ -9,15 +9,25 @@ import java.io.Serializable;
  * This class is serializable to JSON or YAML.
  */
 public class Ingredient implements Serializable {
-  /** The name of the ingredient. */
+  /**
+   * The name of the ingredient.
+   */
   private String name;
-  /** The cost of the ingredient in dollars. */
+  /**
+   * The cost of the ingredient in dollars.
+   */
   private Double cost;
-  /** The price of each unit of the ingredient. */
+  /**
+   * The price of each unit of the ingredient.
+   */
   private Double pricing;
-  /** The threshold at which to reorder this ingredient. */
+  /**
+   * The threshold at which to reorder this ingredient.
+   */
   private Integer threshold;
-  /** Amount to be reordered when stock is low. It is 20 by default. */
+  /**
+   * Amount to be reordered when stock is low. It is 20 by default.
+   */
   private int reorderAmount = 20;
 
   /**

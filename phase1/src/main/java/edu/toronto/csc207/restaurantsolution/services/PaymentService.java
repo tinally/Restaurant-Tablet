@@ -15,10 +15,14 @@ import java.util.StringJoiner;
  * Provides bill modification and printing functionality.
  */
 public class PaymentService extends Service {
-  /** A mapping of orders by table numbers. */
+  /**
+   * A mapping of orders by table numbers.
+   */
   private HashMap<Integer, Bill> billsByTableNumber;
 
-  /** Constructs a new payment service. */
+  /**
+   * Constructs a new payment service.
+   */
   @ServiceConstructor
   public PaymentService() {
     billsByTableNumber = new HashMap<>();
