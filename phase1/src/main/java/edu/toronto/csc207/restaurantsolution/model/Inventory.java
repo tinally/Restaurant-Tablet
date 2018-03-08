@@ -5,8 +5,6 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventEmitter;
 import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.IngredientReorderEvent;
 import edu.toronto.csc207.restaurantsolution.framework.events.eventargs.IngredientRestockEvent;
 import edu.toronto.csc207.restaurantsolution.services.RequestEmailWriterService;
-
-import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -22,11 +20,6 @@ public class Inventory {
   private EventEmitter emitter;
 
   /**
-   * Ingredients to reorder
-   */
-  private ArrayList<Ingredient> ingToReorder;
-
-  /**
    * Class constructor of an Inventory.
    */
   public Inventory(EventEmitter emitter,
@@ -34,7 +27,6 @@ public class Inventory {
     this.emitter = emitter;
     this.request = request;
     this.inventory = initialInventory;
-    this.ingToReorder = new ArrayList<>();
     emitter.registerEventHandler(e -> this.addToInventory(e.getIngredient(),
         e.getIngredient().getReorderAmount()), IngredientRestockEvent.class);
     emitter.registerEventHandler(e -> this.reOrder(e.getIngredient()), IngredientReorderEvent.class);
@@ -61,8 +53,6 @@ public class Inventory {
   public void addToInventory(Ingredient ingredient, int num) {
     int leftover = inventory.get(ingredient); //TODO: num could be changed to ingredient.getReorderAmount()
     inventory.put(ingredient, leftover + num);
-    ingToReorder.remove(ingredient);
-    //this.request.write(ingToReorder);
   }
 
   /**
@@ -75,11 +65,9 @@ public class Inventory {
     int leftover = inventory.get(ingredient);
     if (leftover > num) {
       inventory.put(ingredient, leftover - num);
+      reOrder(ingredient);
     }
-    //reOrder(ingredient);
   }
-
-  //TODO: This does not add the ingredient IF IT IS BELOW THRESHOLD
 
   /**
    * Add the ingredient to a request file if the ingredient is below the threshold.
