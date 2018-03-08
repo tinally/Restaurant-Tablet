@@ -23,9 +23,9 @@ public class Server extends Service {
     private String name;
 
     /**
-     * The table the Server is responsible for.
+     * The table number of the table that the Server is responsible for.
      */
-    private Table table;
+    private int tableNumber;
 
     /**
      * Handles the events.
@@ -52,23 +52,23 @@ public class Server extends Service {
      *
      * @param emitter        main event handler
      * @param name           name of the Server
-     * @param table          the table number the Server is responsible for
+     * @param tableNumber          the table number the Server is responsible for
      * @param inventory      inventory of all ingredients
      * @param orderManager   manager of the orders
      * @param paymentService manager of the payment
      */
     @ServiceConstructor
-    public Server(EventEmitter emitter, String name, Table table, Inventory inventory,
+    public Server(EventEmitter emitter, String name, int tableNumber, Inventory inventory,
                   OrderManagerService orderManager, PaymentService paymentService) {
         this.emitter = emitter;
         this.name = name;
-        this.table = table;
+        this.tableNumber = tableNumber;
         this.inventory = inventory;
         this.orderManager = orderManager;
         this.paymentService = paymentService;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
-        paymentService.registerTable(table);
+        paymentService.registerTable(tableNumber);
         serve();
         checkout();
     }
@@ -109,7 +109,7 @@ public class Server extends Service {
      */
     public void addOrder(OrderChangedEvent event) {
         if (event.getNewStatus() == OrderStatus.CREATED) {
-            orderManager.createOrder(table.getTableNumber(), name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
+            orderManager.createOrder(tableNumber, name, orderManager.getOrder(event.getOrderNumber()).getMenuItem());
         }
 
     }
@@ -122,7 +122,7 @@ public class Server extends Service {
         // TODO: add the price onto the bill & the possibility of returning the order
         emitter.registerEventHandler(e -> {
             if (e.getNewStatus() == OrderStatus.DELIVERED) {
-                paymentService.registerOrder(table, orderManager.getOrder(e.getOrderNumber()));
+                paymentService.registerOrder(tableNumber, orderManager.getOrder(e.getOrderNumber()));
             }
         }, OrderChangedEvent.class);
     }
@@ -134,8 +134,8 @@ public class Server extends Service {
         // Print the bill
         // todo: do this properly with the table?
         emitter.registerEventHandler(e -> {
-            if (e.getTableNumber() == this.table.getTableNumber()) {
-                logger.info(paymentService.printBill(table));
+            if (e.getTableNumber() == this.tableNumber) {
+                logger.info(paymentService.printBill(tableNumber));
             }
         }, BillPrintEvent.class);
     }
