@@ -50,9 +50,7 @@ public class EventDriverService extends Service implements Runnable {
     }
   }
 
-  /**
-   * Execute the events that were loaded from events.txt in order.
-   */
+  /** Execute the events that were loaded from events.txt in order. */
   public void run() {
     for (EventArgs e : events) {
       emitter.onEvent(e);
