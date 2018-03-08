@@ -12,7 +12,6 @@ import java.util.HashMap;
  * This class is serializable to JSON or YAML.
  */
 public class Order {
-
   @JsonProperty("serverName")
   private String serverName;
   /**

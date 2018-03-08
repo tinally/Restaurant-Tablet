@@ -16,7 +16,6 @@ import java.io.IOException;
  * Used when outputting configuration files to console or disk.
  */
 public class IngredientKeySerializer extends StdSerializer<Ingredient> {
-
   protected IngredientKeySerializer(Class<Ingredient> t) {
     super(t);
   }

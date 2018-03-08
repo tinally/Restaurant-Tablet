@@ -19,7 +19,6 @@ import java.io.IOException;
  * Mostly used when deserializing events.txt
  */
 public class MenuItemDeserializer extends StdDeserializer<MenuItem> {
-
   private MenuItemsListService loadedMenuItems;
 
   MenuItemDeserializer(MenuItemsListService loadedMenuItems) {

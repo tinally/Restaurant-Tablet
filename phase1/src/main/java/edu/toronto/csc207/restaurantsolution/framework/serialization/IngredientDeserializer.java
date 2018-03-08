@@ -19,7 +19,6 @@ import java.io.IOException;
  * Mostly used when deserializing events.txt
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
-
   private IngredientListService ingredientListService;
 
   IngredientDeserializer(IngredientListService ingredientList) {

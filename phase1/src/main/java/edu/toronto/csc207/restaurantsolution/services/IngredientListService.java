@@ -18,7 +18,6 @@ import java.util.List;
  * consist of the menu of the restaurant.
  */
 public class IngredientListService extends Service {
-
   /**
    * The list of inigredients to store.
    */

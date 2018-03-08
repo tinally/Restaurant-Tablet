@@ -12,7 +12,6 @@ import java.io.PrintWriter;
  * RequestEmailWriterService keeps track of requests.txt.
  */
 public class RequestEmailWriterService extends Service {
-
   @ServiceConstructor
   public RequestEmailWriterService() {
     try {

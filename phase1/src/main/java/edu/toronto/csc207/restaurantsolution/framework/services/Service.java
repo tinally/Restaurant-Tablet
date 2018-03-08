@@ -10,7 +10,6 @@ import java.util.logging.SimpleFormatter;
  * must extend this class.
  */
 public abstract class Service {
-
   // Set up the "Kitchen" logger.
   static {
     Logger logger = Logger.getLogger("Kitchen");

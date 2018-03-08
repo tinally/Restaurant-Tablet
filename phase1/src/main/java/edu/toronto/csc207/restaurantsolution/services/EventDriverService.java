@@ -17,7 +17,6 @@ import java.util.List;
  * fires each event in order of declaration.
  */
 public class EventDriverService extends Service implements Runnable {
-
   /**
    * The {@link EventEmitter} to emit the deserialized
    * events via.

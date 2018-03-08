@@ -7,7 +7,6 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  * IngredientRestockEvent represents the event for restocking the ingredient.
  */
 public class IngredientRestockEvent extends EventArgs<IngredientRestockEvent> {
-
   /**
    * The ingredient to be reordered.
    */

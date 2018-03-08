@@ -7,7 +7,6 @@ import edu.toronto.csc207.restaurantsolution.model.OrderStatus;
  * OrderChangedEvent represents the event for changing the status of the order.
  */
 public class OrderChangedEvent extends EventArgs<OrderChangedEvent> {
-
   /**
    * The order number of the Order.
    */

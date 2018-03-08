@@ -15,8 +15,6 @@ import java.util.StringJoiner;
  * Provides bill modification and printing functionality.
  */
 public class PaymentService extends Service {
-
-
   /**
    * A mapping of orders by table numbers.
    */

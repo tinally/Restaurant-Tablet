@@ -18,7 +18,6 @@ import java.util.*;
  * consist of the menu of the restaurant.
  */
 public class MenuItemsListService extends Service {
-
   /**
    * The list of menu items to store.
    */

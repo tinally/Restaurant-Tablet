@@ -11,12 +11,6 @@ import edu.toronto.csc207.restaurantsolution.model.Order;
  * A {@link Service} that outputs the results of events to the console and event.txt
  */
 public class LoggingOutputService extends Service {
-
-  /**
-   * The inventory for the services.
-   */
-  private InventoryFactoryService inventory;
-
   /**
    * The payment service to be used in printing bills.
    */
@@ -91,14 +85,5 @@ public class LoggingOutputService extends Service {
    */
   private void printBill(BillPrintEvent e) {
     logger.info(paymentService.printBill(e.getTableNumber()));
-  }
-
-  /**
-   * Print output upon an InventoryPrintEvent.
-   *
-   * @param e event that occurred.
-   */
-  private void printEvent(InventoryPrintEvent e) {
-    logger.info(this.inventory.getInventory().toString());
   }
 }

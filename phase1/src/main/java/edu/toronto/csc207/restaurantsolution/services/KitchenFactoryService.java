@@ -11,7 +11,6 @@ import edu.toronto.csc207.restaurantsolution.model.Server;
  * {@link Chef}, injecting its required dependencies.
  */
 public class KitchenFactoryService extends Service {
-
   private final EventEmitter eventEmitter;
   private final InventoryFactoryService inventoryFactoryService;
   private final OrderManagerService orderManagerService;

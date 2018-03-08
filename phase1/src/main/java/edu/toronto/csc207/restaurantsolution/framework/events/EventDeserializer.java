@@ -14,7 +14,6 @@ import java.io.IOException;
  * events.txt
  */
 public class EventDeserializer extends StdDeserializer<EventArgs> {
-
   private YamlDeserializerService yamlDeserializerService;
 
   public EventDeserializer(YamlDeserializerService yamlDeserializerService) {

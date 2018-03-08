@@ -20,7 +20,6 @@ import java.util.stream.Stream;
  * singletons within the context.
  */
 public final class ServiceContainer {
-
   /**
    * The instances of each {@link Service}
    */

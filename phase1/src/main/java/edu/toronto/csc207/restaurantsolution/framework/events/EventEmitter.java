@@ -12,7 +12,6 @@ import java.util.Map;
  * The EventEmitter is responsible for broadcasting events to registered event handlers.
  */
 public class EventEmitter extends Service {
-
   /**
    * A map to store event handlers.
    */

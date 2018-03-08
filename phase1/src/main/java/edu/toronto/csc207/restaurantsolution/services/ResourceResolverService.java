@@ -10,7 +10,6 @@ import java.io.InputStream;
  * A {@link Service} to resolve file resources in the resource folder.
  */
 public final class ResourceResolverService extends Service {
-
   /**
    * Service Constructor to instantiate a {@link ResourceResolverService} from
    * {@link ServiceContainer}.

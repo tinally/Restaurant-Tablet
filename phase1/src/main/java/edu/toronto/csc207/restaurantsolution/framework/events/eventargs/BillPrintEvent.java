@@ -6,7 +6,6 @@ import edu.toronto.csc207.restaurantsolution.framework.events.EventArgs;
  * BillPrintEvent represents the event for printing the bill.
  */
 public class BillPrintEvent extends EventArgs<BillPrintEvent> {
-
   /**
    * The table number of the bill to print.
    */

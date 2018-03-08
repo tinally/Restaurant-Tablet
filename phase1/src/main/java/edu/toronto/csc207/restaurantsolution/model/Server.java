@@ -16,7 +16,6 @@ import java.util.Map;
  * Server represents the server of this restaurant.
  */
 public class Server extends Service {
-
   /**
    * Name of the Server.
    */

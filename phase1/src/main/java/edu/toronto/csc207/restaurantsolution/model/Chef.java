@@ -11,7 +11,6 @@ import java.util.Map;
  * Chef represents the cook of the restaurant.
  */
 public class Chef {
-
   /**
    * Name the of the Chef.
    */
