@@ -4,7 +4,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.toronto.csc207.restaurantsolution.data.Ingredient;
 import edu.toronto.csc207.restaurantsolution.data.MenuItem;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Order represents the order from each table in this restaurant.
@@ -12,87 +14,88 @@ import java.util.*;
  */
 public class Order {
 
-    @JsonProperty("serverName")
-    private String serverName;
-    /**
-     * The table number of the table that sends this Order.
-     */
-    @JsonProperty("tableNumber")
-    private int tableNumber;
+  @JsonProperty("serverName")
+  private String serverName;
+  /**
+   * The table number of the table that sends this Order.
+   */
+  @JsonProperty("tableNumber")
+  private int tableNumber;
 
-    /**
-     * The
-     */
-    @JsonProperty("orderNumber")
-    private int orderNumber;
+  /**
+   * The
+   */
+  @JsonProperty("orderNumber")
+  private int orderNumber;
 
-    /**
-     * The MenuItem the customer ordered.
-     */
-    @JsonProperty("menuItem")
-    private MenuItem menuItem;
-    /**
-     * A HashMap showing how much each Ingredient should be added.
-     */
-    @JsonProperty("addIngredients")
-    private HashMap<Ingredient, Integer> addIngredients;
-    /**
-     * An ArrayList showing the unwanted Ingredients from the MenuItem.
-     */
-    @JsonProperty("removedIngredients")
-    private ArrayList<Ingredient> removedIngredients;
+  /**
+   * The MenuItem the customer ordered.
+   */
+  @JsonProperty("menuItem")
+  private MenuItem menuItem;
+  /**
+   * A HashMap showing how much each Ingredient should be added.
+   */
+  @JsonProperty("addIngredients")
+  private HashMap<Ingredient, Integer> addIngredients;
+  /**
+   * An ArrayList showing the unwanted Ingredients from the MenuItem.
+   */
+  @JsonProperty("removedIngredients")
+  private ArrayList<Ingredient> removedIngredients;
 
-    @JsonProperty("status")
-    private OrderStatus status;
+  @JsonProperty("status")
+  private OrderStatus status;
 
-    /**
-     * Private empty constructor used for deserialization from
-     * events file.
-     */
-    private Order() { }
+  /**
+   * Private empty constructor used for deserialization from
+   * events file.
+   */
+  private Order() {
+  }
 
-    /**
-     * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
-     *
-     * @param menuItem    the menu item being ordered
-     * @param tableNumber the table number of the table that sends this Order
-     */
-    public Order(MenuItem menuItem,
-                 int tableNumber,
-                 String serverName,
-                 int orderNumber) {
-        this.tableNumber = tableNumber;
-        this.menuItem = menuItem;
-        this.status = OrderStatus.CREATED;
-        this.serverName = serverName;
-    }
+  /**
+   * Class constructor specifying the list of OrderItems, the table number, and the server of this Order.
+   *
+   * @param menuItem    the menu item being ordered
+   * @param tableNumber the table number of the table that sends this Order
+   */
+  public Order(MenuItem menuItem,
+               int tableNumber,
+               String serverName,
+               int orderNumber) {
+    this.tableNumber = tableNumber;
+    this.menuItem = menuItem;
+    this.status = OrderStatus.CREATED;
+    this.serverName = serverName;
+  }
 
-    /**
-     * Returns the table number of the table that sends this Order.
-     *
-     * @return the table number
-     */
-    public int getTableNumber() {
-        return tableNumber;
-    }
+  /**
+   * Returns the table number of the table that sends this Order.
+   *
+   * @return the table number
+   */
+  public int getTableNumber() {
+    return tableNumber;
+  }
 
-    /**
-     * Returns the current status of this Order.
-     *
-     * @return the status of this
-     */
-    public OrderStatus getStatus() {
-        return status;
-    }
+  /**
+   * Returns the current status of this Order.
+   *
+   * @return the status of this
+   */
+  public OrderStatus getStatus() {
+    return status;
+  }
 
-    /**
-     * Changes the status of this Order.
-     *
-     * @param status the status to be set
-     */
-    public void setStatus(OrderStatus status) {
-        this.status = status;
-    }
+  /**
+   * Changes the status of this Order.
+   *
+   * @param status the status to be set
+   */
+  public void setStatus(OrderStatus status) {
+    this.status = status;
+  }
 
   /**
    * Returns the unique order number of this Order.
@@ -137,10 +140,10 @@ public class Order {
     this.addIngredients = add;
     Iterator it = add.entrySet().iterator();
 
-      while (it.hasNext()) {
-        HashMap.Entry pair = (HashMap.Entry) it.next();
-        double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
-        menuItem.increasePrice(extraPrice);
+    while (it.hasNext()) {
+      HashMap.Entry pair = (HashMap.Entry) it.next();
+      double extraPrice = ((Integer) pair.getValue()) * ((Ingredient) pair.getKey()).getPricing();
+      menuItem.increasePrice(extraPrice);
     }
   }
 
@@ -168,6 +171,13 @@ public class Order {
    */
   public ArrayList<Ingredient> getRemovedIngredients() {
     return removedIngredients;
+  }
+
+  /**
+   * @return Ingredients to be added..
+   */
+  public HashMap<Ingredient, Integer> getAddIngredients() {
+    return addIngredients;
   }
 
 }
