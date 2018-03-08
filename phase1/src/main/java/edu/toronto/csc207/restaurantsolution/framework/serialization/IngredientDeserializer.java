@@ -19,21 +19,44 @@ import java.io.IOException;
  * Mostly used when deserializing events.txt
  */
 public class IngredientDeserializer extends StdDeserializer<Ingredient> {
-  private IngredientListService ingredientListService;
 
-  IngredientDeserializer(IngredientListService ingredientList) {
-    this((Class<?>) null);
-    this.ingredientListService = ingredientList;
-  }
+    /**
+     * The list of services with ingredients.
+     **/
+    private IngredientListService ingredientListService;
 
-  private IngredientDeserializer(Class<?> vc) {
-    super(vc);
-  }
+    /**
+     * Class constructor specifying ingredientList.
+     *
+     * @param ingredientList the list of services with ingredients
+     */
+    IngredientDeserializer(IngredientListService ingredientList) {
+        this((Class<?>) null);
+        this.ingredientListService = ingredientList;
+    }
 
-  @Override
-  public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
-    String ingredientName = p.getValueAsString();
-    return ingredientListService.getIngredient(ingredientName);
-  }
+    /**
+     * Default constructor.
+     *
+     * @param vc the class to deserialize as
+     */
+    private IngredientDeserializer(Class<?> vc) {
+        super(vc);
+    }
+
+    /**
+     * Creates an instance of Ingredient from p and ctxt.
+     *
+     * @param p    parsing the file
+     * @param ctxt context to be deserialized
+     * @return an instance of Ingredient
+     * @throws IOException             halts the program
+     * @throws JsonProcessingException a more general exception
+     */
+    @Override
+    public Ingredient deserialize(JsonParser p, DeserializationContext ctxt)
+            throws IOException, JsonProcessingException {
+        String ingredientName = p.getValueAsString();
+        return ingredientListService.getIngredient(ingredientName);
+    }
 }

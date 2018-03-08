@@ -16,12 +16,26 @@ import java.io.IOException;
  * Used when outputting configuration files to console or disk.
  */
 public class IngredientKeySerializer extends StdSerializer<Ingredient> {
-  protected IngredientKeySerializer(Class<Ingredient> t) {
-    super(t);
-  }
 
-  @Override
-  public void serialize(Ingredient value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-    gen.writeFieldName(value.getName());
-  }
+    /**
+     * Default constructor.
+     *
+     * @param t the class to serialize as
+     */
+    IngredientKeySerializer(Class<Ingredient> t) {
+        super(t);
+    }
+
+    /**
+     * Writes the file from value, gen and provider.
+     *
+     * @param value    the value to be written in file
+     * @param gen      generator
+     * @param provider provides the serialization
+     * @throws IOException halts the program
+     */
+    @Override
+    public void serialize(Ingredient value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+        gen.writeFieldName(value.getName());
+    }
 }

@@ -18,25 +18,25 @@ import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
  * or {@link Ingredient}.
  */
 public class YamlDeserializerService extends Service {
-  private final ObjectMapper mapper;
+    private final ObjectMapper mapper;
 
-  @ServiceConstructor
-  public YamlDeserializerService(MenuItemsListService menuItems, IngredientListService ingredients) {
-    this.mapper = new ObjectMapper(new YAMLFactory());
-    SimpleModule module = new SimpleModule();
-    module.addDeserializer(MenuItem.class, new MenuItemDeserializer(menuItems));
-    module.addDeserializer(Ingredient.class, new IngredientDeserializer(ingredients));
-    module.addKeyDeserializer(Ingredient.class, new IngredientKeyDeserializer(ingredients));
-    module.addKeySerializer(Ingredient.class, new IngredientKeySerializer(null));
-    mapper.registerModule(module);
+    @ServiceConstructor
+    public YamlDeserializerService(MenuItemsListService menuItems, IngredientListService ingredients) {
+        this.mapper = new ObjectMapper(new YAMLFactory());
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(MenuItem.class, new MenuItemDeserializer(menuItems));
+        module.addDeserializer(Ingredient.class, new IngredientDeserializer(ingredients));
+        module.addKeyDeserializer(Ingredient.class, new IngredientKeyDeserializer(ingredients));
+        module.addKeySerializer(Ingredient.class, new IngredientKeySerializer(null));
+        mapper.registerModule(module);
 
-    // We need to instantiate the EventDeserializer separately. Perhaps we can take this out of the service?
-    SimpleModule eventArgsModule = new SimpleModule();
-    eventArgsModule.addDeserializer(EventArgs.class, new EventDeserializer(this));
-    mapper.registerModule(eventArgsModule);
-  }
+        // We need to instantiate the EventDeserializer separately. Perhaps we can take this out of the service?
+        SimpleModule eventArgsModule = new SimpleModule();
+        eventArgsModule.addDeserializer(EventArgs.class, new EventDeserializer(this));
+        mapper.registerModule(eventArgsModule);
+    }
 
-  public ObjectMapper getMapper() {
-    return this.mapper;
-  }
+    public ObjectMapper getMapper() {
+        return this.mapper;
+    }
 }

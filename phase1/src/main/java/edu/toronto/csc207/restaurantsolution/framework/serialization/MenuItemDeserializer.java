@@ -19,21 +19,43 @@ import java.io.IOException;
  * Mostly used when deserializing events.txt
  */
 public class MenuItemDeserializer extends StdDeserializer<MenuItem> {
-  private MenuItemsListService loadedMenuItems;
 
-  MenuItemDeserializer(MenuItemsListService loadedMenuItems) {
-    this((Class<?>) null);
-    this.loadedMenuItems = loadedMenuItems;
-  }
+    /**
+     * The list of services with MenuItems.
+     */
+    private MenuItemsListService loadedMenuItems;
 
-  private MenuItemDeserializer(Class<?> vc) {
-    super(vc);
-  }
+    /**
+     * Class constructor specifying loadedMenuItems.
+     *
+     * @param loadedMenuItems list of services with MenuItems
+     */
+    MenuItemDeserializer(MenuItemsListService loadedMenuItems) {
+        this((Class<?>) null);
+        this.loadedMenuItems = loadedMenuItems;
+    }
 
-  @Override
-  public MenuItem deserialize(JsonParser p, DeserializationContext ctxt)
-      throws IOException, JsonProcessingException {
-    String menuItemName = p.getValueAsString();
-    return loadedMenuItems.getMenuItem(menuItemName);
-  }
+    /***
+     * Default constructor.
+     * @param vc the class to deserialize as
+     */
+    private MenuItemDeserializer(Class<?> vc) {
+        super(vc);
+    }
+
+    /**
+     * Creates an instance of MenuItem from p and ctxt.
+     *
+     * @param p    parsing the file
+     * @param ctxt context to be deserialized
+     * @return an instance of MenuItem
+     * @throws IOException             halts the program
+     * @throws JsonProcessingException a more general exception
+     */
+    @Override
+    public MenuItem deserialize(JsonParser p, DeserializationContext ctxt)
+            throws IOException, JsonProcessingException {
+        String menuItemName = p.getValueAsString();
+        return loadedMenuItems.getMenuItem(menuItemName);
+    }
 }
