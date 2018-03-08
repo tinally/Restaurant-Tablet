@@ -70,7 +70,6 @@ public class Server extends Service {
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
         paymentService.registerTable(tableNumber);
         serve();
-        checkout();
     }
 
     /**
@@ -131,12 +130,8 @@ public class Server extends Service {
      * Prints out the bill upon the request of checkout from the customers.
      */
     private void checkout() {
-        // Print the bill
-        // todo: do this properly with the table?
-        emitter.registerEventHandler(e -> {
-            if (e.getTableNumber() == this.tableNumber) {
-                logger.info(paymentService.printBill(tableNumber));
-            }
-        }, BillPrintEvent.class);
+        BillPrintEvent event = new BillPrintEvent();
+        event.setTableNumber(tableNumber);
+        emitter.onEvent(event);
     }
 }
