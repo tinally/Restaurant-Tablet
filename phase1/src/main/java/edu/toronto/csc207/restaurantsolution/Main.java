@@ -7,20 +7,30 @@ import edu.toronto.csc207.restaurantsolution.services.LoggingOutputService;
 
 import java.io.IOException;
 
+/**
+ * Main class of this restaurant program.
+ */
 public class Main {
-  public static void main(String[] args) throws IOException {
-    ServiceContainer container = new ServiceContainer();
 
-    // Getting an instance also creates one from the container.
-    container.getInstance(LoggingOutputService.class);
+    /**
+     * Main method of this restaurant program.
+     *
+     * @param args an array of string
+     * @throws IOException halts the program
+     */
+    public static void main(String[] args) throws IOException {
+        ServiceContainer container = new ServiceContainer();
 
-    KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
+        // Getting an instance also creates one from the container.
+        container.getInstance(LoggingOutputService.class);
 
-    // Creating servers and chefs registers event handlers.
-    kitchen.createServer("Bob", 15);
-    kitchen.createChef("Joe");
+        KitchenFactoryService kitchen = container.getInstance(KitchenFactoryService.class);
 
-    EventDriverService eventDriver = container.getInstance(EventDriverService.class);
-    eventDriver.run();
-  }
+        // Creating servers and chefs registers event handlers.
+        kitchen.createServer("Bob", 15);
+        kitchen.createChef("Joe");
+
+        EventDriverService eventDriver = container.getInstance(EventDriverService.class);
+        eventDriver.run();
+    }
 }
