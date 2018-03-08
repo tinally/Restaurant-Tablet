@@ -17,6 +17,8 @@ public class LoggingOutputService extends Service {
      */
     private InventoryFactoryService inventory;
 
+    private PaymentService paymentService;
+
     /**
      * Service Constructor to instantiate a {@link LoggingOutputService} from
      * {@link ServiceContainer}.
@@ -27,12 +29,13 @@ public class LoggingOutputService extends Service {
     @ServiceConstructor
     public LoggingOutputService(EventEmitter emitter, PaymentService paymentService) {
 
+      this.paymentService = paymentService;
+
         emitter.registerEventHandler(this::printEvent, OrderChangedEvent.class);
         emitter.registerEventHandler(this::printEvent, OrderCreatedEvent.class);
         emitter.registerEventHandler(this::printEvent, IngredientReorderEvent.class);
         emitter.registerEventHandler(this::printEvent, IngredientRestockEvent.class);
-        // Print the bill
-        // todo: do this properly with the table?
+      emitter.registerEventHandler(this::printBill, BillPrintEvent.class);
 
     }
 
@@ -76,6 +79,10 @@ public class LoggingOutputService extends Service {
      */
     private void printEvent(OrderChangedEvent e) {
         logger.info("Order # " + e.getOrderNumber() + " was " + e.getNewStatus() + " by " + e.getSender());
+    }
+
+    private void printBill(BillPrintEvent e) {
+      logger.info(paymentService.printBill(e.getTableNumber()));
     }
 
     /**

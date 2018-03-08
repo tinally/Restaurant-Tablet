@@ -28,8 +28,7 @@ public class PaymentService extends Service {
    * Constructs a new payment service.
    */
   @ServiceConstructor
-  public PaymentService(EventEmitter emitter) {
-    emitter.registerEventHandler(this::printBill, BillPrintEvent.class);
+  public PaymentService() {
     billsByTableNumber = new HashMap<>();
   }
 
@@ -76,19 +75,20 @@ public class PaymentService extends Service {
   }
 
   /**
-   * Prints the bill of the table with the given table number.
+   * Returns a string printing of a bill for a table specified by number.
    *
-   * @param event the
+   * @param tableNumber the number of the table.
+   * @return a string representation of the bill.
    */
-  private void printBill(BillPrintEvent event) {
+  public String printBill(int tableNumber) {
     double total = 0.0;
     StringJoiner accumulator = new StringJoiner(System.lineSeparator());
 
     // Bill for int #intNumber
-    accumulator.add("Bill for int #" + event.getTableNumber());
+    accumulator.add("Bill for int #" + tableNumber);
 
     // Item: Price
-    for (Order order : billsByTableNumber.get(event.getTableNumber()).getOrders()) {
+    for (Order order : billsByTableNumber.get(tableNumber).getOrders()) {
       accumulator.add(printOrder(order));
 
       // Add price to the total
@@ -98,7 +98,7 @@ public class PaymentService extends Service {
     // Total: Price
     accumulator.add("Total:\t$" + total);
 
-    logger.info(accumulator.toString());
+    return accumulator.toString();
   }
 
   /**
