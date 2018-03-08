@@ -6,6 +6,7 @@ import edu.toronto.csc207.restaurantsolution.model.Table;
 import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PaymentService extends Service {
@@ -15,27 +16,18 @@ public class PaymentService extends Service {
    */
   private HashMap<Table, Bill> billsByTable;
 
-  private OrderManagerService orderManagerService;
-
   @ServiceConstructor
-  public PaymentService(OrderManagerService orderManagerService) {
+  public PaymentService() {
     billsByTable = new HashMap<>();
-    this.orderManagerService = orderManagerService;
   }
 
   /**
-   * Registers a table.
+   * Registers a table with an empty bill if it has not already been registered.
    *
    * @param table the table to be registered.
-   * @return true iff the table is not already registered.
    */
-  public boolean registerTable(Table table) {
-    if (billsByTable.containsKey(table)) {
-      return false;
-    } else {
-      billsByTable.put(table, new Bill());
-      return true;
-    }
+  public void registerTable(Table table) {
+    billsByTable.putIfAbsent(table, new Bill());
   }
 
   /**
@@ -48,18 +40,15 @@ public class PaymentService extends Service {
   }
 
   /**
-   * Registers an order placed by a table.
+   * Registers an order placed by a table on that table's bill if it has
+   * been registered.
    *
    * @param table the table from which the order originated.
    * @param order the order placed by the table.
-   * @return true iff the specified table is registered.
    */
-  public boolean registerOrder(Table table, Order order) {
+  public void registerOrder(Table table, Order order) {
     if (billsByTable.containsKey(table)) {
       billsByTable.get(table).addOrder(order);
-      return true;
-    } else {
-      return false;
     }
   }
 
@@ -81,20 +70,48 @@ public class PaymentService extends Service {
    * @return a string representation of the specified bill.
    */
   public String printBill(Table table) {
+    double total = 0.0;
     StringBuilder accumulator = new StringBuilder();
-    // Format: Bill for Table #TableNumber
+
+    // Bill for Table #TableNumber
     accumulator.append("Bill for Table #");
     accumulator.append(table.getTableNumber());
     accumulator.append(System.lineSeparator());
-    // Format: Item:Price
+
+    // Item: Price
     for (Order order : billsByTable.get(table).getOrders()) {
-      accumulator.append('\t');
-      accumulator.append(order.getMenuItem().getName());
-      accumulator.append(":\t$");
-      accumulator.append(order.getMenuItem().getPrice());
+      accumulator.append(printOrder(order));
       accumulator.append(System.lineSeparator());
+
+      // Add price to the total
+      total += order.getMenuItem().getPrice();
     }
+
+    // Total: Price
+    accumulator.append("\tTotal");
+    accumulator.append(":\t$");
+    accumulator.append(total);
+
     return accumulator.toString();
+  }
+
+  /**
+   * Returns a string printing of a single order.
+   *
+   * @param order the order to be printed.
+   * @return a string representation of the specified order.
+   */
+  private String printOrder(Order order) {
+    // String used since we are not concatenating inside a loop
+    String accumulator = "\t";
+
+    // Item: Price
+    accumulator += order.getMenuItem().getName();
+    accumulator += ":\t$";
+    accumulator += order.getMenuItem().getPrice();
+    accumulator += System.lineSeparator();
+
+    return accumulator;
   }
 
 }

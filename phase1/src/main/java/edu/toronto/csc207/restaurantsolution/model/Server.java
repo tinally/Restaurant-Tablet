@@ -45,7 +45,7 @@ public class Server extends Service {
     /**
      * Manages the payment.
      */
-    private PaymentService paymentManager;
+    private PaymentService paymentService;
 
     /**
      * Class constructor specifying the emitter, printer, name, table, inventory, and manager.
@@ -55,20 +55,20 @@ public class Server extends Service {
      * @param table          the table number the Server is responsible for
      * @param inventory      inventory of all ingredients
      * @param orderManager   manager of the orders
-     * @param paymentManager manager of the payment
+     * @param paymentService manager of the payment
      */
     @ServiceConstructor
     public Server(EventEmitter emitter, String name, Table table, Inventory inventory,
-                  OrderManagerService orderManager, PaymentService paymentManager) {
+                  OrderManagerService orderManager, PaymentService paymentService) {
         this.emitter = emitter;
         this.name = name;
         this.table = table;
         this.inventory = inventory;
         this.orderManager = orderManager;
-        this.paymentManager = paymentManager;
+        this.paymentService = paymentService;
         emitter.registerEventHandler(this::updateIngredient, OrderChangedEvent.class);
         emitter.registerEventHandler(this::rejectOrderItem, OrderChangedEvent.class);
-        paymentManager.registerTable(table);
+        paymentService.registerTable(table);
         serve();
         checkout();
     }
@@ -122,7 +122,7 @@ public class Server extends Service {
         // TODO: add the price onto the bill & the possibility of returning the order
         emitter.registerEventHandler(e -> {
             if (e.getNewStatus() == OrderStatus.DELIVERED) {
-                paymentManager.registerOrder(table, orderManager.getOrder(e.getOrderNumber()));
+                paymentService.registerOrder(table, orderManager.getOrder(e.getOrderNumber()));
             }
         }, OrderChangedEvent.class);
     }
@@ -135,7 +135,7 @@ public class Server extends Service {
         // todo: do this properly with the table?
         emitter.registerEventHandler(e -> {
             if (e.getTableNumber() == this.table.getTableNumber()) {
-                logger.info(paymentManager.printBill(table));
+                logger.info(paymentService.printBill(table));
             }
         }, BillPrintEvent.class);
     }
