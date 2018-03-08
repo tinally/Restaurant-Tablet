@@ -9,7 +9,6 @@ import java.io.Serializable;
  * This class is serializable to JSON or YAML.
  */
 public class Ingredient implements Serializable {
-
   /**
    * The name of the ingredient.
    */

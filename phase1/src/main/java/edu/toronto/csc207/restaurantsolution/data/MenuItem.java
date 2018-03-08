@@ -7,7 +7,6 @@ import java.util.Map;
  * This class is serializable to JSON or YAML.
  */
 public class MenuItem {
-
   /**
    * The name of the menuItem to be shown on the menu
    */
