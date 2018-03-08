@@ -51,7 +51,7 @@ public class Inventory {
    * @param num        the number of units to be added
    */
   public void addToInventory(Ingredient ingredient, int num) {
-    int leftover = inventory.get(ingredient); //TODO: num could be changed to ingredient.getReorderAmount()
+    int leftover = inventory.get(ingredient);
     inventory.put(ingredient, leftover + num);
   }
 
