@@ -1,0 +1,28 @@
+apply plugin: 'idea'
+//and standard one
+apply plugin: 'java'
+
+repositories { jcenter() }
+dependencies {
+    compile (
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.0'],
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.0'],
+        [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'],
+        [group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.0']
+
+    )
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+    test {
+        java {
+            srcDir 'unittest'
+        }
+    }
+}

@@ -1,0 +1,16 @@
+---
+# This file is compliant with YAML 1.2
+# Entries are whitespace sensitive, and
+# do not support tab characters, always spaces.
+#
+# This file specifies the initial values
+# of the inventory.
+#
+# The format is very simple.
+# [Name of ingredient]: [Amount of ingredient]
+
+Tomato: 10
+Bread: 15
+Bacon: 20
+Toast: 25
+Lettuce: 18

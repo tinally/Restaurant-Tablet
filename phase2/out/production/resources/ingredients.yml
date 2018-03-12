@@ -1,0 +1,39 @@
+---
+# This file is compliant with YAML 1.2
+# Entries are whitespace sensitive, and
+# do not support tab characters, always spaces.
+#
+# This configuration file defines the types of ingredients that
+# menu items are allowed to use.
+#
+# You may declare new ingredients in the following format
+#
+# - name: The name of the ingredient
+#   cost: The cost of the ingredient
+#   pricing: An additional cost added when the ingredient is added to a menu item
+#   threshold: The threshold for a reorder request
+
+- name: "Tomato"
+  cost: 10.0
+  pricing: 1.0
+  threshold: 20
+
+- name: "Bacon"
+  cost: 12.0
+  pricing: 2.0
+  threshold: 15
+
+- name: "Lettuce"
+  cost: 6.0
+  pricing: 2.0
+  threshold: 25
+
+- name: "Bread"
+  cost: 12.0
+  pricing: 10.0
+  threshold: 10
+
+- name: "Toast"
+  cost: 13.0
+  pricing: 10.0
+  threshold: 4

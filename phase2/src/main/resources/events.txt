@@ -1,0 +1,68 @@
+---
+# This file is compliant with YAML 1.2
+# Entries are whitespace sensitive, and
+# do not support tab characters, always spaces.
+#
+# Events are created in the following format
+# - event: [Event Class Name]
+#   payload: [Some object structure here]
+#
+# For types of events, see the package
+# edu.toronto.csc207.restaurantsolution.framework.events.eventargs
+# payload should match the shape of the event argument objects.
+#
+# Because of limitations, events that do not declare any fields must have
+# a payload of
+# payload:
+#   emptyEvent: true
+#
+# See InventoryPrintEvent for an example.
+
+
+- event: OrderCreatedEvent
+  payload:
+    newOrder:
+      serverName: Server Bob
+      menuItem: Toast Sandwich
+      removedIngredients:
+        - Toast
+      addIngredients:
+        Tomato: 10
+      tableNumber: 15
+      orderNumber: 1
+      status: CREATED
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: PUSHED
+    sender: Server Bob
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: SEEN
+    sender: Chef Joe
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: FILLED
+    sender: Chef Joe
+- event: OrderChangedEvent
+  payload:
+    orderNumber: 1
+    newStatus: DELIVERED
+    sender: Server Bob
+- event: BillPrintEvent
+  payload:
+    tableNumber: 15
+- event: IngredientReorderEvent
+  payload:
+    ingredient: Tomato
+- event: InventoryPrintEvent
+  payload:
+    emptyEvent: true
+- event: IngredientRestockEvent
+  payload:
+    ingredient: Tomato
+- event: InventoryPrintEvent
+  payload:
+    emptyEvent: true

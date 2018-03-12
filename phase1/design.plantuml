@@ -1,0 +1,320 @@
+
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package edu.toronto.csc207.restaurantsolution.data {
+class Ingredient {
+	- cost : Double
+	- name : String
+	- pricing : Double
+	- reorderAmount : int
+	- threshold : Integer
+	+ changeReorderAmount(int) : void
+	+ getCost() : Double
+	+ getName() : String
+	+ getPricing() : Double
+	+ getReorderAmount() : int
+	+ getReorderThreshold() : Integer
+	+ toString() : String
+}
+class MenuItem {
+	- discount : double
+	- ingredients : Map<Ingredient,Integer>
+	- name : String
+	- price : double
+	+ getIngredients() : Map<Ingredient,Integer>
+	+ getName() : String
+	+ getOriginalPrice() : double
+	+ getPrice() : double
+	+ increasePrice(double) : void
+	+ setDiscount(double) : void
+	+ setIngredients(Map<Ingredient,Integer>) : void
+	+ setPrice(double) : void
+	+ toString() : String
+}
+}
+package edu.toronto.csc207.restaurantsolution.framework.events.eventargs {
+class BillPrintEvent {
+	- tableNumber : Integer
+	+ getTableNumber() : Integer
+	+ setTableNumber(Integer) : void
+}
+class IngredientReorderEvent {
+	- ingredient : Ingredient
+	+ getIngredient() : Ingredient
+	+ setIngredient(Ingredient) : void
+}
+class IngredientRestockEvent {
+	- ingredient : Ingredient
+	+ getIngredient() : Ingredient
+	+ setIngredient(Ingredient) : void
+}
+class InventoryPrintEvent {
+}
+class OrderChangedEvent {
+	- newStatus : OrderStatus
+	- orderNumber : int
+	- sender : String
+	+ getNewStatus() : OrderStatus
+	+ getOrderNumber() : int
+	+ getSender() : String
+	+ setSender(String) : void
+}
+class OrderCreatedEvent {
+	- newOrder : Order
+	+ getNewOrder() : Order
+	+ setNewOrder(Order) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.framework.events {
+class EventArgs<T> {
+	- emptyEvent : boolean
+	- eventClass : Class<T>
+	+ getEventClass() : Class<T>
+}
+class EventDeserializer {
+	- yamlDeserializerService : YamlDeserializerService
+	+ deserialize(JsonParser, DeserializationContext) : EventArgs
+}
+class EventEmitter {
+	- eventHandlers : Map<Class<?extendsEventArgs>,List<RestaurantEventHandler<?extendsEventArgs>>>
+	+ onEvent(T) : void
+	+ registerEventHandler(RestaurantEventHandler<T>, Class<T>) : void
+	+ removeEventHandler(RestaurantEventHandler<T>, Class<T>) : void
+}
+class RestaurantEventHandler {
+}
+}
+package edu.toronto.csc207.restaurantsolution.framework.serialization {
+class IngredientDeserializer {
+	- ingredientListService : IngredientListService
+	+ deserialize(JsonParser, DeserializationContext) : Ingredient
+}
+class IngredientKeyDeserializer {
+	- ingredientListService : IngredientListService
+	+ deserializeKey(String, DeserializationContext) : Object
+}
+class IngredientKeySerializer {
+	+ serialize(Ingredient, JsonGenerator, SerializerProvider) : void
+}
+class MenuItemDeserializer {
+	- loadedMenuItems : MenuItemsListService
+	+ deserialize(JsonParser, DeserializationContext) : MenuItem
+}
+class YamlDeserializerService {
+	- mapper : ObjectMapper
+	+ getMapper() : ObjectMapper
+}
+}
+package edu.toronto.csc207.restaurantsolution.framework.services {
+class Service {
+}
+class ServiceContainer {
+	- serviceInstances : Map<Class<?extendsService>,Service>
+	+ getInstance(Class<T>) : T
+	- instantiateNewFromExistingMembers(Class<T>) : T
+	+ registerInstance(T) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution {
+class Main {
+	+ main(String[]) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.model {
+class Bill {
+	- orders : ArrayList<Order>
+	+ addOrder(Order) : void
+	+ getOrders() : ArrayList<Order>
+}
+class Chef {
+	- emitter : EventEmitter
+	- inventory : Inventory
+	- manager : OrderManagerService
+	- name : String
+	- completeOrder(Order) : void
+}
+class Inventory {
+	- emitter : EventEmitter
+	- inventory : Map<Ingredient,Integer>
+	- request : RequestEmailWriterService
+	+ addToInventory(Ingredient, int) : void
+	+ getAmountRemaining(Ingredient) : int
+	- reOrder(Ingredient) : void
+	+ removeFromInventory(Ingredient, int) : void
+	+ toString() : String
+}
+class Order {
+	- addIngredients : HashMap<Ingredient,Integer>
+	- menuItem : MenuItem
+	- orderNumber : int
+	- removedIngredients : ArrayList<Ingredient>
+	- serverName : String
+	- status : OrderStatus
+	- tableNumber : int
+	- addIngredient(Ingredient, int) : void
+	+ addIngredients(HashMap<Ingredient,Integer>) : void
+	+ getAddIngredients() : HashMap<Ingredient,Integer>
+	+ getMenuItem() : MenuItem
+	+ getOrderNumber() : int
+	+ getRemovedIngredients() : ArrayList<Ingredient>
+	+ getServerName() : String
+	+ getStatus() : OrderStatus
+	+ getTableNumber() : int
+	+ removeIngredient(Ingredient) : void
+	+ setMenuItem(MenuItem) : void
+	+ setStatus(OrderStatus) : void
+}
+class Server {
+	- emitter : EventEmitter
+	- inventory : Inventory
+	- name : String
+	- orderManager : OrderManagerService
+	- paymentService : PaymentService
+	- tableNumber : int
+	+ addOrder(OrderChangedEvent) : void
+	- checkout() : void
+	- rejectOrderItem(OrderChangedEvent) : void
+	- serve() : void
+	- updateIngredient(OrderChangedEvent) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.services {
+class EventDriverService {
+	- emitter : EventEmitter
+	- events : List<EventArgs>
+	+ run() : void
+}
+class IngredientListService {
+	- ingredients : List<Ingredient>
+	+ getIngredient(String) : Ingredient
+	+ getIngredients() : List<Ingredient>
+}
+class InventoryFactoryService {
+	- inventory : Inventory
+	+ getInventory() : Inventory
+}
+class KitchenFactoryService {
+	- eventEmitter : EventEmitter
+	- inventoryFactoryService : InventoryFactoryService
+	- orderManagerService : OrderManagerService
+	- paymentService : PaymentService
+	+ createChef(String) : Chef
+	+ createServer(String, int) : Server
+}
+class LoggingOutputService {
+	- logger : Logger
+	- paymentService : PaymentService
+	- printBill(BillPrintEvent) : void
+	- printEvent(IngredientReorderEvent) : void
+	- printEvent(IngredientRestockEvent) : void
+	- printEvent(OrderChangedEvent) : void
+	- printEvent(OrderCreatedEvent) : void
+	+ printString(String) : void
+}
+class MenuItemsListService {
+	- menuItems : List<MenuItem>
+	+ getMenuItem(String) : MenuItem
+	+ getMenuItems() : List<MenuItem>
+}
+class IntermediateMenuItem {
+}
+class OrderManagerService {
+	- emitter : EventEmitter
+	- orders : Map<Integer,Order>
+	+ createOrder(int, String, MenuItem) : Order
+	+ getAllOrders() : Collection<Order>
+	+ getOrder(int) : Order
+	+ getOrdersForTableNumber(int) : List<Order>
+	+ notifyOrderStatusChanged(int, OrderStatus, String) : void
+	- saveOrder(OrderCreatedEvent) : void
+	- updateOrder(OrderChangedEvent) : void
+}
+class PaymentService {
+	- billsByTableNumber : HashMap<Integer,Bill>
+	+ getBill(int) : Bill
+	+ printBill(int) : String
+	- printOrder(Order) : String
+	+ registerOrder(int, Order) : void
+	+ registerTable(int) : void
+	+ unregisterTable(int) : void
+}
+class RequestEmailWriterService {
+	- loggingOutputService : LoggingOutputService
+	- writeToFile(String, String, boolean) : void
+	+ write(Ingredient) : void
+}
+class ResourceResolverService {
+	+ getResource(String) : InputStream
+}
+}
+EventArgs <|-- BillPrintEvent
+EventArgs <|-- IngredientReorderEvent
+EventArgs <|-- IngredientRestockEvent
+EventArgs <|-- InventoryPrintEvent
+EventArgs <|-- OrderChangedEvent
+EventArgs <|-- OrderCreatedEvent
+StdDeserializer <|-- EventDeserializer
+Service <|-- EventEmitter
+StdDeserializer <|-- IngredientDeserializer
+KeyDeserializer <|-- IngredientKeyDeserializer
+StdSerializer <|-- IngredientKeySerializer
+StdDeserializer <|-- MenuItemDeserializer
+Service <|-- YamlDeserializerService
+Service <|-- Server
+Service <|-- EventDriverService
+Service <|-- IngredientListService
+Service <|-- InventoryFactoryService
+Service <|-- KitchenFactoryService
+Service <|-- LoggingOutputService
+Service <|-- MenuItemsListService
+Service <|-- OrderManagerService
+Service <|-- PaymentService
+Service <|-- RequestEmailWriterService
+Service <|-- ResourceResolverService
+EventArgs <|-- OrderInputStringEvent
+Serializable <|.. Ingredient
+Runnable <|.. EventDriverService
+Order "*" <-- OrderManagerService
+MenuItemDeserializer --> "1" MenuItemsListService
+Bill --> "*" Order
+OrderChangedEvent --> "1" OrderStatus
+Chef --> "1" EventEmitter
+Chef --> "1" OrderManagerService
+KitchenFactoryService --> "1" OrderManagerService
+Ingredient "*" <-- Order
+ObjectMapper "1" <-- YamlDeserializerService
+Bill "*" <-- PaymentService
+IngredientKeyDeserializer --> "1" IngredientListService
+PaymentService "1" <-- Server
+Ingredient "1" <-- IngredientRestockEvent
+IngredientDeserializer --> "1" IngredientListService
+OrderManagerService "1" <-- Server
+Service "*" <-- ServiceContainer
+KitchenFactoryService --> "1" PaymentService
+InventoryFactoryService "1" <-- KitchenFactoryService
+EventEmitter "1" <-- OrderManagerService
+Class "1" <-- EventArgs
+EventEmitter "1" <-- KitchenFactoryService
+EventDeserializer --> "1" YamlDeserializerService
+Ingredient "1" <-- IngredientReorderEvent
+Logger "1" <-- LoggingOutputService
+LoggingOutputService "1" <-- RequestEmailWriterService
+EventArgs "*" <-- EventEmitter
+Order "1" <-- OrderCreatedEvent
+Inventory "1" <-- InventoryFactoryService
+MenuItem "1" <-- Order
+EventEmitter "1" <-- Server
+Chef --> "1" Inventory
+EventArgs "*" <-- EventDriverService
+Order --> "1" OrderStatus
+Inventory --> "1" RequestEmailWriterService
+EventDriverService --> "1" EventEmitter
+EventEmitter "1" <-- Inventory
+Ingredient "*" <-- IngredientListService
+Inventory "1" <-- Server
+LoggingOutputService --> "1" PaymentService
+MenuItem "*" <-- MenuItemsListService
+@enduml

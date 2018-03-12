@@ -1,0 +1,10 @@
+.DS_Store
+.out/
+.idea/
+.gradle/
+event.txt
+<<<<<<< HEAD
+request.txt
+=======
+requests.txt
+>>>>>>> b26cf2f1641f501d0c9ddd8b28bb07aae2741015

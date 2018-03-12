@@ -1,0 +1,28 @@
+---
+# This file is compliant with YAML 1.2
+# Entries are whitespace sensitive, and
+# do not support tab characters, always spaces.
+#
+# This configuration file defines each menu item
+#
+# You may define additional menu items in the following format.
+# - name: Name of the item
+#    ingredients:
+#      Name of Ingredient: Amount of ingredient
+#    price: Price of the item
+
+- name: BLT Sandwich
+  ingredients:
+    Bread: 2
+    Tomato: 1
+    Bacon: 2
+  price: 100.0
+- name: Bread Sandwich
+  ingredients:
+    Bread: 3
+  price: 100.0
+- name: Toast Sandwich
+  ingredients:
+    Bread: 2
+    Toast: 1
+  price: 120.0
