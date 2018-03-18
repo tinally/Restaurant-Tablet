@@ -5,7 +5,6 @@ import edu.toronto.csc207.restaurantsolution.model.Server;
 import edu.toronto.csc207.restaurantsolution.services.PaymentService;
 import org.junit.Assert;
 import org.junit.Test;
-import edu.toronto.csc207.restaurantsolution.model.Table;
 import edu.toronto.csc207.restaurantsolution.services.KitchenFactoryService;
 import edu.toronto.csc207.restaurantsolution.framework.services.Service;
 import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
