@@ -5,18 +5,22 @@ import com.j256.ormlite.stmt.query.In;
 import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
 import edu.toronto.csc207.restaurantsolution.database.IngredientLibrary;
 import edu.toronto.csc207.restaurantsolution.database.MenuItemLibrary;
+import edu.toronto.csc207.restaurantsolution.database.OrderDatabase;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.model.serialization.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.serialization.MenuItemImpl;
+import edu.toronto.csc207.restaurantsolution.model.serialization.OrderImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.sqlite.SQLiteDataSource;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class DatabaseTest {
 
@@ -162,6 +166,55 @@ public class DatabaseTest {
     ml.registerMenuItem(menuItem);
 
     Assert.assertFalse(ml.getAllMenuItems().isEmpty());
+  }
+
+  @Test
+  public void testAddOrder() {
+    SQLiteDataSource ds = new SQLiteDataSource();
+    ds.setUrl("jdbc:sqlite:test.db");
+    IngredientLibrary l = new IngredientLibrary(ds);
+    MenuItemLibrary ml = new MenuItemLibrary(ds);
+    OrderDatabase od = new OrderDatabase(ds);
+
+    IngredientImpl ingredient = new IngredientImpl();
+    ingredient.setName("Test Ingredient");
+    ingredient.setCost(5.99);
+    ingredient.setDefaultReorderAmount(10);
+    ingredient.setPricing(10.0);
+    ingredient.setReorderThreshold(15);
+
+    IngredientImpl ingredientTwo = new IngredientImpl();
+    ingredientTwo.setName("Test Ingredient Two");
+    ingredientTwo.setCost(5.99);
+    ingredientTwo.setDefaultReorderAmount(10);
+    ingredientTwo.setPricing(10.0);
+    ingredientTwo.setReorderThreshold(15);
+
+    l.registerIngredient(ingredient);
+    l.registerIngredient(ingredientTwo);
+
+    HashMap<Ingredient, Integer> usage = new HashMap<>();
+    usage.put(ingredient, 1);
+    usage.put(ingredientTwo, 2);
+
+    MenuItemImpl menuItem = new MenuItemImpl();
+    menuItem.setPrice(100d);
+    menuItem.setName("Toast Sandwich");
+    menuItem.setIngredientRequirements(usage);
+
+    ml.registerMenuItem(menuItem);
+
+    OrderImpl order = new OrderImpl();
+    order.setAdditions(new HashMap<>());
+    order.setRemovals(new ArrayList<>());
+    order.setOrderId(UUID.randomUUID());
+    order.setMenuItem(menuItem);
+    order.setOrderCost(10d);
+    order.setTableNumber(15);
+    order.setOrderNumber(11);
+
+    od.insertOrUpdateOrder(order);
+
   }
 
   @Test
