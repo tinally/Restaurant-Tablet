@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="397.0" layoutY="22.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="214.0" spacing="5.0" style="-fx-background-color: 002012;">
+         <children>
+            <Label prefHeight="37.0" prefWidth="182.0" text="Inventory" textFill="#ff4444" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="25.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Label>
+            <GridPane prefHeight="301.0" prefWidth="219.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.99996948242188" minWidth="10.0" prefWidth="169.99996948242188" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.33331298828125" minWidth="10.0" prefWidth="50.000030517578125" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="18.0" layoutY="16.0" prefWidth="362.0" spacing="30.0">
+         <children>
+            <BorderPane prefHeight="230.0" prefWidth="341.0" VBox.vgrow="ALWAYS">
+               <top>
+                  <Label prefHeight="47.0" prefWidth="197.0" text="Existing Ingredient" BorderPane.alignment="TOP_LEFT">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </top>
+               <padding>
+                  <Insets left="10.0" right="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <bottom>
+                  <Region prefHeight="12.0" prefWidth="277.0" BorderPane.alignment="CENTER" />
+               </bottom>
+               <center>
+                  <Region prefHeight="146.0" prefWidth="23.0" BorderPane.alignment="CENTER" />
+               </center>
+               <right>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Old Lever?">
+                           <VBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField />
+                        <Label text="New Item?">
+                           <VBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                           <children>
+                              <JFXTextField prefHeight="25.0" prefWidth="35.0" />
+                              <JFXButton buttonType="RAISED" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="+" HBox.hgrow="ALWAYS" />
+                              <JFXButton buttonType="RAISED" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="-" />
+                           </children>
+                           <padding>
+                              <Insets left="5.0" right="2.5" />
+                           </padding>
+                        </HBox>
+                        <JFXButton buttonType="RAISED" style="-fx-background-color: #00ffff;" text="Add">
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
+                  </VBox>
+               </right>
+               <left>
+                  <JFXListView prefHeight="146.0" prefWidth="188.0" BorderPane.alignment="CENTER" />
+               </left>
+            </BorderPane>
+            <TitledPane animated="false" text="New Ingredient" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox prefHeight="165.0" prefWidth="339.0">
+                     <children>
+                        <HBox prefHeight="53.0" prefWidth="315.0" spacing="20.0">
+                           <children>
+                              <Label text="Name: ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField prefHeight="27.0" prefWidth="125.0">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
+                        <HBox layoutX="22.0" layoutY="22.0" prefHeight="69.0" prefWidth="315.0" spacing="2.0">
+                           <children>
+                              <Label text="Quantity: ">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXTextField prefHeight="27.0" prefWidth="125.0">
+                                 <HBox.margin>
+                                    <Insets left="60.0" />
+                                 </HBox.margin>
+                              </JFXTextField>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </HBox>
+                        <JFXButton buttonType="RAISED" prefHeight="32.0" prefWidth="179.0" ripplerFill="#f08282" style="-fx-background-color: #00ffff;" text="Add Ingredient" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="50.0" right="50.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </content>
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TitledPane>
+         </children>
+         <padding>
+            <Insets left="5.0" right="5.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</Pane>
