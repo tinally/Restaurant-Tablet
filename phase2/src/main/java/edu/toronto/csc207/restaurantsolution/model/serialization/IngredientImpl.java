@@ -6,22 +6,16 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 
 import java.io.Serializable;
 
-@DatabaseTable(tableName = "ingredients")
 public final class IngredientImpl implements Ingredient {
 
-  @DatabaseField(id = true)
   private String name;
 
-  @DatabaseField
   private Double cost;
 
-  @DatabaseField
   private Double pricing;
 
-  @DatabaseField
   private Integer reorderThreshold;
 
-  @DatabaseField
   private Integer defaultReorderAmount;
 
   @Override
@@ -47,6 +41,11 @@ public final class IngredientImpl implements Ingredient {
   @Override
   public Integer getDefaultReorderAmount() {
     return this.defaultReorderAmount;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof Ingredient && this.equals((Ingredient) o);
   }
 
   public void setName(String name) {

@@ -8,4 +8,7 @@ public interface Ingredient extends Serializable {
   Double getPricing();
   Integer getReorderThreshold();
   Integer getDefaultReorderAmount();
+  default boolean equals(Ingredient i) {
+    return this.getName().equals(i.getName());
+  }
 }

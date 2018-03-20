@@ -7,4 +7,7 @@ public interface MenuItem extends Serializable {
   String getName();
   Double getPrice();
   Map<Ingredient, Integer> getIngredientRequirements();
+  default boolean equals(MenuItem m) {
+    return this.getName().equals(m.getName());
+  }
 }

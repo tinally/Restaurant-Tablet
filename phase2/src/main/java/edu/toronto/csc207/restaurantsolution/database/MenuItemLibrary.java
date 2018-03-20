@@ -9,7 +9,9 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class MenuItemLibrary extends SqlLibrary {
@@ -91,6 +93,20 @@ public final class MenuItemLibrary extends SqlLibrary {
         return m;
       }
       return null;
+    });
+  }
+
+  public List<MenuItem> getAllMenuItems() {
+    // Todo: This implementation is very inefficient,
+    // can be improved using a JOIN in 2 queries.
+    return this.executeQuery(connection -> {
+      final ArrayList<MenuItem> menuItems = new ArrayList<>();
+      Statement statement  = connection.createStatement();
+      ResultSet menuItemsRs = statement.executeQuery("SELECT name FROM menu");
+      while(menuItemsRs.next()) {
+        menuItems.add(this.getMenuItem(menuItemsRs.getString("name")));
+      }
+      return menuItems;
     });
   }
 }

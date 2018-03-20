@@ -41,4 +41,9 @@ public class MenuItemImpl implements MenuItem {
   public void setPrice(Double price) {
     this.price = price;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    return o instanceof MenuItem && this.equals((MenuItem) o);
+  }
 }
