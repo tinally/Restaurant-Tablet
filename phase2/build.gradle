@@ -10,12 +10,15 @@ dependencies {
             [group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'],
             [group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.0'],
             [group: 'com.j256.ormlite', name: 'ormlite-core', version: '4.23'],
+        [group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.0'],
+        [group: 'com.jfoenix', name: 'jfoenix', version: '9.0.3']
             [group: 'com.j256.ormlite', name: 'ormlite-jdbc', version: '4.23'],
             [group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11.2'],
             [group: 'com.intellij', name: 'annotations', version: '9.0.4']
     )
     testCompile 'junit:junit:4.12'
     compile group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'
+
 }
 
 sourceSets {
