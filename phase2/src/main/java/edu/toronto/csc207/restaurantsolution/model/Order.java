@@ -188,4 +188,10 @@ public class Order {
     return addIngredients;
   }
 
+  public String toString(){
+    StringBuilder orderString = new StringBuilder();
+    orderString.append("Order # ").append(orderNumber).append(": ").append(menuItem.toString());
+    return orderString.toString();
+  }
+
 }
