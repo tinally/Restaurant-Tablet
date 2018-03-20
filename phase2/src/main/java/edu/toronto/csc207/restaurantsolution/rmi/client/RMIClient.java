@@ -13,7 +13,7 @@ public class RMIClient {
 
   public RMIClient(String host) {
     try {
-      Registry registry = LocateRegistry.getRegistry(host);
+      Registry registry = LocateRegistry.getRegistry(host, 1099);
       api = (API) registry.lookup(API.name);
     } catch (RemoteException | NotBoundException e) {
       // TODO: Handle this properly

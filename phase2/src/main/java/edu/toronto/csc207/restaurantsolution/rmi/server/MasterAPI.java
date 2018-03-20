@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.rmi.server;
 import edu.toronto.csc207.restaurantsolution.rmi.API;
 import edu.toronto.csc207.restaurantsolution.rmi.client.UpdateListener;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -16,11 +17,5 @@ public class MasterAPI implements API {
   @Override
   public void registerClient(UpdateListener client) {
     clients.add(client);
-  }
-
-  @Override
-  public void notifyUpdate() {
-    for (UpdateListener client : clients)
-      client.update();
   }
 }

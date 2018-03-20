@@ -2,6 +2,7 @@ package edu.toronto.csc207.restaurantsolution.rmi.server;
 
 import edu.toronto.csc207.restaurantsolution.rmi.API;
 
+import java.rmi.AlreadyBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -16,10 +17,11 @@ public class RMIServer {
    */
   public RMIServer(API api, int port) {
     try {
-      Registry registry = LocateRegistry.createRegistry(port);
+      // TODO: Dependency injection
       Remote stub = UnicastRemoteObject.exportObject(api, port);
-      registry.rebind(API.name, stub);
-    } catch (RemoteException e) {
+      Registry registry = LocateRegistry.createRegistry(port);
+      registry.bind(API.name, stub);
+    } catch (RemoteException | AlreadyBoundException e) {
       // TODO: Handle this properly
       System.out.println();
     }
