@@ -125,7 +125,7 @@ public class OrderManagerService extends Service {
    * Fire an {@link OrderChangedEvent} that notifies listeners that an
    * order was changed.
    *
-   * @param orderNumber The order number of the order to update the status of.
+   * @param orderNumber The order number of the order to notifyUpdate the status of.
    * @param newStatus   The new status to change the order.
    * @param sender      The name of the object that sent the event.
    */
