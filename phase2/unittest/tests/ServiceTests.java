@@ -1,15 +1,14 @@
 package tests;
 
-import edu.toronto.csc207.restaurantsolution.model.Chef;
-import edu.toronto.csc207.restaurantsolution.model.Server;
-import edu.toronto.csc207.restaurantsolution.services.PaymentService;
+import edu.toronto.csc207.restaurantsolution.legacy.model.Chef;
+import edu.toronto.csc207.restaurantsolution.legacy.model.Server;
+import edu.toronto.csc207.restaurantsolution.legacy.services.PaymentService;
 import org.junit.Assert;
 import org.junit.Test;
-import edu.toronto.csc207.restaurantsolution.model.Table;
-import edu.toronto.csc207.restaurantsolution.services.KitchenFactoryService;
-import edu.toronto.csc207.restaurantsolution.framework.services.Service;
-import edu.toronto.csc207.restaurantsolution.framework.services.ServiceConstructor;
-import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
+import edu.toronto.csc207.restaurantsolution.legacy.services.KitchenFactoryService;
+import edu.toronto.csc207.restaurantsolution.legacy.framework.services.Service;
+import edu.toronto.csc207.restaurantsolution.legacy.framework.services.ServiceConstructor;
+import edu.toronto.csc207.restaurantsolution.legacy.framework.services.ServiceContainer;
 
 public class ServiceTests {
 

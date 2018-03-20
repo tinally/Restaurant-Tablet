@@ -2,9 +2,9 @@ package tests;
 
 import org.junit.Assert;
 import org.junit.Test;
-import edu.toronto.csc207.restaurantsolution.services.IngredientListService;
-import edu.toronto.csc207.restaurantsolution.services.MenuItemsListService;
-import edu.toronto.csc207.restaurantsolution.framework.services.ServiceContainer;
+import edu.toronto.csc207.restaurantsolution.legacy.services.IngredientListService;
+import edu.toronto.csc207.restaurantsolution.legacy.services.MenuItemsListService;
+import edu.toronto.csc207.restaurantsolution.legacy.framework.services.ServiceContainer;
 
 public class ResourceListTests {
 
