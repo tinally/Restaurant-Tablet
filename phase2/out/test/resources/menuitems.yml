@@ -1,0 +1,16 @@
+---
+- name: "BLT Sandwich"
+  ingredients:
+    Bread: 2
+    Tomato: 1
+    Bacon: 2
+  price: 100.0
+- name: "Bread Sandwich"
+  ingredients:
+    Bread: 3
+  price: 100.0
+- name: "Toast Sandwich"
+  ingredients:
+    Bread: 2
+    Toast: 1
+  price: 120.0
