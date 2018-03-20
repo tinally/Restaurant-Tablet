@@ -6,6 +6,14 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
+// Server concept:
+// The entire purpose of a server is to propagate full data refreshes to clients
+// ... while keeping a persistent record of data models.
+// The "server" should be distinguished from the "server node"; i.e., the server
+// ... node is the system on the network which is running the "server", but the
+// ... server node also contains a client that is updated just like all remote
+// ... clients.
+
 // TODO: Extend service / move to package?
 public class RMIServer {
   private Registry registry;
