@@ -1,4 +1,4 @@
-package Manager;
+package edu.toronto.csc207.restaurantsolution.ui.Manager;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;

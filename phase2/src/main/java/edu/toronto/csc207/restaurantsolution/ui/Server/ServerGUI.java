@@ -1,4 +1,4 @@
-package Server;
+package edu.toronto.csc207.restaurantsolution.ui.Server;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

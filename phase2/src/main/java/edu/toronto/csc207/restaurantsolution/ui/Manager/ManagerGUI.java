@@ -1,4 +1,4 @@
-package Manager;
+package edu.toronto.csc207.restaurantsolution.ui.Manager;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +15,6 @@ public class ManagerGUI extends Application {
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

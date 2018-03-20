@@ -1,4 +1,4 @@
-package Cashier;
+package edu.toronto.csc207.restaurantsolution.ui.Cashier;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Cashier extends Application {
+public class CashierGUI extends Application {
 
     public static void main(String[] args) {
         launch(args);

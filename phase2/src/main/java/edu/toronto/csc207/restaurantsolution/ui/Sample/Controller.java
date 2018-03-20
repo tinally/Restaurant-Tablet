@@ -1,4 +1,4 @@
-package sample;
+package edu.toronto.csc207.restaurantsolution.ui.Sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
