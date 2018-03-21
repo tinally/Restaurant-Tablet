@@ -21,7 +21,8 @@ public class TestChefGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Chef.fxml"));
+        URL home = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Chef/Chef.fxml").toURL();
+        Parent root = FXMLLoader.load(home);
         primaryStage.setTitle("GUI.Chef Screen");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
