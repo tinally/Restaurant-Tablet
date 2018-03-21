@@ -32,12 +32,21 @@ public class ChefController implements Initializable {
     private VBox ingredientDesc;
 
 
-
+    /**
+     * Given a list of Orders, add the orders to the incoming orders to be displayed
+     * @param orderList The list of Orders to be displayed.
+     */
     public static void addOrders(List<Order> orderList){
         orders.addAll(orderList);
     }
 
     // TODO: Remove all code smells
+
+    /**
+     * Show the Order on the Ingredient Description Pane once the button was clicked
+     * @param order The order associated with the button
+     * @param button The button that causes the event to occur
+     */
     private void showOrder(Order order, JFXButton button) {
 
         ingredientDesc.getChildren().retainAll();
@@ -55,6 +64,11 @@ public class ChefController implements Initializable {
         authorize.setOnAction(event -> moveToInProgress(order, button));
     }
 
+    /**
+     * Given an Order, return a Map of the updated Ingredients to be used for the order
+     * @param order The Order
+     * @return The Map of updated ingredients to be used
+     */
     private Map<Ingredient, Integer> getUpdatedIngredients(Order order){
         Map<Ingredient, Integer> menuIng = order.getMenuItem().getIngredientRequirements();
         List<Ingredient> removedIngredients = order.getRemovals();
@@ -75,6 +89,12 @@ public class ChefController implements Initializable {
         return updatedIngs;
     }
     //TODO: refactor code to make it look clean
+
+    /**
+     * Move the order to the inProgress pane once the order has been authorized
+     * @param order The order to be moved to the Pane
+     * @param button The button that causes this event to occur
+     */
     private void moveToInProgress(Order order, JFXButton button){
         HBox hBox = new HBox();
         Label orderLabel = new Label("Order #" + order.getOrderNumber());
@@ -90,7 +110,12 @@ public class ChefController implements Initializable {
     }
 
 
-
+    /**
+     * Overrides Initializable interface. Initialize the GUI and add the orders
+     * in the list of incoming orders.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Order order: orders){
