@@ -12,6 +12,7 @@ dependencies {
 
     )
     testCompile 'junit:junit:4.12'
+    compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
 }
 
 sourceSets {
