@@ -5,3 +5,5 @@ phase1/out/
 **/gradle
 **/phase2.iml
 *.class
+phase2/.gradle/
+
