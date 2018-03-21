@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <ScrollPane prefHeight="342.0" prefWidth="223.0" BorderPane.alignment="CENTER">
+         <content>
+            <HBox prefHeight="376.0" prefWidth="224.0">
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="235.0" prefWidth="52.0" text="Table    #12                     #75" wrapText="true" />
+                  <Label alignment="TOP_CENTER" prefHeight="163.0" prefWidth="78.0" text="Order         Bacon Sandwich     Egg Salad" wrapText="true" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="65.0" text="Delivered" />
+                        <CheckBox mnemonicParsing="false" />
+                        <CheckBox mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </content>
+      </ScrollPane>
+   </left>
+   <top>
+      <SplitPane dividerPositions="0.5" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <items>
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="211.0" text="Orders to Deliver" />
+            <Label alignment="CENTER" prefHeight="17.0" prefWidth="395.0" text="New Order" />
+         </items>
+      </SplitPane>
+   </top>
+</BorderPane>
