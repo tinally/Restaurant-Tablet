@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Sample.Controller">
    <children>
       <JFXButton fx:id="toggle" buttonType="RAISED" layoutX="429.0" layoutY="61.0" onAction="#toggleAction" prefHeight="49.0" prefWidth="125.0" style="-fx-background-color: #ffff11;" text="Toggle Expansion" />
       <JFXButton fx:id="addNewNode" buttonType="RAISED" layoutX="429.0" layoutY="134.0" onAction="#addAction" prefHeight="49.0" prefWidth="125.0" style="-fx-background-color: #ffff11;" text="Add New Node" />
