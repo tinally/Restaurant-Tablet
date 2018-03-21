@@ -12,7 +12,7 @@ import java.rmi.server.UnicastRemoteObject;
  * This class should only be instantiated once in any given JVM; otherwise,
  * socket binding conflicts will occur.
  */
-public class RemoteObjectBinder {
+public final class RemoteObjectBinder {
   /** The RMI registry. */
   private Registry registry;
   private int port;
@@ -32,6 +32,12 @@ public class RemoteObjectBinder {
     }
   }
 
+  /**
+   * Binds a remote object with a readable name on the local host.
+   *
+   * @param name the name for RMI lookup of the bound object.
+   * @param object the remote object to be bound.
+   */
   public void bind(String name, Remote object) {
     try {
       Remote stub = UnicastRemoteObject.exportObject(object, port);
@@ -41,6 +47,12 @@ public class RemoteObjectBinder {
     }
   }
 
+  /**
+   * Unbinds an object by name from the local host.
+   *
+   * @param name the name of the object to be released.
+   * @return true iff the unbinding was successful.
+   */
   public boolean unbind(String name) {
     try {
       registry.unbind(name);
