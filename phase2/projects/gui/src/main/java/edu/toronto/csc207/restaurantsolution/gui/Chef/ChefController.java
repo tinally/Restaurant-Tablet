@@ -6,12 +6,10 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
@@ -54,7 +52,7 @@ public class ChefController implements Initializable {
         }
         JFXButton authorize = new JFXButton("I Authorize");
         ingredientDesc.getChildren().add(authorize);
-        authorize.setOnAction(event -> moveToOther(order, button));
+        authorize.setOnAction(event -> moveToInProgress(order, button));
     }
 
     private Map<Ingredient, Integer> getUpdatedIngredients(Order order){
@@ -77,7 +75,7 @@ public class ChefController implements Initializable {
         return updatedIngs;
     }
     //TODO: refactor code to make it look clean
-    private void moveToOther(Order order, JFXButton button){
+    private void moveToInProgress(Order order, JFXButton button){
         HBox hBox = new HBox();
         Label orderLabel = new Label("Order #" + order.getOrderNumber());
         JFXProgressBar progress = new JFXProgressBar();
