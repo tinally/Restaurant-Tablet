@@ -7,7 +7,8 @@ package chef;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -46,9 +48,9 @@ public class ChefController implements Initializable {
     private void showOrder(Order order, JFXButton button) {
 
         ingredientDesc.getChildren().retainAll();
-        Label label = new Label(order.getMenuItem().toString());
+        Label label = new Label(order.getMenuItem().getName());
         ingredientDesc.getChildren().add(label);
-        Map<Ingredient, Integer> ings = order.getMenuItem().getIngredientRequirements();
+        Map<Ingredient, Integer> ings = getUpdatedIngredients(order);
         for (Map.Entry<Ingredient, Integer> entry : ings.entrySet()) {
             Ingredient key = entry.getKey();
             Integer value = entry.getValue();
@@ -60,6 +62,25 @@ public class ChefController implements Initializable {
         authorize.setOnAction(event -> moveToOther(order, button));
     }
 
+    private Map<Ingredient, Integer> getUpdatedIngredients(Order order){
+        Map<Ingredient, Integer> menuIng = order.getMenuItem().getIngredientRequirements();
+        List<Ingredient> removedIngredients = order.getRemovals();
+        Map<Ingredient, Integer> additions = order.getAdditions();
+        Map<Ingredient, Integer> updatedIngs = new HashMap<>();
+
+        for (Map.Entry<Ingredient, Integer> ingredients: menuIng.entrySet()){
+            if (!removedIngredients.contains(ingredients.getKey())){ // If the ingredient is not in removed ingredients
+                if (additions.containsKey(ingredients)){ // if the ingredient is in the added ing
+                    updatedIngs.put(ingredients.getKey(), additions.get(ingredients.getKey()));
+                }
+                else{
+                    updatedIngs.put(ingredients.getKey(), ingredients.getValue());
+                }
+            }
+        }
+
+        return updatedIngs;
+    }
     //TODO: refactor code to make it look clean
     private void moveToOther(Order order, JFXButton button){
         HBox hBox = new HBox();
@@ -80,7 +101,7 @@ public class ChefController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Order order: orders){
-            JFXButton orderButton = new JFXButton(order.toString());
+            JFXButton orderButton = new JFXButton("Order # + " + order.getOrderID());
             orderButton.setOnAction(event -> showOrder(order, orderButton));
 
             incomingOrders.getChildren().addAll(orderButton);
