@@ -4,3 +4,4 @@
 .gradle/
 event.txt
 requests.txt
+*.class

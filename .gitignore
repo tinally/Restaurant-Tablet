@@ -4,3 +4,4 @@ phase1/out/
 .DS_Store
 **/gradle
 **/phase2.iml
+*.class

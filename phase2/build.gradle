@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 apply plugin: 'idea'
 //and standard one
 apply plugin: 'java'
@@ -13,17 +14,12 @@ dependencies {
     )
     testCompile 'junit:junit:4.12'
     compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
+=======
+allprojects {
+    apply plugin: 'idea'
+    repositories {
+        jcenter()
+    }
+>>>>>>> 3b76f1b17161576e259fcc56404d7197163d622e
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-        }
-    }
-    test {
-        java {
-            srcDir 'unittest'
-        }
-    }
-}

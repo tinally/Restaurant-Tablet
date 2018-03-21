@@ -1,0 +1,20 @@
+---
+- name: "Tomato"
+  cost: 10.0
+  pricing: 1.0
+
+- name: "Bacon"
+  cost: 12.0
+  pricing: 2.0
+
+- name: "Lettuce"
+  cost: 6.0
+  pricing: 2.0
+
+- name: "Bread"
+  cost: 12.0
+  pricing: 10.0
+
+- name: "Toast"
+  cost: 13.0
+  pricing: 10.0

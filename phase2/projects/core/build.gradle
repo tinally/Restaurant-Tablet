@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+dependencies {
+    compile project(':projects/interfaces')
+    compile group: 'org.mindrot', name: 'jbcrypt', version: '0.3m'
+    compile group: 'com.intellij', name: 'annotations', version: '9.0.4'
+    compile group: 'org.xerial', name: 'sqlite-jdbc', version: '3.8.11.2'
+
+    testCompile project(':projects/core')
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+}
