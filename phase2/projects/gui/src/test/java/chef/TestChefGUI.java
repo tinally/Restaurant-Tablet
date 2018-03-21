@@ -1,5 +1,6 @@
 package chef;
 
+import edu.toronto.csc207.restaurantsolution.gui.Chef.ChefController;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.MenuItemImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
@@ -16,7 +17,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-public class ChefGUI extends Application {
+public class TestChefGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
