@@ -10,3 +10,16 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
 }
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java' include '**/*.fxml'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/java' include '**/*.fxml'
+        }
+    }
+}
