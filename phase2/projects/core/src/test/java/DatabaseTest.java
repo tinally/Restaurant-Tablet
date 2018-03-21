@@ -11,6 +11,7 @@ import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import org.junit.jupiter.api.Test;
 import org.sqlite.SQLiteDataSource;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -170,7 +171,7 @@ public class DatabaseTest {
     ds.setUrl("jdbc:sqlite:test.db");
     IngredientLibrary l = new IngredientLibrary(ds);
     MenuItemLibrary ml = new MenuItemLibrary(ds);
-    OrderDatabase od = new OrderDatabase(ds);
+    OrderDatabase od = new OrderDatabase(ds, ml, l);
 
     IngredientImpl ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
@@ -208,8 +209,11 @@ public class DatabaseTest {
     order.setOrderCost(10d);
     order.setTableNumber(15);
     order.setOrderNumber(11);
+    order.setOrderDate(Instant.now());
+    order.setCreatingUser("TestUser");
 
     od.insertOrUpdateOrder(order);
+    assertFalse(od.retrieveAllOrders().isEmpty());
 
   }
 

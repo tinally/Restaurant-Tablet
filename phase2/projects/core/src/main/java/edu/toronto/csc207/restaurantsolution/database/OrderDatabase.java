@@ -1,17 +1,28 @@
 package edu.toronto.csc207.restaurantsolution.database;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.util.Map;
+import java.time.Instant;
+import java.util.*;
 
 public final class OrderDatabase extends SqlLibrary {
-  public OrderDatabase(DataSource dataSource) {
+  private final MenuItemLibrary menuItems;
+  private final IngredientLibrary ingredientLibrary;
+
+  public OrderDatabase(DataSource dataSource,
+                       MenuItemLibrary menuItems,
+                       IngredientLibrary ingredientLibrary) {
     super(dataSource);
+    this.menuItems = menuItems;
+    this.ingredientLibrary = ingredientLibrary;
     this.createTable();
   }
 
@@ -67,5 +78,62 @@ public final class OrderDatabase extends SqlLibrary {
       additionsPs.executeBatch();
       orderPs.execute();
     });
+  }
+
+  public Order retrieveOrder(UUID orderId) {
+    //todo: optimize this to use a single connection instead of multiple db hits.
+    return this.executeQuery(connection -> {
+      PreparedStatement orderPs = connection.prepareStatement("SELECT * FROM orders WHERE orderId = ?");
+      orderPs.setString(1, orderId.toString());
+      PreparedStatement removalsPs = connection.prepareStatement("SELECT * from orders_removals WHERE orderId = ?");
+      removalsPs.setString(1, orderId.toString());
+      PreparedStatement additionsPs = connection.prepareStatement("SELECT * from orders_additions WHERE orderId = ?");
+      additionsPs.setString(1, orderId.toString());
+
+
+      ResultSet removalsResult = removalsPs.executeQuery();
+      final List<Ingredient> removals = new ArrayList<>();
+      while (removalsResult.next()) {
+        String ingredientName = removalsResult.getString("ingredient");
+        removals.add(this.ingredientLibrary.getIngredient(ingredientName));
+      }
+
+      final HashMap<Ingredient, Integer> additions = new HashMap<>();
+      ResultSet additionsResult = additionsPs.executeQuery();
+      while (additionsResult.next()) {
+        String ingredientName = additionsResult.getString("ingredient");
+        additions.put(this.ingredientLibrary.getIngredient(ingredientName), additionsResult.getInt("count"));
+      }
+
+      ResultSet orderResult = orderPs.executeQuery();
+
+      if (orderResult.next()) {
+        OrderImpl order = new OrderImpl();
+        order.setMenuItem(this.menuItems.getMenuItem(orderResult.getString("menuItem")));
+        order.setOrderDate(orderResult.getTimestamp("orderTimestamp").toInstant());
+        order.setCreatingUser(orderResult.getString("createdUsername"));
+        order.setOrderId(UUID.fromString(orderResult.getString("orderId")));
+        order.setTableNumber(orderResult.getInt("tableNumber"));
+        order.setOrderNumber(orderResult.getInt("orderNumber"));
+        order.setOrderCost(orderResult.getDouble("orderCost"));
+        order.setRemovals(removals);
+        order.setAdditions(additions);
+        return order;
+      }
+      return null;
+    });
+  }
+
+  public List<Order> retrieveAllOrders() {
+    //todo: optimize this
+    final ArrayList<Order> orders = new ArrayList<>();
+    this.executeUpdate(connection -> {
+      Statement statement = connection.createStatement();
+      ResultSet orderResults = statement.executeQuery("SELECT orderId from orders");
+      while(orderResults.next()) {
+        orders.add(this.retrieveOrder(UUID.fromString(orderResults.getString("orderId"))));
+      }
+    });
+    return orders;
   }
 }

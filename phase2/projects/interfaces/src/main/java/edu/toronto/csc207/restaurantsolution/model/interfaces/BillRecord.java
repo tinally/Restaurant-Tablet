@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.model.interfaces;
 
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -12,5 +13,5 @@ public interface BillRecord {
   Double getChargedTax();
   Double getChargedGratuity();
   Double getPaidAmount();
-  Date getBilledDate();
+  Instant getBilledDate();
 }
