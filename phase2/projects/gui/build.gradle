@@ -1,0 +1,12 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+dependencies {
+    compile project(':projects/interfaces')
+    compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
+
+    testCompile project(':projects/core')
+    testCompile project(':projects/interfaces')
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.1.0'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
+}

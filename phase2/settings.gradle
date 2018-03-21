@@ -1,0 +1,4 @@
+include 'projects/gui'
+include 'projects/interfaces'
+include 'projects/core'
+include 'projects/remoting'
