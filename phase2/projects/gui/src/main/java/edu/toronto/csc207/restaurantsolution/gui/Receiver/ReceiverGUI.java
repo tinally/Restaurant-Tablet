@@ -13,6 +13,7 @@ public class ReceiverGUI extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("ReceiverFXML.fxml"));
         primaryStage.setTitle("ReceiverGUI");
         primaryStage.setScene(new Scene(root));
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 

@@ -14,9 +14,11 @@ public class CashierGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("CashierFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Cashier.fxml"));
         primaryStage.setTitle("Cashier sample");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setMaximized(true);
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 }
