@@ -1,36 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <left>
-      <ScrollPane prefHeight="342.0" prefWidth="223.0" BorderPane.alignment="CENTER">
-         <content>
-            <HBox prefHeight="376.0" prefWidth="224.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="121.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox prefHeight="400.0" prefWidth="184.0">
                <children>
-                  <Label alignment="TOP_CENTER" prefHeight="235.0" prefWidth="52.0" text="Table    #12                     #75" wrapText="true" />
-                  <Label alignment="TOP_CENTER" prefHeight="163.0" prefWidth="78.0" text="Order         Bacon Sandwich     Egg Salad" wrapText="true" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="65.0" text="Delivered" />
-                        <CheckBox mnemonicParsing="false" />
-                        <CheckBox mnemonicParsing="false" prefHeight="33.0" prefWidth="86.0" />
-                     </children>
-                  </VBox>
+                  <Label text="Orders to Deliver">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <JFXListView VBox.vgrow="ALWAYS" />
                </children>
-            </HBox>
-         </content>
-      </ScrollPane>
-   </left>
-   <top>
-      <SplitPane dividerPositions="0.5" prefHeight="25.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-         <items>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="211.0" text="Orders to Deliver" />
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="395.0" text="New Order" />
-         </items>
-      </SplitPane>
-   </top>
-</BorderPane>
+            </VBox>
+            <Region prefHeight="400.0" prefWidth="27.0" />
+            <AnchorPane HBox.hgrow="ALWAYS">
+               <children>
+                  <Label layoutX="57.0" layoutY="14.0" text="New Order" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                     <children>
+                        <VBox prefHeight="496.0" prefWidth="165.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Label text="Menu">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXListView VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="496.0" prefWidth="171.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Addtions">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXListView />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Deletions">
+                                       <font>
+                                          <Font size="17.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXListView />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="496.0" prefWidth="226.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <Region prefHeight="47.0" prefWidth="193.0" />
+                              <HBox prefHeight="59.0" prefWidth="193.0" spacing="25.0">
+                                 <children>
+                                    <Label text="Table Number">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <JFXComboBox />
+                                 </children>
+                                 <padding>
+                                    <Insets top="20.0" />
+                                 </padding>
+                              </HBox>
+                              <VBox prefHeight="260.0" prefWidth="193.0" VBox.vgrow="ALWAYS" />
+                              <JFXButton buttonType="RAISED" prefHeight="49.0" prefWidth="125.0" ripplerFill="#55ff05" text="Send to Kitchen" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" left="50.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
