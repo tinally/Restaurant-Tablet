@@ -9,8 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -108,6 +107,7 @@ public class ChefController implements Initializable {
 
     }
 
+    //TODO: Add a method to remove the order from inProgress once the order is done.
 
     /**
      * Given an order, add the Order to the incoming orders Pane

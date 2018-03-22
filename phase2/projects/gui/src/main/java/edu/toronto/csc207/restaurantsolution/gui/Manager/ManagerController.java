@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.Manager;
 
 import com.jfoenix.controls.JFXButton;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,82 +16,40 @@ import java.util.*;
 
 public class ManagerController implements Initializable {
 
-    @FXML
-    private JFXButton button1;
-    private boolean clicked1 = false;
+    // TODO: Change String to the enum status
+    private ObservableList<String> status = FXCollections.observableArrayList("Pending", "Delivered");
 
     @FXML
-    private JFXButton button2;
-    private boolean clicked2 = false;
+    private ChoiceBox<String> statusBox;
 
     @FXML
-    private JFXButton button3;
-    private boolean clicked3 = false;
+    private VBox ordersBox;
+
+    @FXML
+    private VBox orderDesc;
+
+    @FXML
+    private Label OrderTitle;
 
     @FXML
     private VBox orderStatus;
 
+    //TODO: Use Observer design pattern to update orders on both Manager and Chef
 
-    @FXML
-    void button1clicked(ActionEvent event) {
-        if(!clicked1) {
-            orderStatus.getChildren().retainAll();
-            Label title = new Label("Bacon Sandwich");
-            Label ing1 = new Label("1x Bacon");
-            Label ing2 = new Label("2x Bread");
-            Label status = new Label("Status: PAID");
+    //TODO: Use the same code as previous but add STATUS: enum
+    private void showDesc(Order order, JFXButton button){
 
-
-            orderStatus.getChildren().addAll(title, ing1, ing2, status);
-            clicked2 = false;
-            clicked3 = false;
-        }
-        clicked1 = true;
     }
 
-    @FXML
-    void button2clicked(ActionEvent event) {
-        if(!clicked2) {
-            orderStatus.getChildren().retainAll();
-            Label title = new Label("Mac and Cheese");
-            Label ing1 = new Label("1x Pasta");
-            Label ing2 = new Label("2x Cheese");
-            Label status = new Label("Status: FILLED");
-
-
-            orderStatus.getChildren().addAll(title, ing1, ing2, status);
-            clicked1 = false;
-            clicked3 = false;
-        }
-        clicked2 = true;
-    }
-
-    @FXML
-    void button3clicked(ActionEvent event) {
-
-        if(!clicked3) {
-            orderStatus.getChildren().retainAll();
-            Label title = new Label("Chicken Sandwich");
-            Label ing1 = new Label("1x Chicked");
-            Label ing2 = new Label("2x Bread");
-            Label status = new Label("Status: DELIVERED");
-
-
-            orderStatus.getChildren().addAll(title, ing1, ing2, status);
-            clicked1 = false;
-            clicked2 = false;
-        }
-        clicked3 = true;
-    }
-
-    private ObservableList<String> status = FXCollections.observableArrayList("Pending", "Delivered");
-
-    @FXML
-    private ChoiceBox choice;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        choice.setValue("Pending");
-        choice.getItems().addAll(status);
-    }
+        statusBox.setValue("Pending");
+        statusBox.getItems().addAll(status);
+
+        statusBox.setOnAction(event -> {
+            //TODO: Add a method that calls the Orders that are pending and the orders that are Delivered
+            //TODO: when a choice is selected.
+        });
+        }
 }

@@ -30,22 +30,22 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ChoiceBox fx:id="choice" HBox.hgrow="ALWAYS">
+                        <ChoiceBox fx:id="statusBox" HBox.hgrow="ALWAYS">
                            <HBox.margin>
                               <Insets left="120.0" right="5.0" top="4.0" />
                            </HBox.margin>
                         </ChoiceBox>
                      </children>
                   </HBox>
-                  <VBox prefHeight="329.0" prefWidth="287.0">
+                  <VBox fx:id="ordersBox" prefHeight="329.0" prefWidth="287.0">
                      <children>
-                        <JFXButton fx:id="button1" maxWidth="1.7976931348623157E308" onAction="#button1clicked" text="Order #20 Bacon Sandwich" />
-                        <JFXButton fx:id="button2" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" onAction="#button2clicked" text="Order #21 Mac and Cheese" />
-                        <JFXButton fx:id="button3" layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" onAction="#button3clicked" text="Order #22  Chicken Sandwich" />
+                        <JFXButton maxWidth="1.7976931348623157E308" text="Order #20 Bacon Sandwich" />
+                        <JFXButton layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" text="Order #21 Mac and Cheese" />
+                        <JFXButton layoutX="10.0" layoutY="42.0" maxWidth="1.7976931348623157E308" text="Order #22  Chicken Sandwich" />
                      </children>
                   </VBox>
                </children></VBox>
-            <VBox fx:id="orderStatus" prefHeight="398.0" prefWidth="289.0" style="-fx-background-color: #0ff210;" HBox.hgrow="ALWAYS">
+            <VBox fx:id="orderDesc" prefHeight="398.0" prefWidth="289.0" style="-fx-background-color: #0ff210;" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
