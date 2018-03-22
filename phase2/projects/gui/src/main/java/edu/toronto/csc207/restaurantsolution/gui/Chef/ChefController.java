@@ -52,8 +52,8 @@ public class ChefController implements Initializable {
         ingredientDesc.getChildren().retainAll();
         Label label = new Label(order.getMenuItem().getName());
         ingredientDesc.getChildren().add(label);
-        Map<Ingredient, Integer> ings = getUpdatedIngredients(order);
-        for (Map.Entry<Ingredient, Integer> entry : ings.entrySet()) {
+        Map<Ingredient, Integer> recipe = getUpdatedIngredients(order);
+        for (Map.Entry<Ingredient, Integer> entry : recipe.entrySet()) {
             Ingredient key = entry.getKey();
             Integer value = entry.getValue();
             Label labeling = new Label(value.toString() + "x " + key.toString());
@@ -75,14 +75,13 @@ public class ChefController implements Initializable {
         Map<Ingredient, Integer> additions = order.getAdditions();
         Map<Ingredient, Integer> updatedIngs = new HashMap<>();
 
+        // TODO: NullPointerException due to getRemovals and getAdditions being null when initiated.
         for (Map.Entry<Ingredient, Integer> ingredients: menuIng.entrySet()){
-            if (!removedIngredients.contains(ingredients.getKey())){ // If the ingredient is not in removed ingredients
-                if (additions.containsKey(ingredients)){ // if the ingredient is in the added ing
-                    updatedIngs.put(ingredients.getKey(), additions.get(ingredients.getKey()));
-                }
-                else{
-                    updatedIngs.put(ingredients.getKey(), ingredients.getValue());
-                }
+            Ingredient ingredient = ingredients.getKey();
+            Integer amount = ingredients.getValue();
+            if (!removedIngredients.contains(ingredient)){ // If the ingredient is not in removed ingredients
+                // if the ingredient is in the added ing
+                updatedIngs.put(ingredient, additions.getOrDefault(ingredient, amount));
             }
         }
 
@@ -111,6 +110,18 @@ public class ChefController implements Initializable {
 
 
     /**
+     * Given an order, add the Order to the incoming orders Pane
+     * @param order the Order to be added.
+     */
+    public void addOrderToIncDisp(Order order){
+        JFXButton orderButton = new JFXButton("Order # " + order.getOrderNumber());
+        orderButton.setOnAction(event -> showOrder(order, orderButton));
+
+        incomingOrders.getChildren().addAll(orderButton);
+    }
+
+
+    /**
      * Overrides Initializable interface. Initialize the GUI and add the orders
      * in the list of incoming orders.
      * @param location
@@ -119,10 +130,7 @@ public class ChefController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         for (Order order: orders){
-            JFXButton orderButton = new JFXButton("Order # + " + order.getOrderID());
-            orderButton.setOnAction(event -> showOrder(order, orderButton));
-
-            incomingOrders.getChildren().addAll(orderButton);
+            addOrderToIncDisp(order);
         }
     }
 }
