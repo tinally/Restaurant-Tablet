@@ -34,12 +34,8 @@ public final class DataServer implements DataManager {
   /**
    * Notifies all registered listeners of a data update.
    */
-  public void updateListeners() {
-    try {
-      for (UpdateListener listener : listeners)
-        listener.update();
-    } catch (RemoteException e) {
-
-    }
+  public void updateListeners() throws RemoteException {
+    for (UpdateListener listener : listeners)
+      listener.update();
   }
 }

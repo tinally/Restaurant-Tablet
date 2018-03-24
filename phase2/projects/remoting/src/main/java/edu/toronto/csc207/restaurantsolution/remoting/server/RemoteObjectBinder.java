@@ -23,13 +23,9 @@ public final class RemoteObjectBinder {
    * @param port the port to which the socket for the remote object will be
    *             bound.
    */
-  public RemoteObjectBinder(int port) {
-    try {
-      this.port = port;
-      registry = LocateRegistry.createRegistry(port);
-    } catch (RemoteException e) {
-
-    }
+  public RemoteObjectBinder(int port) throws RemoteException {
+    this.port = port;
+    registry = LocateRegistry.createRegistry(port);
   }
 
   /**
@@ -38,27 +34,17 @@ public final class RemoteObjectBinder {
    * @param name the name for RMI lookup of the bound object.
    * @param object the remote object to be bound.
    */
-  public void bind(String name, Remote object) {
-    try {
-      Remote stub = UnicastRemoteObject.exportObject(object, port);
-      registry.rebind(name, stub);
-    } catch (RemoteException e) {
-
-    }
+  public void bind(String name, Remote object) throws RemoteException {
+    Remote stub = UnicastRemoteObject.exportObject(object, port);
+    registry.rebind(name, stub);
   }
 
   /**
    * Unbinds an object by name from the local host.
    *
    * @param name the name of the object to be released.
-   * @return true iff the unbinding was successful.
    */
-  public boolean unbind(String name) {
-    try {
+  public void unbind(String name) throws RemoteException, NotBoundException {
       registry.unbind(name);
-      return true;
-    } catch (RemoteException | NotBoundException e) {
-      return false;
-    }
   }
 }

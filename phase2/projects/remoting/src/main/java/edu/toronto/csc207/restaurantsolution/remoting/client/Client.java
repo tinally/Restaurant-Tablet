@@ -14,16 +14,9 @@ import java.rmi.registry.Registry;
 public final class Client {
   private Remote remoteInterface;
 
-  // TODO: Subclass to get specific class that returns remoteInterface
-  // TODO: ... as DataManager
-
-  public Client(String host) {
-    try {
-      Registry registry = LocateRegistry.getRegistry(host, ServerInfo.port);
-      remoteInterface = registry.lookup(ServerInfo.name);
-    } catch (RemoteException | NotBoundException e) {
-
-    }
+  public Client(String host) throws RemoteException, NotBoundException {
+    Registry registry = LocateRegistry.getRegistry(host, ServerInfo.port);
+    remoteInterface = registry.lookup(ServerInfo.name);
   }
 
   public Remote getRemoteInterface() {
