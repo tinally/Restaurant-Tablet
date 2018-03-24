@@ -26,6 +26,7 @@ public class CashierController implements Initializable {
     private JFXToggleButton toggleDiscount;
 
 
+    // TODO: Use regex instead
     @FXML
     void somethingToggle(ActionEvent event) {
         if(toggleDiscount.isSelected()){
