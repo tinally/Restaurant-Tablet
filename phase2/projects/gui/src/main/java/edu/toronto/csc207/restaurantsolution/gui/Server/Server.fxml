@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Server.ServerController">
    <children>
       <HBox prefHeight="121.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,7 +22,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <JFXListView VBox.vgrow="ALWAYS" />
+                  <JFXListView fx:id="deliverOrderList" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <Region prefHeight="400.0" prefWidth="27.0" />
@@ -42,7 +42,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <JFXListView VBox.vgrow="ALWAYS" />
+                              <JFXListView fx:id="menuItemList" VBox.vgrow="ALWAYS" />
                            </children>
                         </VBox>
                         <VBox prefHeight="496.0" prefWidth="171.0" spacing="5.0" HBox.hgrow="ALWAYS">
@@ -54,7 +54,7 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <JFXListView />
+                                    <JFXListView fx:id="additionsList" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
@@ -64,7 +64,7 @@
                                           <Font size="17.0" />
                                        </font>
                                     </Label>
-                                    <JFXListView />
+                                    <JFXListView fx:id="deletionsList" />
                                  </children>
                               </VBox>
                            </children>
@@ -82,14 +82,14 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <JFXComboBox />
+                                    <JFXComboBox fx:id="tableNumberBox" />
                                  </children>
                                  <padding>
                                     <Insets top="20.0" />
                                  </padding>
                               </HBox>
-                              <VBox prefHeight="260.0" prefWidth="193.0" VBox.vgrow="ALWAYS" />
-                              <JFXButton buttonType="RAISED" prefHeight="49.0" prefWidth="125.0" ripplerFill="#55ff05" text="Send to Kitchen" VBox.vgrow="ALWAYS">
+                              <VBox fx:id="orderDescription" prefHeight="260.0" prefWidth="193.0" VBox.vgrow="ALWAYS" />
+                              <JFXButton fx:id="sendToKitchenButton" buttonType="RAISED" onAction="#sendToKitchen" prefHeight="49.0" prefWidth="125.0" ripplerFill="#246106" style="-fx-background-color: #00ff00;" text="Send to Kitchen" VBox.vgrow="ALWAYS">
                                  <VBox.margin>
                                     <Insets bottom="20.0" left="50.0" />
                                  </VBox.margin>

@@ -38,7 +38,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <JFXListView prefHeight="380.0" prefWidth="207.0" VBox.vgrow="ALWAYS" />
+                  <JFXListView fx:id="orderList" prefHeight="380.0" prefWidth="207.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -56,7 +56,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </HBox>
-                  <JFXListView prefHeight="260.0" prefWidth="237.0" VBox.vgrow="ALWAYS" />
+                  <JFXListView fx:id="billableList" prefHeight="260.0" prefWidth="237.0" VBox.vgrow="ALWAYS" />
                   <GridPane fx:id="priceGridPane">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="99.66668701171875" minWidth="10.0" prefWidth="81.33335367838542" />

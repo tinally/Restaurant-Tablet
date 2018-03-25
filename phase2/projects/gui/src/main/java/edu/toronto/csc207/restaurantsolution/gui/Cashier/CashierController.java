@@ -1,8 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.Cashier;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXToggleButton;
+import com.jfoenix.controls.*;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,7 +13,7 @@ import java.util.ResourceBundle;
 public class CashierController implements Initializable {
 
     @FXML
-    private JFXComboBox<?> tableNumber;
+    private JFXComboBox<Integer> tableNumber;
 
     @FXML
     private GridPane priceGridPane;
@@ -23,12 +22,21 @@ public class CashierController implements Initializable {
     private JFXTextField discount;
 
     @FXML
+    private JFXListView<?> billableList; //TODO: What is the type of billableList?
+
+    @FXML
     private JFXToggleButton toggleDiscount;
 
+    @FXML
+    private JFXListView<Order> orderList;
+
+    public void addToOrderList(Order order){
+        orderList.getItems().add(order);
+    }
 
     // TODO: Use regex instead
     @FXML
-    void somethingToggle(ActionEvent event) {
+    void toggleDiscountEvent(ActionEvent event) {
         if(toggleDiscount.isSelected()){
             try{
                 System.out.println(Integer.parseInt(discount.getText()));
@@ -49,5 +57,6 @@ public class CashierController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        tableNumber.getItems().addAll(1,2,3,4,5,6,7,8);
     }
 }
