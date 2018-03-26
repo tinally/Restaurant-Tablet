@@ -7,16 +7,16 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
- * The default implementation of DataManager; the backend that handles remote
- * client requests for data and pushes update notifications to all clients with
- * registered listeners.
+ * Backend data manager implementation that manages database interactions and serves as the "master"
+ * data model of the distributed RMI application.
+ *
+ * <p>Handles remote client requests for data and notifies registered remote listeners of data
+ * updates.
  */
 public final class DataServer implements DataManager {
   private ArrayList<RemoteListener> listeners;
 
-  /**
-   * Constructs a new server.
-   */
+  /** Constructs a new data server. */
   public DataServer() {
     listeners = new ArrayList<>();
   }
@@ -35,7 +35,8 @@ public final class DataServer implements DataManager {
    * Notifies all registered listeners of a data update.
    */
   public void updateListeners() throws RemoteException {
-    for (RemoteListener listener : listeners)
+    for (RemoteListener listener : listeners) {
       listener.update();
+    }
   }
 }

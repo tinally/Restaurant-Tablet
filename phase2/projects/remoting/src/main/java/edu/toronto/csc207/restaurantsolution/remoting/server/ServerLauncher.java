@@ -14,10 +14,9 @@ public final class ServerLauncher {
       DataManager server = new DataServer();
       RemoteObjectBinder binder = new RemoteObjectBinder(ServerInfo.port);
       binder.bind(ServerInfo.name, server);
-
-      binder.unbind(ServerInfo.name);
-    } catch (RemoteException | NotBoundException e) {
-
+    } catch (RemoteException e) {
+      // TODO: Handle this more effectively
+      e.printStackTrace();
     }
   }
 }
