@@ -8,9 +8,10 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
- * Binds remote objects to an RMI socket.
- * This class should only be instantiated once in any given JVM; otherwise,
- * socket binding conflicts will occur.
+ * Binds remote objects to a network socket using Java RMI.
+ *
+ * <p>This class should only be instantiated once in any given JVM to avoid socket binding
+ * conflicts.
  */
 public final class RemoteObjectBinder {
   /** The RMI registry. */
@@ -20,8 +21,7 @@ public final class RemoteObjectBinder {
   /**
    * Constructs a new remote object binder on the local host.
    *
-   * @param port the port to which the socket for the remote object will be
-   *             bound.
+   * @param port the port to which new remote objects will be bound.
    */
   public RemoteObjectBinder(int port) throws RemoteException {
     this.port = port;
