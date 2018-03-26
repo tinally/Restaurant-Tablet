@@ -5,6 +5,9 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+/**
+ * Controls the Receiver graphics user interface.
+ */
 public class ReceiverController {
 
     @FXML
@@ -22,7 +25,6 @@ public class ReceiverController {
 
     @FXML
     void plusOne(ActionEvent event) {
-
     }
 
 }

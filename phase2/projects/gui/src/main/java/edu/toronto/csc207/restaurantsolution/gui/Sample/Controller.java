@@ -9,7 +9,10 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable{
+/**
+ * Controls the Main graphics user interface.
+ */
+public class Controller implements Initializable {
 
     @FXML
     private JFXButton toggle;
@@ -38,7 +41,7 @@ public class Controller implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for (int i = 0; i <4; i++){
+        for (int i = 0; i < 4; i++) {
             JFXButton lbl = new JFXButton("Item " + i);
 
             listView.getItems().add(lbl);

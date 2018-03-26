@@ -12,7 +12,7 @@ import java.net.URL;
 public class ManagerGUI extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Manager.fxml"));
         primaryStage.setTitle("Manager");
         primaryStage.setScene(new Scene(root, 800, 600));

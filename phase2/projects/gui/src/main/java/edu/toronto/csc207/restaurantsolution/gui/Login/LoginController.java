@@ -15,6 +15,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Controls the Login graphics user interface.
+ */
 public class LoginController {
 
     @FXML
@@ -26,11 +29,11 @@ public class LoginController {
     @FXML
     private JFXButton login;
 
-    private void setScene(ActionEvent event, URL url) throws IOException{
+    private void setScene(ActionEvent event, URL url) throws IOException {
         System.out.println(url);
         Parent newRoot = FXMLLoader.load(url);
         Scene scene1 = new Scene(newRoot);
-        Stage window = (Stage)(((Node)event.getSource()).getScene()).getWindow();
+        Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
         window.setScene(scene1);
         window.setFullScreen(true);
         window.show();
@@ -41,28 +44,23 @@ public class LoginController {
 
         String id = username.getText();
         String pass = password.getText();
-        if (id.equals("Chef") && pass.equals("chef")){
+        if (id.equals("Chef") && pass.equals("chef")) {
             System.out.println("Logged In");
             URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Chef/Chef.fxml").toURL();
             setScene(event, url);
-        }
-        else if(id.equals("Server") && pass.equals("server")){
+        } else if (id.equals("Server") && pass.equals("server")) {
             URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Server/Server.fxml").toURL();
             setScene(event, url);
-        }
-        else if(id.equals("Receiver") && pass.equals("receiver")){
+        } else if (id.equals("Receiver") && pass.equals("receiver")) {
             URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Receiver/Receiver.fxml").toURL();
             setScene(event, url);
-        }
-        else if(id.equals("Manager") && pass.equals("manager")){
+        } else if (id.equals("Manager") && pass.equals("manager")) {
             URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Manager/Manager.fxml").toURL();
             setScene(event, url);
-        }
-        else if(id.equals("Cashier") && pass.equals("cashier")){
+        } else if (id.equals("Cashier") && pass.equals("cashier")) {
             URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Cashier/Cashier.fxml").toURL();
             setScene(event, url);
-        }
-        else{
+        } else {
             System.out.println("Try Again");
         }
     }

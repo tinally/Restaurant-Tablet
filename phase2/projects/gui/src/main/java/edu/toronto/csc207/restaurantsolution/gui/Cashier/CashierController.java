@@ -11,6 +11,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+/**
+ * Controls the Cashier graphics user interface.
+ */
 public class CashierController implements Initializable {
 
     @FXML
@@ -31,20 +34,18 @@ public class CashierController implements Initializable {
     @FXML
     private JFXListView<Order> orderList;
 
-    public void addToOrderList(Order order){
+    public void addToOrderList(Order order) {
         orderList.getItems().add(order);
     }
 
-    // TODO: Use regex instead
     @FXML
     void toggleDiscountEvent(ActionEvent event) {
-        if(toggleDiscount.isSelected()){
-            System.out.println("ok");
-            if (Pattern.matches("\\d+", discount.getText())){
+        if (toggleDiscount.isSelected()) {
+            if (Pattern.matches("\\d+", discount.getText())) {
+                //TODO: import order and update discount
                 System.out.println("This is an integer");
-            }
-            else{
-                System.out.println("Invalid");
+            } else {
+                System.out.println("This is invalid");
             }
         }
     }
@@ -52,13 +53,12 @@ public class CashierController implements Initializable {
     @FXML
     public void getTable(ActionEvent event) {
         System.out.println("CHECKING");
-
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        tableNumber.getItems().addAll(1,2,3,4,5,6,7,8);
+        tableNumber.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
     }
 }

@@ -13,6 +13,9 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controls the Server graphics user interface.
+ */
 public class ServerController implements Initializable {
 
     @FXML
@@ -43,6 +46,6 @@ public class ServerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableNumberBox.getItems().addAll(1,2,3,4,5,6,7);
+        tableNumberBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7);
     }
 }

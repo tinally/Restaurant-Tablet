@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Controls the Manager graphics user interface.
+ */
 public class ManagerController implements Initializable {
 
     // TODO: Change String to the enum status
@@ -37,7 +40,7 @@ public class ManagerController implements Initializable {
     //TODO: Use Observer design pattern to update orders on both Manager and Chef
 
     //TODO: Use the same code as previous but add STATUS: enum
-    private void showDesc(Order order, JFXButton button){
+    private void showDesc(Order order, JFXButton button) {
 
     }
 
@@ -51,5 +54,5 @@ public class ManagerController implements Initializable {
             //TODO: Add a method that calls the Orders that are pending and the orders that are Delivered
             //TODO: when a choice is selected.
         });
-        }
+    }
 }
