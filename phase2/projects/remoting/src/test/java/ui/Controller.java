@@ -1,25 +1,24 @@
 package ui;
 
-import edu.toronto.csc207.restaurantsolution.remoting.client.Client;
-import javafx.application.Platform;
+import edu.toronto.csc207.restaurantsolution.remoting.client.DataClient;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import ui.net.ClientListener;
+import ui.net.ClientListenerImpl;
 import ui.net.Unifier;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
-public class Controller extends UnicastRemoteObject implements ClientListener {
+public class Controller implements DataListener {
   private Unifier manager;
 
   @FXML
   public Label label;
 
   public Controller() throws RemoteException, NotBoundException {
-    manager = (Unifier) new Client("localhost").getRemoteInterface();
-    manager.registerListener(this);
+    manager = (Unifier) new DataClient("localhost").getRemoteInterface();
+    ClientListenerImpl listener = new ClientListenerImpl(manager);
+    listener.addListener(this);
   }
 
   public void buttonPress() throws RemoteException {
@@ -27,12 +26,11 @@ public class Controller extends UnicastRemoteObject implements ClientListener {
   }
 
   public void update() {
-    Platform.runLater(() -> {
-      try {
-        label.setText(Double.toString(manager.getRandDouble()));
-      } catch (Exception e) {
-        System.out.println("Error! " + e);
-      }});
+    try {
+      label.setText(Double.toString(manager.getRandDouble()));
+    } catch (RemoteException e) {
+      System.out.println(e);
+    }
   }
 
 }
