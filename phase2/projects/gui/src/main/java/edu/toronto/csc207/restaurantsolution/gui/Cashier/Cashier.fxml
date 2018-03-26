@@ -96,7 +96,7 @@
                                     <Insets left="10.0" top="10.0" />
                                  </HBox.margin>
                               </JFXTextField>
-                              <JFXToggleButton fx:id="toggleDiscount" text=" " />
+                              <JFXToggleButton fx:id="toggleDiscount" onAction="#toggleDiscountEvent" text=" " />
                            </children>
                         </HBox>
                      </children>

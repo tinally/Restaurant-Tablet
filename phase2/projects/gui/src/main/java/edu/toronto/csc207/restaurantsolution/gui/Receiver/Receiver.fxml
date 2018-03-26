@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
    <children>
       <VBox layoutX="397.0" layoutY="22.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="470.0" prefWidth="214.0" spacing="5.0" style="-fx-background-color: 002012;">
          <children>
@@ -87,9 +87,9 @@
                         </Label>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                            <children>
-                              <JFXTextField prefHeight="25.0" prefWidth="35.0" />
-                              <JFXButton buttonType="RAISED" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="+" HBox.hgrow="ALWAYS" />
-                              <JFXButton buttonType="RAISED" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="-" />
+                              <JFXTextField fx:id="amount" prefHeight="25.0" prefWidth="35.0" text="0" />
+                              <JFXButton fx:id="plus" buttonType="RAISED" onAction="#plusOne" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="+" HBox.hgrow="ALWAYS" />
+                              <JFXButton fx:id="minus" buttonType="RAISED" onAction="#minusOne" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="-" />
                            </children>
                            <padding>
                               <Insets left="5.0" right="2.5" />

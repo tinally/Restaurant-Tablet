@@ -9,6 +9,7 @@ import javafx.scene.layout.GridPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CashierController implements Initializable {
 
@@ -38,11 +39,12 @@ public class CashierController implements Initializable {
     @FXML
     void toggleDiscountEvent(ActionEvent event) {
         if(toggleDiscount.isSelected()){
-            try{
-                System.out.println(Integer.parseInt(discount.getText()));
+            System.out.println("ok");
+            if (Pattern.matches("\\d+", discount.getText())){
+                System.out.println("This is an integer");
             }
-            catch (NumberFormatException e){
-                System.err.println("NOT A VALID NUMBER");
+            else{
+                System.out.println("Invalid");
             }
         }
     }
