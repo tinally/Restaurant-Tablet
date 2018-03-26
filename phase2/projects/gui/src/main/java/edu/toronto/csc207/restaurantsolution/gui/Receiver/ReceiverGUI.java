@@ -10,7 +10,7 @@ public class ReceiverGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("ReceiverFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("ReceiverFXML.fxml"));
         primaryStage.setTitle("ReceiverGUI");
         primaryStage.setScene(new Scene(root));
         primaryStage.setFullScreen(true);

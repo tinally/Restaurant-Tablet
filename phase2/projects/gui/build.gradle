@@ -14,12 +14,12 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDir 'src/main/java' include '**/*.fxml'
+            srcDir 'src/main/resources' include '**/*.fxml'
         }
     }
     test {
         resources {
-            srcDir 'src/test/java' include '**/*.fxml'
+            srcDir 'src/main/resources' include '**/*.fxml'
         }
     }
 }

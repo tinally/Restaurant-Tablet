@@ -10,7 +10,7 @@ public class ChefGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Chef.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Chef.fxml"));
         primaryStage.setTitle("Chef Screen");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setFullScreen(true);
