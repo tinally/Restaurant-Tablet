@@ -56,9 +56,8 @@ public class LoginController {
 
     private void activateMainView(UserAccount account, ActionEvent event) throws IOException {
       FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));
-      Parent root = (Parent) mainViewLoader.load();
       MainViewController mainViewController = mainViewLoader.getController();
-      mainViewController.activateUser(account);
+      Parent root = (Parent) mainViewLoader.load();
       Scene scene1 = new Scene(root);
       Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
       window.setScene(scene1);
@@ -68,12 +67,18 @@ public class LoginController {
 
     @FXML
     void validateUser(ActionEvent event) throws IOException {
+<<<<<<< Updated upstream
       String id = username.getText();
       String pass = password.getText();
       boolean goodLogin = manager.checkLogin(id, pass);
       if (!goodLogin) return;
       UserAccount loggedInUser = manager.getUserAccount(id);
       activateMainView(loggedInUser, event);
+=======
+        String id = username.getText();
+        String pass = password.getText();
+        System.out.println(obj.checkLogin(id, pass));
+>>>>>>> Stashed changes
     }
 
 }

@@ -16,18 +16,18 @@ import java.util.logging.*;
 public final class DataService {
   private DataClient dataClient;
   private DataManager dataManager;
-  private Logger logger;
 
   /** Constructs a new data service. */
   public DataService(String host) {
-    logger = Logger.getLogger("Data Service");
+    Logger logger = Logger.getLogger("Data Service");
     try {
       Registry registry = LocateRegistry.getRegistry(host, ServerInfo.port);
       dataClient = new DataClient(registry);
       dataManager = (DataManager) dataClient.getRemoteInterface();
-    } catch (RemoteException | NotBoundException e) {
-      // TODO: Handle this
-      e.printStackTrace();
+    } catch (RemoteException e) {
+      logger.log(Level.SEVERE, "Error on network", e);
+    } catch (NotBoundException e) {
+      logger.log(Level.SEVERE, "DataManager not bound on server", e);
     }
   }
 
