@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class LoginGUI extends Application {
 
     public static void main(String[] args) {
@@ -14,7 +16,8 @@ public class LoginGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Login.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
+                "Login.fxml")));
         primaryStage.setTitle("Login Screen");
         primaryStage.setScene(new Scene(root, 450, 300));
         primaryStage.show();

@@ -8,8 +8,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * Represents a concrete bill record by implementing BillRecord methods.
+ */
 public class BillRecordImpl implements BillRecord {
-
   private UUID billID;
   private List<Order> billedOrders;
   private Double chargedSubtotal;
