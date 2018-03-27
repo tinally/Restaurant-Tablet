@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.gui.Server;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
@@ -43,9 +44,9 @@ public class ServerController implements Initializable {
     @FXML
     private JFXButton sendToKitchenButton;
 
-    public ServerController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+    public ServerController() throws Exception {
+        NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
     }
 
     @FXML

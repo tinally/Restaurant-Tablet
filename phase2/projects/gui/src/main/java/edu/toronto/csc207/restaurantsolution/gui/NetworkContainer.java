@@ -8,12 +8,8 @@ public class NetworkContainer {
   public static DataManager dataManager;
 
   // TODO: Remove this...
-  public static void initManager() {
-    try {
-      dataService = new DataService("localhost");
-      dataManager = dataService.getDataManager();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public static void initManager() throws Exception {
+    dataService = new DataService("localhost");
+    dataManager = dataService.getDataManager();
   }
 }

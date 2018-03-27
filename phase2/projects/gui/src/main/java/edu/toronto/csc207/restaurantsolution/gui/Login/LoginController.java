@@ -41,7 +41,7 @@ public class LoginController {
 
     private DataManager manager;
 
-    public LoginController() {
+    public LoginController() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
     }

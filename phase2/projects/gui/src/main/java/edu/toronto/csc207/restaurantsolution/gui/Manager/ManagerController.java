@@ -43,7 +43,7 @@ public class ManagerController implements Initializable {
 
     private DataManager manager;
 
-    public ManagerController() {
+    public ManagerController() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
     }

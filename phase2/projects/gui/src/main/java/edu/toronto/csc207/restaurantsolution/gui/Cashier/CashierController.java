@@ -40,7 +40,7 @@ public class CashierController implements Initializable {
 
     private DataManager manager;
 
-    public CashierController() {
+    public CashierController() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
 

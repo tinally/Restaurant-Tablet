@@ -24,7 +24,7 @@ public class ReceiverController {
 
     private DataManager manager;
 
-    public ReceiverController() {
+    public ReceiverController() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
     }

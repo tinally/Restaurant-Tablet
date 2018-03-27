@@ -26,7 +26,7 @@ public class MainViewController {
 
   private DataManager manager;
 
-  public MainViewController() {
+  public MainViewController() throws Exception {
     NetworkContainer.initManager();
     manager = NetworkContainer.dataManager;
   }
