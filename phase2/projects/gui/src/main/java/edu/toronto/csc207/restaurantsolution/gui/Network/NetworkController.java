@@ -32,6 +32,13 @@ public class NetworkController implements DataListener {
   @FXML
   private JFXTextField ip;
 
+  private DataManager manager;
+
+  public NetworkController() {
+    DataService service = new DataService("localhost");
+    manager = service.getDataManager();
+  }
+
   private void activateLoginView(ActionEvent event) throws IOException {
     FXMLLoader loginLoader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
     Parent root = loginLoader.load();

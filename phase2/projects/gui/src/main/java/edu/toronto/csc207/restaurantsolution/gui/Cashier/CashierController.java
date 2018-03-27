@@ -42,7 +42,6 @@ public class CashierController implements Initializable {
     public CashierController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
-        orderList = new JFXListView<>();
         try {
             orderList.getItems().addAll(manager.getAllOrders());
             billableList.getItems().addAll(manager.getAllBills());
