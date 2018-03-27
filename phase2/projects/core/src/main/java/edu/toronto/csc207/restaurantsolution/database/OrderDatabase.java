@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 
 import javax.sql.DataSource;
 import java.sql.PreparedStatement;
@@ -37,7 +38,8 @@ public final class OrderDatabase extends SqlLibrary {
           "menuItem TEXT," +
           "orderCost DOUBLE," +
           "orderTimestamp INTEGER," +
-          "createdUsername TEXT)");
+          "createdUsername TEXT," +
+          "orderStatus TEXT)");
       statement.executeUpdate("CREATE TABLE IF NOT EXISTS orders_removals (" +
           "orderId TEXT PRIMARY KEY," +
           "ingredient TEXT)");
@@ -51,7 +53,7 @@ public final class OrderDatabase extends SqlLibrary {
 
   public void insertOrUpdateOrder(Order order) {
     this.executeUpdate(connection -> {
-      PreparedStatement orderPs = connection.prepareStatement("INSERT OR REPLACE INTO orders VALUES (?, ?, ?, ?, ?, ?, ?)");
+      PreparedStatement orderPs = connection.prepareStatement("INSERT OR REPLACE INTO orders VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
       orderPs.setString(1, order.getOrderID().toString());
       orderPs.setInt(2, order.getTableNumber());
       orderPs.setInt(3, order.getOrderNumber());
@@ -59,6 +61,7 @@ public final class OrderDatabase extends SqlLibrary {
       orderPs.setDouble(5, order.getOrderCost());
       orderPs.setTimestamp(6, Timestamp.from(order.getOrderTimestamp()));
       orderPs.setString(7, order.getCreatingUser());
+      orderPs.setString(8, order.getOrderStatus().toString());
 
       //todo: drop all orders_removals rows
       PreparedStatement removalsPs = connection.prepareStatement("INSERT OR REPLACE INTO orders_removals VALUES(?,?)");
@@ -117,6 +120,7 @@ public final class OrderDatabase extends SqlLibrary {
         order.setTableNumber(orderResult.getInt("tableNumber"));
         order.setOrderNumber(orderResult.getInt("orderNumber"));
         order.setOrderCost(orderResult.getDouble("orderCost"));
+        order.setOrderStatus(OrderStatus.valueOf(orderResult.getString("orderStatus")));
         order.setRemovals(removals);
         order.setAdditions(additions);
         return order;

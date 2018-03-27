@@ -40,6 +40,7 @@ public final class DataServer implements DataManager {
     billRecordDatabase = new BillRecordDatabase(dataSource, orderDatabase);
     inventoryDatabase = new InventoryDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
+    accountDatabase.addPermission("admin","view.server");
   }
 
   /**
