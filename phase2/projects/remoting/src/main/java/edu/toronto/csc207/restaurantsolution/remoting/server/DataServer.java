@@ -1,6 +1,6 @@
 package edu.toronto.csc207.restaurantsolution.remoting.server;
 
-import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
+import edu.toronto.csc207.restaurantsolution.database.*;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.client.RemoteListener;
@@ -19,8 +19,12 @@ import java.util.logging.*;
  */
 public final class DataServer implements DataManager {
   private final AccountDatabase accountDatabase;
+  private final BillRecordDatabase billRecordDatabase;
+  private final IngredientLibrary ingredientLibrary;
+  private final InventoryDatabase inventoryDatabase;
+  private final MenuItemLibrary menuItemLibrary;
+  private final OrderDatabase orderDatabase;
   private ArrayList<RemoteListener> listeners;
-  private Logger logger;
 
   /** Constructs a new data server. */
   public DataServer() {
@@ -28,13 +32,17 @@ public final class DataServer implements DataManager {
     SQLiteDataSource dataSource = new SQLiteDataSource();
     dataSource.setUrl("jdbc:sqlite:restaurant.db");
     accountDatabase = new AccountDatabase(dataSource);
+    menuItemLibrary = new MenuItemLibrary(dataSource);
+    ingredientLibrary = new IngredientLibrary(dataSource);
+    orderDatabase = new OrderDatabase(dataSource, menuItemLibrary, ingredientLibrary);
+    billRecordDatabase = new BillRecordDatabase(dataSource, orderDatabase);
+    inventoryDatabase = new InventoryDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
     accountDatabase.addPermission("admin", "view.cashier");
     accountDatabase.addPermission("admin", "view.manager");
     accountDatabase.addPermission("admin", "view.chef");
     accountDatabase.addPermission("admin", "view.server");
     accountDatabase.addPermission("admin", "view.receiver");
-    logger = Logger.getLogger("Data Server");
   }
 
   /**

@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class InventoryDatabase extends SqlLibrary {
-  protected InventoryDatabase(DataSource dataSource) {
+  public InventoryDatabase(DataSource dataSource) {
     super(dataSource);
     this.createTable();
   }
