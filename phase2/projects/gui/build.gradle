@@ -3,6 +3,9 @@ apply plugin: 'idea'
 
 dependencies {
     compile project(':projects/interfaces')
+    compile project(':projects/core')
+    compile project(':projects/remoting')
+
     compile 'com.jfoenix:jfoenix:8.0.3' // Java 8
 
     testCompile project(':projects/core')

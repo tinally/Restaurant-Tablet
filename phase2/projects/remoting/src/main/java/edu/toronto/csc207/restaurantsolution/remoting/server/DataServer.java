@@ -1,7 +1,9 @@
 package edu.toronto.csc207.restaurantsolution.remoting.server;
 
+import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.client.RemoteListener;
+import org.sqlite.SQLiteDataSource;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -14,11 +16,18 @@ import java.util.ArrayList;
  * updates.
  */
 public final class DataServer implements DataManager {
+  private final AccountDatabase accountDatabase;
   private ArrayList<RemoteListener> listeners;
 
   /** Constructs a new data server. */
   public DataServer() {
     listeners = new ArrayList<>();
+    SQLiteDataSource dataSource = new SQLiteDataSource();
+    dataSource.setUrl("jdbc:sqlite:restaurant.db");
+    accountDatabase = new AccountDatabase(dataSource);
+
+    accountDatabase.createAccount("admin", "Administrator", "admin");
+
   }
 
   /**
@@ -38,5 +47,10 @@ public final class DataServer implements DataManager {
     for (RemoteListener listener : listeners) {
       listener.update();
     }
+  }
+
+  @Override
+  public boolean checkLogin(String username, String password) throws RemoteException {
+    return this.accountDatabase.verifyAccount(username, password);
   }
 }

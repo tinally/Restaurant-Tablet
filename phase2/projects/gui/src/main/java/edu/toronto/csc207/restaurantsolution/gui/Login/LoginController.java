@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.gui.Login;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,12 +14,29 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 /**
  * Controls the Login graphics user interface.
  */
 public class LoginController {
+
+    DataManager obj;
+    public LoginController() {
+        try {
+            obj = (DataManager) Naming.lookup("//localhost/Master");
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     private JFXTextField username;
@@ -44,25 +62,7 @@ public class LoginController {
 
         String id = username.getText();
         String pass = password.getText();
-        if (id.equals("Chef") && pass.equals("chef")) {
-            System.out.println("Logged In");
-            URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Chef/Chef.fxml").toURL();
-            setScene(event, url);
-        } else if (id.equals("Server") && pass.equals("server")) {
-            URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Server/Server.fxml").toURL();
-            setScene(event, url);
-        } else if (id.equals("Receiver") && pass.equals("receiver")) {
-            URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Receiver/Receiver.fxml").toURL();
-            setScene(event, url);
-        } else if (id.equals("Manager") && pass.equals("manager")) {
-            URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Manager/Manager.fxml").toURL();
-            setScene(event, url);
-        } else if (id.equals("Cashier") && pass.equals("cashier")) {
-            URL url = new File("projects/gui/src/main/java/edu/toronto/csc207/restaurantsolution/gui/Cashier/Cashier.fxml").toURL();
-            setScene(event, url);
-        } else {
-            System.out.println("Try Again");
-        }
+        System.out.println(obj.checkLogin(id, pass));
     }
 
 }
