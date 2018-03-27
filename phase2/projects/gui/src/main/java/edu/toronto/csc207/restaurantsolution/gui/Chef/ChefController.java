@@ -38,13 +38,9 @@ public class ChefController implements Initializable, DataListener {
     @FXML
     private VBox ingredientDesc;
 
-    @FXML
-    private JFXListView<Order> inProgressList;
-
     private DataManager manager;
 
     public ChefController() throws Exception {
-      inProgressList = new JFXListView<>();
       NetworkContainer.initManager();
       manager = NetworkContainer.dataManager;
       NetworkContainer.dataService.registerListener(this);
@@ -163,7 +159,6 @@ public class ChefController implements Initializable, DataListener {
       try {
         for (Order order : manager.getAllOrders())
           addOrderToIncDisp(order);
-        inProgressList.setItems(FXCollections.observableArrayList(manager.getAllOrders()));
       } catch (RemoteException e) {
         e.printStackTrace();
       }
