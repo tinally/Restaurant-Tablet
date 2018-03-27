@@ -11,6 +11,9 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <AnchorPane xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Chef.ChefController">
 
     <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,7 +28,21 @@
             </VBox>
             <VBox style="-fx-background-color: #fff;">
                 <Label fx:id="itemDisplayTitle" textAlignment="CENTER" />
-                <JFXListView fx:id="itemDisplayIngredientList" VBox.vgrow="ALWAYS" />
+                <JFXTreeTableView
+                        fx:id="itemDisplayIngredientList" VBox.vgrow="ALWAYS" showRoot="false">
+                    <columns>
+                        <JFXTreeTableColumn text="Ingredient" prefWidth="600">
+                            <cellValueFactory>
+                                <TreeItemPropertyValueFactory property="ingredientName"/>
+                            </cellValueFactory>
+                        </JFXTreeTableColumn>
+                        <JFXTreeTableColumn text="Count" resizable="false">
+                            <cellValueFactory>
+                                <TreeItemPropertyValueFactory property="ingredientCount"/>
+                            </cellValueFactory>
+                        </JFXTreeTableColumn>
+                    </columns>
+                </JFXTreeTableView>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <JFXButton>Acknowledge Order</JFXButton>

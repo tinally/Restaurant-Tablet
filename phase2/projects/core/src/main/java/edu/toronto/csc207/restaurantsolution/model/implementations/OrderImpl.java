@@ -126,4 +126,9 @@ public class OrderImpl implements Order {
   }
   
   public void setOrderStatus(OrderStatus orderStatus) { this.orderStatus = orderStatus; }
+
+  @Override
+  public String toString() {
+    return "Order #" + this.getOrderNumber() + " " + this.getMenuItem().getName();
+  }
 }

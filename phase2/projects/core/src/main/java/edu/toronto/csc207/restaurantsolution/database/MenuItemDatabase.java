@@ -95,7 +95,7 @@ public final class MenuItemDatabase extends SqlLibrary {
                 Integer usage = ingredientResults.getInt("usage");
 
                 IngredientImpl ingredient = new IngredientImpl();
-                ingredient.setName(name);
+                ingredient.setName(ingredientName);
                 ingredient.setCost(cost);
                 ingredient.setPricing(pricing);
                 ingredient.setReorderThreshold(reorderThreshold);
