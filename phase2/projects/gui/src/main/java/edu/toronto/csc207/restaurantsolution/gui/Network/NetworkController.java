@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -53,6 +54,7 @@ public class NetworkController implements DataListener {
 //    VBox boxx = new VBox(pi);
 //    boxx.setAlignment(Pos.CENTER);
 //    mainBox.getChildren().add(boxx);
+    box.getChildren().add(new Label("Try Again!"));
     boolean successful = true;
     String host = ip.getText();
     try {
