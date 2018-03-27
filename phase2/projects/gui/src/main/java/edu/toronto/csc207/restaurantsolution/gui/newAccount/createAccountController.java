@@ -4,15 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.stage.Window;
+
+import java.util.regex.Pattern;
 
 public class createAccountController {
 
     @FXML
-    private JFXTextField name;
+    private JFXTextField firstName;
 
     @FXML
     private JFXTextField username;
@@ -30,6 +32,9 @@ public class createAccountController {
     private JFXCheckBox cashierBox;
 
     @FXML
+    private JFXTextField lastName;
+
+    @FXML
     private JFXCheckBox managerBox;
 
     @FXML
@@ -41,16 +46,60 @@ public class createAccountController {
     @FXML
     private JFXButton confirmButton;
 
-    private DataManager manager;
-
-    public createAccountController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+    private void errorAlert(String message) {
+        Window rootWindow = confirmButton.getScene().getWindow();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Registration Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(rootWindow);
+        alert.show();
     }
 
     @FXML
-    void confirmAction(ActionEvent event) {
+    private void setEmptyAlerts() {
+        if (firstName.getText().trim().isEmpty()){
+            errorAlert("Please enter your first name");
+            return;
+        }
+        if (lastName.getText().trim().isEmpty()){
+            errorAlert("Please enter your last name");
+            return;
+        }
+        if (username.getText().trim().isEmpty()) {
+            errorAlert("Please enter a username");
+            return;
+        }
+        if (password.getText().trim().isEmpty()){
+            errorAlert("Please enter a password");
+            return;
+        }
+        if (!confirmPassword.getText().equals(password.getText())){
+            errorAlert("Your passwords must match");
+            return;
+        }
+        if (!(chefBox.isSelected() || receiverBox.isSelected() ||
+                managerBox.isSelected() || cashierBox.isSelected() || //TODO: clumsy conditional
+                serverBox.isSelected())){
+            errorAlert("Please choose at least one permission");
+        }
 
+    }
+
+    private void setRegexAlerts(){
+        String regex = "[a-zA-Z]+";
+        boolean validFirstName = !Pattern.matches(regex, firstName.getText());
+        boolean validLastName = !Pattern.matches(regex, lastName.getText());
+        if (validFirstName || validLastName){
+            errorAlert("Please enter a proper name");
+        }
+
+    }
+
+    public void confirmAction(ActionEvent event) {
+        setEmptyAlerts();
+        setRegexAlerts();
+        //TODO: Do something
     }
 
 }
