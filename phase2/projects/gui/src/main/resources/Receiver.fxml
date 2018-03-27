@@ -1,35 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<?import com.jfoenix.controls.JFXListView?>
-<SplitPane dividerPositions=".9" style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
+<SplitPane dividerPositions="0.9" style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-        <Label text="Inventory" />
+        <Label text="Inventory">
+         <font>
+            <Font name="Helvetica Neue" size="13.0" />
+         </font></Label>
         <JFXListView fx:id="inventoryList" VBox.vgrow="ALWAYS" />
     </VBox>
     <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">
-        <JFXTextField fx:id="name" alignment="CENTER" promptText="Name">
+        <JFXTextField fx:id="name" alignment="CENTER" focusColor="WHITE" promptText="Name" unFocusColor="#1d1d1d">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
+         <font>
+            <Font name="Helvetica Neue" size="13.0" />
+         </font>
         </JFXTextField>
-        <JFXTextField fx:id="quantity" alignment="CENTER" promptText="Quantity">
+        <JFXTextField fx:id="quantity" alignment="CENTER" focusColor="WHITE" promptText="Quantity" unFocusColor="#1d1d1d">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
+         <font>
+            <Font name="Helvetica Neue" size="13.0" />
+         </font>
         </JFXTextField>
-        <JFXButton onAction="#addItem" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" style="-fx-background-color: WHITE;" text="Add Ingredient">
+        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#addItem" style="-fx-background-color: WHITE;" text="Add Ingredient" textAlignment="CENTER">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
+         <font>
+            <Font name="Helvetica Neue" size="13.0" />
+         </font>
         </JFXButton>
         <VBox.margin>
             <Insets bottom="10.0" top="10.0" />
