@@ -3,17 +3,21 @@ package edu.toronto.csc207.restaurantsolution.gui.Chef;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 
+import javafx.scene.input.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.Map;
 
@@ -21,6 +25,7 @@ import java.util.Map;
  * Controls the Chef graphics user interface.
  */
 public class ChefController implements DataListener {
+
 
   public static class IngredientCountMapping extends RecursiveTreeObject<IngredientCountMapping> {
     final StringProperty ingredientName;
@@ -65,6 +70,16 @@ public class ChefController implements DataListener {
         this.incomingOrderList.getSelectionModel().selectedItemProperty().addListener(e -> {
             this.refreshOrderView(this.incomingOrderList.getSelectionModel().getSelectedItem());
         });
+        this.inProgressOrderList.setOnMouseClicked(e -> {
+          if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
+          OrderImpl order = (OrderImpl) this.inProgressOrderList.getSelectionModel().getSelectedItem();
+          order.setOrderStatus(OrderStatus.FILLED);
+          try {
+            manager.modifyOrder(order);
+          } catch (RemoteException e1) {
+            e1.printStackTrace();
+          }
+        });
     }
 
     private void refreshOrderView(Order o) {
@@ -82,6 +97,7 @@ public class ChefController implements DataListener {
         ObservableList<Order> orders = null;
         try {
             orders = FXCollections.observableArrayList(this.manager.getAllOrders());
+            //todo: filter these orders
             inProgressOrderList.setItems(orders);
             incomingOrderList.setItems(orders);
 
