@@ -1,13 +1,15 @@
 package edu.toronto.csc207.restaurantsolution.remoting.server;
 
 import edu.toronto.csc207.restaurantsolution.database.*;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.client.RemoteListener;
 import org.sqlite.SQLiteDataSource;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import java.util.logging.*;
 
 /**
@@ -38,11 +40,6 @@ public final class DataServer implements DataManager {
     billRecordDatabase = new BillRecordDatabase(dataSource, orderDatabase);
     inventoryDatabase = new InventoryDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
-    accountDatabase.addPermission("admin", "view.cashier");
-    accountDatabase.addPermission("admin", "view.manager");
-    accountDatabase.addPermission("admin", "view.chef");
-    accountDatabase.addPermission("admin", "view.server");
-    accountDatabase.addPermission("admin", "view.receiver");
   }
 
   /**
@@ -58,14 +55,76 @@ public final class DataServer implements DataManager {
   /**
    * Notifies all registered listeners of a data update.
    */
+  @Override
   public void updateListeners() throws RemoteException {
     for (RemoteListener listener : listeners) {
       listener.update();
     }
   }
 
+  @Override
   public UserAccount getUserAccount(String username) {
     return accountDatabase.retrieveAccount(username);
+  }
+
+  @Override
+  public BillRecord getBillRecord(UUID billRecordId) {
+    return billRecordDatabase.getBillRecord(billRecordId);
+  }
+
+  @Override
+  public List<BillRecord> getAllBills() {
+    return billRecordDatabase.retrieveAllBills();
+  }
+
+  @Override
+  public void modifyBillRecord(BillRecord billRecord) {
+    billRecordDatabase.addOrUpdateBill(billRecord);
+  }
+
+  @Override
+  public Ingredient getIngredient(String ingredientName) {
+    return ingredientLibrary.getIngredient(ingredientName);
+  }
+
+  @Override
+  public List<Ingredient> getAllIngredients() {
+    return ingredientLibrary.getAllIngredient();
+  }
+
+  @Override
+  public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) {
+    inventoryDatabase.setIngredientCount(ingredient, ingredientCount);
+  }
+
+  @Override
+  public int getIngredientCount(Ingredient ingredient) {
+    return inventoryDatabase.getIngredientCount(ingredient);
+  }
+
+  @Override
+  public MenuItem getMenuItem(String name) {
+    return menuItemLibrary.getMenuItem(name);
+  }
+
+  @Override
+  public List<MenuItem> getAllMenuItems() {
+    return menuItemLibrary.getAllMenuItems();
+  }
+
+  @Override
+  public void modifyOrder(Order order) {
+    orderDatabase.insertOrUpdateOrder(order);
+  }
+
+  @Override
+  public Order getOrder(UUID orderId) {
+    return orderDatabase.retrieveOrder(orderId);
+  }
+
+  @Override
+  public List<Order> getAllOrders() {
+    return orderDatabase.retrieveAllOrders();
   }
 
   @Override

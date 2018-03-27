@@ -19,4 +19,6 @@ public interface UpdateServer extends Remote {
    * @param listener the remote listener that will handle updates.
    */
   void registerListener(RemoteListener listener) throws RemoteException;
+
+  void updateListeners() throws RemoteException;
 }
