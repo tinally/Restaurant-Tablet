@@ -10,7 +10,7 @@ import java.util.logging.*;
  */
 public final class ServerLauncher {
   public static void main(String[] args) {
-    Logger logger = Logger.getLogger("Server Launcher");
+    Logger logger = Logger.getLogger("ServerLauncher");
     try {
       DataManager server = new DataServer();
       RemoteObjectBinder binder = new RemoteObjectBinder(ServerInfo.port);

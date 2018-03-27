@@ -46,7 +46,6 @@ public class ServerController implements Initializable {
     public ServerController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
-        additionsList = new JFXListView<>();
     }
 
     @FXML

@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.Cashier;
 
 import com.jfoenix.controls.*;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
@@ -40,8 +41,8 @@ public class CashierController implements Initializable {
     private DataManager manager;
 
     public CashierController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+      NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
 
     }
 
