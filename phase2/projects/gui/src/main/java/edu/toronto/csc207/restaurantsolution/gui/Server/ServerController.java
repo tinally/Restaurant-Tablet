@@ -43,10 +43,6 @@ public class ServerController implements Initializable {
     @FXML
     private JFXButton sendToKitchenButton;
 
-    @FXML
-    void sendToKitchen(ActionEvent event) {
-    }
-
     public ServerController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
@@ -58,6 +54,10 @@ public class ServerController implements Initializable {
         } catch(java.rmi.RemoteException e) {
 
         }
+    }
+
+    @FXML
+    void sendToKitchen(ActionEvent event) {
     }
 
     @Override

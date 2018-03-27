@@ -2,6 +2,8 @@ package edu.toronto.csc207.restaurantsolution.gui.MainView;
 
 import com.jfoenix.controls.JFXTabPane;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
@@ -18,7 +20,14 @@ public class MainViewController {
   private Tab loginTab, cashierTab, chefTab, managerTab, receiverTab, serverTab;
 
   @FXML
-  Map<String, Tab> menuTabs = new HashMap<>();
+  private Map<String, Tab> menuTabs = new HashMap<>();
+
+  private DataManager manager;
+
+  public MainViewController() {
+    DataService service = new DataService("localhost");
+    manager = service.getDataManager();
+  }
 
   @FXML
   private void initialize() {

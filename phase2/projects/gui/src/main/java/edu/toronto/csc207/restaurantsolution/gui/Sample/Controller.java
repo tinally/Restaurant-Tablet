@@ -2,6 +2,8 @@ package edu.toronto.csc207.restaurantsolution.gui.Sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,13 @@ public class Controller implements Initializable {
 
     @FXML
     private JFXListView<JFXButton> listView;
+
+    private DataManager manager;
+
+    public Controller() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+    }
 
     @FXML
     void addAction(ActionEvent event) {

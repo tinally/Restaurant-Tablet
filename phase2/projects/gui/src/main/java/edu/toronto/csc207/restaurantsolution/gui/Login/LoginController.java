@@ -28,13 +28,6 @@ import java.rmi.RemoteException;
  */
 public class LoginController {
 
-  private DataManager manager;
-
-    public LoginController() {
-      DataService service = new DataService("localhost");
-      manager = service.getDataManager();
-    }
-
     @FXML
     private JFXTextField username;
 
@@ -43,6 +36,13 @@ public class LoginController {
 
     @FXML
     private JFXButton login;
+
+    private DataManager manager;
+
+    public LoginController() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+    }
 
     private void setScene(ActionEvent event, URL url) throws IOException {
         System.out.println(url);
@@ -55,25 +55,25 @@ public class LoginController {
     }
 
     private void activateMainView(UserAccount account, ActionEvent event) throws IOException {
-      FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));
-      Parent root = (Parent) mainViewLoader.load();
-      MainViewController mainViewController = mainViewLoader.getController();
-      mainViewController.activateUser(account);
-      Scene scene1 = new Scene(root);
-      Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
-      window.setScene(scene1);
-      window.setFullScreen(true);
-      window.show();
+        FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));
+        Parent root = (Parent) mainViewLoader.load();
+        MainViewController mainViewController = mainViewLoader.getController();
+        mainViewController.activateUser(account);
+        Scene scene1 = new Scene(root);
+        Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
+        window.setScene(scene1);
+        window.setFullScreen(true);
+        window.show();
     }
 
     @FXML
     void validateUser(ActionEvent event) throws IOException {
-      String id = username.getText();
-      String pass = password.getText();
-      boolean goodLogin = manager.checkLogin(id, pass);
-      if (!goodLogin) return;
-      UserAccount loggedInUser = manager.getUserAccount(id);
-      activateMainView(loggedInUser, event);
+        String id = username.getText();
+        String pass = password.getText();
+        boolean goodLogin = manager.checkLogin(id, pass);
+        if (!goodLogin) return;
+        UserAccount loggedInUser = manager.getUserAccount(id);
+        activateMainView(loggedInUser, event);
     }
 
 }

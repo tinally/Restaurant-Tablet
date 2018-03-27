@@ -136,7 +136,6 @@ public class ChefController implements Initializable {
         incomingOrders.getChildren().addAll(orderButton);
     }
 
-
     /**
      * Overrides Initializable interface. Initialize the GUI and add the orders
      * in the list of incoming orders.

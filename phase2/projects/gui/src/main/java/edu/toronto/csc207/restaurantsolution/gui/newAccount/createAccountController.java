@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -38,6 +40,13 @@ public class createAccountController {
 
     @FXML
     private JFXButton confirmButton;
+
+    private DataManager manager;
+
+    public createAccountController() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+    }
 
     @FXML
     void confirmAction(ActionEvent event) {
