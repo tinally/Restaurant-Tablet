@@ -2,57 +2,44 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import javafx.geometry.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
-<StackPane fx:id="mainBox" xmlns="http://javafx.com/javafx/8.0.121"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="edu.toronto.csc207.restaurantsolution.gui.Network.NetworkController">
-    <VBox fx:id="box">
+
+<StackPane fx:id="mainBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Network.NetworkController">
+    <VBox fx:id="box" alignment="CENTER">
         <children>
-            <Region prefHeight="31.0" prefWidth="308.0"/>
-            <HBox prefHeight="78.0" prefWidth="326.0" spacing="30.0">
+            <HBox alignment="CENTER" prefHeight="78.0" prefWidth="326.0" spacing="30.0">
                 <children>
                     <Label text="IP">
                         <HBox.margin>
-                            <Insets top="10.0"/>
+                            <Insets top="10.0" />
                         </HBox.margin>
                     </Label>
-                    <JFXTextField fx:id="ip"/>
+                    <JFXTextField fx:id="ip" />
                 </children>
-                <VBox.margin>
-                    <Insets left="50.0" right="50.0"/>
-                </VBox.margin>
-                <padding>
-                    <Insets left="50.0" right="50.0" top="10.0"/>
-                </padding>
             </HBox>
-            <HBox spacing="50.0">
+            <HBox alignment="CENTER">
                 <children>
-                    <JFXButton fx:id="login" buttonType="RAISED" onAction="#connect"
-                               style="-fx-background-color: #f00100;" text="Connect">
+                    <JFXButton buttonType="RAISED" onAction="#connect" style="-fx-background-color: #f00100;" text="Connect">
                         <ripplerFill>
                             <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
                                 <stops>
-                                    <Stop color="#13c7df"/>
-                                    <Stop color="WHITE" offset="1.0"/>
+                                    <Stop color="#13c7df" />
+                                    <Stop color="WHITE" offset="1.0" />
                                 </stops>
                             </RadialGradient>
                         </ripplerFill>
                     </JFXButton>
                 </children>
-                <VBox.margin>
-                    <Insets left="50.0" right="50.0"/>
-                </VBox.margin>
-                <padding>
-                    <Insets bottom="15.0" left="140.0" top="20.0"/>
-                </padding>
             </HBox>
         </children>
         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
         </padding>
     </VBox>
 </StackPane>

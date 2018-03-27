@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -48,20 +49,16 @@ public class NetworkController implements DataListener {
 
   @FXML
   void connect(ActionEvent event) throws IOException {
-//    mainBox.setDisable(true);
-//    ProgressIndicator pi = new ProgressIndicator();
-//    VBox boxx = new VBox(pi);
-//    boxx.setAlignment(Pos.CENTER);
-//    mainBox.getChildren().add(boxx);
-    boolean successful = true;
+    boolean success = true;
+    box.getChildren().add(new Label("Try Again!"));
     String host = ip.getText();
     try {
       NetworkContainer.dataService = new DataService(host);
       NetworkContainer.dataManager = NetworkContainer.dataService.getDataManager();
     } catch (Exception e) {
-      successful = false;
+      success = false;
     }
-    if (successful)
+    if (success)
       activateLoginView(event);
   }
 
