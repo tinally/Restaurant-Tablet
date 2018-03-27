@@ -39,7 +39,7 @@ public interface Order extends Serializable {
     MenuItem getMenuItem();
 
     /**
-     * Returns the list of Ingredients needed for this Order.
+     * Returns the list of Ingredients to be removed from this Order.
      *
      * @return the list of Ingredients
      */
