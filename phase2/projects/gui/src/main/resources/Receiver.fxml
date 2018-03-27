@@ -7,16 +7,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="628.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="628.0" style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
@@ -30,22 +27,7 @@
                <Insets />
             </VBox.margin>
          </Label>
-         <GridPane prefHeight="301.0" prefWidth="219.0" VBox.vgrow="ALWAYS">
-            <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.99996948242188" minWidth="10.0" prefWidth="169.99996948242188" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="103.33331298828125" minWidth="10.0" prefWidth="50.000030517578125" />
-            </columnConstraints>
-            <rowConstraints>
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
-         </GridPane>
+         <JFXListView fx:id="inventoryList" prefHeight="146.0" prefWidth="188.0" />
       </children>
       <padding>
          <Insets top="10.0" />
@@ -57,7 +39,7 @@
       </padding>
       <BorderPane prefHeight="230.0" prefWidth="341.0" VBox.vgrow="ALWAYS">
          <top>
-            <Label prefHeight="47.0" prefWidth="197.0" text="Existing Ingredient" BorderPane.alignment="TOP_LEFT">
+            <Label prefHeight="47.0" prefWidth="215.0" text="Existing Ingredient" BorderPane.alignment="TOP_LEFT">
                <font>
                   <Font size="24.0" />
                </font>
@@ -96,10 +78,10 @@
                      <Insets left="5.0" right="2.5" />
                   </padding>
                   <JFXTextField fx:id="amount" prefHeight="25.0" prefWidth="35.0" text="0" />
-                  <JFXButton fx:id="plus" buttonType="RAISED" onAction="#plusOne" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="+" HBox.hgrow="ALWAYS" />
-                  <JFXButton fx:id="minus" buttonType="RAISED" onAction="#minusOne" ripplerFill="#f00d0d" style="-fx-background-color: #ff0000;" text="-" />
+                  <JFXButton fx:id="plus" buttonType="RAISED" onAction="#plusOne" style="-fx-background-color: WHITE;" text="+" HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="minus" buttonType="RAISED" onAction="#minusOne" ripplerFill="#f00d0d" style="-fx-background-color: WHITE;" text="-" />
                </HBox>
-               <JFXButton buttonType="RAISED" style="-fx-background-color: #00ffff;" text="Add">
+               <JFXButton buttonType="RAISED" style="-fx-background-color: WHITE;" text="Add">
                   <VBox.margin>
                      <Insets left="30.0" />
                   </VBox.margin>
@@ -151,7 +133,7 @@
                   </HBox.margin>
                </JFXTextField>
             </HBox>
-            <JFXButton buttonType="RAISED" onAction="#addItem" prefHeight="31.0" prefWidth="248.0" ripplerFill="#f08282" style="-fx-background-color: #00ffff;" text="Add Ingredient" VBox.vgrow="ALWAYS">
+            <JFXButton buttonType="RAISED" onAction="#addItem" prefHeight="31.0" prefWidth="248.0" style="-fx-background-color: WHITE;" text="Add Ingredient" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="50.0" right="50.0" />
                </VBox.margin>

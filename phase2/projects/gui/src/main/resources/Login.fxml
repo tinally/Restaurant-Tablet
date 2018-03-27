@@ -25,7 +25,7 @@
             <Font name="Helvetica Neue" size="13.0" />
          </font>
       </JFXPasswordField>
-      <JFXButton fx:id="login" buttonType="RAISED" onAction="#validateUser" style="-fx-background-color: white;" text="Login">
+      <JFXButton fx:id="login" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#validateUser" style="-fx-background-color: white;" text="Login">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
