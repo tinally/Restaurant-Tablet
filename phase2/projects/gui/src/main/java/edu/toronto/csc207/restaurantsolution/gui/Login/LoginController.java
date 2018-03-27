@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,17 +26,11 @@ import java.rmi.RemoteException;
  */
 public class LoginController {
 
-    DataManager obj;
+  private DataManager manager;
+
     public LoginController() {
-        try {
-            obj = (DataManager) Naming.lookup("//localhost/Master");
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+      DataService service = new DataService("localhost");
+      manager = service.getDataManager();
     }
 
     @FXML
@@ -62,7 +57,7 @@ public class LoginController {
 
         String id = username.getText();
         String pass = password.getText();
-        System.out.println(obj.checkLogin(id, pass));
+        System.out.println(manager.checkLogin(id, pass));
     }
 
 }
