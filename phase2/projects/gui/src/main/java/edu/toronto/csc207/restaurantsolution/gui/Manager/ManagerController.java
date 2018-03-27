@@ -28,6 +28,7 @@ public class ManagerController implements Initializable, DataListener {
     private ObservableList<OrderStatus> status = FXCollections.observableArrayList(OrderStatus.CREATED,
             OrderStatus.INPUTTED, OrderStatus.PUSHED, OrderStatus.SEEN, OrderStatus.FILLED, OrderStatus.REJECTED,
             OrderStatus.DELIVERED, OrderStatus.RETURNED);
+    // TODO: Combobox
 
     @FXML
     private ChoiceBox<OrderStatus> statusBox;
