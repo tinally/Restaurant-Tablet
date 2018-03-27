@@ -45,7 +45,7 @@
                 </JFXTreeTableView>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <JFXButton>Acknowledge Order</JFXButton>
+                    <JFXButton onMousePressed="#setSelectedOrderSeen">Acknowledge Order</JFXButton>
                 </AnchorPane>
             </VBox>
         </SplitPane>

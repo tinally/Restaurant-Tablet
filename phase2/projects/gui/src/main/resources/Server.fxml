@@ -11,108 +11,79 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0" prefWidth="716.0" style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Server.ServerController">
-   <children>
-      <HBox alignment="CENTER" prefHeight="121.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox prefHeight="400.0" prefWidth="184.0">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="26.0" prefWidth="186.0" text="Orders to Deliver">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <JFXListView fx:id="deliverOrderList" fixedCellSize="0.0" VBox.vgrow="ALWAYS">
-                     <opaqueInsets>
-                        <Insets left="20.0" />
-                     </opaqueInsets></JFXListView>
-               </children>
-               <HBox.margin>
-                  <Insets left="20.0" />
-               </HBox.margin>
+<?import javafx.scene.control.SplitPane?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.Integer?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Button?>
+<AnchorPane style="-fx-background-color: #f06292;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.toronto.csc207.restaurantsolution.gui.Server.ServerController">
+   <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+      <VBox>
+         <JFXTreeTableView fx:id="deliverableOrdersTable" showRoot="false" VBox.vgrow="ALWAYS">
+            <columns>
+               <JFXTreeTableColumn text="Table">
+                  <cellValueFactory>
+                     <TreeItemPropertyValueFactory property="tableNumber"/>
+                  </cellValueFactory>
+               </JFXTreeTableColumn>
+               <JFXTreeTableColumn text="Order Number">
+                  <cellValueFactory>
+                     <TreeItemPropertyValueFactory property="orderNumber"/>
+                  </cellValueFactory>
+               </JFXTreeTableColumn><JFXTreeTableColumn text="Menu Item">
+               <cellValueFactory>
+                  <TreeItemPropertyValueFactory property="menuItem"/>
+               </cellValueFactory>
+            </JFXTreeTableColumn>
+            </columns>
+         </JFXTreeTableView>
+         <HBox>
+            <JFXButton HBox.hgrow="ALWAYS" onMousePressed="#confirmSelectedOrder">Confirm Selected Order Delivered</JFXButton>
+            <JFXButton HBox.hgrow="ALWAYS" onMousePressed="#rejectSelectedOrder">Reject Selected Order</JFXButton>
+            </HBox>
+      </VBox>
+      <AnchorPane>
+         <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+            <JFXListView fx:id="menuList"/>
+            <SplitPane orientation="VERTICAL">
+               <VBox>
+                  <Label text="Additions"/>
+                  <JFXListView fx:id="additionsList" VBox.vgrow="ALWAYS"/>
+               </VBox>
+               <VBox>
+                  <Label text="Deletions"/>
+                  <JFXListView fx:id="deletionsList" VBox.vgrow="ALWAYS"/>
+               </VBox>
+            </SplitPane>
+            <VBox>
+               <HBox>
+                  <Label text="Table Number"/>
+                  <JFXComboBox fx:id="tableNumberSelection">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <Integer fx:value="1"/>
+                           <Integer fx:value="2"/>
+                           <Integer fx:value="3"/>
+                           <Integer fx:value="4"/>
+                        </FXCollections>
+                     </items>
+                     <value>
+                        <Integer fx:value="1"/>
+                     </value>
+                  </JFXComboBox>
+               </HBox>
+               <TextArea editable="false" fx:id="orderSummaryTextArea" VBox.vgrow="ALWAYS">
+
+               </TextArea>
+               <JFXButton onMouseClicked="#sendNewOrder">Send Order to Kitchen</JFXButton>
             </VBox>
-            <Region prefHeight="553.0" prefWidth="16.0" />
-            <AnchorPane HBox.hgrow="ALWAYS">
-               <children>
-                  <Label layoutX="57.0" layoutY="14.0" text="New Order" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                     <children>
-                        <VBox prefHeight="496.0" prefWidth="165.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Label text="Menu">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
-                              <JFXListView fx:id="menuItemList" VBox.vgrow="ALWAYS" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="496.0" prefWidth="171.0" spacing="5.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label text="Addtions">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXListView fx:id="additionsList" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <Label text="Deletions">
-                                       <font>
-                                          <Font size="17.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXListView fx:id="deletionsList" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </VBox>
-                        <VBox prefHeight="496.0" prefWidth="226.0" HBox.hgrow="ALWAYS">
-                           <children>
-                              <Region prefHeight="47.0" prefWidth="193.0" />
-                              <HBox prefHeight="59.0" prefWidth="193.0" spacing="25.0">
-                                 <children>
-                                    <Label text="Table Number">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <JFXComboBox fx:id="tableNumberBox" />
-                                 </children>
-                                 <padding>
-                                    <Insets top="20.0" />
-                                 </padding>
-                              </HBox>
-                              <VBox fx:id="orderDescription" prefHeight="260.0" prefWidth="193.0" VBox.vgrow="ALWAYS" />
-                              <JFXButton fx:id="sendToKitchenButton" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#sendToKitchen" prefHeight="26.0" prefWidth="61.0" style="-fx-background-color: WHITE;" text="Send" VBox.vgrow="ALWAYS">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" left="50.0" />
-                                 </VBox.margin>
-                                 <font>
-                                    <Font name="Helvetica Neue" size="13.0" />
-                                 </font>
-                              </JFXButton>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </children>
-      </HBox>
-   </children>
+         </SplitPane>
+      </AnchorPane>
+   </SplitPane>
 </AnchorPane>

@@ -28,6 +28,7 @@ public abstract class SqlLibrary {
         }
       } catch (SQLException e) {
         // connection close failed.
+        e.printStackTrace();
         System.err.println(e);
       }
     }

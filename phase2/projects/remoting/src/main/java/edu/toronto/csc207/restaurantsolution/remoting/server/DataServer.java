@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.remoting.server;
 
 import edu.toronto.csc207.restaurantsolution.database.*;
+import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.client.RemoteListener;
@@ -120,6 +121,13 @@ public final class DataServer implements DataManager {
 
   @Override
   public void modifyOrder(Order order) throws RemoteException {
+    orderDatabase.insertOrUpdateOrder(order);
+    updateListeners();
+  }
+
+  @Override
+  public void modifyOrder(Order order, OrderStatus newstatus) throws RemoteException {
+    ((OrderImpl) order).setOrderStatus(newstatus);
     orderDatabase.insertOrUpdateOrder(order);
     updateListeners();
   }

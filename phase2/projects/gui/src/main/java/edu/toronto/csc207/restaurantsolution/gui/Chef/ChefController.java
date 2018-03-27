@@ -12,20 +12,22 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 
-import javafx.scene.input.MouseEvent;
 import java.rmi.RemoteException;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Controls the Chef graphics user interface.
  */
 public class ChefController implements DataListener {
 
+  @FXML
+  JFXButton acknowledgeOrderButton;
 
   public static class IngredientCountMapping extends RecursiveTreeObject<IngredientCountMapping> {
     final StringProperty ingredientName;
@@ -67,15 +69,18 @@ public class ChefController implements DataListener {
     @FXML
     private void initialize() {
         this.update();
+
         this.incomingOrderList.getSelectionModel().selectedItemProperty().addListener(e -> {
             this.refreshOrderView(this.incomingOrderList.getSelectionModel().getSelectedItem());
         });
+
         this.inProgressOrderList.setOnMouseClicked(e -> {
           if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
           OrderImpl order = (OrderImpl) this.inProgressOrderList.getSelectionModel().getSelectedItem();
           order.setOrderStatus(OrderStatus.FILLED);
           try {
             manager.modifyOrder(order);
+            System.out.println("Modified Order to Filled.");
           } catch (RemoteException e1) {
             e1.printStackTrace();
           }
@@ -88,18 +93,36 @@ public class ChefController implements DataListener {
         for(Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
           ingredients.add(new IngredientCountMapping(entry.getKey(), entry.getValue()));
         }
+        for(Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
+          ingredients.add(new IngredientCountMapping(entry.getKey(), entry.getValue()));
+        }
         TreeItem<IngredientCountMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
         this.itemDisplayIngredientList.setRoot(root);
     }
 
+    public void setSelectedOrderSeen() {
+      OrderImpl order = (OrderImpl) this.incomingOrderList.getSelectionModel().getSelectedItem();
+      order.setOrderStatus(OrderStatus.SEEN);
+      try {
+        manager.modifyOrder(order);
+        System.out.println("Modified Order to SEEN.");
+      } catch (RemoteException e1) {
+        e1.printStackTrace();
+      }
+    }
+
     @Override
     public void update() {
-        ObservableList<Order> orders = null;
+        List<Order> orders = null;
         try {
-            orders = FXCollections.observableArrayList(this.manager.getAllOrders());
+            orders = this.manager.getAllOrders();
             //todo: filter these orders
-            inProgressOrderList.setItems(orders);
-            incomingOrderList.setItems(orders);
+            inProgressOrderList.setItems(FXCollections.observableArrayList(orders.stream()
+                .filter(o -> o.getOrderStatus() == OrderStatus.SEEN)
+                .collect(Collectors.toList())));
+            incomingOrderList.setItems(FXCollections.observableArrayList(orders.stream()
+                .filter(o -> o.getOrderStatus() == OrderStatus.CREATED || o.getOrderStatus() == OrderStatus.RETURNED)
+                .collect(Collectors.toList())));
 
         } catch (RemoteException e) {
             e.printStackTrace();
