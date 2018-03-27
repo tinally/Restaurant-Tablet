@@ -62,14 +62,6 @@ public class ReceiverController implements DataListener {
     }
 
     @FXML
-    void minusOne(ActionEvent event) {
-    }
-
-    @FXML
-    void plusOne(ActionEvent event) {
-    }
-
-    @FXML
     void addItem(ActionEvent actionEvent) {
         String ingredientName = name.getText();
         name.setText("");
