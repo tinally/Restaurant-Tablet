@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.Manager;
 
 import com.jfoenix.controls.JFXButton;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
@@ -12,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import sun.nio.ch.Net;
 
 import java.net.URL;
 import java.util.*;
@@ -42,8 +44,8 @@ public class ManagerController implements Initializable {
     private DataManager manager;
 
     public ManagerController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+      NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
     }
 
     //TODO: Use Observer design pattern to update orders on both Manager and Chef

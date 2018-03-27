@@ -2,6 +2,7 @@ package edu.toronto.csc207.restaurantsolution.gui.Receiver;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
@@ -24,8 +25,8 @@ public class ReceiverController {
     private DataManager manager;
 
     public ReceiverController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+      NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
     }
 
     @FXML

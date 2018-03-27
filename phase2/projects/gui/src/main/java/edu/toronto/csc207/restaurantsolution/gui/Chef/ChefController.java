@@ -2,10 +2,10 @@ package edu.toronto.csc207.restaurantsolution.gui.Chef;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXProgressBar;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,8 +38,8 @@ public class ChefController implements Initializable {
     private DataManager manager;
 
     public ChefController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+      NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
     }
 
     /**
