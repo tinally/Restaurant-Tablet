@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Represents a concrete bill record by implementing BillRecord methods.
+ * Represents an implementation of BillRecord.
  */
 public class BillRecordImpl implements BillRecord {
   private UUID billID;
