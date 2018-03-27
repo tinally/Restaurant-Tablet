@@ -7,8 +7,6 @@ import org.junit.jupiter.api.Test;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ServerTest {
   @Test
   void testServerStartup() throws RemoteException, NotBoundException{

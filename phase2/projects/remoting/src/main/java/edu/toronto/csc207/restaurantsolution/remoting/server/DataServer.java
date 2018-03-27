@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.remoting.server;
 
 import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.client.RemoteListener;
 import org.sqlite.SQLiteDataSource;
@@ -27,7 +28,6 @@ public final class DataServer implements DataManager {
     SQLiteDataSource dataSource = new SQLiteDataSource();
     dataSource.setUrl("jdbc:sqlite:restaurant.db");
     accountDatabase = new AccountDatabase(dataSource);
-
     accountDatabase.createAccount("admin", "Administrator", "admin");
     logger = Logger.getLogger("Data Server");
   }
@@ -51,8 +51,12 @@ public final class DataServer implements DataManager {
     }
   }
 
+  public UserAccount getUserAccount(String username) {
+    return accountDatabase.retrieveAccount(username);
+  }
+
   @Override
-  public boolean checkLogin(String username, String password) throws RemoteException {
+  public boolean checkLogin(String username, String password) {
     return this.accountDatabase.verifyAccount(username, password);
   }
 }

@@ -1,6 +1,6 @@
 package edu.toronto.csc207.restaurantsolution.model.interfaces;
 
-
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * Represents a bill record for a table.
  */
-public interface BillRecord {
+public interface BillRecord extends Serializable {
     /**
      * Returns an unique ID for a bill.
      *

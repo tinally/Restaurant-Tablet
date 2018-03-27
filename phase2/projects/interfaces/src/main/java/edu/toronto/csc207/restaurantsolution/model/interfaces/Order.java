@@ -1,5 +1,6 @@
 package edu.toronto.csc207.restaurantsolution.model.interfaces;
 
+import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.UUID;
 /**
  * Represents an Order in the restaurant.
  */
-public interface Order {
+public interface Order extends Serializable {
     /**
      * Returns an unique ID for an Order.
      *

@@ -1,11 +1,12 @@
 package edu.toronto.csc207.restaurantsolution.model.interfaces;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Represents the account for user interfaces.
  */
-public interface UserAccount {
+public interface UserAccount extends Serializable {
     /**
      * Returns the views the users get to access to.
      *
