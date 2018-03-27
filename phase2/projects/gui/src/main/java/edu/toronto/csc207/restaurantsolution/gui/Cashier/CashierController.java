@@ -42,13 +42,7 @@ public class CashierController implements Initializable {
     public CashierController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
-        orderList = new JFXListView<>();
-        try {
-            orderList.getItems().addAll(manager.getAllOrders());
-            billableList.getItems().addAll(manager.getAllBills());
-        } catch (java.rmi.RemoteException e) {
 
-        }
     }
 
     @FXML
@@ -72,5 +66,11 @@ public class CashierController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         tableNumber.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+        try {
+            orderList.getItems().addAll(manager.getAllOrders());
+            billableList.getItems().addAll(manager.getAllBills());
+        } catch (java.rmi.RemoteException e) {
+
+        }
     }
 }

@@ -47,6 +47,7 @@ public final class OrderDatabase extends SqlLibrary {
           "count INTEGER)");
     });
   }
+  
 
   public void insertOrUpdateOrder(Order order) {
     this.executeUpdate(connection -> {

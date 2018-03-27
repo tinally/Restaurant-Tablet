@@ -17,12 +17,12 @@ dependencies {
 sourceSets {
     main {
         resources {
-            srcDir 'src/main/resources' include '**/*.fxml'
+            srcDir 'src/main/resources'
         }
     }
     test {
         resources {
-            srcDir 'src/main/resources' include '**/*.fxml'
+            srcDir 'src/main/resources'
         }
     }
 }

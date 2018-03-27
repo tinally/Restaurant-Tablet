@@ -48,19 +48,7 @@ public class ServerController implements Initializable {
     public ServerController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
-        deliverOrderList = new JFXListView<>();
-        menuItemList = new JFXListView<>();
-        deletionsList = new JFXListView<>();
-        try {
-            deliverOrderList.getItems().addAll(manager.getAllOrders());
-            menuItemList.getItems().addAll(manager.getAllMenuItems());
 
-            // TODO: place holders for UUID
-            additionsList = manager.getOrder(new UUID(1, 1)).getAdditions();
-            deletionsList.getItems().addAll(manager.getOrder(new UUID(1, 1)).getRemovals());
-        } catch(java.rmi.RemoteException e) {
-
-        }
     }
 
     @FXML
@@ -70,5 +58,11 @@ public class ServerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tableNumberBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7);
+//        try {
+//            deliverOrderList.getItems().addAll(manager.getAllOrders());
+//            menuItemList.getItems().addAll(manager.getAllMenuItems());
+//            } catch(java.rmi.RemoteException e) {
+//
+//        }
     }
 }
