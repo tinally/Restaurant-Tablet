@@ -1,10 +1,12 @@
 package edu.toronto.csc207.restaurantsolution.gui.Chef;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXProgressBar;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +25,7 @@ import java.util.ResourceBundle;
 /**
  * Controls the Chef graphics user interface.
  */
-public class ChefController implements Initializable {
+public class ChefController implements Initializable, DataListener {
 
     private static ObservableList<Order> orders = FXCollections.observableArrayList(); //TODO: maybe change it from static?
 
@@ -35,11 +38,16 @@ public class ChefController implements Initializable {
     @FXML
     private VBox ingredientDesc;
 
+    @FXML
+    private JFXListView<Order> inProgressList;
+
     private DataManager manager;
 
     public ChefController() throws Exception {
+      inProgressList = new JFXListView<>();
       NetworkContainer.initManager();
-        manager = NetworkContainer.dataManager;
+      manager = NetworkContainer.dataManager;
+      NetworkContainer.dataService.registerListener(this);
     }
 
     /**
@@ -148,5 +156,16 @@ public class ChefController implements Initializable {
         for (Order order : orders) {
             addOrderToIncDisp(order);
         }
+        update();
+    }
+
+    public void update() {
+      try {
+        for (Order order : manager.getAllOrders())
+          addOrderToIncDisp(order);
+        inProgressList.setItems(FXCollections.observableArrayList(manager.getAllOrders()));
+      } catch (RemoteException e) {
+        e.printStackTrace();
+      }
     }
 }
