@@ -83,6 +83,7 @@ public class ServerController implements Initializable, DataListener {
         try {
             menuItem = FXCollections.observableArrayList(manager.getAllMenuItems());
             menuItemList.setItems(menuItem);
+            System.out.println("Updated!");
         } catch(Exception e) {
 
         }
@@ -92,11 +93,5 @@ public class ServerController implements Initializable, DataListener {
     public void initialize(URL location, ResourceBundle resources) {
         tableNumberBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7);
         this.update();
-//        try {
-//            deliverOrderList.getItems().addAll(manager.getAllOrders());
-//            menuItemList.getItems().addAll(manager.getAllMenuItems());
-//            } catch(java.rmi.RemoteException e) {
-//
-//        }
     }
 }

@@ -75,4 +75,9 @@ public final class IngredientImpl implements Ingredient {
   public void setDefaultReorderAmount(Integer defaultReorderAmount) {
     this.defaultReorderAmount = defaultReorderAmount;
   }
+
+  @Override
+  public String toString() {
+    return this.getName();
+  }
 }

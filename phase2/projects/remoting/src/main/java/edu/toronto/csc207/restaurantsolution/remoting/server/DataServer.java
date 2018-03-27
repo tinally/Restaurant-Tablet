@@ -40,6 +40,8 @@ public final class DataServer implements DataManager {
     inventoryDatabase = new InventoryDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
     accountDatabase.addPermission("admin","view.server");
+    accountDatabase.addPermission("admin","view.receiver");
+
   }
 
   /**
@@ -95,6 +97,7 @@ public final class DataServer implements DataManager {
 
   @Override
   public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) throws RemoteException {
+    ingredientDatabase.registerIngredient(ingredient);
     inventoryDatabase.setIngredientCount(ingredient, ingredientCount);
     updateListeners();
   }
