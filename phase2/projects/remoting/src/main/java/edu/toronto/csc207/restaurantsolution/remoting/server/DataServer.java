@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.*;
 
 /**
  * Backend data manager implementation that manages database interactions and serves as the "master"
@@ -22,9 +21,9 @@ import java.util.logging.*;
 public final class DataServer implements DataManager {
   private final AccountDatabase accountDatabase;
   private final BillRecordDatabase billRecordDatabase;
-  private final IngredientLibrary ingredientLibrary;
+  private final IngredientDatabase ingredientDatabase;
   private final InventoryDatabase inventoryDatabase;
-  private final MenuItemLibrary menuItemLibrary;
+  private final MenuItemDatabase menuItemDatabase;
   private final OrderDatabase orderDatabase;
   private ArrayList<RemoteListener> listeners;
 
@@ -34,9 +33,9 @@ public final class DataServer implements DataManager {
     SQLiteDataSource dataSource = new SQLiteDataSource();
     dataSource.setUrl("jdbc:sqlite:restaurant.db");
     accountDatabase = new AccountDatabase(dataSource);
-    menuItemLibrary = new MenuItemLibrary(dataSource);
-    ingredientLibrary = new IngredientLibrary(dataSource);
-    orderDatabase = new OrderDatabase(dataSource, menuItemLibrary, ingredientLibrary);
+    menuItemDatabase = new MenuItemDatabase(dataSource);
+    ingredientDatabase = new IngredientDatabase(dataSource);
+    orderDatabase = new OrderDatabase(dataSource, menuItemDatabase, ingredientDatabase);
     billRecordDatabase = new BillRecordDatabase(dataSource, orderDatabase);
     inventoryDatabase = new InventoryDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
@@ -86,12 +85,12 @@ public final class DataServer implements DataManager {
 
   @Override
   public Ingredient getIngredient(String ingredientName) {
-    return ingredientLibrary.getIngredient(ingredientName);
+    return ingredientDatabase.getIngredient(ingredientName);
   }
 
   @Override
   public List<Ingredient> getAllIngredients() {
-    return ingredientLibrary.getAllIngredient();
+    return ingredientDatabase.getAllIngredient();
   }
 
   @Override
@@ -107,12 +106,12 @@ public final class DataServer implements DataManager {
 
   @Override
   public MenuItem getMenuItem(String name) {
-    return menuItemLibrary.getMenuItem(name);
+    return menuItemDatabase.getMenuItem(name);
   }
 
   @Override
   public List<MenuItem> getAllMenuItems() {
-    return menuItemLibrary.getAllMenuItems();
+    return menuItemDatabase.getAllMenuItems();
   }
 
   @Override
