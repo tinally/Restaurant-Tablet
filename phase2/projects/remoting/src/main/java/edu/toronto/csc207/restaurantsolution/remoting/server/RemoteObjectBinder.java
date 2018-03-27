@@ -6,17 +6,19 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.logging.*;
 
 /**
  * Binds remote objects to a network socket using Java RMI.
  *
- * <p>This class should only be instantiated once in any given JVM to avoid socket binding
+ * This class should only be instantiated once in any given JVM to avoid socket binding
  * conflicts.
  */
 public final class RemoteObjectBinder {
   /** The RMI registry. */
   private Registry registry;
   private int port;
+  private Logger logger;
 
   /**
    * Constructs a new remote object binder on the local host.
@@ -26,6 +28,7 @@ public final class RemoteObjectBinder {
   public RemoteObjectBinder(int port) throws RemoteException {
     this.port = port;
     registry = LocateRegistry.createRegistry(port);
+    logger = Logger.getLogger("RemoteObjectBinder");
   }
 
   /**

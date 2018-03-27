@@ -10,13 +10,14 @@ import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
+import java.util.logging.*;
 
 /**
  * A client of the distributed RMI application that translates the remote server interface into a
  * local object and transforms remote data updates into local data updates for system threading
  * coordination.
  *
- * <p>This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
+ * This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
  * networking conflicts may occur.
  */
 public final class DataClient extends UnicastRemoteObject implements RemoteListener {
@@ -24,6 +25,8 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
   private UpdateServer remoteInterface;
   /** Local data listeners that will respond to remote data updates. */
   private ArrayList<DataListener> listeners;
+  /** Logger records the logging messages. */
+  private Logger logger;
 
   /**
    * Constructs a new data client.
@@ -37,6 +40,7 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
     remoteInterface = (UpdateServer) registry.lookup(ServerInfo.name);
     remoteInterface.registerListener(this);
     listeners = new ArrayList<>();
+    logger = Logger.getLogger("Data Client");
   }
 
   /** Gets the remote interface that allows this client to invoke methods on the server directly. */

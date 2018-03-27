@@ -7,6 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.logging.*;
 
 /**
  * Manages interaction between local objects and the central server of the distributed RMI
@@ -15,9 +16,11 @@ import java.rmi.registry.Registry;
 public final class DataService {
   private DataClient dataClient;
   private DataManager dataManager;
+  private Logger logger;
 
   /** Constructs a new data service. */
   public DataService(String host) {
+    logger = Logger.getLogger("Data Service");
     try {
       Registry registry = LocateRegistry.getRegistry(host, ServerInfo.port);
       dataClient = new DataClient(registry);

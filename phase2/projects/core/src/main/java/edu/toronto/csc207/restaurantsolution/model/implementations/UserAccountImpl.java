@@ -9,7 +9,6 @@ public class UserAccountImpl implements UserAccount {
   private String username;
   private String displayName;
 
-
   @Override
   public List<String> getPermissions() {
     return this.permissions;

@@ -7,17 +7,19 @@ import org.sqlite.SQLiteDataSource;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.logging.*;
 
 /**
  * Backend data manager implementation that manages database interactions and serves as the "master"
  * data model of the distributed RMI application.
  *
- * <p>Handles remote client requests for data and notifies registered remote listeners of data
+ * Handles remote client requests for data and notifies registered remote listeners of data
  * updates.
  */
 public final class DataServer implements DataManager {
   private final AccountDatabase accountDatabase;
   private ArrayList<RemoteListener> listeners;
+  private Logger logger;
 
   /** Constructs a new data server. */
   public DataServer() {
@@ -27,7 +29,7 @@ public final class DataServer implements DataManager {
     accountDatabase = new AccountDatabase(dataSource);
 
     accountDatabase.createAccount("admin", "Administrator", "admin");
-
+    logger = Logger.getLogger("Data Server");
   }
 
   /**
