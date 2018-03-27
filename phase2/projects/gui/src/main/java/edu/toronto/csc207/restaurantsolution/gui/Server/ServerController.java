@@ -4,8 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
+import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.collections.FXCollections;
@@ -16,13 +19,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
 /**
  * Controls the Server graphics user interface.
  */
-public class ServerController implements Initializable {
+public class ServerController implements Initializable, DataListener {
     private DataManager manager;
 
     @FXML
@@ -51,17 +58,32 @@ public class ServerController implements Initializable {
     public ServerController() throws Exception {
         NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
+        NetworkContainer.dataService.registerListener(this);
     }
 
     @FXML
-    void sendToKitchen(ActionEvent event) {
+    void sendToKitchen(ActionEvent event) throws RemoteException {
+        MenuItem menuItem = this.menuItemList.getSelectionModel().getSelectedItem();
+        OrderImpl order = new OrderImpl();
+        order.setOrderId(UUID.randomUUID());
+        order.setOrderStatus(OrderStatus.CREATED);
+        order.setAdditions(new HashMap<>());
+        order.setRemovals(new ArrayList<>());
+        order.setOrderCost(menuItem.getPrice());
+        order.setTableNumber(this.tableNumberBox.getValue());
+        order.setCreatingUser("Test User");
+        order.setOrderDate(Instant.now());
+        order.setOrderNumber(137); //todo: make this fancier
+        order.setMenuItem(menuItem);
+        manager.modifyOrder(order);
+        System.out.println("Added order!"); //todo: make popup
     }
 
     public void update() {
         try {
             menuItem = FXCollections.observableArrayList(manager.getAllMenuItems());
             menuItemList.setItems(menuItem);
-        }catch(Exception e) {
+        } catch(Exception e) {
 
         }
     }
