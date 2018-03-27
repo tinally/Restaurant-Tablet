@@ -3,6 +3,8 @@ package edu.toronto.csc207.restaurantsolution.gui.Login;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
@@ -52,12 +54,25 @@ public class LoginController {
         window.show();
     }
 
+    private void activateMainView(UserAccount account, ActionEvent event) throws IOException {
+      FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));
+      MainViewController mainViewController = mainViewLoader.getController();
+      Parent root = (Parent) mainViewLoader.load();
+      Scene scene1 = new Scene(root);
+      Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
+      window.setScene(scene1);
+      window.setFullScreen(true);
+      window.show();
+    }
+
     @FXML
     void validateUser(ActionEvent event) throws IOException {
-
-        String id = username.getText();
-        String pass = password.getText();
-        System.out.println(manager.checkLogin(id, pass));
+      String id = username.getText();
+      String pass = password.getText();
+      boolean goodLogin = manager.checkLogin(id, pass);
+      if (!goodLogin) return;
+      UserAccount loggedInUser = manager.getUserAccount(id);
+      activateMainView(loggedInUser, event);
     }
 
 }
