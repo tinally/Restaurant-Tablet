@@ -52,4 +52,9 @@ public class MenuItemImpl implements MenuItem {
   public boolean equals(Object o) {
     return o instanceof MenuItem && this.equals((MenuItem) o);
   }
+
+  @Override
+  public String toString() {
+    return this.getName();
+  }
 }

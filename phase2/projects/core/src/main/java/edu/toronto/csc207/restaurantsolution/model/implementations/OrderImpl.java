@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.model.implementations;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 
 import java.time.Instant;
 import java.util.List;
@@ -19,6 +20,7 @@ public class OrderImpl implements Order {
   private List<Ingredient> removals;
   private Map<Ingredient, Integer> additions;
   private String creatingUser;
+  private OrderStatus orderStatus;
 
   public OrderImpl() {
 
@@ -33,6 +35,7 @@ public class OrderImpl implements Order {
     this.setTableNumber(tableNumber);
     this.setCreatingUser(serverName);
     this.setOrderNumber(orderNumber);
+    this.setOrderStatus(OrderStatus.CREATED);
   }
 
   @Override
@@ -80,6 +83,9 @@ public class OrderImpl implements Order {
     return this.creatingUser;
   }
 
+  @Override
+  public OrderStatus getOrderStatus() { return this.orderStatus; }
+
   public void setOrderId(UUID orderId) {
     this.orderId = orderId;
   }
@@ -115,4 +121,6 @@ public class OrderImpl implements Order {
   public void setCreatingUser(String creatingUser) {
     this.creatingUser = creatingUser;
   }
+  
+  public void setOrderStatus(OrderStatus orderStatus) { this.orderStatus = orderStatus; }
 }

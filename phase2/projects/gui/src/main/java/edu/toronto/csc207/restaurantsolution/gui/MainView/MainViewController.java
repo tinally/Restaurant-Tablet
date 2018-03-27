@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.MainView;
 
 import com.jfoenix.controls.JFXTabPane;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import sun.nio.ch.Net;
 
 import java.util.*;
 
@@ -24,9 +26,9 @@ public class MainViewController {
 
   private DataManager manager;
 
-  public MainViewController() {
-    DataService service = new DataService("localhost");
-    manager = service.getDataManager();
+  public MainViewController() throws Exception {
+    NetworkContainer.initManager();
+    manager = NetworkContainer.dataManager;
   }
 
   @FXML

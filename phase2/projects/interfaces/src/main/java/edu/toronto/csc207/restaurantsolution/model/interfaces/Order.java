@@ -39,7 +39,7 @@ public interface Order extends Serializable {
     MenuItem getMenuItem();
 
     /**
-     * Returns the list of Ingredients to be removed from this Order.
+     * Returns the list of Ingredients needed for this Order.
      *
      * @return the list of Ingredients
      */
@@ -72,4 +72,10 @@ public interface Order extends Serializable {
      * @return the name of the User who created this Order
      */
     String getCreatingUser();
+
+    /**
+     * Gets the status of the Order
+     * @return the status of the Order
+     */
+    OrderStatus getOrderStatus();
 }

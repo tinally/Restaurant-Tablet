@@ -40,9 +40,18 @@ public class CashierController implements Initializable {
 
     private DataManager manager;
 
-    public CashierController() throws Exception {
+    public CashierController() {
+<<<<<<< HEAD
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+=======
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
+        try {
+            orderList.getItems().addAll(manager.getAllOrders());
+            billableList.getItems().addAll(manager.getAllBills());
+        } catch (java.rmi.RemoteException e) {
+>>>>>>> 86792185009c90aa79a55bac37c42806ac670074
 
     }
 

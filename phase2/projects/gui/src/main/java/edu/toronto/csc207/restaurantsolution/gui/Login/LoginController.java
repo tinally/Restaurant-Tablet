@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController;
+import edu.toronto.csc207.restaurantsolution.gui.Network.NetworkController;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
@@ -39,9 +41,9 @@ public class LoginController {
 
     private DataManager manager;
 
-    public LoginController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
+    public LoginController() throws Exception {
+      NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
     }
 
     private void setScene(ActionEvent event, URL url) throws IOException {
