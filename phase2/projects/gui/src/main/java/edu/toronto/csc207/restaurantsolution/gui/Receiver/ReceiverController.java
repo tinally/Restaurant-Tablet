@@ -7,7 +7,6 @@ import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,26 +20,13 @@ import java.rmi.RemoteException;
  */
 public class ReceiverController implements DataListener {
 
-    @FXML
-    public JFXTextField oldInventory;
-
-    @FXML
-    private JFXTextField amount;
-
-    @FXML
-    private JFXButton plus;
-
-    @FXML
-    private JFXButton minus;
-
-    @FXML
-    private JFXListView<Ingredient> inventoryList;
-
-    @FXML
-    private JFXTextField newIngredientInput;
-
-    @FXML
-    private JFXTextField newQuantityInput;
+  @FXML
+  private JFXTextField name;
+  @FXML
+  private JFXTextField quantity;
+  @FXML
+  private JFXListView<Ingredient> inventoryList;
+  // TODO: Hash map
 
     private DataManager manager;
 
@@ -69,7 +55,6 @@ public class ReceiverController implements DataListener {
             Ingredient selected = this.inventoryList.getSelectionModel().getSelectedItem();
             try {
                 Integer selectedcount = manager.getIngredientCount(selected);
-                this.oldInventory.setText(selectedcount.toString());
             } catch (RemoteException e1) {
                 e1.printStackTrace();
             }
@@ -77,17 +62,11 @@ public class ReceiverController implements DataListener {
     }
 
     @FXML
-    void minusOne(ActionEvent event) {
-    }
-
-    @FXML
-    void plusOne(ActionEvent event) {
-    }
-
-    @FXML
     void addItem(ActionEvent actionEvent) {
-        String ingredientName = this.newIngredientInput.getText();
-        Integer quantity = Integer.parseInt(this.newQuantityInput.getText());
+        String ingredientName = name.getText();
+        name.setText("");
+        Integer amount = Integer.parseInt(quantity.getText());
+        quantity.setText("");
         IngredientImpl ingredient = new IngredientImpl();
         ingredient.setCost(10d);
         ingredient.setPricing(10d);
@@ -95,7 +74,7 @@ public class ReceiverController implements DataListener {
         ingredient.setDefaultReorderAmount(10);
         ingredient.setReorderThreshold(10);
         try {
-            manager.setIngredientCount(ingredient, quantity);
+            manager.setIngredientCount(ingredient, amount);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
