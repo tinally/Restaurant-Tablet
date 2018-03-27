@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SerializeTest {
   @Test
-  void testGetSerializedAccount() throws RemoteException {
+  void testGetSerializedAccount() throws Exception {
     DataService service = new DataService("localhost");
     DataManager manager = service.getDataManager();
     assertEquals(manager.getUserAccount("admin").getUsername(), "admin");
