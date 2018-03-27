@@ -5,6 +5,9 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 
 import java.util.Map;
 
+/**
+ * Represents an implementation of MenuItem.
+ */
 public class MenuItemImpl implements MenuItem {
 
   public MenuItemImpl() {

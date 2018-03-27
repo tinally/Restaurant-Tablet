@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Represents an implementation of Order.
+ */
 public class OrderImpl implements Order {
   private UUID orderId;
   private Integer tableNumber;
