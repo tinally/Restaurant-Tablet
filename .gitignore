@@ -6,4 +6,4 @@ phase1/out/
 **/phase2.iml
 *.class
 phase2/.gradle/
-
+**/out
