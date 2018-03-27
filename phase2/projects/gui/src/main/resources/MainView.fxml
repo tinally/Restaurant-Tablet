@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
-
 
 <?import com.jfoenix.controls.JFXTabPane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <JFXTabPane fx:id="mainPane" layoutX="24.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab text="Untitled Tab 1">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab text="Untitled Tab 2">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </JFXTabPane>
-   </children>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            fx:controller="edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <JFXTabPane fx:id="mainPane" layoutX="24.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0"
+                    tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab fx:id="loginTab" text="Login">
+                    <fx:include fx:id="loginPage" source="Login.fxml"/>
+                </Tab>
+                <Tab fx:id="cashierTab" text="Cashier">
+                    <fx:include fx:id="cashierPage" source="Cashier.fxml" disable="true"/>
+                </Tab>
+                <Tab fx:id="chefTab" text="Chef">
+                    <fx:include fx:id="chefPage" source="Chef.fxml"/>
+                </Tab>
+                <Tab fx:id="receiverTab" text="Receive">
+                    <fx:include fx:id="receiverPage" source="Receiver.fxml"/>
+                </Tab>
+                <Tab fx:id="serverTab" text="Server">
+                    <fx:include fx:id="serverPage" source="Server.fxml"/>
+                </Tab>
+                <Tab fx:id="managerTab" text="Manager">
+                    <fx:include fx:id="managerPage" source="Manager.fxml"/>
+                </Tab>
+            </tabs>
+        </JFXTabPane>
+    </children>
 </AnchorPane>

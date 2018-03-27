@@ -29,6 +29,11 @@ public final class DataServer implements DataManager {
     dataSource.setUrl("jdbc:sqlite:restaurant.db");
     accountDatabase = new AccountDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
+    accountDatabase.addPermission("admin", "view.cashier");
+    accountDatabase.addPermission("admin", "view.manager");
+    accountDatabase.addPermission("admin", "view.chef");
+    accountDatabase.addPermission("admin", "view.server");
+    accountDatabase.addPermission("admin", "view.receiver");
     logger = Logger.getLogger("Data Server");
   }
 
