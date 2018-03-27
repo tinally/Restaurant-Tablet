@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -18,14 +19,9 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <Label text="Order">
-                     <font>
-                        <Font name="Calibri Light Italic" size="26.0" />
-                     </font>
-                  </Label>
                   <HBox>
                      <children>
-                        <Label prefHeight="35.0" prefWidth="80.0" text="Status">
+                        <Label prefHeight="35.0" prefWidth="157.0" text="Order Status">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -50,11 +46,16 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
                <children>
-                  <Label fx:id="OrderTitle" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="269.0" VBox.vgrow="ALWAYS">
+                  <Label fx:id="OrderTitle" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="269.0" text="Bacon Sandwich" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Calibri" size="22.0" />
                      </font>
                   </Label>
+                  <JFXTextArea prefHeight="200.0" prefWidth="200.0" text="+Bacon&#10;+Tomato&#10;-Lettuce" unFocusColor="#f06292" wrapText="true">
+                     <font>
+                        <Font name="Helvetica Neue" size="13.0" />
+                     </font>
+                  </JFXTextArea>
                </children></VBox>
          </children>
       </HBox>
