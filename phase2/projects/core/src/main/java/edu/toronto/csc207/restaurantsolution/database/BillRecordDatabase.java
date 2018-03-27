@@ -20,7 +20,7 @@ public final class BillRecordDatabase extends SqlLibrary {
 
   private final OrderDatabase orderDatabase;
 
-  protected BillRecordDatabase(DataSource dataSource, OrderDatabase orderDatabase) {
+  public BillRecordDatabase(DataSource dataSource, OrderDatabase orderDatabase) {
     super(dataSource);
     this.orderDatabase = orderDatabase;
     this.createTable();

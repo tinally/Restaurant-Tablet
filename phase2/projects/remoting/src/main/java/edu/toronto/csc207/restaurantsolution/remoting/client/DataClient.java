@@ -25,8 +25,6 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
   private UpdateServer remoteInterface;
   /** Local data listeners that will respond to remote data updates. */
   private ArrayList<DataListener> listeners;
-  /** Logger records the logging messages. */
-  private Logger logger;
 
   /**
    * Constructs a new data client.
@@ -40,7 +38,6 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
     remoteInterface = (UpdateServer) registry.lookup(ServerInfo.name);
     remoteInterface.registerListener(this);
     listeners = new ArrayList<>();
-    logger = Logger.getLogger("Data Client");
   }
 
   /** Gets the remote interface that allows this client to invoke methods on the server directly. */
