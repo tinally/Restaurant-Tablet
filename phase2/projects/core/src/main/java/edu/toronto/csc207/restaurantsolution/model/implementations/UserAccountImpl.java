@@ -4,6 +4,9 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 
 import java.util.List;
 
+/**
+ * Represents an implementation of UserAccount.
+ */
 public class UserAccountImpl implements UserAccount {
   private List<String> permissions;
   private String username;

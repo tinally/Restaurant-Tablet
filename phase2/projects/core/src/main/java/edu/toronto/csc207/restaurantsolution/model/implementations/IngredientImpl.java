@@ -2,6 +2,9 @@ package edu.toronto.csc207.restaurantsolution.model.implementations;
 
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 
+/**
+ * Represents an implementation of Ingredient.
+ */
 public final class IngredientImpl implements Ingredient {
 
   public IngredientImpl() {

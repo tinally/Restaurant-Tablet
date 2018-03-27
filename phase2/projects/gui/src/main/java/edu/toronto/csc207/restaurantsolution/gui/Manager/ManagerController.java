@@ -3,6 +3,8 @@ package edu.toronto.csc207.restaurantsolution.gui.Manager;
 import com.jfoenix.controls.JFXButton;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
+import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.collections.FXCollections;
@@ -21,13 +23,14 @@ import java.util.*;
 /**
  * Controls the Manager graphics user interface.
  */
-public class ManagerController implements Initializable {
+public class ManagerController implements Initializable, DataListener {
 
-    // TODO: Change String to the enum status
-    private ObservableList<String> status = FXCollections.observableArrayList("Pending", "Delivered");
+    private ObservableList<OrderStatus> status = FXCollections.observableArrayList(OrderStatus.CREATED,
+            OrderStatus.INPUTTED, OrderStatus.PUSHED, OrderStatus.SEEN, OrderStatus.FILLED, OrderStatus.REJECTED,
+            OrderStatus.DELIVERED, OrderStatus.RETURNED);
 
     @FXML
-    private ChoiceBox<String> statusBox;
+    private ChoiceBox<OrderStatus> statusBox;
 
     @FXML
     private VBox ordersBox;
@@ -45,7 +48,8 @@ public class ManagerController implements Initializable {
 
     public ManagerController() throws Exception {
       NetworkContainer.initManager();
-        manager = NetworkContainer.dataManager;
+      manager = NetworkContainer.dataManager;
+      NetworkContainer.dataService.registerListener(this);
     }
 
     //TODO: Use Observer design pattern to update orders on both Manager and Chef
@@ -57,12 +61,17 @@ public class ManagerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        statusBox.setValue("Pending");
+        statusBox.setValue(OrderStatus.INPUTTED);
         statusBox.getItems().addAll(status);
 
         statusBox.setOnAction(event -> {
-            //TODO: Add a method that calls the Orders that are pending and the orders that are Delivered
+            //TODO: Add a method that calls the Orders that are inputted and the orders that are Delivered
             //TODO: when a choice is selected.
         });
+        update();
+    }
+
+    public void update(){
+
     }
 }
