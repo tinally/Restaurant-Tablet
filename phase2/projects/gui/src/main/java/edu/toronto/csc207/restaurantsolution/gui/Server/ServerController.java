@@ -7,6 +7,8 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +42,8 @@ public class ServerController implements Initializable {
     @FXML
     private JFXListView<MenuItem> deletionsList;
 
+    private ObservableList<MenuItem> menuItem;
+
     @FXML
     private JFXButton sendToKitchenButton;
 
@@ -52,9 +56,19 @@ public class ServerController implements Initializable {
     void sendToKitchen(ActionEvent event) {
     }
 
+    public void update() {
+        try {
+            menuItem = FXCollections.observableArrayList(manager.getAllMenuItems());
+            menuItemList.setItems(menuItem);
+        }catch(Exception e) {
+
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         tableNumberBox.getItems().addAll(1, 2, 3, 4, 5, 6, 7);
+        this.update();
 //        try {
 //            deliverOrderList.getItems().addAll(manager.getAllOrders());
 //            menuItemList.getItems().addAll(manager.getAllMenuItems());
