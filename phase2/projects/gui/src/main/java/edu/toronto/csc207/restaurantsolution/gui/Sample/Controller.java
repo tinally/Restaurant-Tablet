@@ -28,7 +28,7 @@ public class Controller implements Initializable {
 
     private DataManager manager;
 
-    public Controller() {
+    public Controller() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
     }

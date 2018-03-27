@@ -37,7 +37,7 @@ public class ChefController implements Initializable {
 
     private DataManager manager;
 
-    public ChefController() {
+    public ChefController() throws Exception {
       NetworkContainer.initManager();
         manager = NetworkContainer.dataManager;
     }
