@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.gui.Chef;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXProgressBar;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
@@ -14,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
+import javafx.scene.web.HTMLEditor;
 
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -25,142 +27,55 @@ import java.util.ResourceBundle;
 /**
  * Controls the Chef graphics user interface.
  */
-public class ChefController implements Initializable, DataListener {
+public class ChefController implements DataListener {
 
-    private static ObservableList<Order> orders = FXCollections.observableArrayList(); //TODO: maybe change it from static?
-
-    @FXML
-    private VBox inProgress;
-
-    @FXML
-    private VBox incomingOrders;
-
-    @FXML
-    private VBox ingredientDesc;
-
-    private DataManager manager;
+    private final DataManager manager;
 
     public ChefController() throws Exception {
-      NetworkContainer.initManager();
-      manager = NetworkContainer.dataManager;
-      NetworkContainer.dataService.registerListener(this);
+        NetworkContainer.initManager();
+        manager = NetworkContainer.dataManager;
+        NetworkContainer.dataService.registerListener(this);
     }
 
-    /**
-     * Given a list of Orders, add the orders to the incoming orders to be displayed
-     *
-     * @param orderList The list of Orders to be displayed.
-     */
-    public static void addOrders(List<Order> orderList) {
-        orders.addAll(orderList);
+    @FXML
+    JFXListView<Ingredient> itemDisplayIngredientList;
+
+    @FXML
+    Label itemDisplayTitle;
+
+    @FXML
+    JFXListView<Order> incomingOrderList;
+
+    @FXML
+    JFXListView<Order> inProgressOrderList;
+
+    @FXML
+    private void initialize() {
+        this.update();
+        this.incomingOrderList.getSelectionModel().selectedItemProperty().addListener(e -> {
+            this.refreshOrderView(this.incomingOrderList.getSelectionModel().getSelectedItem());
+        });
     }
 
-    // TODO: Remove all code smells
-
-    /**
-     * Show the Order on the Ingredient Description Pane once the button was clicked
-     *
-     * @param order  The order associated with the button
-     * @param button The button that causes the event to occur
-     */
-    private void showOrder(Order order, JFXButton button) {
-
-        ingredientDesc.getChildren().retainAll();
-        Label label = new Label(order.getMenuItem().getName());
-        ingredientDesc.getChildren().add(label);
-        Map<Ingredient, Integer> recipe = getUpdatedIngredients(order);
-        for (Map.Entry<Ingredient, Integer> entry : recipe.entrySet()) {
-            Ingredient key = entry.getKey();
-            Integer value = entry.getValue();
-            Label labeling = new Label(value.toString() + "x " + key.toString());
-            ingredientDesc.getChildren().add(labeling);
-        }
-        JFXButton authorize = new JFXButton("I Authorize");
-        ingredientDesc.getChildren().add(authorize);
-        authorize.setOnAction(event -> moveToInProgress(order, button));
+    private void refreshOrderView(Order o) {
+        this.itemDisplayTitle.setText(o.getMenuItem().getName());
+        ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
+        ingredients.addAll(o.getMenuItem().getIngredientRequirements().keySet());
+       // ingredients.addAll(o.getAdditions().keySet());
+       // ingredients.removeAll(o.getRemovals());
+        this.itemDisplayIngredientList.setItems(ingredients);
     }
 
-    /**
-     * Given an Order, return a Map of the updated Ingredients to be used for the order
-     *
-     * @param order The Order
-     * @return The Map of updated ingredients to be used
-     */
-    private Map<Ingredient, Integer> getUpdatedIngredients(Order order) {
-        Map<Ingredient, Integer> menuIng = order.getMenuItem().getIngredientRequirements();
-        List<Ingredient> removedIngredients = order.getRemovals();
-        Map<Ingredient, Integer> additions = order.getAdditions();
-        Map<Ingredient, Integer> updatedIngs = new HashMap<>();
-
-        // TODO: NullPointerException due to getRemovals and getAdditions being null when initiated.
-        for (Map.Entry<Ingredient, Integer> ingredients : menuIng.entrySet()) {
-            Ingredient ingredient = ingredients.getKey();
-            Integer amount = ingredients.getValue();
-            if (!removedIngredients.contains(ingredient)) { // If the ingredient is not in removed ingredients
-                // if the ingredient is in the added ing
-                updatedIngs.put(ingredient, additions.getOrDefault(ingredient, amount));
-            }
-        }
-
-        return updatedIngs;
-    }
-    //TODO: refactor code to make it look clean
-
-    /**
-     * Move the order to the inProgress pane once the order has been authorized
-     *
-     * @param order  The order to be moved to the Pane
-     * @param button The button that causes this event to occur
-     */
-    private void moveToInProgress(Order order, JFXButton button) {
-        HBox hBox = new HBox();
-        Label orderLabel = new Label("Order #" + order.getOrderNumber());
-        JFXProgressBar progress = new JFXProgressBar();
-        progress.setMaxWidth(39);
-        hBox.getChildren().addAll(orderLabel, progress);
-        inProgress.getChildren().addAll(hBox);
-
-        ingredientDesc.getChildren().retainAll();
-        incomingOrders.getChildren().remove(button);
-        orders.remove(order);
-
-    }
-
-    //TODO: Add a method to remove the order from inProgress once the order is done.
-
-    /**
-     * Given an order, add the Order to the incoming orders Pane
-     *
-     * @param order the Order to be added.
-     */
-    public void addOrderToIncDisp(Order order) {
-        JFXButton orderButton = new JFXButton("Order # " + order.getOrderNumber());
-        orderButton.setOnAction(event -> showOrder(order, orderButton));
-
-        incomingOrders.getChildren().addAll(orderButton);
-    }
-
-    /**
-     * Overrides Initializable interface. Initialize the GUI and add the orders
-     * in the list of incoming orders.
-     *
-     * @param location
-     * @param resources
-     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        for (Order order : orders) {
-            addOrderToIncDisp(order);
-        }
-        update();
-    }
-
     public void update() {
-      try {
-        for (Order order : manager.getAllOrders())
-          addOrderToIncDisp(order);
-      } catch (RemoteException e) {
-        e.printStackTrace();
-      }
+        ObservableList<Order> orders = null;
+        try {
+            orders = FXCollections.observableArrayList(this.manager.getAllOrders());
+            inProgressOrderList.setItems(orders);
+            incomingOrderList.setItems(orders);
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

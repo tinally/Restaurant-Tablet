@@ -85,7 +85,7 @@
                      <Insets left="5.0" top="5.0" />
                   </VBox.margin>
                </Label>
-               <JFXTextField />
+               <JFXTextField fx:id="oldInventory" disable="true"/>
                <Label text="Add Inventory">
                   <VBox.margin>
                      <Insets left="5.0" top="5.0" />

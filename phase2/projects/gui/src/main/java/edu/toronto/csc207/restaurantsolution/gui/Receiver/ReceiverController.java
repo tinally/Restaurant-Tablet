@@ -22,6 +22,9 @@ import java.rmi.RemoteException;
 public class ReceiverController implements DataListener {
 
     @FXML
+    public JFXTextField oldInventory;
+
+    @FXML
     private JFXTextField amount;
 
     @FXML
@@ -62,6 +65,15 @@ public class ReceiverController implements DataListener {
     @FXML
     public void initialize() {
         this.update();
+        this.inventoryList.getSelectionModel().selectedItemProperty().addListener((e) -> {
+            Ingredient selected = this.inventoryList.getSelectionModel().getSelectedItem();
+            try {
+                Integer selectedcount = manager.getIngredientCount(selected);
+                this.oldInventory.setText(selectedcount.toString());
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
 
     @FXML

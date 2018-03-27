@@ -38,7 +38,8 @@ public final class MenuItemDatabase extends SqlLibrary {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS menu_ingredients (" +
                     "menu_item_name TEXT," +
                     "ingredient_name TEXT," +
-                    "usage INTEGER)");
+                    "usage INTEGER," +
+                "PRIMARY KEY (menu_item_name, ingredient_name))");
         });
     }
 
