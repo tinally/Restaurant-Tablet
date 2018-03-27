@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
@@ -16,7 +15,6 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.UUID;
-import java.util.Map;
 
 /**
  * Controls the Server graphics user interface.
@@ -37,10 +35,10 @@ public class ServerController implements Initializable {
     private JFXListView<MenuItem> menuItemList;
 
     @FXML
-    private Map<Ingredient, Integer> additionsList;
+    private JFXListView<MenuItem> additionsList;
 
     @FXML
-    private JFXListView<Ingredient> deletionsList;
+    private JFXListView<MenuItem> deletionsList;
 
     @FXML
     private JFXButton sendToKitchenButton;
@@ -48,7 +46,7 @@ public class ServerController implements Initializable {
     public ServerController() {
         DataService service = new DataService("localhost");
         manager = service.getDataManager();
-
+        additionsList = new JFXListView<>();
     }
 
     @FXML
