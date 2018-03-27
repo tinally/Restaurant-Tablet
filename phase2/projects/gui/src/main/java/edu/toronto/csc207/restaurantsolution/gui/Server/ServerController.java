@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.Map;
