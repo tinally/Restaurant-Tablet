@@ -51,10 +51,6 @@ public class CashierController implements Initializable {
         }
     }
 
-    public void addToOrderList(Order order) {
-        orderList.getItems().add(order);
-    }
-
     @FXML
     void toggleDiscountEvent(ActionEvent event) {
         if (toggleDiscount.isSelected()) {
@@ -71,7 +67,6 @@ public class CashierController implements Initializable {
     public void getTable(ActionEvent event) {
         System.out.println("CHECKING");
     }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
