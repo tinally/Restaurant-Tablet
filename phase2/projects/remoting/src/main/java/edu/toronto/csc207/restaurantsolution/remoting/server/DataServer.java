@@ -20,7 +20,6 @@ import java.util.logging.*;
 public final class DataServer implements DataManager {
   private final AccountDatabase accountDatabase;
   private ArrayList<RemoteListener> listeners;
-  private Logger logger;
 
   /** Constructs a new data server. */
   public DataServer() {
@@ -29,7 +28,6 @@ public final class DataServer implements DataManager {
     dataSource.setUrl("jdbc:sqlite:restaurant.db");
     accountDatabase = new AccountDatabase(dataSource);
     accountDatabase.createAccount("admin", "Administrator", "admin");
-    logger = Logger.getLogger("Data Server");
   }
 
   /**
