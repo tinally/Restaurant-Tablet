@@ -1,7 +1,10 @@
 package edu.toronto.csc207.restaurantsolution.gui.Cashier;
 
 import com.jfoenix.controls.*;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,13 +29,27 @@ public class CashierController implements Initializable {
     private JFXTextField discount;
 
     @FXML
-    private JFXListView<?> billableList; //TODO: What is the type of billableList?
+    private JFXListView<BillRecord> billableList;
 
     @FXML
     private JFXToggleButton toggleDiscount;
 
     @FXML
     private JFXListView<Order> orderList;
+
+    private DataManager manager;
+
+    public CashierController() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+        orderList = new JFXListView<>();
+        try {
+            orderList.getItems().addAll(manager.getAllOrders());
+            billableList.getItems().addAll(manager.getAllBills());
+        } catch (java.rmi.RemoteException e) {
+
+        }
+    }
 
     public void addToOrderList(Order order) {
         orderList.getItems().add(order);

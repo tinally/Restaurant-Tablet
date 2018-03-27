@@ -14,17 +14,13 @@ import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.UUID;
 
 /**
  * Controls the Server graphics user interface.
  */
 public class ServerController implements Initializable {
     private DataManager manager;
-
-    public ServerController() {
-        DataService service = new DataService("localhost");
-        manager = service.getDataManager();
-    }
 
     @FXML
     private JFXListView<Order> deliverOrderList;
@@ -49,6 +45,19 @@ public class ServerController implements Initializable {
 
     @FXML
     void sendToKitchen(ActionEvent event) {
+    }
+
+    public ServerController() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+        menuItemList = new JFXListView<>();
+        additionsList = new JFXListView<>();
+        deletionsList = new JFXListView<>();
+        try {
+            menuItemList.getItems().addAll(manager.getAllMenuItems());
+        } catch(java.rmi.RemoteException e) {
+
+        }
     }
 
     @Override
