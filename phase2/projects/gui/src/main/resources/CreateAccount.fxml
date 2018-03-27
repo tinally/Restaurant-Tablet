@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.newAccount.createAccountController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="699.0" style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.newAccount.createAccountController">
    <center>
-      <GridPane alignment="CENTER" prefHeight="276.0" prefWidth="556.0" BorderPane.alignment="CENTER">
+      <GridPane alignment="CENTER" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="321.33335367838544" minWidth="10.0" prefWidth="187.9999796549479" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="335.99999491373694" minWidth="10.0" prefWidth="328.0000203450521" />
@@ -29,12 +29,12 @@
             <RowConstraints maxHeight="149.33332316080728" minHeight="10.0" prefHeight="142.66667683919272" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="101.0" text="First Name:">
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="109.0" text="First Name:">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="99.0" text="Last Name:" GridPane.rowIndex="1">
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="34.0" prefWidth="107.0" text="Last Name:" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -142,10 +142,13 @@
       </Label>
    </top>
    <bottom>
-      <JFXButton fx:id="confirmButton" buttonType="RAISED" onAction="#confirmAction" prefHeight="37.0" prefWidth="95.0" ripplerFill="#023516" style="-fx-background-color: #00ff00;" text="Confirm" BorderPane.alignment="CENTER">
+      <JFXButton fx:id="confirmButton" buttonType="RAISED" onAction="#confirmAction" prefHeight="37.0" prefWidth="95.0" style="-fx-background-color: WHITE;" text="Confirm" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </BorderPane.margin>
       </JFXButton>
    </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
 </BorderPane>

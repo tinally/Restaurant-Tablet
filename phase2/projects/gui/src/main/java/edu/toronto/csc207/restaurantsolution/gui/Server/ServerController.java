@@ -53,7 +53,7 @@ public class ServerController implements Initializable, DataListener {
     private ObservableList<MenuItem> menuItem;
 
     @FXML
-    private JFXButton sendToKitchenButton;
+    private JFXButton sendButton;
 
     public ServerController() throws Exception {
         NetworkContainer.initManager();

@@ -24,18 +24,8 @@ import sun.nio.ch.Net;
 import java.io.IOException;
 
 public class NetworkController implements DataListener {
-  private DataManager dataManager;
-
-  @FXML
-  private StackPane mainBox;
-
-  @FXML
-  private VBox box;
-
   @FXML
   private JFXTextField ip;
-
-  private DataManager manager;
 
   private void activateLoginView(ActionEvent event) throws IOException {
     FXMLLoader loginLoader = new FXMLLoader(getClass().getClassLoader().getResource("Login.fxml"));
@@ -50,7 +40,6 @@ public class NetworkController implements DataListener {
   @FXML
   void connect(ActionEvent event) throws IOException {
     boolean success = true;
-    box.getChildren().add(new Label("Try Again!"));
     String host = ip.getText();
     try {
       NetworkContainer.dataService = new DataService(host);

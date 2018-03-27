@@ -33,8 +33,6 @@ public class MainViewController {
 
   @FXML
   private void initialize() {
-    System.out.println("Hello World");
-
     menuTabs.put("login", loginTab);
     menuTabs.put("cashier", cashierTab);
     menuTabs.put("chef", chefTab);
