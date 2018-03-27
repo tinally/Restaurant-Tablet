@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +19,12 @@ import java.util.ResourceBundle;
  * Controls the Server graphics user interface.
  */
 public class ServerController implements Initializable {
+    private DataManager manager;
+
+    public ServerController() {
+        DataService service = new DataService("localhost");
+        manager = service.getDataManager();
+    }
 
     @FXML
     private JFXListView<Order> deliverOrderList;
@@ -41,7 +49,6 @@ public class ServerController implements Initializable {
 
     @FXML
     void sendToKitchen(ActionEvent event) {
-
     }
 
     @Override

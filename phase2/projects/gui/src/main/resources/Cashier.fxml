@@ -15,8 +15,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="500.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Cashier.CashierController">
+<AnchorPane prefHeight="500.0" prefWidth="710.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Cashier.CashierController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -112,11 +113,7 @@
                   <Insets />
                </HBox.margin>
                <children>
-                  <Label layoutX="5.0" layoutY="32.0" prefHeight="148.0" prefWidth="276.0" text="Preview Bill Here">
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Label>
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" />
                </children>
             </Pane>
          </children>

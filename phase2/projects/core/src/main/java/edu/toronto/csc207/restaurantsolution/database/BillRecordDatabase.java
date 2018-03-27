@@ -93,8 +93,9 @@ public final class BillRecordDatabase extends SqlLibrary {
       return null;
     });
   }
+
   public List<BillRecord> retrieveAllBills() {
-    //todo: optimize this
+    //TODO: optimize this
     final ArrayList<BillRecord> bills = new ArrayList<>();
     this.executeUpdate(connection -> {
       Statement statement = connection.createStatement();
