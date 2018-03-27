@@ -53,7 +53,7 @@ public class TestChefGUI extends Application {
         List<Order> orders = Arrays.asList(orderss);
 
 
-        ChefController.addOrders(orders);
+//        ChefController.addOrders(orders);
 
         launch(args);
     }
