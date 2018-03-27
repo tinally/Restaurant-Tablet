@@ -78,8 +78,9 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void modifyBillRecord(BillRecord billRecord) {
+  public void modifyBillRecord(BillRecord billRecord) throws RemoteException {
     billRecordDatabase.addOrUpdateBill(billRecord);
+    updateListeners();
   }
 
   @Override
@@ -93,8 +94,9 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) {
+  public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) throws RemoteException {
     inventoryDatabase.setIngredientCount(ingredient, ingredientCount);
+    updateListeners();
   }
 
   @Override
@@ -113,8 +115,9 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void modifyOrder(Order order) {
+  public void modifyOrder(Order order) throws RemoteException {
     orderDatabase.insertOrUpdateOrder(order);
+    updateListeners();
   }
 
   @Override
