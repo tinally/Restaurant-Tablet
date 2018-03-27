@@ -57,32 +57,34 @@ public class createAccountController {
     }
 
     @FXML
-    private void setEmptyAlerts() {
+    private boolean setEmptyAlerts() {
         if (firstName.getText().trim().isEmpty()){
             errorAlert("Please enter your first name");
-            return;
+            return true;
         }
         if (lastName.getText().trim().isEmpty()){
             errorAlert("Please enter your last name");
-            return;
+            return true;
         }
         if (username.getText().trim().isEmpty()) {
             errorAlert("Please enter a username");
-            return;
+            return true;
         }
         if (password.getText().trim().isEmpty()){
             errorAlert("Please enter a password");
-            return;
+            return true;
         }
         if (!confirmPassword.getText().equals(password.getText())){
             errorAlert("Your passwords must match");
-            return;
+            return true;
         }
         if (!(chefBox.isSelected() || receiverBox.isSelected() ||
                 managerBox.isSelected() || cashierBox.isSelected() || //TODO: clumsy conditional
                 serverBox.isSelected())){
             errorAlert("Please choose at least one permission");
+            return true;
         }
+        return false;
 
     }
 
@@ -97,7 +99,7 @@ public class createAccountController {
     }
 
     public void confirmAction(ActionEvent event) {
-        setEmptyAlerts();
+        if(setEmptyAlerts()){return;}
         setRegexAlerts();
         //TODO: Do something
     }
