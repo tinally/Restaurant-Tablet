@@ -13,21 +13,21 @@ public interface Order extends Serializable {
     /**
      * Returns an unique ID for an Order.
      *
-     * @return an unique ID for an Order.
+     * @return an unique ID for an Order
      */
     UUID getOrderID();
 
     /**
      * Returns the table number of this Order.
      *
-     * @return the table number of this Order.
+     * @return the table number of this Order
      */
     Integer getTableNumber();
 
     /**
      * Returns the order number of this Order.
      *
-     * @return the order number of this Order.
+     * @return the order number of this Order
      */
     Integer getOrderNumber();
 
@@ -55,21 +55,21 @@ public interface Order extends Serializable {
     /**
      * Returns the cost of this Order.
      *
-     * @return the cost of this Order.
+     * @return the cost of this Order
      */
     Double getOrderCost();
 
     /**
      * Returns the time the Order was created.
      *
-     * @return the time the Order was created.
+     * @return the time the Order was created
      */
     Instant getOrderTimestamp();
 
     /**
      * Returns the name of the User who created this Order.
      *
-     * @return the name of the User who created this Order.
+     * @return the name of the User who created this Order
      */
     String getCreatingUser();
 }

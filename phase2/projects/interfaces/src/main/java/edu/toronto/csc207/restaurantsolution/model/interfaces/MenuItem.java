@@ -10,14 +10,14 @@ public interface MenuItem extends Serializable {
     /**
      * Returns name of the MenuItem.
      *
-     * @return name of the MenuItem.
+     * @return name of the MenuItem
      */
     String getName();
 
     /**
      * Returns price of the MenuItem.
      *
-     * @return price of the MenuItem.
+     * @return price of the MenuItem
      */
     Double getPrice();
 
@@ -32,7 +32,7 @@ public interface MenuItem extends Serializable {
      * Checks whether m is the same MenuItem as this.
      *
      * @param m the MenuItem to be compared with this
-     * @return true if m and this are the same; false otherwise.
+     * @return true if m and this are the same; false otherwise
      */
     default boolean equals(MenuItem m) {
         return this.getName().equals(m.getName());

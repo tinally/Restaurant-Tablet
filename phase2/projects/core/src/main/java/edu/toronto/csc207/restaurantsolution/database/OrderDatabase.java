@@ -1,6 +1,5 @@
 package edu.toronto.csc207.restaurantsolution.database;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
@@ -10,19 +9,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.*;
 
 public final class OrderDatabase extends SqlLibrary {
-  private final MenuItemLibrary menuItems;
-  private final IngredientLibrary ingredientLibrary;
+  private final MenuItemDatabase menuItems;
+  private final IngredientDatabase ingredientDatabase;
 
   public OrderDatabase(DataSource dataSource,
-                       MenuItemLibrary menuItems,
-                       IngredientLibrary ingredientLibrary) {
+                       MenuItemDatabase menuItems,
+                       IngredientDatabase ingredientDatabase) {
     super(dataSource);
     this.menuItems = menuItems;
-    this.ingredientLibrary = ingredientLibrary;
+    this.ingredientDatabase = ingredientDatabase;
     this.createTable();
   }
 
@@ -95,14 +93,14 @@ public final class OrderDatabase extends SqlLibrary {
       final List<Ingredient> removals = new ArrayList<>();
       while (removalsResult.next()) {
         String ingredientName = removalsResult.getString("ingredient");
-        removals.add(this.ingredientLibrary.getIngredient(ingredientName));
+        removals.add(this.ingredientDatabase.getIngredient(ingredientName));
       }
 
       final HashMap<Ingredient, Integer> additions = new HashMap<>();
       ResultSet additionsResult = additionsPs.executeQuery();
       while (additionsResult.next()) {
         String ingredientName = additionsResult.getString("ingredient");
-        additions.put(this.ingredientLibrary.getIngredient(ingredientName), additionsResult.getInt("count"));
+        additions.put(this.ingredientDatabase.getIngredient(ingredientName), additionsResult.getInt("count"));
       }
 
       ResultSet orderResult = orderPs.executeQuery();

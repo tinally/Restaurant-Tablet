@@ -1,6 +1,6 @@
 import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
-import edu.toronto.csc207.restaurantsolution.database.IngredientLibrary;
-import edu.toronto.csc207.restaurantsolution.database.MenuItemLibrary;
+import edu.toronto.csc207.restaurantsolution.database.IngredientDatabase;
+import edu.toronto.csc207.restaurantsolution.database.MenuItemDatabase;
 import edu.toronto.csc207.restaurantsolution.database.OrderDatabase;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
@@ -25,14 +25,14 @@ public class DatabaseTest {
   public void testInitIngredientDatabase() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
   }
 
   @Test
   public void retrieveIngredient() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
 
     IngredientImpl ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
@@ -62,7 +62,7 @@ public class DatabaseTest {
   public void retrieveAllIngredient() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
 
     IngredientImpl ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
@@ -91,8 +91,8 @@ public class DatabaseTest {
   public void retrieveMenuItem() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
-    MenuItemLibrary ml = new MenuItemLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
+    MenuItemDatabase ml = new MenuItemDatabase(ds);
 
     IngredientImpl ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
@@ -131,8 +131,8 @@ public class DatabaseTest {
   public void retrieveAllMenuItem() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
-    MenuItemLibrary ml = new MenuItemLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
+    MenuItemDatabase ml = new MenuItemDatabase(ds);
 
     IngredientImpl ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
@@ -169,8 +169,8 @@ public class DatabaseTest {
   public void testAddOrder() {
     SQLiteDataSource ds = new SQLiteDataSource();
     ds.setUrl("jdbc:sqlite:test.db");
-    IngredientLibrary l = new IngredientLibrary(ds);
-    MenuItemLibrary ml = new MenuItemLibrary(ds);
+    IngredientDatabase l = new IngredientDatabase(ds);
+    MenuItemDatabase ml = new MenuItemDatabase(ds);
     OrderDatabase od = new OrderDatabase(ds, ml, l);
 
     IngredientImpl ingredient = new IngredientImpl();
