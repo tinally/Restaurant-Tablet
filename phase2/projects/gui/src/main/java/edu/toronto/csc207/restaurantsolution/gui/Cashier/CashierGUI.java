@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Objects;
+
 public class CashierGUI extends Application {
 
     public static void main(String[] args) {
@@ -14,11 +16,14 @@ public class CashierGUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Cashier.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
+                "Cashier.fxml")));
         primaryStage.setTitle("Cashier sample");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.setMaximized(true);
         primaryStage.setFullScreen(true);
         primaryStage.show();
+
+
     }
 }
