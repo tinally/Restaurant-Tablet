@@ -50,9 +50,7 @@ public class CashierController implements DataListener {
       NetworkContainer.initManager();
       manager = NetworkContainer.dataManager;
       this.orderCache = FXCollections.observableArrayList();
-      this.orderCache.addListener((ListChangeListener<? super Order>) e -> {
-            this.updateTableOrders();
-      });
+      this.orderCache.addListener((ListChangeListener<? super Order>) e -> this.updateTableOrders());
       NetworkContainer.dataService.registerListener(this);
     }
 
@@ -90,24 +88,24 @@ public class CashierController implements DataListener {
     void updateBillableList() {
         this.billableList.setItems(this.orderList.getSelectionModel().getSelectedItems());
         this.billTextValue.setText(this.getBillString());
+        this.billTextValue.setEditable(false);
     }
 
     private String getBillString() {
+        String intRegex = "\\d+";
+        String doubleRegex= "\\d+(\\.\\d+)?";
         StringBuilder bill = new StringBuilder();
         Double subTotal = this.billableList.getItems().stream().map(Order::getOrderCost).reduce(Double::sum)
             .orElse(0d);
         Double tipAmount = 0d;
-        try {
+        if (Pattern.matches(intRegex, this.tipField.getText())){
             tipAmount = (Integer.parseInt(this.tipField.getText()) * 0.01) * subTotal;
-        }catch (NumberFormatException e) {
-
         }
         Double discountAmount = 0d;
-        try {
+        if (Pattern.matches(doubleRegex, this.discountField.getText())){
             discountAmount =  Double.parseDouble(this.discountField.getText());
-        }catch (NumberFormatException e) {
-
         }
+
         Double taxAmount =.13 * (subTotal + tipAmount);
         bill.append("Restaurant Name")
             .append(System.lineSeparator());
@@ -125,16 +123,14 @@ public class CashierController implements DataListener {
             .append("     $")
             .append(tipAmount)
             .append(System.lineSeparator());
-        ;
         bill.append("Tax: ")
             .append("     $")
             .append(taxAmount)
             .append(System.lineSeparator());
-        ;
         bill.append("Discount: ")
             .append("     -$")
             .append(discountAmount)
-            .append(System.lineSeparator());;
+            .append(System.lineSeparator());
         bill.append("Total: ")
             .append("     $")
             .append(subTotal + tipAmount + taxAmount - discountAmount)
@@ -143,15 +139,15 @@ public class CashierController implements DataListener {
     }
 
     public void sendBill(ActionEvent actionEvent) throws RemoteException {
+        String intRegex = "\\d+";
+        String doubleRegex= "\\d+(\\.\\d+)?";
         BillRecordImpl bill = new BillRecordImpl();
         bill.setBilledOrders(new ArrayList<>(this.billableList.getItems()));
         Double subTotal = this.billableList.getItems().stream().map(Order::getOrderCost).reduce(Double::sum)
             .orElse(0d);
         Double tipAmount = 0d;
-        try {
+        if (Pattern.matches(intRegex, this.tipField.getText())){
             tipAmount = (Integer.parseInt(this.tipField.getText()) * 0.01) * subTotal;
-        }catch (NumberFormatException e) {
-
         }
 
         bill.setChargedGratuity(tipAmount);
@@ -160,11 +156,10 @@ public class CashierController implements DataListener {
         bill.setBillID(UUID.randomUUID());
         Double taxAmount =.13 * (subTotal + tipAmount);
         Double discountAmount = 0d;
-        try {
+        if (Pattern.matches(doubleRegex, this.discountField.getText())){
             discountAmount =  Double.parseDouble(this.discountField.getText());
-        }catch (NumberFormatException e) {
-
         }
+
         bill.setChargedTax(taxAmount);
         bill.setPaidAmount(subTotal + tipAmount + taxAmount - discountAmount);
         manager.modifyBillRecord(bill);
