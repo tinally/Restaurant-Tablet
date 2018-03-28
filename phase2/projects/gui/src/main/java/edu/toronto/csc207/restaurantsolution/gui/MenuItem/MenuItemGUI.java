@@ -21,7 +21,7 @@ public class MenuItemGUI extends Application {
                 "MenuItem.fxml")));
         primaryStage.setTitle("Manager");
         primaryStage.setScene(new Scene(root, 800, 600));
-//        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 }

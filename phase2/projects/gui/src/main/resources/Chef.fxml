@@ -42,7 +42,7 @@
                </columnResizePolicy>
                 </JFXTreeTableView>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <JFXButton onMousePressed="#setSelectedOrderSeen">Acknowledge Order</JFXButton>
+                    <JFXButton buttonType="RAISED" onMousePressed="#setSelectedOrderSeen" style="-fx-background-color: WHITE;">Acknowledge Order</JFXButton>
                 </AnchorPane>
             </VBox>
         </SplitPane>

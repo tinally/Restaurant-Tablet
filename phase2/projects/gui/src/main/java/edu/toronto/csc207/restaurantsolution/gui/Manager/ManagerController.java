@@ -1,6 +1,8 @@
 package edu.toronto.csc207.restaurantsolution.gui.Manager;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
+import com.jfoenix.controls.JFXTextArea;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
@@ -34,16 +36,13 @@ public class ManagerController implements Initializable, DataListener {
     private ChoiceBox<OrderStatus> statusBox;
 
     @FXML
-    private VBox ordersBox;
-
-    @FXML
-    private VBox orderDesc;
+    private JFXListView<Order> orderList;
 
     @FXML
     private Label OrderTitle;
 
     @FXML
-    private VBox orderStatus;
+    private JFXTextArea orderDescription;
 
     private DataManager manager;
 
@@ -51,13 +50,6 @@ public class ManagerController implements Initializable, DataListener {
       NetworkContainer.initManager();
       manager = NetworkContainer.dataManager;
       NetworkContainer.dataService.registerListener(this);
-    }
-
-    //TODO: Use Observer design pattern to update orders on both Manager and Chef
-
-    //TODO: Use the same code as previous but add STATUS: enum
-    private void showDesc(Order order, JFXButton button) {
-
     }
 
     @Override
