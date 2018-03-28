@@ -11,6 +11,8 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Backend data manager implementation that manages database interactions and serves as the "master"
@@ -27,6 +29,7 @@ public final class DataServer implements DataManager {
   private final MenuItemDatabase menuItemDatabase;
   private final OrderDatabase orderDatabase;
   private ArrayList<RemoteListener> listeners;
+  private Logger logger;
 
   /** Constructs a new data server. */
   public DataServer() {
@@ -45,7 +48,7 @@ public final class DataServer implements DataManager {
     accountDatabase.addPermission("admin","view.receiver");
     accountDatabase.addPermission("admin","view.cashier");
     accountDatabase.addPermission("admin","view.manager");
-
+    logger = Logger.getLogger("DataServer");
   }
 
   /**
@@ -62,9 +65,13 @@ public final class DataServer implements DataManager {
    * Notifies all registered listeners of a data update.
    */
   @Override
-  public void updateListeners() throws RemoteException {
-    for (RemoteListener listener : listeners) {
-      listener.update();
+  public void updateListeners() {
+    try {
+      for (RemoteListener listener : listeners) {
+        listener.update();
+      }
+    } catch (RemoteException e) {
+      logger.log(Level.SEVERE, "Critical network error - reboot and reconnect clients.", e);
     }
   }
 
@@ -84,7 +91,7 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void modifyBillRecord(BillRecord billRecord) throws RemoteException {
+  public void modifyBillRecord(BillRecord billRecord) {
     billRecordDatabase.addOrUpdateBill(billRecord);
     updateListeners();
   }
@@ -100,7 +107,7 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) throws RemoteException {
+  public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) {
     ingredientDatabase.registerIngredient(ingredient);
     inventoryDatabase.setIngredientCount(ingredient, ingredientCount);
     updateListeners();
@@ -122,13 +129,13 @@ public final class DataServer implements DataManager {
   }
 
   @Override
-  public void modifyOrder(Order order) throws RemoteException {
+  public void modifyOrder(Order order) {
     orderDatabase.insertOrUpdateOrder(order);
     updateListeners();
   }
 
   @Override
-  public void modifyOrder(Order order, OrderStatus newstatus) throws RemoteException {
+  public void modifyOrder(Order order, OrderStatus newstatus) {
     ((OrderImpl) order).setOrderStatus(newstatus);
     orderDatabase.insertOrUpdateOrder(order);
     updateListeners();

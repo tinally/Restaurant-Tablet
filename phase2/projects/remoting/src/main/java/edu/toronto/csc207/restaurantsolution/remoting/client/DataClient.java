@@ -30,8 +30,8 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
    * Constructs a new data client.
    *
    * @param registry the RMI registry to be used for lookup of the remote server interface.
-   * @throws RemoteException if a remote error occurs.
-   * @throws NotBoundException if the remote server interface is not bound to the registry.
+   * @throws RemoteException if a network error occurs.
+   * @throws NotBoundException if the remote data manager is not bound on the specified host.
    */
   public DataClient(Registry registry) throws RemoteException, NotBoundException {
     // Retrieves remote interface, registers this client as a listener of the server's data updates.

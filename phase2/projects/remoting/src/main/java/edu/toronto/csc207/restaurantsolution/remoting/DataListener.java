@@ -1,7 +1,5 @@
 package edu.toronto.csc207.restaurantsolution.remoting;
 
-import java.rmi.RemoteException;
-
 /**
  * An interface for a local data listener whose update invocations will be scheduled in order to
  * cooperate with invocations across threads.
