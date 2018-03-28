@@ -18,3 +18,9 @@
 .subheader {
     -fx-background-color: #ffeeff;
 }
+.jfx-tab-pane .tab-header-background {
+    -fx-background-color: #0288d1;
+}
+.jfx-tab-pane .tab-header-area .jfx-rippler{
+    -jfx-rippler-fill:WHITE;
+}
