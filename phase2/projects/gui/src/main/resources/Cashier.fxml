@@ -7,6 +7,7 @@
 <?import javafx.scene.text.*?>
 <?import java.lang.Integer?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.util.converter.NumberStringConverter?>
 <AnchorPane stylesheets="Style.css"
             xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="710.0"
             xmlns="http://javafx.com/javafx/8.0.121"
@@ -34,21 +35,21 @@
             </VBox>
             <VBox>
                 <Label text="Orders"/>
-                <JFXListView fx:id="billableList" VBox.vgrow="ALWAYS"/>
+                <JFXListView fx:id="billableList" VBox.vgrow="ALWAYS" disable="true"/>
                 <SplitPane>
                     <Label text="Tip"/>
-                    <JFXTextField fx:id="tipField"/>
+                    <JFXTextField fx:id="tipField" text="0" onKeyTyped="#updateBillableList"/>
                 </SplitPane>
                 <SplitPane>
                     <Label text="Discount"/>
-                    <JFXTextField fx:id="discountField" />
+                    <JFXTextField fx:id="discountField" text="0" onKeyTyped="#updateBillableList"/>
                 </SplitPane>
             </VBox>
         </SplitPane>
         <VBox>
             <Label text="Bill Preview"/>
             <TextArea fx:id="billTextValue" VBox.vgrow="ALWAYS"/>
-            <JFXButton>Print Bill</JFXButton>
+            <JFXButton onAction="#sendBill">Print Bill</JFXButton>
         </VBox>
     </SplitPane>
 

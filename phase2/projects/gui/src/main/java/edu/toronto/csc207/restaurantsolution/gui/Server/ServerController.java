@@ -11,6 +11,7 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -183,14 +184,14 @@ public class ServerController implements DataListener {
   @FXML
   public void initialize() {
     this.deletionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
-    this.deletionsList.setOnMouseClicked(e -> {
+    this.deletionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>) e -> {
       this.updateOrderSummary();
     });
     this.additionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
-    this.additionsList.setOnMouseClicked(e -> {
+    this.additionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>)e -> {
       this.updateOrderSummary();
     });
-    this.menuList.setOnMouseClicked(e -> {
+    this.menuList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super MenuItem>) e -> {
       this.deletionsList.getSelectionModel().clearSelection();
       this.additionsList.getSelectionModel().clearSelection();
       this.updateAdditionsAndDeletions(this.menuList.getSelectionModel().getSelectedItem());
