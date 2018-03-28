@@ -4,74 +4,73 @@ import com.jfoenix.controls.*;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
+import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Controls the Cashier graphics user interface.
  */
-public class CashierController implements Initializable {
+public class CashierController implements DataListener {
 
-    @FXML
-    private JFXComboBox<Integer> tableNumber;
-
-    @FXML
-    private GridPane priceGridPane;
-
-    @FXML
-    private JFXTextField discount;
-
-    @FXML
-    private JFXListView<BillRecord> billableList;
-
-    @FXML
-    private JFXToggleButton toggleDiscount;
-
-    @FXML
-    private JFXListView<Order> orderList;
-
+    public TextArea billTextValue;
+    public JFXTextField discountField;
+    public JFXTextField tipField;
+    public JFXListView billableList;
+    public JFXListView<Order> orderList;
+    public JFXComboBox<Integer> tableNumber;
     private DataManager manager;
 
+    private ObservableList<Order> orderCache;
     public CashierController() throws Exception {
       NetworkContainer.initManager();
-        manager = NetworkContainer.dataManager;
-
+      manager = NetworkContainer.dataManager;
+      this.orderCache = FXCollections.observableArrayList();
+      this.orderCache.addListener((ListChangeListener<? super Order>) e -> {
+            this.updateTableOrders();
+      });
+      NetworkContainer.dataService.registerListener(this);
     }
 
-    @FXML
-    void toggleDiscountEvent(ActionEvent event) {
-        if (toggleDiscount.isSelected()) {
-            if (Pattern.matches("\\d+", discount.getText())) {
-                //TODO: import order and update discount
-                System.out.println("This is an integer");
-            } else {
-                System.out.println("This is invalid");
-            }
-        }
+    public void initialize() {
+        this.update();
     }
 
-    @FXML
-    public void getTable(ActionEvent event) {
-        System.out.println("CHECKING");
+    private void updateTableOrders() {
+        Integer tableNumber = this.tableNumber.getValue();
+        this.orderList.setItems(FXCollections
+            .observableArrayList(this.orderCache.stream().filter(o -> o.getTableNumber().equals(tableNumber)
+                && o.getOrderStatus() == OrderStatus.DELIVERED).collect(Collectors.toList())));
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-        tableNumber.getItems().addAll(1, 2, 3, 4, 5, 6, 7, 8);
+    public void update() {
         try {
-            orderList.getItems().addAll(manager.getAllOrders());
-            billableList.getItems().addAll(manager.getAllBills());
-        } catch (java.rmi.RemoteException e) {
-
+            this.orderCache.setAll(this.manager.getAllOrders());
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
+    }
+
+    @FXML
+    void tableNumberChanged(ActionEvent actionEvent) {
+        this.billableList.getItems().clear();
+        this.updateTableOrders();
     }
 }

@@ -125,6 +125,7 @@ public class ServerController implements DataListener {
 
   public void sendNewOrder(MouseEvent mouseEvent) throws RemoteException {
       OrderImpl order = new OrderImpl();
+
       order.setOrderNumber(new Random().nextInt(1000));
       order.setOrderStatus(OrderStatus.CREATED);
       order.setOrderId(UUID.randomUUID());

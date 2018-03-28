@@ -35,5 +35,9 @@ public enum OrderStatus {
   /**
    * The order was returned by the customer to the kitchen.
    */
-  RETURNED
+  RETURNED,
+  /**
+   * The order was paid for and billed.
+   */
+  PAID
 }
