@@ -23,7 +23,7 @@ import sun.nio.ch.Net;
 
 import java.io.IOException;
 
-public class NetworkController implements DataListener {
+public class NetworkController {
   @FXML
   private JFXTextField ip;
 
@@ -50,10 +50,5 @@ public class NetworkController implements DataListener {
     ip.setText("");
     if (success)
       activateLoginView(event);
-  }
-
-  @Override
-  public void update() {
-
   }
 }

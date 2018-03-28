@@ -4,11 +4,13 @@
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Chef.ChefController">
@@ -37,13 +39,17 @@
                             </cellValueFactory>
                         </JFXTreeTableColumn>
                     </columns>
-               <columnResizePolicy>
-                  <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
+                    <columnResizePolicy>
+                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
                 </JFXTreeTableView>
-                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <JFXButton buttonType="RAISED" onMousePressed="#setSelectedOrderSeen" style="-fx-background-color: WHITE;">Acknowledge Order</JFXButton>
-                </AnchorPane>
+                <HBox alignment="CENTER">
+                    <JFXButton buttonType="RAISED" onMousePressed="#setSelectedOrderSeen" style="-fx-background-color: WHITE;">Acknowledge Order
+                    </JFXButton>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+                </HBox>
             </VBox>
         </SplitPane>
         <VBox>
