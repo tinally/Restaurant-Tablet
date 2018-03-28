@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.jfoenix.controls.JFXTreeTableColumn?>
-<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
       <AnchorPane>
@@ -25,15 +25,18 @@
             <columns>
                 <JFXTreeTableColumn text="Ingredient">
                     <cellValueFactory>
-                        <TreeItemPropertyValueFactory property="ingredient"/>
+                        <TreeItemPropertyValueFactory property="ingredient" />
                     </cellValueFactory>
                 </JFXTreeTableColumn>
                 <JFXTreeTableColumn text="Quantity">
                     <cellValueFactory>
-                        <TreeItemPropertyValueFactory property="quantity"/>
+                        <TreeItemPropertyValueFactory property="quantity" />
                     </cellValueFactory>
                 </JFXTreeTableColumn>
             </columns>
+         <columnResizePolicy>
+            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
         </JFXTreeTableView>
     </VBox>
     <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">

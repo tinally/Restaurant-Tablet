@@ -37,6 +37,13 @@ public class ReceiverController implements DataListener {
       this.quantity = new SimpleIntegerProperty(quantity);
     }
 
+    public ObjectProperty<Ingredient> ingredientProperty() {
+      return ingredient;
+    }
+
+    public IntegerProperty quantityProperty() {
+      return quantity;
+    }
   }
 
   @FXML
@@ -60,14 +67,13 @@ public class ReceiverController implements DataListener {
 //      ObservableList<Ingredient> ingredient =
 //          FXCollections.observableArrayList(manager.getAllIngredients());
 
-      List<IngredientMapping> ingredients = new ArrayList<>();
+      ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
 
       for (Ingredient ingredient : manager.getAllIngredients())
         ingredients.add(new IngredientMapping(ingredient, manager.getIngredientCount(ingredient)));
 
       TreeItem<IngredientMapping> root =
-          new RecursiveTreeItem<>(FXCollections.observableArrayList(ingredients),
-              RecursiveTreeObject::getChildren);
+          new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
       inventoryTable.setRoot(root);
     } catch (RemoteException e) {
       e.printStackTrace();
@@ -77,14 +83,6 @@ public class ReceiverController implements DataListener {
   @FXML
   public void initialize() {
     this.update();
-//        this.inventoryList.getSelectionModel().selectedItemProperty().addListener((e) -> {
-//            Ingredient selected = this.inventoryList.getSelectionModel().getSelectedItem();
-//            try {
-//                Integer selectedcount = manager.getIngredientCount(selected);
-//            } catch (RemoteException e1) {
-//                e1.printStackTrace();
-//            }
-//        });
   }
 
   @FXML
