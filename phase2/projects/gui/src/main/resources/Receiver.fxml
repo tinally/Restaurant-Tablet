@@ -40,12 +40,12 @@
         </JFXTreeTableView>
     </VBox>
     <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">
-        <JFXTextField fx:id="name" alignment="CENTER" focusColor="WHITE" promptText="Name" unFocusColor="#1d1d1d">
+        <JFXTextField fx:id="name" alignment="CENTER" focusColor="#f06292" promptText="Name" unFocusColor="#1d1d1d">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
         </JFXTextField>
-        <JFXTextField fx:id="quantity" alignment="CENTER" focusColor="WHITE" promptText="Quantity" unFocusColor="#1d1d1d">
+        <JFXTextField fx:id="quantity" alignment="CENTER" focusColor="#f06292" promptText="Quantity" unFocusColor="#1d1d1d">
             <VBox.margin>
                 <Insets />
             </VBox.margin>
