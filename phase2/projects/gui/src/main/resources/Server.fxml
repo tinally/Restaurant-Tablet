@@ -1,79 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import java.lang.Integer?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import java.lang.*?>
-<AnchorPane stylesheets="Style.css"
-            xmlns:fx="http://javafx.com/fxml/1"
-            style="-fx-background-color: #f06292;"
-            xmlns="http://javafx.com/javafx/8.0.121"
-            fx:controller="edu.toronto.csc207.restaurantsolution.gui.Server.ServerController">
-    <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
-               AnchorPane.topAnchor="0">
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane style="-fx-background-color: #f06292;" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Server.ServerController">
+    <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <VBox>
             <JFXTreeTableView fx:id="deliverableOrdersTable" showRoot="false" VBox.vgrow="ALWAYS">
                 <columns>
                     <JFXTreeTableColumn text="Table">
                         <cellValueFactory>
-                            <TreeItemPropertyValueFactory property="tableNumber"/>
+                            <TreeItemPropertyValueFactory property="tableNumber" />
                         </cellValueFactory>
                     </JFXTreeTableColumn>
                     <JFXTreeTableColumn text="Order Number">
                         <cellValueFactory>
-                            <TreeItemPropertyValueFactory property="orderNumber"/>
+                            <TreeItemPropertyValueFactory property="orderNumber" />
                         </cellValueFactory>
                     </JFXTreeTableColumn>
                     <JFXTreeTableColumn text="Menu Item">
                         <cellValueFactory>
-                            <TreeItemPropertyValueFactory property="menuItem"/>
+                            <TreeItemPropertyValueFactory property="menuItem" />
                         </cellValueFactory>
                     </JFXTreeTableColumn>
                 </columns>
+            <columnResizePolicy>
+               <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
             </JFXTreeTableView>
             <HBox>
-                <JFXButton HBox.hgrow="ALWAYS" onMousePressed="#confirmSelectedOrder">Confirm
+                <JFXButton onMousePressed="#confirmSelectedOrder" HBox.hgrow="ALWAYS">Confirm
                     Selected Order Delivered
                 </JFXButton>
-                <JFXButton HBox.hgrow="ALWAYS" onMousePressed="#rejectSelectedOrder">Reject Selected
+                <JFXButton onMousePressed="#rejectSelectedOrder" HBox.hgrow="ALWAYS">Reject Selected
                     Order
                 </JFXButton>
             </HBox>
         </VBox>
         <AnchorPane>
-            <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
-                       AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-                <JFXListView fx:id="menuList"/>
-                <SplitPane orientation="VERTICAL">
+            <SplitPane dividerPositions="0.5, 0.5" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                <JFXListView fx:id="menuList" />
+                <SplitPane dividerPositions="0.5" orientation="VERTICAL">
                     <VBox>
-                        <Label text="Additions"/>
-                        <JFXListView fx:id="additionsList" VBox.vgrow="ALWAYS"/>
+                        <Label text="Additions" />
+                        <JFXListView fx:id="additionsList" VBox.vgrow="ALWAYS" />
                     </VBox>
                     <VBox>
-                        <Label text="Deletions"/>
-                        <JFXListView fx:id="deletionsList" VBox.vgrow="ALWAYS"/>
+                        <Label text="Deletions" />
+                        <JFXListView fx:id="deletionsList" VBox.vgrow="ALWAYS" />
                     </VBox>
                 </SplitPane>
                 <VBox>
                     <HBox>
-                        <Label text="Table Number"/>
+                        <Label text="Table Number" />
                         <JFXComboBox fx:id="tableNumberSelection">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <Integer fx:value="1"/>
-                                    <Integer fx:value="2"/>
-                                    <Integer fx:value="3"/>
-                                    <Integer fx:value="4"/>
+                                    <Integer fx:value="1" />
+                                    <Integer fx:value="2" />
+                                    <Integer fx:value="3" />
+                                    <Integer fx:value="4" />
                                 </FXCollections>
                             </items>
                             <value>
-                                <Integer fx:value="1"/>
+                                <Integer fx:value="1" />
                             </value>
                         </JFXComboBox>
                     </HBox>
-                    <TextArea editable="false" fx:id="orderSummaryTextArea" VBox.vgrow="ALWAYS">
+                    <TextArea fx:id="orderSummaryTextArea" editable="false" VBox.vgrow="ALWAYS">
 
                     </TextArea>
                     <JFXButton onMouseClicked="#sendNewOrder">Send Order to Kitchen</JFXButton>

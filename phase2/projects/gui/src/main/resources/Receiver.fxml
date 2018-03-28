@@ -10,6 +10,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
       <AnchorPane>
@@ -18,7 +21,20 @@
         </Label>
          </children>
       </AnchorPane>
-        <JFXListView fx:id="inventoryList" VBox.vgrow="ALWAYS" />
+        <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS">
+            <columns>
+                <JFXTreeTableColumn text="Ingredient">
+                    <cellValueFactory>
+                        <TreeItemPropertyValueFactory property="ingredient"/>
+                    </cellValueFactory>
+                </JFXTreeTableColumn>
+                <JFXTreeTableColumn text="Quantity">
+                    <cellValueFactory>
+                        <TreeItemPropertyValueFactory property="quantity"/>
+                    </cellValueFactory>
+                </JFXTreeTableColumn>
+            </columns>
+        </JFXTreeTableView>
     </VBox>
     <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">
         <JFXTextField fx:id="name" alignment="CENTER" focusColor="WHITE" promptText="Name" unFocusColor="#1d1d1d">

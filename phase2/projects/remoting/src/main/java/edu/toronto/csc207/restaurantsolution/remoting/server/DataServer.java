@@ -43,6 +43,8 @@ public final class DataServer implements DataManager {
     accountDatabase.addPermission("admin","view.server");
     accountDatabase.addPermission("admin","view.chef");
     accountDatabase.addPermission("admin","view.receiver");
+    accountDatabase.addPermission("admin","view.cashier");
+    accountDatabase.addPermission("admin","view.manager");
 
   }
 

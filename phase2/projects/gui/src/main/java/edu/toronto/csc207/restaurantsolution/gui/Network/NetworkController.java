@@ -47,6 +47,7 @@ public class NetworkController implements DataListener {
     } catch (Exception e) {
       success = false;
     }
+    ip.setText("");
     if (success)
       activateLoginView(event);
   }
