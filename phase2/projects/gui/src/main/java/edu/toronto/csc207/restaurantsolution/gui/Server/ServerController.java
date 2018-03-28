@@ -70,9 +70,6 @@ public class ServerController implements DataListener {
   private final DataManager manager;
 
   @FXML
-  JFXButton sendOrderToKitchenButton;
-
-  @FXML
   TextArea orderSummaryTextArea;
 
   public ServerController() throws Exception {
@@ -80,11 +77,6 @@ public class ServerController implements DataListener {
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
   }
-  @FXML
-  JFXButton rejectOrderButton;
-
-  @FXML
-  JFXButton confirmOrderButton;
 
   @FXML
   JFXComboBox<Integer> tableNumberSelection;
@@ -107,8 +99,6 @@ public class ServerController implements DataListener {
       ObservableList<MenuItem> menuItems = FXCollections.observableArrayList(manager.getAllMenuItems());
       menuList.setItems(menuItems);
 
-      ObservableList<DeliverableOrderMapping> orders = FXCollections.observableArrayList();
-
       List<DeliverableOrderMapping> deliverableOrders = manager.getAllOrders().stream()
           .filter(o -> o.getOrderStatus() == OrderStatus.FILLED)
           .map(o -> new DeliverableOrderMapping(o.getTableNumber(), o.getOrderNumber(), o.getMenuItem(), o))
@@ -124,7 +114,7 @@ public class ServerController implements DataListener {
     }
   }
 
-  public void sendNewOrder(MouseEvent mouseEvent) throws RemoteException {
+  public void sendNewOrder() throws RemoteException {
       OrderImpl order = new OrderImpl();
 
       order.setOrderNumber(new Random().nextInt(1000));

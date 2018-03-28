@@ -17,7 +17,7 @@
         <SplitPane dividerPositions="0.5" orientation="VERTICAL">
             <VBox>
                 <AnchorPane>
-                    <Label alignment="CENTER" style="-fx-background-color: #f06292;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">Incoming Orders
+                    <Label alignment="CENTER" styleClass="header" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">Incoming Orders
                     </Label>
                 </AnchorPane>
                 <JFXListView fx:id="incomingOrderList" VBox.vgrow="ALWAYS" />
@@ -48,7 +48,7 @@
         </SplitPane>
         <VBox>
             <AnchorPane>
-                <Label alignment="CENTER" style="-fx-background-color: #f06292;" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">In Progress
+                <Label alignment="CENTER" styleClass="header" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">In Progress
                 </Label>
             </AnchorPane>
             <JFXListView fx:id="inProgressOrderList" VBox.vgrow="ALWAYS" />
