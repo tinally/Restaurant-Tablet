@@ -30,16 +30,21 @@ import java.util.stream.Collectors;
  * Controls the Cashier graphics user interface.
  */
 public class CashierController implements DataListener {
-
+  @FXML
   public TextArea billTextValue;
+  @FXML
   public JFXTextField discountField;
+  @FXML
   public JFXTextField tipField;
+  @FXML
   public JFXListView<Order> billableList;
+  @FXML
   public JFXListView<Order> orderList;
+  @FXML
   public JFXComboBox<Integer> tableNumber;
-  private DataManager manager;
-
+  @FXML
   private ObservableList<Order> orderCache;
+  private DataManager manager;
 
   public CashierController() throws Exception {
     NetworkContainer.initManager();
@@ -49,6 +54,16 @@ public class CashierController implements DataListener {
     NetworkContainer.dataService.registerListener(this);
   }
 
+  @Override
+  public void update() {
+    try {
+      this.orderCache.setAll(this.manager.getAllOrders());
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
   public void initialize() {
     this.orderList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
     this.tipField.setTextFormatter(new TextFormatter<>(new NumberStringConverter()));
@@ -62,15 +77,6 @@ public class CashierController implements DataListener {
     this.orderList.setItems(FXCollections
         .observableArrayList(this.orderCache.stream().filter(o -> o.getTableNumber().equals(tableNumber)
             && o.getOrderStatus() == OrderStatus.DELIVERED).collect(Collectors.toList())));
-  }
-
-  @Override
-  public void update() {
-    try {
-      this.orderCache.setAll(this.manager.getAllOrders());
-    } catch (RemoteException e) {
-      e.printStackTrace();
-    }
   }
 
   @FXML

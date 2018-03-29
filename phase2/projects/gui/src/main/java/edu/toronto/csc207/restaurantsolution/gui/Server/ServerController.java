@@ -14,10 +14,6 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -34,35 +30,9 @@ import java.util.stream.Collectors;
  * Controls the Server graphics user interface.
  */
 public class ServerController implements DataListener {
-
-  public void confirmSelectedOrder() throws RemoteException {
-    TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
-    if (selectedItem != null) {
-      Order order = selectedItem.getValue().getOrder();
-      manager.modifyOrder(order, OrderStatus.DELIVERED);
-    }
-  }
-
-  public void rejectSelectedOrder() throws RemoteException {
-    TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
-    if (selectedItem != null) {
-      Order order = selectedItem.getValue().getOrder();
-      manager.modifyOrder(order, OrderStatus.RETURNED);
-    }
-  }
-
   private final DataManager manager;
-
   @FXML
   TextArea orderSummaryTextArea;
-
-  public ServerController() throws Exception {
-    // TODO: REMOVE THIS
-    NetworkContainer.initManager();
-    manager = NetworkContainer.dataManager;
-    NetworkContainer.dataService.registerListener(this);
-  }
-
   @FXML
   JFXComboBox<Integer> tableNumberSelection;
   @FXML
@@ -73,6 +43,13 @@ public class ServerController implements DataListener {
   JFXListView<Ingredient> additionsList;
   @FXML
   JFXTreeTableView<DeliverableOrderMapping> deliverableOrdersTable;
+
+  public ServerController() throws Exception {
+    // TODO: REMOVE THIS
+    NetworkContainer.initManager();
+    manager = NetworkContainer.dataManager;
+    NetworkContainer.dataService.registerListener(this);
+  }
 
   @Override
   public void update() {
@@ -92,6 +69,22 @@ public class ServerController implements DataListener {
 
     } catch (Exception e) {
       e.printStackTrace();
+    }
+  }
+
+  public void confirmSelectedOrder() throws RemoteException {
+    TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
+    if (selectedItem != null) {
+      Order order = selectedItem.getValue().getOrder();
+      manager.modifyOrder(order, OrderStatus.DELIVERED);
+    }
+  }
+
+  public void rejectSelectedOrder() throws RemoteException {
+    TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
+    if (selectedItem != null) {
+      Order order = selectedItem.getValue().getOrder();
+      manager.modifyOrder(order, OrderStatus.RETURNED);
     }
   }
 

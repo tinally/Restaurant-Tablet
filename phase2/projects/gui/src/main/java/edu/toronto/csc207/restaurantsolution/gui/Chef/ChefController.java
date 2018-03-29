@@ -6,16 +6,11 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.gui.ui.IngredientMapping;
-import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,72 +27,19 @@ import java.util.stream.Collectors;
  */
 public class ChefController implements DataListener {
   private final DataManager manager;
+  @FXML
+  JFXTreeTableView<IngredientMapping> itemDisplayIngredientList;
+  @FXML
+  Label itemDisplayTitle;
+  @FXML
+  JFXListView<Order> incomingOrderList;
+  @FXML
+  JFXListView<Order> inProgressOrderList;
 
   public ChefController() throws Exception {
     NetworkContainer.initManager();
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
-  }
-
-  @FXML
-  JFXTreeTableView<IngredientMapping> itemDisplayIngredientList;
-
-  @FXML
-  Label itemDisplayTitle;
-
-  @FXML
-  JFXListView<Order> incomingOrderList;
-
-  @FXML
-  JFXListView<Order> inProgressOrderList;
-
-  @FXML
-  private void initialize() {
-    this.update();
-
-    this.incomingOrderList.getSelectionModel().selectedItemProperty().addListener(e -> {
-      this.refreshOrderView(this.incomingOrderList.getSelectionModel().getSelectedItem());
-    });
-
-    this.inProgressOrderList.setOnMouseClicked(e -> {
-      if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
-      Order order = inProgressOrderList.getSelectionModel().getSelectedItem();
-      if (order != null) {
-        order.setOrderStatus(OrderStatus.FILLED);
-        try {
-          manager.modifyOrder(order);
-        } catch (RemoteException e1) {
-          e1.printStackTrace();
-        }
-      }
-    });
-  }
-
-  private void refreshOrderView(Order o) {
-    if (o != null) {
-      this.itemDisplayTitle.setText(o.getMenuItem().getName());
-      ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
-      for (Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
-        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
-      }
-      for (Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
-        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
-      }
-      TreeItem<IngredientMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
-      this.itemDisplayIngredientList.setRoot(root);
-    }
-  }
-
-  public void setSelectedOrderSeen() {
-    Order order = incomingOrderList.getSelectionModel().getSelectedItem();
-    if (order != null) {
-      order.setOrderStatus(OrderStatus.SEEN);
-      try {
-        manager.modifyOrder(order);
-      } catch (RemoteException e1) {
-        e1.printStackTrace();
-      }
-    }
   }
 
   @Override
@@ -113,6 +55,55 @@ public class ChefController implements DataListener {
 
     } catch (RemoteException e) {
       e.printStackTrace();
+    }
+  }
+
+  @FXML
+  private void initialize() {
+    update();
+
+    incomingOrderList.getSelectionModel().selectedItemProperty().addListener(e -> {
+      refreshOrderView(incomingOrderList.getSelectionModel().getSelectedItem());
+    });
+
+    inProgressOrderList.setOnMouseClicked(e -> {
+      if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
+      Order order = inProgressOrderList.getSelectionModel().getSelectedItem();
+      if (order != null) {
+        order.setOrderStatus(OrderStatus.FILLED);
+        try {
+          manager.modifyOrder(order);
+        } catch (RemoteException e1) {
+          e1.printStackTrace();
+        }
+      }
+    });
+  }
+
+  private void refreshOrderView(Order o) {
+    if (o != null) {
+      itemDisplayTitle.setText(o.getMenuItem().getName());
+      ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
+      for (Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
+        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
+      }
+      for (Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
+        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
+      }
+      TreeItem<IngredientMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
+      itemDisplayIngredientList.setRoot(root);
+    }
+  }
+
+  public void setSelectedOrderSeen() {
+    Order order = incomingOrderList.getSelectionModel().getSelectedItem();
+    if (order != null) {
+      order.setOrderStatus(OrderStatus.SEEN);
+      try {
+        manager.modifyOrder(order);
+      } catch (RemoteException e1) {
+        e1.printStackTrace();
+      }
     }
   }
 }

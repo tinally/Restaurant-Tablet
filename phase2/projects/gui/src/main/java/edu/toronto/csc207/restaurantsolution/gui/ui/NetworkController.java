@@ -2,24 +2,14 @@ package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
-import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
-import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import sun.nio.ch.Net;
 
 import java.io.IOException;
 

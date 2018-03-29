@@ -10,17 +10,17 @@ import java.util.Objects;
 
 public class ChefGUI extends Application {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
-                "Chef.fxml")));
-        primaryStage.setTitle("Chef Screen");
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
-    }
+  public static void main(String[] args) {
+    launch(args);
+  }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
+        "Chef.fxml")));
+    primaryStage.setTitle("Chef Screen");
+    primaryStage.setScene(new Scene(root, 800, 600));
+    primaryStage.setFullScreen(true);
+    primaryStage.show();
+  }
 }

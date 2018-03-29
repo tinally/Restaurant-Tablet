@@ -3,7 +3,9 @@ package edu.toronto.csc207.restaurantsolution.gui;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class NetworkContainer {
   public static DataService dataService;

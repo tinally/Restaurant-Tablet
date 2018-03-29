@@ -1,6 +1,5 @@
 package edu.toronto.csc207.restaurantsolution.gui.ui;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController;

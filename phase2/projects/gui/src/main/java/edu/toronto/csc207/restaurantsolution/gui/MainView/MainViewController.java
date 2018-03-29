@@ -1,26 +1,19 @@
 package edu.toronto.csc207.restaurantsolution.gui.MainView;
 
 import com.jfoenix.controls.JFXTabPane;
-import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
-import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import sun.nio.ch.Net;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class MainViewController {
-
   @FXML
   private JFXTabPane mainPane;
-
   @FXML
   private Tab loginTab, cashierTab, chefTab, managerTab, receiverTab, serverTab;
-
   @FXML
   private Map<String, Tab> menuTabs = new HashMap<>();
 
@@ -42,7 +35,7 @@ public class MainViewController {
         .map(s -> s.substring(5))
         .forEach(s -> {
           System.out.println(s);
-          if(menuTabs.containsKey(s)) {
+          if (menuTabs.containsKey(s)) {
             mainPane.getTabs().add(menuTabs.get(s));
           }
         });

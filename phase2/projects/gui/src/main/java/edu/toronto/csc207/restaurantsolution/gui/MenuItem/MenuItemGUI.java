@@ -10,18 +10,18 @@ import java.util.Objects;
 
 public class MenuItemGUI extends Application {
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+  public static void main(String[] args) {
+    launch(args);
+  }
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
+  @Override
+  public void start(Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
-                "MenuItem.fxml")));
-        primaryStage.setTitle("Manager");
-        primaryStage.setScene(new Scene(root, 800, 600));
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
-    }
+    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
+        "MenuItem.fxml")));
+    primaryStage.setTitle("Manager");
+    primaryStage.setScene(new Scene(root, 800, 600));
+    primaryStage.setFullScreen(true);
+    primaryStage.show();
+  }
 }

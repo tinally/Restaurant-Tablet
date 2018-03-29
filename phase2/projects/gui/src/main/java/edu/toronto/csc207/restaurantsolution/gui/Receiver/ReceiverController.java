@@ -10,10 +10,6 @@ import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImp
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,8 +17,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 
 import java.rmi.RemoteException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Controls the Receiver graphics user interface.
@@ -34,7 +28,6 @@ public class ReceiverController implements DataListener {
   private JFXTextField quantity;
   @FXML
   private JFXTreeTableView<IngredientMapping> inventoryTable;
-
   private DataManager manager;
 
   public ReceiverController() throws Exception {

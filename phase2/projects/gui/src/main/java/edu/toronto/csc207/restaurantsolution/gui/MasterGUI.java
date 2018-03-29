@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MasterGUI extends Application {
+  public static void main(String[] args) {
+    launch(args);
+  }
+
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root;
@@ -18,9 +22,5 @@ public class MasterGUI extends Application {
     primaryStage.setTitle("Restaurant Manager");
     primaryStage.setScene(new Scene(root));
     primaryStage.show();
-  }
-
-  public static void main(String[] args) {
-    launch(args);
   }
 }

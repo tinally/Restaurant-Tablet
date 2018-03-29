@@ -10,99 +10,96 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.layout.VBox;
 
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class MenuItemController implements Initializable{
+public class MenuItemController implements Initializable {
 
-    @FXML
-    private JFXTextField menuItemName;
+  @FXML
+  private JFXTextField menuItemName;
 
-    private Map<Ingredient, Integer> ingredientMap;
+  private Map<Ingredient, Integer> ingredientMap;
 
-    @FXML
-    private JFXTextField menuItemPrice;
+  @FXML
+  private JFXTextField menuItemPrice;
 
-    @FXML
-    private JFXListView<Ingredient> ingredientList;
+  @FXML
+  private JFXListView<Ingredient> ingredientList;
 
-    @FXML
-    private JFXButton addButton;
+  @FXML
+  private JFXButton addButton;
 
-    @FXML
-    private JFXListView<Ingredient> selectedIngredientList;
+  @FXML
+  private JFXListView<Ingredient> selectedIngredientList;
 
-    @FXML
-    private JFXButton removeButton;
+  @FXML
+  private JFXButton removeButton;
 
-    @FXML
-    private JFXTextField newIngredientName;
+  @FXML
+  private JFXTextField newIngredientName;
 
-    @FXML
-    private JFXTextField newIngredientCost;
+  @FXML
+  private JFXTextField newIngredientCost;
 
-    @FXML
-    private JFXTextField newIngredientPrice;
+  @FXML
+  private JFXTextField newIngredientPrice;
 
-    @FXML
-    private JFXTextField newIngredientReorder;
+  @FXML
+  private JFXTextField newIngredientReorder;
 
-    @FXML
-    private JFXTextField newIngredientAmount;
+  @FXML
+  private JFXTextField newIngredientAmount;
 
-    @FXML
-    private JFXButton addNewIngredientButton;
+  @FXML
+  private JFXButton addNewIngredientButton;
 
-    @FXML
-    private JFXButton createMenuItemButton;
+  @FXML
+  private JFXButton createMenuItemButton;
 
-    private void addToHashMap(ObservableList<Ingredient> ingredients){
-        for (Ingredient item: ingredients){
-            if (ingredientMap.containsKey(item)){
-                ingredientMap.put(item, ingredientMap.get(item) + 1);
-            }
-            else{
-                ingredientMap.put(item, 1);
-            }
-        }
+  private void addToHashMap(ObservableList<Ingredient> ingredients) {
+    for (Ingredient item : ingredients) {
+      if (ingredientMap.containsKey(item)) {
+        ingredientMap.put(item, ingredientMap.get(item) + 1);
+      } else {
+        ingredientMap.put(item, 1);
+      }
     }
+  }
 
-    @FXML
-    void add(ActionEvent event) {
-        ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
-        ingredients.addAll(ingredientList.getSelectionModel().getSelectedItems());
-        selectedIngredientList.getItems().addAll(ingredients);
-        addToHashMap(ingredients);
+  @FXML
+  void add(ActionEvent event) {
+    ObservableList<Ingredient> ingredients = FXCollections.observableArrayList();
+    ingredients.addAll(ingredientList.getSelectionModel().getSelectedItems());
+    selectedIngredientList.getItems().addAll(ingredients);
+    addToHashMap(ingredients);
+  }
+
+  private void removeFromHashMap(ObservableList<Ingredient> ingredients) {
+    for (Ingredient item : ingredients) {
+      ingredientMap.remove(item);
     }
-
-    private void removeFromHashMap(ObservableList<Ingredient> ingredients){
-        for (Ingredient item: ingredients){
-            ingredientMap.remove(item);
-        }
-    }
+  }
 
 
-    @FXML
-    void remove(ActionEvent event) {
-        ObservableList<Ingredient> ingredients = selectedIngredientList.getSelectionModel().getSelectedItems();
-        removeFromHashMap(ingredients);
-        selectedIngredientList.getItems().removeAll(ingredients);
-    }
+  @FXML
+  void remove(ActionEvent event) {
+    ObservableList<Ingredient> ingredients = selectedIngredientList.getSelectionModel().getSelectedItems();
+    removeFromHashMap(ingredients);
+    selectedIngredientList.getItems().removeAll(ingredients);
+  }
 
-    public void createMenuItem(ActionEvent actionEvent) {
-    }
+  public void createMenuItem(ActionEvent actionEvent) {
+  }
 
-    public void addToIngredient(ActionEvent actionEvent) {
-    }
+  public void addToIngredient(ActionEvent actionEvent) {
+  }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        ingredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        selectedIngredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        }
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ingredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    selectedIngredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+  }
 }
