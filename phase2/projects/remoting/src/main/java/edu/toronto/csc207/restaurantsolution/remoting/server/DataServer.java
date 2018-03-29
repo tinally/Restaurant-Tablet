@@ -30,7 +30,6 @@ public final class DataServer implements DataManager {
   private InfoLogger logger;
 
   /** Constructs a new data server. */
-  // TODO: Add logging as specified
   public DataServer() {
     listeners = new ArrayList<>();
     SQLiteDataSource dataSource = new SQLiteDataSource();

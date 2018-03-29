@@ -27,14 +27,17 @@ public class UserAccountImpl implements UserAccount {
     return this.displayName;
   }
 
+  @Override
   public void setUsername(String username) {
     this.username = username;
   }
 
+  @Override
   public void setPermissions(List<String> permissions) {
     this.permissions = permissions;
   }
 
+  @Override
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
