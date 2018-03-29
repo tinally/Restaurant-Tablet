@@ -37,6 +37,11 @@ public class ReceiverController implements DataListener {
   private JFXTreeTableView<IngredientMapping> inventoryTable;
   private DataManager manager;
 
+  public ReceiverController() {
+    manager = NetworkContainer.dataManager;
+    NetworkContainer.dataService.registerListener(this);
+  }
+
   @Override
   public void update() {
     try {
@@ -55,8 +60,6 @@ public class ReceiverController implements DataListener {
 
   @FXML
   public void initialize() {
-    manager = NetworkContainer.dataManager;
-    NetworkContainer.dataService.registerListener(this);
     update();
   }
 

@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.newAccount;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -98,7 +98,7 @@ public class createAccountController {
 
   }
 
-  public void confirmAction(ActionEvent event) {
+  public void confirmAction() {
     if (setEmptyAlerts()) {
       return;
     }

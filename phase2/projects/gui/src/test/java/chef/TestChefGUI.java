@@ -1,6 +1,5 @@
 package chef;
 
-import edu.toronto.csc207.restaurantsolution.gui.Chef.ChefController;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.MenuItemImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;

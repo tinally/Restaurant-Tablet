@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.MainView;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXTabPane;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;

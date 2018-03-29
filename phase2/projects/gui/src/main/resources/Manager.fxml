@@ -20,7 +20,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <AnchorPane style="-fx-background-color: #f06292;" stylesheets="Style.css"
             xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="edu.toronto.csc207.restaurantsolution.gui.Manager.ManagerController">
+            fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.ManagerController">
     <JFXTabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
         <Tab text="Orders">
             <AnchorPane>

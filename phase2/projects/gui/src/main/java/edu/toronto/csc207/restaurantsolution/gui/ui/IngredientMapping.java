@@ -11,7 +11,7 @@ public class IngredientMapping extends RecursiveTreeObject<IngredientMapping> {
   private final ObjectProperty<Ingredient> ingredient;
   private final IntegerProperty quantity;
 
-  public IngredientMapping(Ingredient ingredient, Integer quantity) {
+  IngredientMapping(Ingredient ingredient, Integer quantity) {
     this.ingredient = new SimpleObjectProperty<>(ingredient);
     this.quantity = new SimpleIntegerProperty(quantity);
   }

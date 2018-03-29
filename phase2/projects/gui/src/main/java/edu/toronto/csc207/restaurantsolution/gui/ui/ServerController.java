@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Server;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -44,9 +44,7 @@ public class ServerController implements DataListener {
   @FXML
   JFXTreeTableView<DeliverableOrderMapping> deliverableOrdersTable;
 
-  public ServerController() throws Exception {
-    // TODO: REMOVE THIS
-    NetworkContainer.initManager();
+  public ServerController() {
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
   }
@@ -83,6 +81,25 @@ public class ServerController implements DataListener {
     } catch (Exception e) {
       e.printStackTrace();
     }
+  }
+
+  @FXML
+  public void initialize() {
+    this.deletionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+    this.deletionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>) e -> {
+      this.updateOrderSummary();
+    });
+    this.additionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
+    this.additionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>) e -> {
+      this.updateOrderSummary();
+    });
+    this.menuList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super MenuItem>) e -> {
+      this.deletionsList.getSelectionModel().clearSelection();
+      this.additionsList.getSelectionModel().clearSelection();
+      this.updateAdditionsAndDeletions(this.menuList.getSelectionModel().getSelectedItem());
+      this.updateOrderSummary();
+    });
+    this.update();
   }
 
   public void confirmSelectedOrder() throws RemoteException {
@@ -175,24 +192,5 @@ public class ServerController implements DataListener {
     }
 
     this.orderSummaryTextArea.setText(orderSummary.toString());
-  }
-
-  @FXML
-  public void initialize() {
-    this.deletionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
-    this.deletionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>) e -> {
-      this.updateOrderSummary();
-    });
-    this.additionsList.getSelectionModel().setSelectionMode(javafx.scene.control.SelectionMode.MULTIPLE);
-    this.additionsList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super Ingredient>) e -> {
-      this.updateOrderSummary();
-    });
-    this.menuList.getSelectionModel().getSelectedItems().addListener((ListChangeListener<? super MenuItem>) e -> {
-      this.deletionsList.getSelectionModel().clearSelection();
-      this.additionsList.getSelectionModel().clearSelection();
-      this.updateAdditionsAndDeletions(this.menuList.getSelectionModel().getSelectedItem());
-      this.updateOrderSummary();
-    });
-    this.update();
   }
 }

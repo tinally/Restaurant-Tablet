@@ -42,3 +42,33 @@ Mar 29, 2018 3:25:48 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Inventory of Test Ingredient Two was set to 1
 Mar 29, 2018 3:25:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Inventory of Test Ingredient Two was set to 2
+Mar 29, 2018 3:30:54 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b1ec56ba-9ccd-4577-be1c-0962d9492d80 was CREATED
+Mar 29, 2018 3:31:02 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was CREATED
+Mar 29, 2018 3:31:10 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was DELIVERED
+Mar 29, 2018 3:31:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was PAID
+Mar 29, 2018 3:35:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 9c17c2b2-b09e-4291-b157-9966263b0de9 was PAID
+Mar 29, 2018 3:35:49 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 30206fb1-9de6-4323-876b-e7fd880eefb9 was DELIVERED
+Mar 29, 2018 3:35:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bf190de6-7ddc-4ec6-94e0-efc767c31db7 was DELIVERED
+Mar 29, 2018 3:35:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order cc747a45-1ea1-4f2e-a5c7-0a5e2e355823 was DELIVERED
+Mar 29, 2018 3:35:59 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 7582c112-6e56-4037-b828-7db10afc0f84 was CREATED
+Mar 29, 2018 3:36:10 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was SEEN
+Mar 29, 2018 3:36:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 0
+Mar 29, 2018 3:36:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 0
+Mar 29, 2018 3:36:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to -1
+Mar 29, 2018 3:36:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was FILLED
+Mar 29, 2018 3:36:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was DELIVERED

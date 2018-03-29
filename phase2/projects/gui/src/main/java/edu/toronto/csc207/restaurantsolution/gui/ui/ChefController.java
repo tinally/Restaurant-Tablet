@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Chef;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -36,8 +36,7 @@ public class ChefController implements DataListener {
   @FXML
   JFXListView<Order> inProgressOrderList;
 
-  public ChefController() throws Exception {
-    NetworkContainer.initManager();
+  public ChefController() {
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
   }

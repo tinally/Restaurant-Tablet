@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.MenuItem;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
@@ -58,6 +58,12 @@ public class MenuItemController implements Initializable {
   @FXML
   private JFXButton createMenuItemButton;
 
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    ingredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    selectedIngredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+  }
+
   private void addToHashMap(ObservableList<Ingredient> ingredients) {
     for (Ingredient item : ingredients) {
       if (ingredientMap.containsKey(item)) {
@@ -96,10 +102,4 @@ public class MenuItemController implements Initializable {
   public void addToIngredient(ActionEvent actionEvent) {
   }
 
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    ingredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-    selectedIngredientList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-  }
 }

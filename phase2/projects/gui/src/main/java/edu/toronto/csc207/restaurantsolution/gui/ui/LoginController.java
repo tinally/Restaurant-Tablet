@@ -2,7 +2,6 @@ package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
@@ -28,24 +27,23 @@ public class LoginController {
   private JFXPasswordField password;
   private DataManager manager;
 
-  public LoginController() throws Exception {
-    NetworkContainer.initManager();
+  public LoginController() {
     manager = NetworkContainer.dataManager;
   }
-
-  private void setScene(ActionEvent event, URL url) throws IOException {
-    System.out.println(url);
-    Parent newRoot = FXMLLoader.load(url);
-    Scene scene1 = new Scene(newRoot);
-    Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
-    window.setScene(scene1);
-    window.setFullScreen(true);
-    window.show();
-  }
+//
+//  private void setScene(ActionEvent event, URL url) throws IOException {
+//    System.out.println(url);
+//    Parent newRoot = FXMLLoader.load(url);
+//    Scene scene1 = new Scene(newRoot);
+//    Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
+//    window.setScene(scene1);
+//    window.setFullScreen(true);
+//    window.show();
+//  }
 
   private void activateMainView(UserAccount account, ActionEvent event) throws IOException {
     FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));
-    Parent root = (Parent) mainViewLoader.load();
+    Parent root = mainViewLoader.load();
     MainViewController mainViewController = mainViewLoader.getController();
     mainViewController.activateUser(account);
     Scene scene1 = new Scene(root);

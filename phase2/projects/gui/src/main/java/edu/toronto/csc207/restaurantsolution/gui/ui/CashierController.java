@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Cashier;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
@@ -46,8 +46,7 @@ public class CashierController implements DataListener {
   private ObservableList<Order> orderCache;
   private DataManager manager;
 
-  public CashierController() throws Exception {
-    NetworkContainer.initManager();
+  public CashierController() {
     manager = NetworkContainer.dataManager;
     this.orderCache = FXCollections.observableArrayList();
     this.orderCache.addListener((ListChangeListener<? super Order>) e -> this.updateTableOrders());

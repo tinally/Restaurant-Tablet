@@ -14,7 +14,7 @@ public class DeliverableOrderMapping extends RecursiveTreeObject<DeliverableOrde
   private final ObjectProperty<MenuItem> menuItem;
   private final Order order;
 
-  public DeliverableOrderMapping(Integer tableNumber, Integer orderNumber, MenuItem menuItem, Order order) {
+  DeliverableOrderMapping(Integer tableNumber, Integer orderNumber, MenuItem menuItem, Order order) {
     this.tableNumber = new SimpleIntegerProperty(tableNumber);
     this.orderNumber = new SimpleIntegerProperty(orderNumber);
     this.menuItem = new SimpleObjectProperty<>(menuItem);

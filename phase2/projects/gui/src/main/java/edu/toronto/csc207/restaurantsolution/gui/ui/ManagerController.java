@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Manager;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -37,11 +37,22 @@ public class ManagerController implements DataListener {
   private ObservableList<BillRecord> billCache = FXCollections.observableArrayList();
   private DataManager manager;
 
-  public ManagerController() throws Exception {
-    // TODO: REMOVE THIS
-    NetworkContainer.initManager();
+  public ManagerController() {
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
+  }
+
+  public void update() {
+    try {
+      this.orderCache.setAll(manager.getAllOrders());
+      this.billCache.setAll(manager.getAllBills());
+
+      this.billDatePicker.valueProperty().addListener(e -> {
+        this.update();
+      });
+    } catch (RemoteException e) {
+      e.printStackTrace();
+    }
   }
 
   @FXML
@@ -60,18 +71,5 @@ public class ManagerController implements DataListener {
           .collect(Collectors.toList())));
     });
     update();
-  }
-
-  public void update() {
-    try {
-      this.orderCache.setAll(manager.getAllOrders());
-            this.billCache.setAll(manager.getAllBills());
-
-      this.billDatePicker.valueProperty().addListener(e -> {
-        this.update();
-      });
-    } catch (RemoteException e) {
-      e.printStackTrace();
-    }
   }
 }

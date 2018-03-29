@@ -15,15 +15,6 @@ public class NetworkContainer {
   public static DataService dataService;
   public static DataManager dataManager;
 
-  // TODO: Remove this...
-  public static void initManager() throws Exception {
-    // TODO: DataService should not throw "Exception"
-    if (dataService == null) {
-      dataService = new DataService("localhost");
-      dataManager = dataService.getDataManager();
-    }
-  }
-
   /**
    * Retrieves the hostname for the RMI server from a file and initializes remote data manager.
    *
