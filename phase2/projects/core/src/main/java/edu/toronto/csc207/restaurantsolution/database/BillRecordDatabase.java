@@ -45,7 +45,7 @@ public final class BillRecordDatabase extends SqlLibrary {
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS bills (" +
                     "billId TEXT PRIMARY KEY," +
                     "chargedSubtotal REAL," +
-                    "chargedGratiuty REAL," +
+                    "chargedGratuity REAL," +
                     "chargedTax REAL," +
                     "paidAmount REAL," +
                     "billedTimestamp INTEGER" +
@@ -93,7 +93,7 @@ public final class BillRecordDatabase extends SqlLibrary {
             PreparedStatement billPs = connection.prepareStatement("SELECT * FROM bills WHERE billId = ?");
             billPs.setString(1, billRecordID.toString());
             PreparedStatement orderPs = connection.prepareStatement("SELECT * FROM bills_orders WHERE billId = ?");
-            billPs.setString(1, billRecordID.toString());
+            orderPs.setString(1, billRecordID.toString());
 
 
             ResultSet ordersResult = orderPs.executeQuery();

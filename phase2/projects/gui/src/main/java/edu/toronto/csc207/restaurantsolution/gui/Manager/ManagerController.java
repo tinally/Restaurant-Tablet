@@ -71,7 +71,8 @@ public class ManagerController implements DataListener {
     public void update(){
         try {
             this.orderCache.setAll(manager.getAllOrders());
-            this.billCache.setAll(manager.getAllBills());
+            List<BillRecord> bills  = manager.getAllBills();
+            this.billCache.setAll(bills);
 
             this.billDatePicker.valueProperty().addListener(e -> {
                 this.update();

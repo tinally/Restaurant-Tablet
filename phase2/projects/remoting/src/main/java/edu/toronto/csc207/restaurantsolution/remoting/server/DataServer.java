@@ -86,7 +86,8 @@ public final class DataServer implements DataManager {
 
   @Override
   public List<BillRecord> getAllBills() {
-    return billRecordDatabase.retrieveAllBills();
+    List<BillRecord> bills =billRecordDatabase.retrieveAllBills();
+    return bills;
   }
 
   @Override

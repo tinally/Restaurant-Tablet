@@ -1,10 +1,6 @@
-import edu.toronto.csc207.restaurantsolution.database.AccountDatabase;
-import edu.toronto.csc207.restaurantsolution.database.IngredientDatabase;
-import edu.toronto.csc207.restaurantsolution.database.MenuItemDatabase;
-import edu.toronto.csc207.restaurantsolution.database.OrderDatabase;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
+import edu.toronto.csc207.restaurantsolution.database.*;
+import edu.toronto.csc207.restaurantsolution.model.implementations.BillRecordImpl;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.MenuItemImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
@@ -211,7 +207,7 @@ public class DatabaseTest {
     order.setOrderNumber(11);
     order.setOrderDate(Instant.now());
     order.setCreatingUser("TestUser");
-
+    order.setOrderStatus(OrderStatus.CREATED);
     od.insertOrUpdateOrder(order);
     assertFalse(od.retrieveAllOrders().isEmpty());
 
@@ -250,5 +246,70 @@ public class DatabaseTest {
     assertTrue(ua.getPermissions().isEmpty());
   }
 
+  @Test
+  public void testBillRecord() {
+    SQLiteDataSource ds = new SQLiteDataSource();
+    ds.setUrl("jdbc:sqlite:test.db");
+    IngredientDatabase l = new IngredientDatabase(ds);
+    MenuItemDatabase ml = new MenuItemDatabase(ds);
+    OrderDatabase od = new OrderDatabase(ds, ml, l);
+    BillRecordDatabase brd = new BillRecordDatabase(ds, od);
+
+    IngredientImpl ingredient = new IngredientImpl();
+    ingredient.setName("Test Ingredient");
+    ingredient.setCost(5.99);
+    ingredient.setDefaultReorderAmount(10);
+    ingredient.setPricing(10.0);
+    ingredient.setReorderThreshold(15);
+
+    IngredientImpl ingredientTwo = new IngredientImpl();
+    ingredientTwo.setName("Test Ingredient Two");
+    ingredientTwo.setCost(5.99);
+    ingredientTwo.setDefaultReorderAmount(10);
+    ingredientTwo.setPricing(10.0);
+    ingredientTwo.setReorderThreshold(15);
+
+    l.registerIngredient(ingredient);
+    l.registerIngredient(ingredientTwo);
+
+    HashMap<Ingredient, Integer> usage = new HashMap<>();
+    usage.put(ingredient, 1);
+    usage.put(ingredientTwo, 2);
+
+    MenuItemImpl menuItem = new MenuItemImpl();
+    menuItem.setPrice(100d);
+    menuItem.setName("Toast Sandwich");
+    menuItem.setIngredientRequirements(usage);
+
+    ml.registerMenuItem(menuItem);
+
+    OrderImpl order = new OrderImpl();
+    order.setAdditions(new HashMap<>());
+    order.setRemovals(new ArrayList<>());
+    order.setOrderId(UUID.randomUUID());
+    order.setMenuItem(menuItem);
+    order.setOrderCost(10d);
+    order.setTableNumber(15);
+    order.setOrderNumber(11);
+    order.setOrderDate(Instant.now());
+    order.setCreatingUser("TestUser");
+    order.setOrderStatus(OrderStatus.CREATED);
+    od.insertOrUpdateOrder(order);
+    assertFalse(od.retrieveAllOrders().isEmpty());
+
+    BillRecordImpl billRecord = new BillRecordImpl();
+    List<Order> orders = new ArrayList<>();
+    orders.add(order);
+    billRecord.setBilledOrders(orders);
+    billRecord.setPaidAmount(10d);
+    billRecord.setBilledDate(Instant.now());
+    billRecord.setBillID(UUID.randomUUID());
+    billRecord.setChargedGratuity(0d);
+    billRecord.setChargedSubtotal(100d);
+    billRecord.setChargedTax(1000d);
+
+    brd.addOrUpdateBill(billRecord);
+    assertNotNull(brd.retrieveAllBills().get(0));
+  }
 
 }
