@@ -70,7 +70,7 @@ public final class DataServer implements DataManager {
         listener.update();
       }
     } catch (RemoteException e) {
-      logger.printError("Critical network error - reboot and reconnect clients.");
+      logger.printError("Critical network error - reboot and reconnect clients..." + e);
     }
   }
 
