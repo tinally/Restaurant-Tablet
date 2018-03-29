@@ -20,7 +20,6 @@ import java.net.URL;
  * Controls the Login graphics user interface.
  */
 public class LoginController {
-
   @FXML
   private JFXTextField username;
   @FXML
@@ -30,16 +29,6 @@ public class LoginController {
   public LoginController() {
     manager = NetworkContainer.dataManager;
   }
-//
-//  private void setScene(ActionEvent event, URL url) throws IOException {
-//    System.out.println(url);
-//    Parent newRoot = FXMLLoader.load(url);
-//    Scene scene1 = new Scene(newRoot);
-//    Stage window = (Stage) (((Node) event.getSource()).getScene()).getWindow();
-//    window.setScene(scene1);
-//    window.setFullScreen(true);
-//    window.show();
-//  }
 
   private void activateMainView(UserAccount account, ActionEvent event) throws IOException {
     FXMLLoader mainViewLoader = new FXMLLoader(getClass().getClassLoader().getResource("MainView.fxml"));

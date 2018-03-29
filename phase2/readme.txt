@@ -10,6 +10,9 @@ After starting the server, simply run "MasterGUI" on every client you would like
 to the application. You can even run clients on different computers as long as you configure the IP
 of the master server correctly. Everything should synchronize together.
 
+By default, the client will connect to "localhost". If the server is not running on
+localhost, the client will simply show a window asking for the server's IP.
+
 ## Getting Started
 
 This project is set up using Gradle, and as such should be imported as a Gradle project in IntelliJ. When prompted to

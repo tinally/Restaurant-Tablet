@@ -71,13 +71,20 @@ public class CashierController implements DataListener {
     this.update();
   }
 
+  /**
+   * Updates orders shown based on selected table number.
+   */
+  @FXML
   private void updateTableOrders() {
     Integer tableNumber = this.tableNumber.getValue();
     this.orderList.setItems(FXCollections
-        .observableArrayList(this.orderCache.stream().filter(o -> o.getTableNumber().equals(tableNumber)
+        .observableArrayList(orderCache.stream().filter(o -> o.getTableNumber().equals(tableNumber)
             && o.getOrderStatus() == OrderStatus.DELIVERED).collect(Collectors.toList())));
   }
 
+  /**
+   * Updates orders shown based on selected table number.
+   */
   @FXML
   void tableNumberChanged() {
     this.billableList.setItems(FXCollections.emptyObservableList());

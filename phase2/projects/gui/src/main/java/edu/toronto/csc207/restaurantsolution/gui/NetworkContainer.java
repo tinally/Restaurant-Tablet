@@ -4,15 +4,21 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 /**
  * Utility for maintaining network connection over multiple threads and configuring network
  * initially.
  */
 public class NetworkContainer {
+  // Static variables prevent having to pass reference through each consecutive controller
+  /** The data service for registering controllers as remote listeners. */
   public static DataService dataService;
+  /** The data manager for sending and retrieving data from the data server. */
   public static DataManager dataManager;
 
   /**
@@ -31,7 +37,7 @@ public class NetworkContainer {
       dataService = new DataService(host);
       dataManager = dataService.getDataManager();
       return true;
-    } catch (Exception e) {
+    } catch (NotBoundException | IOException e) {
       return false;
     }
   }
