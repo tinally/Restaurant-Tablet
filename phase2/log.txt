@@ -427,3 +427,18 @@ Mar 29, 2018 2:39:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was RETURNED
 Mar 29, 2018 2:39:52 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was SEEN
+Mar 29, 2018 2:42:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 1
+Mar 29, 2018 2:42:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 29, 2018 2:42:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 29, 2018 2:42:47 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was FILLED
+Mar 29, 2018 2:42:47 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 29, 2018 2:43:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 1
