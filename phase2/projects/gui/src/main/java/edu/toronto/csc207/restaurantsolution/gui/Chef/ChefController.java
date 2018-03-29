@@ -81,18 +81,18 @@ public class ChefController implements DataListener {
   }
 
   private void refreshOrderView(Order o) {
+    ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
     if (o != null) {
       itemDisplayTitle.setText(o.getMenuItem().getName());
-      ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
       for (Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
         ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
       }
       for (Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
         ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
       }
-      TreeItem<IngredientMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
-      itemDisplayIngredientList.setRoot(root);
     }
+    TreeItem<IngredientMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
+    itemDisplayIngredientList.setRoot(root);
   }
 
   public void setSelectedOrderSeen() {

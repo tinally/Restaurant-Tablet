@@ -7,6 +7,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+/**
+ * Utility for maintaining network connection over multiple threads and configuring network
+ * initially.
+ */
 public class NetworkContainer {
   public static DataService dataService;
   public static DataManager dataManager;
@@ -20,6 +24,12 @@ public class NetworkContainer {
     }
   }
 
+  /**
+   * Retrieves the hostname for the RMI server from a file and initializes remote data manager.
+   *
+   * @return true if the network configuration file was successfully read and contained a usable
+   *         host
+   */
   public static boolean getSavedNetwork() {
     try {
       ClassLoader loader = Thread.currentThread().getContextClassLoader();

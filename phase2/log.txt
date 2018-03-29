@@ -403,3 +403,27 @@ Mar 29, 2018 1:43:43 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Order 9c17c2b2-b09e-4291-b157-9966263b0de9 was DELIVERED
 Mar 29, 2018 2:25:15 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Inventory of Woohoo was set to 0
+Mar 29, 2018 2:35:44 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 0
+Mar 29, 2018 2:36:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 30206fb1-9de6-4323-876b-e7fd880eefb9 was CREATED
+Mar 29, 2018 2:36:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 10
+Mar 29, 2018 2:36:35 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 10
+Mar 29, 2018 2:36:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 0
+Mar 29, 2018 2:36:46 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was CREATED
+Mar 29, 2018 2:36:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was SEEN
+Mar 29, 2018 2:36:52 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 30206fb1-9de6-4323-876b-e7fd880eefb9 was SEEN
+Mar 29, 2018 2:36:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 30206fb1-9de6-4323-876b-e7fd880eefb9 was FILLED
+Mar 29, 2018 2:36:54 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was FILLED
+Mar 29, 2018 2:39:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was RETURNED
+Mar 29, 2018 2:39:52 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 677e7a90-c84a-4a74-9c56-4c4e80e6c04f was SEEN

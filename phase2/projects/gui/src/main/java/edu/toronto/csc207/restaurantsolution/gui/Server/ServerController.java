@@ -54,7 +54,19 @@ public class ServerController implements DataListener {
   @Override
   public void update() {
     try {
-      ObservableList<MenuItem> menuItems = FXCollections.observableArrayList(manager.getAllMenuItems());
+      ObservableList<MenuItem> menuItems = FXCollections.observableArrayList();
+      // Only add items with adequate ingredients
+      for (MenuItem menuItem : manager.getAllMenuItems()) {
+        boolean addItem = true;
+        for (int ingredientQuantity : menuItem.getIngredientRequirements().values()) {
+          if (ingredientQuantity <= 0) {
+            addItem = false;
+          }
+        }
+        if (addItem) {
+          menuItems.add(menuItem);
+        }
+      }
       menuList.setItems(menuItems);
 
       List<DeliverableOrderMapping> deliverableOrders = manager.getAllOrders().stream()
