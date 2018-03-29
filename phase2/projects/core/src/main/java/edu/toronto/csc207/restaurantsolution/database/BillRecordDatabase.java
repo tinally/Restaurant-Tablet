@@ -111,6 +111,7 @@ public final class BillRecordDatabase extends SqlLibrary {
                 billRecord.setChargedTax(billResult.getDouble("chargedTax"));
                 billRecord.setChargedSubtotal(billResult.getDouble("chargedSubtotal"));
                 billRecord.setBilledOrders(orders);
+                billRecord.setPaidAmount(billResult.getDouble("paidAmount"));
                 return billRecord;
             }
             return null;

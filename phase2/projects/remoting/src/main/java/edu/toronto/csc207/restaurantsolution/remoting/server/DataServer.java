@@ -154,4 +154,12 @@ public final class DataServer implements DataManager {
   public boolean checkLogin(String username, String password) {
     return this.accountDatabase.verifyAccount(username, password);
   }
+
+  @Override
+  public void createAccount(String username, String password, String displayName, List<String> permissions) {
+    this.accountDatabase.createAccount(username, displayName, password);
+    for (String p : permissions) {
+      this.accountDatabase.addPermission(username, p);
+    }
+  }
 }

@@ -45,4 +45,6 @@ public interface DataManager extends UpdateServer {
   List<Order> getAllOrders() throws RemoteException;
 
   boolean checkLogin(String username, String password) throws RemoteException;
+
+  void createAccount(String username, String password, String displayName, List<String> permissions) throws RemoteException;
 }

@@ -4,15 +4,21 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.stage.Modality;
 import javafx.stage.Window;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
-public class createAccountController {
+public class CreateAccountController {
 
+  private final DataManager manager;
   @FXML
   private JFXTextField firstName;
 
@@ -46,6 +52,9 @@ public class createAccountController {
   @FXML
   private JFXButton confirmButton;
 
+  public CreateAccountController() {
+    this.manager = NetworkContainer.dataManager;
+  }
   private void errorAlert(String message) {
     Window rootWindow = confirmButton.getScene().getWindow();
     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -103,7 +112,38 @@ public class createAccountController {
       return;
     }
     setRegexAlerts();
-    //TODO: Do something
+    ArrayList<String> permissions = new ArrayList<>();
+    if(managerBox.isSelected()) {
+      permissions.add("view.manager");
+    }
+    if(serverBox.isSelected()) {
+      permissions.add("view.server");
+    }
+    if(cashierBox.isSelected()) {
+      permissions.add("view.cashier");
+    }
+    if(chefBox.isSelected()) {
+      permissions.add("view.chef");
+    }
+    if(receiverBox.isSelected()) {
+      permissions.add("view.receiver");
+    }
+
+    String displayName = this.firstName.getText() + " " + this.lastName.getText();
+    String accountName = this.username.getText();
+    String password = this.password.getText();
+
+    try {
+      manager.createAccount(accountName, password, displayName, permissions);
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+      Window rootWindow = confirmButton.getScene().getWindow();
+      alert.setTitle("Account Created");
+      alert.setHeaderText("Account Created");
+      alert.setContentText("New account "  + accountName + " registered.");
+      alert.initOwner(rootWindow);
+      alert.show();
+    } catch (RemoteException e) {
+    }
   }
 
 }

@@ -4,6 +4,10 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -87,5 +91,11 @@ public class BillRecordImpl implements BillRecord {
   @Override
   public void setBilledDate(Instant billedDate) {
     this.billedDate = billedDate;
+  }
+
+  @Override
+  public String toString() {
+    return LocalDateTime.ofInstant(this.getBilledDate(), ZoneId.systemDefault())
+        .toLocalDate().toString() + " " +getPaidAmount();
   }
 }
