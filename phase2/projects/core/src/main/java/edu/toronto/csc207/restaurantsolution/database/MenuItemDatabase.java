@@ -94,7 +94,7 @@ public final class MenuItemDatabase extends SqlLibrary {
                 Integer defaultReorderAmount = ingredientResults.getInt("defaultReorderAmount");
                 Integer usage = ingredientResults.getInt("usage");
 
-                IngredientImpl ingredient = new IngredientImpl();
+                Ingredient ingredient = new IngredientImpl();
                 ingredient.setName(ingredientName);
                 ingredient.setCost(cost);
                 ingredient.setPricing(pricing);

@@ -71,7 +71,7 @@ public class ReceiverController implements DataListener {
     name.setText("");
     Integer amount = Integer.parseInt(quantity.getText());
     quantity.setText("");
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setCost(10d);
     ingredient.setPricing(10d);
     ingredient.setName(ingredientName);

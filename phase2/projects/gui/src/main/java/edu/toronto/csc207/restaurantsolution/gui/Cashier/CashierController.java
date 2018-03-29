@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.implementations.BillRecordImpl;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
@@ -135,7 +136,7 @@ public class CashierController implements DataListener {
   public void sendBill(ActionEvent actionEvent) throws RemoteException {
     String intRegex = "\\d+";
     String doubleRegex = "\\d+(\\.\\d+)?";
-    BillRecordImpl bill = new BillRecordImpl();
+    BillRecord bill = new BillRecordImpl();
     bill.setBilledOrders(new ArrayList<>(this.billableList.getItems()));
     Double subTotal = this.billableList.getItems().stream().map(Order::getOrderCost).reduce(Double::sum)
         .orElse(0d);

@@ -61,7 +61,7 @@ public class ChefController implements DataListener {
 
     this.inProgressOrderList.setOnMouseClicked(e -> {
       if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
-      OrderImpl order = (OrderImpl) this.inProgressOrderList.getSelectionModel().getSelectedItem();
+      Order order = inProgressOrderList.getSelectionModel().getSelectedItem();
       if (order != null) {
         order.setOrderStatus(OrderStatus.FILLED);
         try {
@@ -90,9 +90,8 @@ public class ChefController implements DataListener {
 
   public void setSelectedOrderSeen() {
     Order order = incomingOrderList.getSelectionModel().getSelectedItem();
-    // TODO: OrderImpl/Order intf!!
     if (order != null) {
-      ((OrderImpl) order).setOrderStatus(OrderStatus.SEEN);
+      order.setOrderStatus(OrderStatus.SEEN);
       try {
         manager.modifyOrder(order);
       } catch (RemoteException e1) {

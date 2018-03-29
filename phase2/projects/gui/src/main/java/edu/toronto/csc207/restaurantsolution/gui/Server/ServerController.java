@@ -97,7 +97,7 @@ public class ServerController implements DataListener {
 
   public void sendNewOrder() throws RemoteException {
     // TODO: Change to Order / add all to interface
-    OrderImpl order = new OrderImpl();
+    Order order = new OrderImpl();
 
     MenuItem menuItem = menuList.getSelectionModel().getSelectedItem();
     List<Ingredient> additions = additionsList.getSelectionModel().getSelectedItems();

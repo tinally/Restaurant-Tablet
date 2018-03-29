@@ -138,7 +138,7 @@ public final class OrderDatabase extends SqlLibrary {
       ResultSet orderResult = orderPs.executeQuery();
 
       if (orderResult.next()) {
-        OrderImpl order = new OrderImpl();
+        Order order = new OrderImpl();
         order.setMenuItem(this.menuItems.getMenuItem(orderResult.getString("menuItem")));
         order.setOrderDate(orderResult.getTimestamp("orderTimestamp").toInstant());
         order.setCreatingUser(orderResult.getString("createdUsername"));

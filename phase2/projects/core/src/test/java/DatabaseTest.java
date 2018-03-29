@@ -4,6 +4,7 @@ import edu.toronto.csc207.restaurantsolution.database.MenuItemDatabase;
 import edu.toronto.csc207.restaurantsolution.database.OrderDatabase;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.MenuItemImpl;
@@ -34,14 +35,14 @@ public class DatabaseTest {
     ds.setUrl("jdbc:sqlite:test.db");
     IngredientDatabase l = new IngredientDatabase(ds);
 
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
     ingredient.setCost(5.99);
     ingredient.setDefaultReorderAmount(10);
     ingredient.setPricing(10.0);
     ingredient.setReorderThreshold(15);
 
-    IngredientImpl ingredientTwo = new IngredientImpl();
+    Ingredient ingredientTwo = new IngredientImpl();
     ingredientTwo.setName("Test Ingredient Two");
     ingredientTwo.setCost(5.99);
     ingredientTwo.setDefaultReorderAmount(10);
@@ -64,14 +65,14 @@ public class DatabaseTest {
     ds.setUrl("jdbc:sqlite:test.db");
     IngredientDatabase l = new IngredientDatabase(ds);
 
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
     ingredient.setCost(5.99);
     ingredient.setDefaultReorderAmount(10);
     ingredient.setPricing(10.0);
     ingredient.setReorderThreshold(15);
 
-    IngredientImpl ingredientTwo = new IngredientImpl();
+    Ingredient ingredientTwo = new IngredientImpl();
     ingredientTwo.setName("Test Ingredient Two");
     ingredientTwo.setCost(5.99);
     ingredientTwo.setDefaultReorderAmount(10);
@@ -94,14 +95,14 @@ public class DatabaseTest {
     IngredientDatabase l = new IngredientDatabase(ds);
     MenuItemDatabase ml = new MenuItemDatabase(ds);
 
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
     ingredient.setCost(5.99);
     ingredient.setDefaultReorderAmount(10);
     ingredient.setPricing(10.0);
     ingredient.setReorderThreshold(15);
 
-    IngredientImpl ingredientTwo = new IngredientImpl();
+    Ingredient ingredientTwo = new IngredientImpl();
     ingredientTwo.setName("Test Ingredient Two");
     ingredientTwo.setCost(5.99);
     ingredientTwo.setDefaultReorderAmount(10);
@@ -134,14 +135,14 @@ public class DatabaseTest {
     IngredientDatabase l = new IngredientDatabase(ds);
     MenuItemDatabase ml = new MenuItemDatabase(ds);
 
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
     ingredient.setCost(5.99);
     ingredient.setDefaultReorderAmount(10);
     ingredient.setPricing(10.0);
     ingredient.setReorderThreshold(15);
 
-    IngredientImpl ingredientTwo = new IngredientImpl();
+    Ingredient ingredientTwo = new IngredientImpl();
     ingredientTwo.setName("Test Ingredient Two");
     ingredientTwo.setCost(5.99);
     ingredientTwo.setDefaultReorderAmount(10);
@@ -173,14 +174,14 @@ public class DatabaseTest {
     MenuItemDatabase ml = new MenuItemDatabase(ds);
     OrderDatabase od = new OrderDatabase(ds, ml, l);
 
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setName("Test Ingredient");
     ingredient.setCost(5.99);
     ingredient.setDefaultReorderAmount(10);
     ingredient.setPricing(10.0);
     ingredient.setReorderThreshold(15);
 
-    IngredientImpl ingredientTwo = new IngredientImpl();
+    Ingredient ingredientTwo = new IngredientImpl();
     ingredientTwo.setName("Test Ingredient Two");
     ingredientTwo.setCost(5.99);
     ingredientTwo.setDefaultReorderAmount(10);
@@ -201,7 +202,7 @@ public class DatabaseTest {
 
     ml.registerMenuItem(menuItem);
 
-    OrderImpl order = new OrderImpl();
+    Order order = new OrderImpl();
     order.setAdditions(new HashMap<>());
     order.setRemovals(new ArrayList<>());
     order.setOrderId(UUID.randomUUID());
