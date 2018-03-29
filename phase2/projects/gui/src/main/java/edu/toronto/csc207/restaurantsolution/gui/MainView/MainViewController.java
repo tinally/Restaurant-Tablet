@@ -24,13 +24,6 @@ public class MainViewController {
   @FXML
   private Map<String, Tab> menuTabs = new HashMap<>();
 
-  private DataManager manager;
-
-  public MainViewController() throws Exception {
-    NetworkContainer.initManager();
-    manager = NetworkContainer.dataManager;
-  }
-
   @FXML
   private void initialize() {
     menuTabs.put("login", loginTab);

@@ -30,12 +30,12 @@
                     <columns>
                         <JFXTreeTableColumn text="Ingredient">
                             <cellValueFactory>
-                                <TreeItemPropertyValueFactory property="ingredientName" />
+                                <TreeItemPropertyValueFactory property="ingredient" />
                             </cellValueFactory>
                         </JFXTreeTableColumn>
                         <JFXTreeTableColumn text="Count">
                             <cellValueFactory>
-                                <TreeItemPropertyValueFactory property="ingredientCount" />
+                                <TreeItemPropertyValueFactory property="quantity" />
                             </cellValueFactory>
                         </JFXTreeTableColumn>
                     </columns>

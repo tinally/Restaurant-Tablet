@@ -13,6 +13,7 @@ import java.util.UUID;
  * updating and distributing data.
  */
 public interface DataManager extends UpdateServer {
+  // TODO: Delete unused ones
   BillRecord getBillRecord(UUID billRecordId) throws RemoteException;
 
   List<BillRecord> getAllBills() throws RemoteException;

@@ -9,7 +9,7 @@
 <VBox stylesheets="Style.css"
       xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER"
       style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121"
-      fx:controller="edu.toronto.csc207.restaurantsolution.gui.Login.LoginController">
+      fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.LoginController">
     <children>
         <JFXTextField fx:id="username" alignment="CENTER" focusColor="WHITE" promptText="Username"
                       unFocusColor="#1b1b1b">

@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.gui.ui.DeliverableOrderMapping;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
@@ -37,7 +38,7 @@ public class ServerController implements DataListener {
   public void confirmSelectedOrder() throws RemoteException {
     TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
     if (selectedItem != null) {
-      Order order = selectedItem.getValue().order;
+      Order order = selectedItem.getValue().getOrder();
       manager.modifyOrder(order, OrderStatus.DELIVERED);
     }
   }
@@ -45,34 +46,8 @@ public class ServerController implements DataListener {
   public void rejectSelectedOrder() throws RemoteException {
     TreeItem<DeliverableOrderMapping> selectedItem = deliverableOrdersTable.getSelectionModel().getSelectedItem();
     if (selectedItem != null) {
-      Order order = selectedItem.getValue().order;
+      Order order = selectedItem.getValue().getOrder();
       manager.modifyOrder(order, OrderStatus.RETURNED);
-    }
-  }
-
-  public class DeliverableOrderMapping extends RecursiveTreeObject<DeliverableOrderMapping> {
-    final IntegerProperty tableNumber;
-    final IntegerProperty orderNumber;
-    final ObjectProperty<MenuItem> menuItem;
-    final Order order;
-
-    DeliverableOrderMapping(Integer tableNumber, Integer orderNumber, MenuItem menuItem, Order order) {
-      this.tableNumber = new SimpleIntegerProperty(tableNumber);
-      this.orderNumber = new SimpleIntegerProperty(orderNumber);
-      this.menuItem = new SimpleObjectProperty<>(menuItem);
-      this.order = order;
-    }
-
-    public IntegerProperty tableNumberProperty() {
-      return tableNumber;
-    }
-
-    public IntegerProperty orderNumberProperty() {
-      return orderNumber;
-    }
-
-    public ObjectProperty<MenuItem> menuItemProperty() {
-      return menuItem;
     }
   }
 
@@ -82,6 +57,7 @@ public class ServerController implements DataListener {
   TextArea orderSummaryTextArea;
 
   public ServerController() throws Exception {
+    // TODO: REMOVE THIS
     NetworkContainer.initManager();
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
@@ -89,16 +65,12 @@ public class ServerController implements DataListener {
 
   @FXML
   JFXComboBox<Integer> tableNumberSelection;
-
   @FXML
   JFXListView<Ingredient> deletionsList;
-
   @FXML
   JFXListView<MenuItem> menuList;
-
   @FXML
   JFXListView<Ingredient> additionsList;
-
   @FXML
   JFXTreeTableView<DeliverableOrderMapping> deliverableOrdersTable;
 
