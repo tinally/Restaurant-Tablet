@@ -235,3 +235,25 @@ Mar 29, 2018 1:30:10 AM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Order db59f159-52ea-4a81-98e3-41eeb021f941 was FILLED
 Mar 29, 2018 1:30:23 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order 9bf09339-2c0f-4f8b-aa7b-79f6c9795828 was PAID
+Mar 29, 2018 1:04:55 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test was set to 100
+Mar 29, 2018 1:05:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Help was set to 1212
+Mar 29, 2018 1:14:39 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test was set to 10000
+Mar 29, 2018 1:24:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 10000000
+Mar 29, 2018 1:24:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 29, 2018 1:24:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 29, 2018 1:35:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Blah was set to 0
+Mar 29, 2018 1:36:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Help was set to 1212
+Mar 29, 2018 1:36:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Help was set to 10000
+Mar 29, 2018 1:36:16 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Help was set to 12

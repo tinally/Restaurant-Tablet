@@ -77,8 +77,7 @@ public final class DataServer implements DataManager {
 
   @Override
   public List<BillRecord> getAllBills() {
-    List<BillRecord> bills =billRecordDatabase.retrieveAllBills();
-    return bills;
+    return billRecordDatabase.retrieveAllBills();
   }
 
   @Override
@@ -90,6 +89,12 @@ public final class DataServer implements DataManager {
   @Override
   public Ingredient getIngredient(String ingredientName) {
     return ingredientDatabase.getIngredient(ingredientName);
+  }
+
+  @Override
+  public void registerIngredient(Ingredient ingredient) {
+    ingredientDatabase.registerIngredient(ingredient);
+    updateListeners();
   }
 
   @Override

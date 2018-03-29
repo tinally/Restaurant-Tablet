@@ -52,13 +52,17 @@ public class InventoryDatabase extends SqlLibrary {
      */
     public int getIngredientCount(Ingredient ingredient) {
         return this.executeQuery(connection -> {
+          try {
             PreparedStatement ps = connection.prepareStatement("SELECT value from inventory WHERE ingredient = ?");
             ps.setString(1, ingredient.getName());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                return rs.getInt("value");
+              return rs.getInt("value");
             }
             return 0;
+          } catch (NullPointerException e) {
+            return 0;
+          }
         });
     }
 }

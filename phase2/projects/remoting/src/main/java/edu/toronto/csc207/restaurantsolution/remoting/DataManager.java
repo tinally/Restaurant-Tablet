@@ -22,6 +22,8 @@ public interface DataManager extends UpdateServer {
 
   Ingredient getIngredient(String ingredientName) throws RemoteException;
 
+  void registerIngredient(Ingredient ingredient) throws RemoteException;
+
   List<Ingredient> getAllIngredients() throws RemoteException;
 
   void setIngredientCount(Ingredient ingredient, Integer ingredientCount) throws RemoteException;

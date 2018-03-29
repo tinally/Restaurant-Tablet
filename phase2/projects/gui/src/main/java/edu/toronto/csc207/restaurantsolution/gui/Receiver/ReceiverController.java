@@ -12,20 +12,27 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 
 import java.rmi.RemoteException;
 
 /**
- * Controls the Receiver graphics user interface.
+ * Controller for the Receiver UI.
  */
 public class ReceiverController implements DataListener {
   @FXML
   private JFXTextField name;
   @FXML
   private JFXTextField quantity;
+  @FXML
+  private JFXTextField cost;
+  @FXML
+  private JFXTextField pricing;
+  @FXML
+  private JFXTextField reorderAmount;
+  @FXML
+  private JFXTextField reorderThreshold;
   @FXML
   private JFXTreeTableView<IngredientMapping> inventoryTable;
   private DataManager manager;
@@ -55,25 +62,93 @@ public class ReceiverController implements DataListener {
 
   @FXML
   public void initialize() {
-    this.update();
+    update();
   }
 
   @FXML
-  void addItem(ActionEvent actionEvent) {
+  void updateItem() {
     String ingredientName = name.getText();
-    name.setText("");
-    Integer amount = Integer.parseInt(quantity.getText());
-    quantity.setText("");
-    Ingredient ingredient = new IngredientImpl();
-    ingredient.setCost(10d);
-    ingredient.setPricing(10d);
-    ingredient.setName(ingredientName);
-    ingredient.setDefaultReorderAmount(10);
-    ingredient.setReorderThreshold(10);
-    try {
-      manager.setIngredientCount(ingredient, amount);
-    } catch (RemoteException e) {
-      e.printStackTrace();
+
+    if (!ingredientName.isEmpty()) {
+      try {
+        Ingredient currentIngredient = manager.getIngredient(ingredientName);
+        int currentQuantity = manager.getIngredientCount(currentIngredient);
+
+        int quantityValue;
+        double costValue;
+        double pricingValue;
+        int reorderAmountValue;
+        int reorderThresholdValue;
+
+        if (currentIngredient == null) {
+          quantityValue = 0;
+          costValue = 10d;
+          pricingValue = 10d;
+          reorderAmountValue = 10;
+          reorderThresholdValue = 10;
+        } else {
+          quantityValue = currentQuantity;
+          costValue = currentIngredient.getCost();
+          pricingValue = currentIngredient.getPricing();
+          reorderAmountValue = currentIngredient.getDefaultReorderAmount();
+          reorderThresholdValue = currentIngredient.getReorderThreshold();
+        }
+
+        if (!quantity.getText().isEmpty()) {
+          quantityValue = Integer.parseInt(quantity.getText());
+          if (quantityValue < 0)
+            throw new NumberFormatException();
+        }
+
+        if (!cost.getText().isEmpty()) {
+          costValue = Double.parseDouble(cost.getText());
+          if (costValue < 0)
+            throw new NumberFormatException();
+        }
+
+        if (!pricing.getText().isEmpty()) {
+          pricingValue = Double.parseDouble(pricing.getText());
+          if (pricingValue < 0)
+            throw new NumberFormatException();
+        }
+
+        if (!reorderAmount.getText().isEmpty()) {
+          reorderAmountValue = Integer.parseInt(reorderAmount.getText());
+          if (reorderAmountValue < 0)
+            throw new NumberFormatException();
+        }
+
+        if (!reorderThreshold.getText().isEmpty()) {
+          reorderThresholdValue = Integer.parseInt(reorderThreshold.getText());
+          if (reorderThresholdValue < 0)
+            throw new NumberFormatException();
+        }
+
+        Ingredient ingredient = new IngredientImpl();
+        ingredient.setName(ingredientName);
+        ingredient.setCost(costValue);
+        ingredient.setPricing(pricingValue);
+        ingredient.setDefaultReorderAmount(reorderAmountValue);
+        ingredient.setReorderThreshold(reorderThresholdValue);
+        resetTextFields();
+
+        manager.setIngredientCount(ingredient, quantityValue);
+        manager.registerIngredient(ingredient);
+      } catch (NumberFormatException | RemoteException e) {
+        resetTextFields();
+      }
     }
+  }
+
+  /**
+   * Resets all text fields to be blank.
+   */
+  private void resetTextFields() {
+    name.setText("");
+    quantity.setText("");
+    cost.setText("");
+    pricing.setText("");
+    reorderAmount.setText("");
+    reorderThreshold.setText("");
   }
 }

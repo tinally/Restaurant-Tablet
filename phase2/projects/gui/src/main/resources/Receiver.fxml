@@ -1,62 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTreeTableColumn?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TreeTableView?>
-<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-
-<SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
+<?import javafx.scene.layout.*?>
+<SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
-      <AnchorPane>
-         <children>
-              <Label alignment="CENTER" style="-fx-background-color: #f06292;" text="Inventory" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        </Label>
-         </children>
-      </AnchorPane>
+        <AnchorPane>
+            <Label alignment="CENTER" style="-fx-background-color: #f06292;" text="Inventory"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            </Label>
+        </AnchorPane>
         <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS">
             <columns>
                 <JFXTreeTableColumn text="Ingredient">
                     <cellValueFactory>
-                        <TreeItemPropertyValueFactory property="ingredient" />
+                        <TreeItemPropertyValueFactory property="ingredient"/>
                     </cellValueFactory>
                 </JFXTreeTableColumn>
                 <JFXTreeTableColumn text="Quantity">
                     <cellValueFactory>
-                        <TreeItemPropertyValueFactory property="quantity" />
+                        <TreeItemPropertyValueFactory property="quantity"/>
                     </cellValueFactory>
                 </JFXTreeTableColumn>
             </columns>
-         <columnResizePolicy>
-            <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
+            <columnResizePolicy>
+                <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+            </columnResizePolicy>
         </JFXTreeTableView>
     </VBox>
     <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">
-        <JFXTextField fx:id="name" alignment="CENTER" focusColor="#f06292" promptText="Name" unFocusColor="#1d1d1d">
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
+        <JFXTextField fx:id="name" alignment="CENTER" focusColor="#f06292" promptText="Name"
+                      unFocusColor="#1d1d1d">
         </JFXTextField>
-        <JFXTextField fx:id="quantity" alignment="CENTER" focusColor="#f06292" promptText="Quantity" unFocusColor="#1d1d1d">
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
+        <JFXTextField fx:id="quantity" alignment="CENTER" focusColor="#f06292" promptText="Quantity"
+                      unFocusColor="#1d1d1d">
         </JFXTextField>
-        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#addItem" style="-fx-background-color: WHITE;" text="Add Ingredient" textAlignment="CENTER">
-            <VBox.margin>
-                <Insets />
-            </VBox.margin>
+        <JFXTextField fx:id="cost" alignment="CENTER" focusColor="#f06292" promptText="Cost"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+        <JFXTextField fx:id="pricing" alignment="CENTER" focusColor="#f06292" promptText="Pricing"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+        <JFXTextField fx:id="reorderAmount" alignment="CENTER" focusColor="#f06292" promptText="Reorder Amount"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+        <JFXTextField fx:id="reorderThreshold" alignment="CENTER" focusColor="#f06292" promptText="Reorder Threshold"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
+                   onAction="#updateItem" style="-fx-background-color: WHITE;"
+                   text="Update Ingredient"
+                   textAlignment="CENTER">
         </JFXButton>
         <VBox.margin>
-            <Insets bottom="10.0" top="10.0" />
+            <Insets bottom="10.0" top="10.0"/>
         </VBox.margin>
     </VBox>
 </SplitPane>
