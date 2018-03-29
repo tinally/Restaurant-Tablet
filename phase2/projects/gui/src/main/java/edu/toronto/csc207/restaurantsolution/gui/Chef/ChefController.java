@@ -66,21 +66,30 @@ public class ChefController implements DataListener {
       refreshOrderView(incomingOrderList.getSelectionModel().getSelectedItem());
     });
 
-    inProgressOrderList.setOnMouseClicked(e -> {
-      if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
+    inProgressOrderList.setOnMouseClicked(m -> {
+      if (!m.isPrimaryButtonDown() && m.getClickCount() != 2) return;
       Order order = inProgressOrderList.getSelectionModel().getSelectedItem();
       if (order != null) {
-        order.setOrderStatus(OrderStatus.FILLED);
         try {
-          manager.modifyOrder(order);
-        } catch (RemoteException e1) {
-          e1.printStackTrace();
+          for (Map.Entry<Ingredient, Integer> entry : order.getMenuItem().getIngredientRequirements().entrySet()) {
+            manager.setIngredientCount(entry.getKey(), manager.getIngredientCount(entry.getKey()) - entry.getValue());
+          }
+          for (Map.Entry<Ingredient, Integer> entry : order.getAdditions().entrySet()) {
+            manager.setIngredientCount(entry.getKey(), manager.getIngredientCount(entry.getKey()) - entry.getValue());
+          }
+          for (Ingredient ingredient : order.getRemovals()) {
+            manager.setIngredientCount(ingredient, manager.getIngredientCount(ingredient) + 1);
+          }
+          manager.modifyOrder(order, OrderStatus.FILLED);
+        } catch (RemoteException e) {
+          e.printStackTrace();
         }
       }
     });
   }
 
   private void refreshOrderView(Order o) {
+    // TODO: Change to subtract/add for removals/additions
     ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
     if (o != null) {
       itemDisplayTitle.setText(o.getMenuItem().getName());
