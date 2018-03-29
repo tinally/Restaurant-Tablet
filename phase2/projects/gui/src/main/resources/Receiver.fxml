@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
            xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="edu.toronto.csc207.restaurantsolution.gui.Receiver.ReceiverController">
+           fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
         <AnchorPane>
             <Label alignment="CENTER" style="-fx-background-color: #f06292;" text="Inventory"

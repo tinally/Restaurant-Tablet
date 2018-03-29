@@ -96,11 +96,10 @@ public class ServerController implements DataListener {
     List<Ingredient> additions = additionsList.getSelectionModel().getSelectedItems();
 
     if (menuItem != null) {
-      order.setOrderNumber(new Random().nextInt(1000));
+      order.setOrderNumber(new Random().nextInt(10000));
       order.setOrderStatus(OrderStatus.CREATED);
       order.setOrderId(UUID.randomUUID());
       order.setMenuItem(menuList.getSelectionModel().getSelectedItem());
-      System.out.println(order.getMenuItem());
       order.setTableNumber(tableNumberSelection.getValue());
       order.setOrderDate(Instant.now());
 

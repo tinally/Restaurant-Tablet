@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Receiver;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -37,13 +37,6 @@ public class ReceiverController implements DataListener {
   private JFXTreeTableView<IngredientMapping> inventoryTable;
   private DataManager manager;
 
-  public ReceiverController() throws Exception {
-    // TODO: REMOVE THIS
-    NetworkContainer.initManager();
-    manager = NetworkContainer.dataManager;
-    NetworkContainer.dataService.registerListener(this);
-  }
-
   @Override
   public void update() {
     try {
@@ -62,9 +55,14 @@ public class ReceiverController implements DataListener {
 
   @FXML
   public void initialize() {
+    manager = NetworkContainer.dataManager;
+    NetworkContainer.dataService.registerListener(this);
     update();
   }
 
+  /**
+   * Handles inventory data updating and UI refreshing of the inventory count table.
+   */
   @FXML
   void updateItem() {
     String ingredientName = name.getText();
@@ -80,6 +78,7 @@ public class ReceiverController implements DataListener {
         int reorderAmountValue;
         int reorderThresholdValue;
 
+        // If the ingredient has already been registered, use its default values.
         if (currentIngredient == null) {
           quantityValue = 0;
           costValue = 10d;
