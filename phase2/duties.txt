@@ -1,0 +1,10 @@
+# Eric Lindau
+    - Everything under "remoting" package/directory (client/server packages, DataListener/Manager,
+      ... DataService)
+    - RMI backend that links with separate database backend and allows for connection of remote
+      ... clients that all synchronize their UIs to represent the same remote data model and can
+      ... interact with each other over the network
+    - Fixed bugs with every UI controller, ensuring that null checks are performed and logical
+      ... errors are less frequent
+    - Fixed issues with FXML files and enhanced the performance/look of UI
+    - Refactored UI components, improved efficiency of data logic checks
