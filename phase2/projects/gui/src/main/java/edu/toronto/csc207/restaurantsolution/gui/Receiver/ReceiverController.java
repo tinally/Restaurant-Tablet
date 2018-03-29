@@ -64,9 +64,6 @@ public class ReceiverController implements DataListener {
   @Override
   public void update() {
     try {
-//      ObservableList<Ingredient> ingredient =
-//          FXCollections.observableArrayList(manager.getAllIngredients());
-
       ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
 
       for (Ingredient ingredient : manager.getAllIngredients())
