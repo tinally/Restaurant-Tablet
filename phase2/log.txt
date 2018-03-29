@@ -28,3 +28,17 @@ Mar 29, 2018 3:21:03 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Inventory of Blah was set to 9
 Mar 29, 2018 3:21:03 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order bf190de6-7ddc-4ec6-94e0-efc767c31db7 was FILLED
+Mar 29, 2018 3:24:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 1
+Mar 29, 2018 3:24:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 2
+Mar 29, 2018 3:25:00 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 1000
+Mar 29, 2018 3:25:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 0
+Mar 29, 2018 3:25:42 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 1
+Mar 29, 2018 3:25:48 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 1
+Mar 29, 2018 3:25:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 2

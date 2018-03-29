@@ -59,7 +59,7 @@ public class ServerController implements DataListener {
       for (MenuItem menuItem : manager.getAllMenuItems()) {
         boolean addItem = true;
         for (Ingredient ingredient : menuItem.getIngredientRequirements().keySet()) {
-          if (manager.getIngredientCount(ingredient) <= 0) {
+          if (manager.getIngredientCount(ingredient) < menuItem.getIngredientRequirements().get(ingredient)) {
             addItem = false;
           }
         }
