@@ -10,50 +10,59 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<SplitPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.Manager.ManagerController">
-    <items>
-        <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-                <VBox prefHeight="398.0" prefWidth="306.0" style="-fx-background-color: #f06292;" HBox.hgrow="ALWAYS">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </HBox.margin>
-                    <children>
-                        <HBox>
-                            <children>
-                                <Label prefHeight="35.0" prefWidth="157.0" text="Order Status">
-                                    <font>
-                                        <Font size="18.0" />
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="statusBox" HBox.hgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets left="120.0" right="5.0" top="4.0" />
-                                    </HBox.margin>
-                                </ChoiceBox>
-                            </children>
-                        </HBox>
-                  <JFXListView fx:id="orderList" VBox.vgrow="ALWAYS" />
-                    </children>
-                </VBox>
-                <VBox prefHeight="398.0" prefWidth="289.0" style="-fx-background-color: #f06292;" HBox.hgrow="ALWAYS">
-                    <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                    </HBox.margin>
-                    <children>
-                        <Label fx:id="OrderTitle" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" prefHeight="61.0" prefWidth="269.0" VBox.vgrow="ALWAYS">
-                            <font>
-                                <Font name="Calibri" size="22.0" />
-                            </font>
-                        </Label>
-                        <JFXTextArea fx:id="orderDescription" prefHeight="200.0" prefWidth="200.0" unFocusColor="#f06292" wrapText="true">
-                            <font>
-                                <Font name="Helvetica Neue" size="13.0" />
-                            </font>
-                        </JFXTextArea>
-                    </children>
-                </VBox>
-            </children>
-        </HBox>
-    </items>
-</SplitPane>
+<?import javafx.scene.layout.AnchorPane?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TextArea?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<AnchorPane style="-fx-background-color: #f06292;" stylesheets="Style.css"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="edu.toronto.csc207.restaurantsolution.gui.Manager.ManagerController">
+    <JFXTabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+        <Tab text="Orders">
+            <AnchorPane>
+                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                    <VBox>
+                        <JFXComboBox fx:id="orderStatusCombobox">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <OrderStatus fx:value="FILLED"/>
+                                    <OrderStatus fx:value="CREATED"/>
+                                    <OrderStatus fx:value="DELIVERED"/>
+                                    <OrderStatus fx:value="PAID"/>
+                                </FXCollections>
+                            </items>
+                            <value>
+                                <OrderStatus fx:value="FILLED"/>
+                            </value>
+                        </JFXComboBox>
+                        <JFXListView fx:id="orderList" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                    <TextArea fx:id="orderDescription"/>
+                </SplitPane>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Bills">
+            <AnchorPane>
+                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                    <VBox>
+                        <JFXDatePicker fx:id="billDatePicker"/>
+                        <JFXListView fx:id="billList" VBox.vgrow="ALWAYS"/>
+                    </VBox>
+                    <TextArea fx:id="billDescription"/>
+                </SplitPane>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Emails">
+            <AnchorPane>
+                <TextArea fx:id="emailText" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Staff">
+
+        </Tab>
+    </JFXTabPane>
+</AnchorPane>

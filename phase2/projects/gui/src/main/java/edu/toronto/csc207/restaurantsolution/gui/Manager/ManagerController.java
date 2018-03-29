@@ -1,49 +1,47 @@
 package edu.toronto.csc207.restaurantsolution.gui.Manager;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXListView;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.*;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import sun.nio.ch.Net;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Controls the Manager graphics user interface.
  */
-public class ManagerController implements Initializable, DataListener {
+public class ManagerController implements DataListener {
 
-    private ObservableList<OrderStatus> status = FXCollections.observableArrayList(OrderStatus.CREATED,
-            OrderStatus.INPUTTED, OrderStatus.PUSHED, OrderStatus.SEEN, OrderStatus.FILLED, OrderStatus.REJECTED,
-            OrderStatus.DELIVERED, OrderStatus.RETURNED);
-    // TODO: Combobox
+    public TextArea orderDescription;
+    public JFXListView<Order> orderList;
+    public JFXListView<BillRecord> billList;
+    public JFXComboBox<OrderStatus> orderStatusCombobox;
+    public TextArea billDescription;
+    public TextArea emailText;
+    public JFXDatePicker billDatePicker;
 
-    @FXML
-    private ChoiceBox<OrderStatus> statusBox;
-
-    @FXML
-    private JFXListView<Order> orderList;
-
-    @FXML
-    private Label OrderTitle;
-
-    @FXML
-    private JFXTextArea orderDescription;
-
+    private ObservableList<Order> orderCache = FXCollections.observableArrayList();
+    private ObservableList<BillRecord> billCache = FXCollections.observableArrayList();
     private DataManager manager;
 
     public ManagerController() throws Exception {
@@ -52,19 +50,34 @@ public class ManagerController implements Initializable, DataListener {
       NetworkContainer.dataService.registerListener(this);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        statusBox.setValue(OrderStatus.INPUTTED);
-        statusBox.getItems().addAll(status);
+    @FXML
+    public void initialize() {
+        this.orderCache.addListener((ListChangeListener<? super Order>) e -> {
 
-        statusBox.setOnAction(event -> {
-            //TODO: Add a method that calls the Orders that are inputted and the orders that are Delivered
-            //TODO: when a choice is selected.
+        });
+        this.orderStatusCombobox.getSelectionModel().selectedItemProperty().addListener(e -> {
+            this.orderList.setItems(FXCollections.observableArrayList(this.orderCache.stream()
+                    .filter(o -> o.getOrderStatus() == this.orderStatusCombobox.getValue()).collect(Collectors.toList())));
+        });
+        this.billDatePicker.valueProperty().addListener(e -> {
+            this.billList.setItems(FXCollections.observableArrayList(this.billCache.stream()
+                    .filter(b -> LocalDateTime.ofInstant(b.getBilledDate(),
+                            ZoneId.systemDefault()).toLocalDate().equals(this.billDatePicker.getValue()))
+                    .collect(Collectors.toList())));
         });
         update();
     }
 
     public void update(){
+        try {
+            this.orderCache.setAll(manager.getAllOrders());
+            this.billCache.setAll(manager.getAllBills());
 
+            this.billDatePicker.valueProperty().addListener(e -> {
+                this.update();
+            });
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }
