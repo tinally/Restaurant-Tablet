@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.SelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
@@ -33,17 +34,17 @@ import java.util.stream.Collectors;
  */
 public class ServerController implements DataListener {
 
-  public void confirmSelectedOrder(MouseEvent mouseEvent) throws RemoteException {
-    manager.modifyOrder(this.deliverableOrdersTable.getSelectionModel().getSelectedItem().getValue().order,
-        OrderStatus.DELIVERED);
+  public void confirmSelectedOrder() throws RemoteException {
+    Order order = deliverableOrdersTable.getSelectionModel().getSelectedItem().getValue().order;
+    manager.modifyOrder(order, OrderStatus.DELIVERED);
   }
 
-  public void rejectSelectedOrder(MouseEvent mouseEvent) throws RemoteException {
-    manager.modifyOrder(this.deliverableOrdersTable.getSelectionModel().getSelectedItem().getValue().order,
-        OrderStatus.RETURNED);
+  public void rejectSelectedOrder() throws RemoteException {
+    Order order = deliverableOrdersTable.getSelectionModel().getSelectedItem().getValue().order;
+    manager.modifyOrder(order, OrderStatus.RETURNED);
   }
 
-  public static class DeliverableOrderMapping extends RecursiveTreeObject<DeliverableOrderMapping> {
+  public class DeliverableOrderMapping extends RecursiveTreeObject<DeliverableOrderMapping> {
     final IntegerProperty tableNumber;
     final IntegerProperty orderNumber;
     final ObjectProperty<MenuItem> menuItem;
@@ -110,7 +111,7 @@ public class ServerController implements DataListener {
       this.deliverableOrdersTable.setRoot(root);
 
     } catch (Exception e) {
-      e.printStackTrace();
+//      e.printStackTrace();
     }
   }
 
@@ -121,6 +122,7 @@ public class ServerController implements DataListener {
       order.setOrderStatus(OrderStatus.CREATED);
       order.setOrderId(UUID.randomUUID());
       order.setMenuItem(this.menuList.getSelectionModel().getSelectedItem());
+    System.out.println(order.getMenuItem());
       order.setTableNumber(this.tableNumberSelection.getValue());
       order.setOrderDate(Instant.now());
       order.setOrderCost(this.getOrderCost(this.menuList.getSelectionModel().getSelectedItem(),
@@ -139,27 +141,35 @@ public class ServerController implements DataListener {
   }
 
   private Double getOrderCost(MenuItem m, List<Ingredient> additions) {
-    return m.getPrice() + additions.stream().map(Ingredient::getPricing).reduce(Double::sum).get();
+    double sum = m.getPrice();
+    for (Ingredient ingredient : additions)
+      sum += ingredient.getPricing();
+    return sum;
   }
-  private void updateAdditionsAndDeletions(MenuItem item) {
-    ObservableList<Ingredient> possibleDeletions = FXCollections
-        .observableArrayList(item.getIngredientRequirements().keySet());
-    this.deletionsList.setItems(possibleDeletions);
-    ObservableList<Ingredient> possibleAdditions = null;
-    try {
-      possibleAdditions = FXCollections
-          .observableArrayList(manager.getAllIngredients());
-    } catch (RemoteException e) {
-      e.printStackTrace();
-    }
-    this.additionsList.setItems(possibleAdditions);
 
+  private void updateAdditionsAndDeletions(MenuItem item) {
+    if (item != null) {
+      ObservableList<Ingredient> possibleDeletions = FXCollections
+          .observableArrayList(item.getIngredientRequirements().keySet());
+      this.deletionsList.setItems(possibleDeletions);
+      ObservableList<Ingredient> possibleAdditions = null;
+      try {
+        possibleAdditions = FXCollections
+            .observableArrayList(manager.getAllIngredients());
+      } catch (RemoteException e) {
+        e.printStackTrace();
+      }
+      this.additionsList.setItems(possibleAdditions);
+    }
   }
 
   private void updateOrderSummary() {
     StringBuilder orderSummary = new StringBuilder();
-    orderSummary.append(this.menuList.getSelectionModel().getSelectedItem().getName())
-        .append(System.lineSeparator());
+
+    MenuItem selectedItem = menuList.getSelectionModel().getSelectedItem();
+    if (selectedItem != null) {
+      orderSummary.append(selectedItem.getName()).append(System.lineSeparator());
+    }
 
     for (Ingredient i : this.deletionsList.getSelectionModel().getSelectedItems()) {
       orderSummary.append(" WITHOUT ").append(i.getName()).append(System.lineSeparator());

@@ -1,10 +1,99 @@
-Mar 28, 2018 8:42:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
-INFO: Order f499acdb-2c23-4a93-99c3-99242799af1e was DELIVERED
-Mar 28, 2018 8:42:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
-INFO: Order 93e688b6-e78a-49e9-8024-170e9dd351f9 was RETURNED
-Mar 28, 2018 8:42:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
-INFO: Order 86698bbf-9847-44b5-be65-c82ef4f3dd5a was SEEN
-Mar 28, 2018 8:42:26 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
-INFO: Order 86698bbf-9847-44b5-be65-c82ef4f3dd5a was FILLED
-Mar 28, 2018 8:42:33 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
-INFO: Order 27ac6b41-9c34-4da3-806f-5b8c35ed071b was PAID
+Mar 28, 2018 11:25:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0c3e3d7b-66cd-4c02-b4e2-c92e852e62ce was PAID
+Mar 28, 2018 11:25:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ad621b60-a4cf-4805-a994-dd557d481bd0 was PAID
+Mar 28, 2018 11:26:19 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was SEEN
+Mar 28, 2018 11:26:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was FILLED
+Mar 28, 2018 11:27:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was DELIVERED
+Mar 28, 2018 11:27:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 28, 2018 11:27:27 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was RETURNED
+Mar 28, 2018 11:27:27 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 28, 2018 11:27:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was CREATED
+Mar 28, 2018 11:28:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was SEEN
+Mar 28, 2018 11:28:45 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was FILLED
+Mar 28, 2018 11:28:48 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was RETURNED
+Mar 28, 2018 11:29:03 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was SEEN
+Mar 28, 2018 11:29:03 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 28, 2018 11:29:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was FILLED
+Mar 28, 2018 11:29:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 28, 2018 11:29:24 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was SEEN
+Mar 28, 2018 11:29:24 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 10.0.34.18; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Mar 28, 2018 11:29:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was FILLED
+Mar 28, 2018 11:30:09 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was RETURNED
+Mar 28, 2018 11:30:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was SEEN
+Mar 28, 2018 11:30:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was FILLED
+Mar 28, 2018 11:30:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c4719492-3705-42d4-8821-75e427464feb was DELIVERED
+Mar 28, 2018 11:30:26 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 173efc80-7caf-46da-bb98-bffd98cd6848 was DELIVERED
+Mar 28, 2018 11:33:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was CREATED
+Mar 28, 2018 11:34:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was SEEN
+Mar 28, 2018 11:38:14 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 729862e3-7299-4531-96a1-dc7ac6ef2699 was CREATED
+Mar 28, 2018 11:43:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a7750286-ac02-472e-9183-ab7097861c40 was CREATED
+Mar 28, 2018 11:43:44 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bbe2f315-0937-4bae-8a38-356a702c577e was CREATED
+Mar 28, 2018 11:43:48 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 62d92758-35bc-4b72-b3da-70bb2dbdaf0c was CREATED
+Mar 28, 2018 11:43:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a7750286-ac02-472e-9183-ab7097861c40 was SEEN
+Mar 28, 2018 11:43:55 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was FILLED
+Mar 28, 2018 11:43:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a7750286-ac02-472e-9183-ab7097861c40 was FILLED
+Mar 28, 2018 11:44:00 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was RETURNED
+Mar 28, 2018 11:44:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a7750286-ac02-472e-9183-ab7097861c40 was DELIVERED
+Mar 28, 2018 11:44:04 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 62d92758-35bc-4b72-b3da-70bb2dbdaf0c was SEEN
+Mar 28, 2018 11:44:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bbe2f315-0937-4bae-8a38-356a702c577e was SEEN
+Mar 28, 2018 11:44:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 729862e3-7299-4531-96a1-dc7ac6ef2699 was SEEN
+Mar 28, 2018 11:44:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was SEEN
+Mar 28, 2018 11:44:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was FILLED
+Mar 28, 2018 11:44:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bbe2f315-0937-4bae-8a38-356a702c577e was FILLED
+Mar 28, 2018 11:44:12 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 62d92758-35bc-4b72-b3da-70bb2dbdaf0c was FILLED
+Mar 28, 2018 11:44:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 729862e3-7299-4531-96a1-dc7ac6ef2699 was FILLED
+Mar 28, 2018 11:44:16 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 46ebfc10-95f5-4d38-b8ca-bbde8f8647ea was DELIVERED
+Mar 28, 2018 11:44:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 729862e3-7299-4531-96a1-dc7ac6ef2699 was DELIVERED
+Mar 28, 2018 11:44:19 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 62d92758-35bc-4b72-b3da-70bb2dbdaf0c was DELIVERED
+Mar 28, 2018 11:44:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bbe2f315-0937-4bae-8a38-356a702c577e was DELIVERED
