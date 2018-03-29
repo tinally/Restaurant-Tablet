@@ -20,13 +20,9 @@ public final class IngredientImpl implements Ingredient {
   }
 
   private String name;
-
   private Double cost;
-
   private Double pricing;
-
   private Integer reorderThreshold;
-
   private Integer defaultReorderAmount;
 
   @Override
@@ -56,25 +52,30 @@ public final class IngredientImpl implements Ingredient {
 
   @Override
   public boolean equals(Object o) {
-    return o instanceof Ingredient && this.equals((Ingredient) o);
+    return o instanceof Ingredient && getName().equals(((Ingredient) o).getName());
   }
 
+  @Override
   public void setName(String name) {
     this.name = name;
   }
 
+  @Override
   public void setCost(Double cost) {
     this.cost = cost;
   }
 
+  @Override
   public void setPricing(Double pricing) {
     this.pricing = pricing;
   }
 
+  @Override
   public void setReorderThreshold(Integer reorderThreshold) {
     this.reorderThreshold = reorderThreshold;
   }
 
+  @Override
   public void setDefaultReorderAmount(Integer defaultReorderAmount) {
     this.defaultReorderAmount = defaultReorderAmount;
   }

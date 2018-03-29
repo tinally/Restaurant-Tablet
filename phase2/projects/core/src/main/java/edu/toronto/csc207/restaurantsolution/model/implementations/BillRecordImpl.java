@@ -4,7 +4,6 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.BillRecord;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -55,30 +54,37 @@ public class BillRecordImpl implements BillRecord {
     return this.billedDate;
   }
 
+  @Override
   public void setBillID(UUID billID) {
     this.billID = billID;
   }
 
+  @Override
   public void setBilledOrders(List<Order> billedOrders) {
     this.billedOrders = billedOrders;
   }
 
+  @Override
   public void setChargedSubtotal(Double chargedSubtotal) {
     this.chargedSubtotal = chargedSubtotal;
   }
 
+  @Override
   public void setChargedTax(Double chargedTax) {
     this.chargedTax = chargedTax;
   }
 
+  @Override
   public void setChargedGratuity(Double chargedGratuity) {
     this.chargedGratuity = chargedGratuity;
   }
 
+  @Override
   public void setPaidAmount(Double paidAmount) {
     this.paidAmount = paidAmount;
   }
 
+  @Override
   public void setBilledDate(Instant billedDate) {
     this.billedDate = billedDate;
   }

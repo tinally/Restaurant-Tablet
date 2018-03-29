@@ -72,7 +72,7 @@ public final class IngredientDatabase extends SqlLibrary {
                 Integer reorderThreshold = rs.getInt("reorderThreshold");
                 Integer defaultReorderAmount = rs.getInt("defaultReorderAmount");
 
-                IngredientImpl ingredient = new IngredientImpl();
+                Ingredient ingredient = new IngredientImpl();
                 ingredient.setName(name);
                 ingredient.setCost(cost);
                 ingredient.setPricing(pricing);
@@ -103,7 +103,7 @@ public final class IngredientDatabase extends SqlLibrary {
                 Integer reorderThreshold = rs.getInt("reorderThreshold");
                 Integer defaultReorderAmount = rs.getInt("defaultReorderAmount");
 
-                IngredientImpl ingredient = new IngredientImpl();
+                Ingredient ingredient = new IngredientImpl();
                 ingredient.setName(name);
                 ingredient.setCost(cost);
                 ingredient.setPricing(pricing);

@@ -104,7 +104,7 @@ public final class BillRecordDatabase extends SqlLibrary {
 
             ResultSet billResult = billPs.executeQuery();
             if (billResult.next()) {
-                BillRecordImpl billRecord = new BillRecordImpl();
+                BillRecord billRecord = new BillRecordImpl();
                 billRecord.setBillID(UUID.fromString(billResult.getString("billId")));
                 billRecord.setBilledDate(billResult.getTimestamp("billedTimestamp").toInstant());
                 billRecord.setChargedGratuity(billResult.getDouble("chargedGratuity"));

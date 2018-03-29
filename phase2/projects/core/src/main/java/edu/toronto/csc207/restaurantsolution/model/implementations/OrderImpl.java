@@ -30,10 +30,7 @@ public class OrderImpl implements Order {
   }
 
   @Deprecated
-  public OrderImpl(MenuItem menuItem,
-                   int tableNumber,
-                   String serverName,
-                   int orderNumber) {
+  public OrderImpl(MenuItem menuItem, int tableNumber, String serverName, int orderNumber) {
     this.setMenuItem(menuItem);
     this.setTableNumber(tableNumber);
     this.setCreatingUser(serverName);
@@ -87,45 +84,59 @@ public class OrderImpl implements Order {
   }
 
   @Override
-  public OrderStatus getOrderStatus() { return this.orderStatus; }
+  public OrderStatus getOrderStatus() {
+    return this.orderStatus;
+  }
 
+  @Override
   public void setOrderId(UUID orderId) {
     this.orderId = orderId;
   }
 
+  @Override
   public void setTableNumber(Integer tableNumber) {
     this.tableNumber = tableNumber;
   }
 
+  @Override
   public void setOrderNumber(Integer orderNumber) {
     this.orderNumber = orderNumber;
   }
 
+  @Override
   public void setMenuItem(MenuItem menuItem) {
     this.menuItem = menuItem;
   }
 
+  @Override
   public void setOrderCost(Double orderCost) {
     this.orderCost = orderCost;
   }
 
+  @Override
   public void setOrderDate(Instant orderDate) {
     this.orderDate = orderDate;
   }
 
+  @Override
   public void setRemovals(List<Ingredient> removals) {
     this.removals = removals;
   }
 
+  @Override
   public void setAdditions(Map<Ingredient, Integer> additions) {
     this.additions = additions;
   }
 
+  @Override
   public void setCreatingUser(String creatingUser) {
     this.creatingUser = creatingUser;
   }
-  
-  public void setOrderStatus(OrderStatus orderStatus) { this.orderStatus = orderStatus; }
+
+  @Override
+  public void setOrderStatus(OrderStatus orderStatus) {
+    this.orderStatus = orderStatus;
+  }
 
   @Override
   public String toString() {

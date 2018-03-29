@@ -1,4 +1,4 @@
-package edu.toronto.csc207.restaurantsolution.gui.Network;
+package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;

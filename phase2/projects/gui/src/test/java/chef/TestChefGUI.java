@@ -30,10 +30,10 @@ public class TestChefGUI extends Application {
 
 
     public static void main(String[] args) {
-        IngredientImpl ing1 = new IngredientImpl("Burger", 25.5, 55.6,20);
-        IngredientImpl ing2 = new IngredientImpl("Tomato", 3.2,5.6,20);
-        IngredientImpl ing3 = new IngredientImpl("BLT", 3.2,5.6,20);
-        IngredientImpl ing4 = new IngredientImpl("JellyFish", 3.2,5.6,20);
+        Ingredient ing1 = new IngredientImpl("Burger", 25.5, 55.6,20);
+        Ingredient ing2 = new IngredientImpl("Tomato", 3.2,5.6,20);
+        Ingredient ing3 = new IngredientImpl("BLT", 3.2,5.6,20);
+        Ingredient ing4 = new IngredientImpl("JellyFish", 3.2,5.6,20);
 
         HashMap<Ingredient, Integer> ingredients = new HashMap<>();
         ingredients.put(ing1, 3);

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.gui.ui.IngredientMapping;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
@@ -27,25 +28,6 @@ import java.util.List;
  * Controls the Receiver graphics user interface.
  */
 public class ReceiverController implements DataListener {
-
-  public static class IngredientMapping extends RecursiveTreeObject<IngredientMapping> {
-    final ObjectProperty<Ingredient> ingredient;
-    final IntegerProperty quantity;
-
-    IngredientMapping(Ingredient ingredient, Integer quantity) {
-      this.ingredient = new SimpleObjectProperty<>(ingredient);
-      this.quantity = new SimpleIntegerProperty(quantity);
-    }
-
-    public ObjectProperty<Ingredient> ingredientProperty() {
-      return ingredient;
-    }
-
-    public IntegerProperty quantityProperty() {
-      return quantity;
-    }
-  }
-
   @FXML
   private JFXTextField name;
   @FXML
@@ -56,6 +38,7 @@ public class ReceiverController implements DataListener {
   private DataManager manager;
 
   public ReceiverController() throws Exception {
+    // TODO: REMOVE THIS
     NetworkContainer.initManager();
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
@@ -64,9 +47,6 @@ public class ReceiverController implements DataListener {
   @Override
   public void update() {
     try {
-//      ObservableList<Ingredient> ingredient =
-//          FXCollections.observableArrayList(manager.getAllIngredients());
-
       ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
 
       for (Ingredient ingredient : manager.getAllIngredients())
@@ -91,7 +71,7 @@ public class ReceiverController implements DataListener {
     name.setText("");
     Integer amount = Integer.parseInt(quantity.getText());
     quantity.setText("");
-    IngredientImpl ingredient = new IngredientImpl();
+    Ingredient ingredient = new IngredientImpl();
     ingredient.setCost(10d);
     ingredient.setPricing(10d);
     ingredient.setName(ingredientName);

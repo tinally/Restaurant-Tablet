@@ -100,7 +100,7 @@ public class AccountDatabase extends SqlLibrary {
 
             ResultSet userRs = ps.executeQuery();
             if (userRs.next()) {
-                UserAccountImpl user = new UserAccountImpl();
+                UserAccount user = new UserAccountImpl();
                 user.setUsername(userRs.getString("username"));
                 user.setDisplayName(userRs.getString("displayname"));
                 user.setPermissions(perms);

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
+import edu.toronto.csc207.restaurantsolution.gui.ui.IngredientMapping;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
@@ -30,25 +31,6 @@ import java.util.stream.Collectors;
  * Controls the Chef graphics user interface.
  */
 public class ChefController implements DataListener {
-
-  public static class IngredientCountMapping extends RecursiveTreeObject<IngredientCountMapping> {
-    final StringProperty ingredientName;
-    final IntegerProperty ingredientCount;
-
-    IngredientCountMapping(Ingredient ingredient, Integer integerCount) {
-      this.ingredientName = new SimpleStringProperty(ingredient.getName());
-      this.ingredientCount = new SimpleIntegerProperty(integerCount);
-    }
-
-    public StringProperty ingredientNameProperty() {
-      return ingredientName;
-    }
-
-    public IntegerProperty ingredientCountProperty() {
-      return ingredientCount;
-    }
-  }
-
   private final DataManager manager;
 
   public ChefController() throws Exception {
@@ -58,7 +40,7 @@ public class ChefController implements DataListener {
   }
 
   @FXML
-  JFXTreeTableView<IngredientCountMapping> itemDisplayIngredientList;
+  JFXTreeTableView<IngredientMapping> itemDisplayIngredientList;
 
   @FXML
   Label itemDisplayTitle;
@@ -79,12 +61,14 @@ public class ChefController implements DataListener {
 
     this.inProgressOrderList.setOnMouseClicked(e -> {
       if (!e.isPrimaryButtonDown() && e.getClickCount() != 2) return;
-      OrderImpl order = (OrderImpl) this.inProgressOrderList.getSelectionModel().getSelectedItem();
-      order.setOrderStatus(OrderStatus.FILLED);
-      try {
-        manager.modifyOrder(order);
-      } catch (RemoteException e1) {
-        e1.printStackTrace();
+      Order order = inProgressOrderList.getSelectionModel().getSelectedItem();
+      if (order != null) {
+        order.setOrderStatus(OrderStatus.FILLED);
+        try {
+          manager.modifyOrder(order);
+        } catch (RemoteException e1) {
+          e1.printStackTrace();
+        }
       }
     });
   }
@@ -92,34 +76,34 @@ public class ChefController implements DataListener {
   private void refreshOrderView(Order o) {
     if (o != null) {
       this.itemDisplayTitle.setText(o.getMenuItem().getName());
-      ObservableList<IngredientCountMapping> ingredients = FXCollections.observableArrayList();
+      ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
       for (Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
-        ingredients.add(new IngredientCountMapping(entry.getKey(), entry.getValue()));
+        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
       }
       for (Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
-        ingredients.add(new IngredientCountMapping(entry.getKey(), entry.getValue()));
+        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
       }
-      TreeItem<IngredientCountMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
+      TreeItem<IngredientMapping> root = new RecursiveTreeItem<>(ingredients, RecursiveTreeObject::getChildren);
       this.itemDisplayIngredientList.setRoot(root);
     }
   }
 
   public void setSelectedOrderSeen() {
-    OrderImpl order = (OrderImpl) this.incomingOrderList.getSelectionModel().getSelectedItem();
-    order.setOrderStatus(OrderStatus.SEEN);
-    try {
-      manager.modifyOrder(order);
-    } catch (RemoteException e1) {
-      e1.printStackTrace();
+    Order order = incomingOrderList.getSelectionModel().getSelectedItem();
+    if (order != null) {
+      order.setOrderStatus(OrderStatus.SEEN);
+      try {
+        manager.modifyOrder(order);
+      } catch (RemoteException e1) {
+        e1.printStackTrace();
+      }
     }
   }
 
   @Override
   public void update() {
-    List<Order> orders = null;
     try {
-      orders = this.manager.getAllOrders();
-      //todo: filter these orders
+      List<Order> orders = manager.getAllOrders();
       inProgressOrderList.setItems(FXCollections.observableArrayList(orders.stream()
           .filter(o -> o.getOrderStatus() == OrderStatus.SEEN)
           .collect(Collectors.toList())));

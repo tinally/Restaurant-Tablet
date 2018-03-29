@@ -30,7 +30,6 @@ public final class DataServer implements DataManager {
   private InfoLogger logger;
 
   /** Constructs a new data server. */
-  // TODO: Add logging as specified
   public DataServer() {
     listeners = new ArrayList<>();
     SQLiteDataSource dataSource = new SQLiteDataSource();
@@ -50,19 +49,11 @@ public final class DataServer implements DataManager {
     logger = new InfoLogger("DataServer", "log.txt");
   }
 
-  /**
-   * Registers a remote update listener that will be notified of data updates.
-   *
-   * @param listener the remote listener that will handle updates.
-   */
   @Override
   public void registerListener(RemoteListener listener) {
     listeners.add(listener);
   }
 
-  /**
-   * Notifies all registered listeners of a data update.
-   */
   @Override
   public void updateListeners() {
     try {

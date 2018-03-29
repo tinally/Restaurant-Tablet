@@ -10,72 +10,93 @@ import java.util.UUID;
  * Represents an Order in the restaurant.
  */
 public interface Order extends Serializable {
-    /**
-     * Returns an unique ID for an Order.
-     *
-     * @return an unique ID for an Order
-     */
-    UUID getOrderID();
+  /**
+   * Returns an unique ID for an Order.
+   *
+   * @return an unique ID for an Order
+   */
+  UUID getOrderID();
 
-    /**
-     * Returns the table number of this Order.
-     *
-     * @return the table number of this Order
-     */
-    Integer getTableNumber();
+  /**
+   * Returns the table number of this Order.
+   *
+   * @return the table number of this Order
+   */
+  Integer getTableNumber();
 
-    /**
-     * Returns the order number of this Order.
-     *
-     * @return the order number of this Order
-     */
-    Integer getOrderNumber();
+  /**
+   * Returns the order number of this Order.
+   *
+   * @return the order number of this Order
+   */
+  Integer getOrderNumber();
 
-    /**
-     * Return the MenuItem corresponding to this Order.
-     *
-     * @return the corresponding MenuItem
-     */
-    MenuItem getMenuItem();
+  /**
+   * Return the MenuItem corresponding to this Order.
+   *
+   * @return the corresponding MenuItem
+   */
+  MenuItem getMenuItem();
 
-    /**
-     * Returns the list of Ingredients needed for this Order.
-     *
-     * @return the list of Ingredients
-     */
-    List<Ingredient> getRemovals();
+  /**
+   * Returns the list of Ingredients needed for this Order.
+   *
+   * @return the list of Ingredients
+   */
+  List<Ingredient> getRemovals();
 
-    /**
-     * Returns the map of Ingredients added with the corresponding amount.
-     *
-     * @return the map of Ingredient and Integer
-     */
-    Map<Ingredient, Integer> getAdditions();
+  /**
+   * Returns the map of Ingredients added with the corresponding amount.
+   *
+   * @return the map of Ingredient and Integer
+   */
+  Map<Ingredient, Integer> getAdditions();
 
-    /**
-     * Returns the cost of this Order.
-     *
-     * @return the cost of this Order
-     */
-    Double getOrderCost();
+  /**
+   * Returns the cost of this Order.
+   *
+   * @return the cost of this Order
+   */
+  Double getOrderCost();
 
-    /**
-     * Returns the time the Order was created.
-     *
-     * @return the time the Order was created
-     */
-    Instant getOrderTimestamp();
+  /**
+   * Returns the time the Order was created.
+   *
+   * @return the time the Order was created
+   */
+  Instant getOrderTimestamp();
 
-    /**
-     * Returns the name of the User who created this Order.
-     *
-     * @return the name of the User who created this Order
-     */
-    String getCreatingUser();
+  /**
+   * Returns the name of the User who created this Order.
+   *
+   * @return the name of the User who created this Order
+   */
+  String getCreatingUser();
 
-    /**
-     * Gets the status of the Order
-     * @return the status of the Order
-     */
-    OrderStatus getOrderStatus();
+  /**
+   * Gets the status of the Order
+   *
+   * @return the status of the Order
+   */
+  OrderStatus getOrderStatus();
+
+  void setOrderId(UUID orderId);
+
+  void setTableNumber(Integer tableNumber);
+
+  void setOrderNumber(Integer orderNumber);
+
+  void setMenuItem(MenuItem menuItem);
+
+  void setOrderCost(Double orderCost);
+
+  void setOrderDate(Instant orderDate);
+
+  void setRemovals(List<Ingredient> removals);
+
+  void setAdditions(Map<Ingredient, Integer> additions);
+
+  void setCreatingUser(String creatingUser);
+
+  void setOrderStatus(OrderStatus orderStatus);
 }
