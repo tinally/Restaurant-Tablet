@@ -97,3 +97,141 @@ Mar 28, 2018 11:44:19 PM edu.toronto.csc207.restaurantsolution.remoting.server.I
 INFO: Order 62d92758-35bc-4b72-b3da-70bb2dbdaf0c was DELIVERED
 Mar 28, 2018 11:44:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order bbe2f315-0937-4bae-8a38-356a702c577e was DELIVERED
+Mar 29, 2018 1:28:23 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4d83a9d6-847c-456e-9b0a-76239fdb01b1 was CREATED
+Mar 29, 2018 1:28:27 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 547c57a3-19b7-4f6c-bcb5-7e5faf559907 was CREATED
+Mar 29, 2018 1:28:33 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 23f290ef-eda5-47e9-a0ff-06277e9831d0 was CREATED
+Mar 29, 2018 1:28:33 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 32cdbbde-530a-4442-b5b4-a15a20404978 was CREATED
+Mar 29, 2018 1:28:33 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 278bdeab-a2f5-419d-8ea3-c80ef53e5152 was CREATED
+Mar 29, 2018 1:28:33 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ce7fcab4-32c8-440a-80fb-b703f625d4c1 was CREATED
+Mar 29, 2018 1:28:34 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f9a2cc1a-7235-4816-aa08-81b5a5523ef7 was CREATED
+Mar 29, 2018 1:28:41 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a937d201-0b0e-44fa-9468-5281cb098709 was CREATED
+Mar 29, 2018 1:28:41 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b93a8036-d66b-489d-ab10-efdf6e427aec was CREATED
+Mar 29, 2018 1:28:41 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 59c925dd-76ff-46cd-a1af-3d58dc83b6e4 was CREATED
+Mar 29, 2018 1:28:41 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order cd9079d3-ce32-4cda-9b0f-d6109bd348bf was CREATED
+Mar 29, 2018 1:28:46 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 278bdeab-a2f5-419d-8ea3-c80ef53e5152 was SEEN
+Mar 29, 2018 1:28:47 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4d83a9d6-847c-456e-9b0a-76239fdb01b1 was SEEN
+Mar 29, 2018 1:28:54 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order db59f159-52ea-4a81-98e3-41eeb021f941 was CREATED
+Mar 29, 2018 1:28:54 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 934e5cc8-edf1-4a33-bdf2-6dcf8283293e was CREATED
+Mar 29, 2018 1:28:54 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4ef4936f-1a7b-4ad6-a495-6f6f143e4dbc was CREATED
+Mar 29, 2018 1:28:54 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d8fae8d0-4567-437b-98ad-ba1c7b32607e was CREATED
+Mar 29, 2018 1:28:54 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c42825e8-8bae-460c-a728-0dc9334b23dd was CREATED
+Mar 29, 2018 1:28:59 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 33667c68-8e48-4913-8066-6c5c19dc7093 was SEEN
+Mar 29, 2018 1:29:00 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4ef4936f-1a7b-4ad6-a495-6f6f143e4dbc was SEEN
+Mar 29, 2018 1:29:01 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 876c50da-59e2-433e-80d3-6f9271e58f79 was SEEN
+Mar 29, 2018 1:29:03 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 32cdbbde-530a-4442-b5b4-a15a20404978 was SEEN
+Mar 29, 2018 1:29:10 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0c3e3d7b-66cd-4c02-b4e2-c92e852e62ce was SEEN
+Mar 29, 2018 1:29:11 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 934e5cc8-edf1-4a33-bdf2-6dcf8283293e was SEEN
+Mar 29, 2018 1:29:13 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b7953cc3-a80b-4323-9030-88e3085f9560 was SEEN
+Mar 29, 2018 1:29:14 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 311ee934-e372-42bf-af0a-86f10031ad9b was SEEN
+Mar 29, 2018 1:29:16 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 93e688b6-e78a-49e9-8024-170e9dd351f9 was SEEN
+Mar 29, 2018 1:29:17 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 59c925dd-76ff-46cd-a1af-3d58dc83b6e4 was SEEN
+Mar 29, 2018 1:29:18 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 547c57a3-19b7-4f6c-bcb5-7e5faf559907 was SEEN
+Mar 29, 2018 1:29:19 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a937d201-0b0e-44fa-9468-5281cb098709 was SEEN
+Mar 29, 2018 1:29:21 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order cd9079d3-ce32-4cda-9b0f-d6109bd348bf was SEEN
+Mar 29, 2018 1:29:22 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 23f290ef-eda5-47e9-a0ff-06277e9831d0 was SEEN
+Mar 29, 2018 1:29:23 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c68c132e-8d4f-4488-a4cd-1fff697a3007 was SEEN
+Mar 29, 2018 1:29:24 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ce7fcab4-32c8-440a-80fb-b703f625d4c1 was SEEN
+Mar 29, 2018 1:29:25 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c42825e8-8bae-460c-a728-0dc9334b23dd was SEEN
+Mar 29, 2018 1:29:27 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order db59f159-52ea-4a81-98e3-41eeb021f941 was SEEN
+Mar 29, 2018 1:29:29 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d8fae8d0-4567-437b-98ad-ba1c7b32607e was SEEN
+Mar 29, 2018 1:29:30 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ab32826c-bb98-48fb-9440-e844471ba161 was SEEN
+Mar 29, 2018 1:29:31 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 9121f278-4227-4d89-9888-f7d7d16a342f was SEEN
+Mar 29, 2018 1:29:33 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b93a8036-d66b-489d-ab10-efdf6e427aec was SEEN
+Mar 29, 2018 1:29:36 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bc3fd72d-f32c-43f0-a586-9f1067c24665 was SEEN
+Mar 29, 2018 1:29:37 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f9a2cc1a-7235-4816-aa08-81b5a5523ef7 was SEEN
+Mar 29, 2018 1:29:42 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 48e1bf31-ddca-46db-9b50-54e3f6565b21 was CREATED
+Mar 29, 2018 1:29:56 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 9121f278-4227-4d89-9888-f7d7d16a342f was FILLED
+Mar 29, 2018 1:29:56 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4ef4936f-1a7b-4ad6-a495-6f6f143e4dbc was FILLED
+Mar 29, 2018 1:29:57 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 59c925dd-76ff-46cd-a1af-3d58dc83b6e4 was FILLED
+Mar 29, 2018 1:29:57 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 876c50da-59e2-433e-80d3-6f9271e58f79 was FILLED
+Mar 29, 2018 1:29:59 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 4d83a9d6-847c-456e-9b0a-76239fdb01b1 was FILLED
+Mar 29, 2018 1:29:59 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 278bdeab-a2f5-419d-8ea3-c80ef53e5152 was FILLED
+Mar 29, 2018 1:30:00 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 934e5cc8-edf1-4a33-bdf2-6dcf8283293e was FILLED
+Mar 29, 2018 1:30:00 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 311ee934-e372-42bf-af0a-86f10031ad9b was FILLED
+Mar 29, 2018 1:30:01 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b93a8036-d66b-489d-ab10-efdf6e427aec was FILLED
+Mar 29, 2018 1:30:01 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 547c57a3-19b7-4f6c-bcb5-7e5faf559907 was FILLED
+Mar 29, 2018 1:30:02 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b7953cc3-a80b-4323-9030-88e3085f9560 was FILLED
+Mar 29, 2018 1:30:02 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 93e688b6-e78a-49e9-8024-170e9dd351f9 was FILLED
+Mar 29, 2018 1:30:03 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c42825e8-8bae-460c-a728-0dc9334b23dd was FILLED
+Mar 29, 2018 1:30:03 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 32cdbbde-530a-4442-b5b4-a15a20404978 was FILLED
+Mar 29, 2018 1:30:03 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c68c132e-8d4f-4488-a4cd-1fff697a3007 was FILLED
+Mar 29, 2018 1:30:04 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order a937d201-0b0e-44fa-9468-5281cb098709 was FILLED
+Mar 29, 2018 1:30:05 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 23f290ef-eda5-47e9-a0ff-06277e9831d0 was FILLED
+Mar 29, 2018 1:30:06 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0c3e3d7b-66cd-4c02-b4e2-c92e852e62ce was FILLED
+Mar 29, 2018 1:30:06 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order cd9079d3-ce32-4cda-9b0f-d6109bd348bf was FILLED
+Mar 29, 2018 1:30:07 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bc3fd72d-f32c-43f0-a586-9f1067c24665 was FILLED
+Mar 29, 2018 1:30:07 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ce7fcab4-32c8-440a-80fb-b703f625d4c1 was FILLED
+Mar 29, 2018 1:30:08 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ab32826c-bb98-48fb-9440-e844471ba161 was FILLED
+Mar 29, 2018 1:30:09 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 33667c68-8e48-4913-8066-6c5c19dc7093 was FILLED
+Mar 29, 2018 1:30:10 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d8fae8d0-4567-437b-98ad-ba1c7b32607e was FILLED
+Mar 29, 2018 1:30:10 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order db59f159-52ea-4a81-98e3-41eeb021f941 was FILLED
+Mar 29, 2018 1:30:23 AM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 9bf09339-2c0f-4f8b-aa7b-79f6c9795828 was PAID
