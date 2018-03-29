@@ -1,0 +1,24 @@
+Mar 28, 2018 8:28:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b7953cc3-a80b-4323-9030-88e3085f9560 was CREATED
+Mar 28, 2018 8:29:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bc3fd72d-f32c-43f0-a586-9f1067c24665 was CREATED
+Mar 28, 2018 8:29:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients.
+Mar 28, 2018 8:34:45 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was modified to 100
+Mar 28, 2018 8:35:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c68c132e-8d4f-4488-a4cd-1fff697a3007 was FILLED
+Mar 28, 2018 8:35:32 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 86698bbf-9847-44b5-be65-c82ef4f3dd5a was FILLED
+Mar 28, 2018 8:35:38 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c68c132e-8d4f-4488-a4cd-1fff697a3007 was FILLED
+Mar 28, 2018 8:35:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order c0880d17-3d1f-4cbe-a083-04dad66282f7 was FILLED
+Mar 28, 2018 8:35:57 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 33667c68-8e48-4913-8066-6c5c19dc7093 was SEEN
+Mar 28, 2018 8:36:03 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 33667c68-8e48-4913-8066-6c5c19dc7093 was FILLED
+Mar 28, 2018 8:36:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 876c50da-59e2-433e-80d3-6f9271e58f79 was CREATED
+Mar 28, 2018 8:36:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 9121f278-4227-4d89-9888-f7d7d16a342f was FILLED

@@ -11,8 +11,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Backend data manager implementation that manages database interactions and serves as the "master"
@@ -29,9 +27,10 @@ public final class DataServer implements DataManager {
   private final MenuItemDatabase menuItemDatabase;
   private final OrderDatabase orderDatabase;
   private ArrayList<RemoteListener> listeners;
-  private Logger logger;
+  private InfoLogger logger;
 
   /** Constructs a new data server. */
+  // TODO: Add logging as specified
   public DataServer() {
     listeners = new ArrayList<>();
     SQLiteDataSource dataSource = new SQLiteDataSource();
@@ -48,7 +47,7 @@ public final class DataServer implements DataManager {
     accountDatabase.addPermission("admin","view.receiver");
     accountDatabase.addPermission("admin","view.cashier");
     accountDatabase.addPermission("admin","view.manager");
-    logger = Logger.getLogger("DataServer");
+    logger = new InfoLogger("DataServer");
   }
 
   /**
@@ -71,7 +70,7 @@ public final class DataServer implements DataManager {
         listener.update();
       }
     } catch (RemoteException e) {
-      logger.log(Level.SEVERE, "Critical network error - reboot and reconnect clients.", e);
+      logger.printError("Critical network error - reboot and reconnect clients.");
     }
   }
 
@@ -108,6 +107,7 @@ public final class DataServer implements DataManager {
 
   @Override
   public void setIngredientCount(Ingredient ingredient, Integer ingredientCount) {
+    logger.printInfo("Inventory of " + ingredient + " was set to " + ingredientCount);
     ingredientDatabase.registerIngredient(ingredient);
     inventoryDatabase.setIngredientCount(ingredient, ingredientCount);
     updateListeners();
@@ -130,12 +130,14 @@ public final class DataServer implements DataManager {
 
   @Override
   public void modifyOrder(Order order) {
+    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     orderDatabase.insertOrUpdateOrder(order);
     updateListeners();
   }
 
   @Override
   public void modifyOrder(Order order, OrderStatus newstatus) {
+    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     ((OrderImpl) order).setOrderStatus(newstatus);
     orderDatabase.insertOrUpdateOrder(order);
     updateListeners();
