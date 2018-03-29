@@ -63,6 +63,7 @@ public class ServerController implements DataListener {
             addItem = false;
           }
         }
+
         if (addItem) {
           menuItems.add(menuItem);
         }
@@ -77,7 +78,7 @@ public class ServerController implements DataListener {
       TreeItem<DeliverableOrderMapping> root =
           new RecursiveTreeItem<>(FXCollections.observableArrayList(deliverableOrders),
               RecursiveTreeObject::getChildren);
-      this.deliverableOrdersTable.setRoot(root);
+      deliverableOrdersTable.setRoot(root);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -137,20 +138,25 @@ public class ServerController implements DataListener {
     return sum;
   }
 
-  private void updateAdditionsAndDeletions(MenuItem item) {
-    if (item != null) {
-      ObservableList<Ingredient> possibleDeletions = FXCollections
-          .observableArrayList(item.getIngredientRequirements().keySet());
-      this.deletionsList.setItems(possibleDeletions);
-      ObservableList<Ingredient> possibleAdditions = null;
+  private void updateAdditionsAndDeletions(MenuItem menuItem) {
+    ObservableList<Ingredient> possibleAdditions = FXCollections.observableArrayList();
+    ObservableList<Ingredient> possibleDeletions = FXCollections.observableArrayList();
+    if (menuItem != null) {
       try {
-        possibleAdditions = FXCollections
-            .observableArrayList(manager.getAllIngredients());
+        for (Ingredient ingredient : manager.getAllIngredients()) {
+          if (manager.getIngredientCount(ingredient) > 0) {
+            possibleAdditions.add(ingredient);
+          }
+        }
+
+        possibleDeletions.addAll(menuItem.getIngredientRequirements().keySet());
       } catch (RemoteException e) {
+        // TODO: Handle all exceptions
         e.printStackTrace();
       }
-      this.additionsList.setItems(possibleAdditions);
     }
+    deletionsList.setItems(possibleDeletions);
+    additionsList.setItems(possibleAdditions);
   }
 
   private void updateOrderSummary() {

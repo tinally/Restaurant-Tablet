@@ -442,3 +442,7 @@ SEVERE: Critical network error - reboot and reconnect clients...java.rmi.Connect
 	java.net.ConnectException: Connection refused (Connection refused)
 Mar 29, 2018 2:43:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Inventory of Test Ingredient Two was set to 1
+Mar 29, 2018 2:53:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order cc747a45-1ea1-4f2e-a5c7-0a5e2e355823 was CREATED
+Mar 29, 2018 2:53:15 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bfe886d2-234e-45b3-b5be-f05d3e328e2a was CREATED

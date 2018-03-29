@@ -34,7 +34,6 @@ public class MainViewController {
     permissions.stream().distinct().filter(s -> s.startsWith("view."))
         .map(s -> s.substring(5))
         .forEach(s -> {
-          System.out.println(s);
           if (menuTabs.containsKey(s)) {
             mainPane.getTabs().add(menuTabs.get(s));
           }
