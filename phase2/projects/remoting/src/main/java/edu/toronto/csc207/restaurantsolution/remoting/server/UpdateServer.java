@@ -20,5 +20,8 @@ public interface UpdateServer extends Remote {
    */
   void registerListener(RemoteListener listener) throws RemoteException;
 
+  /**
+   * Notifies all data update listeners to refresh local data models.
+   */
   void updateListeners() throws RemoteException;
 }

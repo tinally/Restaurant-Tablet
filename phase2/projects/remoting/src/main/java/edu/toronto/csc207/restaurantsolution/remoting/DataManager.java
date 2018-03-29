@@ -13,10 +13,6 @@ import java.util.UUID;
  * updating and distributing data.
  */
 public interface DataManager extends UpdateServer {
-  /*
-   * As a sub-interface of Remote, every method specified in this interface must be able to throw a
-   * RemoteException in the case of remote errors.
-   */
   BillRecord getBillRecord(UUID billRecordId) throws RemoteException;
 
   List<BillRecord> getAllBills() throws RemoteException;

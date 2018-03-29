@@ -8,7 +8,7 @@
 <VBox stylesheets="Style.css"
       xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER"
       style="-fx-background-color: #f06292;" xmlns="http://javafx.com/javafx/8.0.121"
-      fx:controller="edu.toronto.csc207.restaurantsolution.gui.Network.NetworkController">
+      fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.NetworkController">
     <JFXTextField fx:id="ip" alignment="CENTER" focusColor="WHITE" promptText="IP Address"
                   unFocusColor="#1b1b1b">
         <VBox.margin>

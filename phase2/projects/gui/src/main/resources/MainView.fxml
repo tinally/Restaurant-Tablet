@@ -11,22 +11,22 @@
                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
                 AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab fx:id="loginTab" text="Login">
-            <fx:include fx:id="loginPage" source="Login.fxml"/>
+            <fx:include source="Login.fxml"/>
         </Tab>
         <Tab fx:id="cashierTab" text="Cashier">
-            <fx:include fx:id="cashierPage" disable="true" source="Cashier.fxml"/>
+            <fx:include disable="true" source="Cashier.fxml"/>
         </Tab>
         <Tab fx:id="chefTab" text="Chef">
-            <fx:include fx:id="chefPage" source="Chef.fxml"/>
+            <fx:include source="Chef.fxml"/>
         </Tab>
-        <Tab fx:id="receiverTab" text="Receive">
-            <fx:include fx:id="receiverPage" source="Receiver.fxml"/>
+        <Tab fx:id="receiverTab" text="Receiver">
+            <fx:include source="Receiver.fxml"/>
         </Tab>
         <Tab fx:id="serverTab" text="Server">
-            <fx:include fx:id="serverPage" source="Server.fxml"/>
+            <fx:include source="Server.fxml"/>
         </Tab>
         <Tab fx:id="managerTab" text="Manager">
-            <fx:include fx:id="managerPage" source="Manager.fxml"/>
+            <fx:include source="Manager.fxml"/>
         </Tab>
     </JFXTabPane>
 </AnchorPane>

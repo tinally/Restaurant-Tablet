@@ -4,11 +4,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.MainView.MainViewController;
-import edu.toronto.csc207.restaurantsolution.gui.Network.NetworkController;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.UserAccount;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 
 /**
  * Controls the Login graphics user interface.
