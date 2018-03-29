@@ -47,7 +47,7 @@ public final class DataServer implements DataManager {
     accountDatabase.addPermission("admin","view.receiver");
     accountDatabase.addPermission("admin","view.cashier");
     accountDatabase.addPermission("admin","view.manager");
-    logger = new InfoLogger("DataServer");
+    logger = new InfoLogger("DataServer", "log.txt");
   }
 
   /**

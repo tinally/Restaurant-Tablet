@@ -7,6 +7,5 @@ class LoggerTest {
     InfoLogger logger = new InfoLogger("Test");
     logger.printInfo("Info printing");
     logger.printError("Warning printing");
-    logger.close();
   }
 }

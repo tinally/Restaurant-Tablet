@@ -17,7 +17,7 @@ import java.util.logging.*;
  * local object and transforms remote data updates into local data updates for system threading
  * coordination.
  *
- * This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
+ * <p>This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
  * networking conflicts may occur.
  */
 public final class DataClient extends UnicastRemoteObject implements RemoteListener {
