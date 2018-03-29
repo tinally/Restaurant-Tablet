@@ -130,16 +130,16 @@ public final class DataServer implements DataManager {
 
   @Override
   public void modifyOrder(Order order) {
-    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     orderDatabase.insertOrUpdateOrder(order);
+    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     updateListeners();
   }
 
   @Override
   public void modifyOrder(Order order, OrderStatus newstatus) {
-    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     ((OrderImpl) order).setOrderStatus(newstatus);
     orderDatabase.insertOrUpdateOrder(order);
+    logger.printInfo("Order " + order.getOrderID() + " was " + order.getOrderStatus());
     updateListeners();
   }
 
