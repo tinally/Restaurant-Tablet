@@ -1,10 +1,12 @@
 # Group 0437
 
 Everything is located under the "projects" directory.
+There are separate modules to facilitate cooperation between client/server (this application works
+... over the network).
 Gradle should take care of everything.
 
-First run ServerLauncher.
-Then, at the same time, run MasterGUI.
+First run ServerLauncher inside the "remoting" module.
+Then, at the same time, run MasterGUI inside the "gui" module.
 * THE DEFAULT LOGIN IS admin/admin *
 More details below.
 
