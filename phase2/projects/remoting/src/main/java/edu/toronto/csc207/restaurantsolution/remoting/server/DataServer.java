@@ -141,6 +141,12 @@ public final class DataServer implements DataManager {
   }
 
   @Override
+  public void modifyMenuItem(MenuItem m) throws RemoteException {
+    menuItemDatabase.registerMenuItem(m);
+    updateListeners();
+  }
+
+  @Override
   public Order getOrder(UUID orderId) {
     return orderDatabase.retrieveOrder(orderId);
   }

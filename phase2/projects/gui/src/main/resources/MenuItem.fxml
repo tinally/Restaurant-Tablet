@@ -12,129 +12,59 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TreeTableView?>
 
-<BorderPane id="topModule" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="708.0" stylesheets="Style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.MenuItemController">
-    <bottom>
-        <JFXButton fx:id="createMenuItemButton" buttonType="RAISED" onAction="#createMenuItem" text="Create MenutItem" BorderPane.alignment="CENTER">
-            <BorderPane.margin>
-                <Insets bottom="30.0" />
-            </BorderPane.margin>
+<?import javafx.scene.control.SplitPane?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
+<?import javafx.scene.control.ListView?>
+<SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.MenuItemController">
+    <VBox alignment="CENTER">
+        <AnchorPane>
+            <Label alignment="CENTER" style="-fx-background-color: #f06292;" text="Inventory"
+                   AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                   AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            </Label>
+        </AnchorPane>
+        <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
+            <JFXListView fx:id="inventoryList"/>
+            <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS" editable="true">
+                <columns>
+                    <JFXTreeTableColumn text="Ingredient">
+                        <cellValueFactory>
+                            <TreeItemPropertyValueFactory property="ingredient"/>
+                        </cellValueFactory>
+                    </JFXTreeTableColumn>
+                    <JFXTreeTableColumn text="Quantity" fx:id="inventoryQuantityColumn">
+                        <cellValueFactory>
+                            <TreeItemPropertyValueFactory property="quantity" />
+                        </cellValueFactory>
+                    </JFXTreeTableColumn>
+                </columns>
+                <columnResizePolicy>
+                    <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                </columnResizePolicy>
+            </JFXTreeTableView>
+        </SplitPane>
+    </VBox>
+    <VBox alignment="CENTER" fillWidth="false" spacing="30.0" VBox.vgrow="ALWAYS">
+        <JFXTextField fx:id="name" alignment="CENTER" focusColor="#f06292" promptText="Name"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+        <JFXTextField fx:id="cost" alignment="CENTER" focusColor="#f06292" promptText="Price"
+                      unFocusColor="#1d1d1d">
+        </JFXTextField>
+
+        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
+                   onAction="#updateItem" style="-fx-background-color: WHITE;"
+                   text="Create Menu Item"
+                   textAlignment="CENTER">
         </JFXButton>
-    </bottom>
-    <top>
-        <Label text="Create New MenuItem" BorderPane.alignment="CENTER">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-    </top>
-    <center>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <children>
-                <GridPane prefHeight="274.0" prefWidth="675.0" VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="369.0" minWidth="10.0" prefWidth="354.3333333333333" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="515.9999821980794" minWidth="10.0" prefWidth="272.99999999999994" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints maxHeight="128.66665649414062" minHeight="10.0" prefHeight="82.33332951863608" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="155.0000025431315" minHeight="0.0" prefHeight="104.33333714803061" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="391.0" minHeight="10.0" prefHeight="265.99999745686847" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="210.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                    <children>
-                        <Label text="Price:" GridPane.rowIndex="1" />
-                        <Label text="Name:">
-                            <GridPane.margin>
-                                <Insets />
-                            </GridPane.margin>
-                        </Label>
-                        <JFXTextField fx:id="menuItemName" GridPane.columnIndex="1">
-                            <GridPane.margin>
-                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                            </GridPane.margin>
-                        </JFXTextField>
-                        <JFXTextField fx:id="menuItemPrice" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <GridPane.margin>
-                                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                            </GridPane.margin>
-                        </JFXTextField>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <JFXListView fx:id="ingredientList" layoutX="7.0" layoutY="30.0" prefHeight="97.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="30.0" />
-                                <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="276.33333333333337" layoutY="73.0" onAction="#add" prefHeight="25.0" prefWidth="25.0" text="&gt;" AnchorPane.rightAnchor="5.0" />
-                                <Label layoutX="10.0" layoutY="5.0" text="Current Ingredients" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="77.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="ALWAYS">
-                            <children>
-                                <JFXListView fx:id="selectedIngredientList" layoutX="65.0" layoutY="30.0" prefHeight="97.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" />
-                                <JFXButton fx:id="removeButton" buttonType="RAISED" layoutX="249.0" layoutY="73.0" onAction="#remove" text="&lt;" AnchorPane.leftAnchor="5.0" />
-                                <Label layoutX="18.0" layoutY="7.0" text="Ingredients Selected" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-0.0" />
-                            </children>
-                        </AnchorPane>
-                    </children>
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin>
-                </GridPane>
-                <VBox prefHeight="200.0" prefWidth="100.0" spacing="3.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <GridPane VBox.vgrow="ALWAYS">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="538.6666564941406" minWidth="10.0" prefWidth="313.99997965494794" />
-                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="457.33331298828125" minWidth="10.0" prefWidth="394.00002034505206" />
-                            </columnConstraints>
-                            <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <Label text="Name" GridPane.rowIndex="1" />
-                                <Label text="Cost" GridPane.rowIndex="2" />
-                                <Label text="Pricing" GridPane.rowIndex="3" />
-                                <Label text="ReorderThreshold" GridPane.rowIndex="4" />
-                                <JFXTextField fx:id="newIngredientName" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                                    <GridPane.margin>
-                                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <JFXTextField fx:id="newIngredientCost" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                                    <GridPane.margin>
-                                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <JFXTextField fx:id="newIngredientPrice" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                                    <GridPane.margin>
-                                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <JFXTextField fx:id="newIngredientReorder" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                                    <GridPane.margin>
-                                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                                <Label text="Amount for MenuItem" GridPane.rowIndex="5" />
-                                <JFXTextField fx:id="newIngredientAmount" GridPane.columnIndex="1" GridPane.rowIndex="5">
-                                    <GridPane.margin>
-                                        <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
-                                    </GridPane.margin>
-                                </JFXTextField>
-                              <Label prefHeight="29.0" prefWidth="321.0" text="New Ingredient" GridPane.hgrow="ALWAYS" />
-                            </children>
-                        </GridPane>
-                        <JFXButton fx:id="addNewIngredientButton" buttonType="RAISED" onAction="#addToIngredient" text="Add to Ingredients Selected">
-                            <VBox.margin>
-                                <Insets left="100.0" />
-                            </VBox.margin>
-                        </JFXButton>
-                    </children>
-                </VBox>
-            </children>
-        </VBox>
-    </center>
-</BorderPane>
+        <VBox.margin>
+            <Insets bottom="10.0" top="10.0"/>
+        </VBox.margin>
+    </VBox>
+</SplitPane>

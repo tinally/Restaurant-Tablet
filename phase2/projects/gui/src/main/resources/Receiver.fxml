@@ -17,14 +17,14 @@
                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             </Label>
         </AnchorPane>
-        <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS">
+        <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS" editable="true">
             <columns>
                 <JFXTreeTableColumn text="Ingredient">
                     <cellValueFactory>
                         <TreeItemPropertyValueFactory property="ingredient"/>
                     </cellValueFactory>
                 </JFXTreeTableColumn>
-                <JFXTreeTableColumn text="Quantity">
+                <JFXTreeTableColumn text="Quantity" fx:id="quantityColumn">
                     <cellValueFactory>
                         <TreeItemPropertyValueFactory property="quantity"/>
                     </cellValueFactory>

@@ -63,7 +63,12 @@
         </Tab>
         <Tab text="Staff">
             <AnchorPane>
-                <fx:include source="CreateAccount.fxml"/>
+                <fx:include source="CreateAccount.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+            </AnchorPane>
+        </Tab>
+        <Tab text="Menu">
+            <AnchorPane>
+                <fx:include source="MenuItem.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
             </AnchorPane>
         </Tab>
     </JFXTabPane>

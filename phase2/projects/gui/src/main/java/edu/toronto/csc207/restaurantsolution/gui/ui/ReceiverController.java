@@ -1,6 +1,7 @@
 package edu.toronto.csc207.restaurantsolution.gui.ui;
 
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -14,6 +15,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.util.converter.IntegerStringConverter;
 
 import java.rmi.RemoteException;
 
@@ -21,6 +24,7 @@ import java.rmi.RemoteException;
  * Controller for the Receiver UI.
  */
 public class ReceiverController implements DataListener {
+  public JFXTreeTableColumn<IngredientMapping, Integer> quantityColumn;
   @FXML
   private JFXTextField name;
   @FXML
@@ -60,6 +64,16 @@ public class ReceiverController implements DataListener {
 
   @FXML
   public void initialize() {
+    quantityColumn.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn(new IntegerStringConverter()));
+    quantityColumn.setOnEditCommit(ingredientMappingIntegerCellEditEvent -> {
+      Integer newValue = ingredientMappingIntegerCellEditEvent.getNewValue();
+      Ingredient i = ingredientMappingIntegerCellEditEvent.getRowValue().valueProperty().get().ingredientProperty().get();
+      try {
+        manager.setIngredientCount(i, newValue);
+      } catch (RemoteException e) {
+        e.printStackTrace();
+      }
+    });
     update();
   }
 

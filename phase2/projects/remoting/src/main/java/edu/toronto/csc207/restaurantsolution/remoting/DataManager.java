@@ -40,6 +40,8 @@ public interface DataManager extends UpdateServer {
 
   void modifyOrder(Order order, OrderStatus newstatus) throws RemoteException;
 
+  void modifyMenuItem(MenuItem m) throws RemoteException;
+
   Order getOrder(UUID orderId) throws RemoteException;
 
   List<Order> getAllOrders() throws RemoteException;

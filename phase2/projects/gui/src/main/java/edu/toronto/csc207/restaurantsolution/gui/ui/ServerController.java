@@ -54,18 +54,20 @@ public class ServerController implements DataListener {
     try {
       ObservableList<MenuItem> menuItems = FXCollections.observableArrayList();
       // Only add items with adequate ingredients
-      for (MenuItem menuItem : manager.getAllMenuItems()) {
-        boolean addItem = true;
-        for (Ingredient ingredient : menuItem.getIngredientRequirements().keySet()) {
-          if (manager.getIngredientCount(ingredient) < menuItem.getIngredientRequirements().get(ingredient)) {
-            addItem = false;
+      List<MenuItem> availableItems =manager.getAllMenuItems().stream().filter(m -> {
+        for(Map.Entry<Ingredient, Integer> requirement : m.getIngredientRequirements().entrySet()) {
+          try {
+            if (manager.getIngredientCount(requirement.getKey()) < requirement.getValue()) {
+              return false;
+            }
+          } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
           }
         }
-
-        if (addItem) {
-          menuItems.add(menuItem);
-        }
-      }
+        return true;
+      }).collect(Collectors.toList());
+      menuItems.setAll(availableItems);
       menuList.setItems(menuItems);
 
       List<DeliverableOrderMapping> deliverableOrders = manager.getAllOrders().stream()
