@@ -16,3 +16,10 @@
   - Gradle build infrastructure and project organization.
   - Hooking up various JavaFX views with the backend API from "remoting".
   - UML diagram generation.
+
+# Nasir Hemed
+    - Created FXML files for Manager, MenuItem, Server, Receiver, Cashier, Chef, CreateAccount
+      and Login using JavaFX and SceneBuilder
+    - Initial controller classes for the GUIs.
+    - Implemented controller class for Login and CreateAccount
+    - Used regex pattern matcher in cases where a valid integer/name is required to be input.
