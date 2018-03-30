@@ -8,3 +8,11 @@
       ... errors are less frequent
     - Fixed issues with FXML files and enhanced the performance/look of UI
     - Refactored UI components, improved efficiency of data logic checks
+
+# Ronny Chan
+  - Initial UI design .
+  - SQLite database implementation (core/src/.../database), including unit test cases.
+  - Initial implementation of core JavaBean interfaces.
+  - Gradle build infrastructure and project organization.
+  - Hooking up various JavaFX views with the backend API from "remoting".
+  - UML diagram generation.

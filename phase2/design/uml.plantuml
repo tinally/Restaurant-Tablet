@@ -1,0 +1,514 @@
+
+@startuml
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+package edu.toronto.csc207.restaurantsolution.database {
+class AccountDatabase {
+	+ addPermission(String, String) : void
+	+ createAccount(String, String, String) : void
+	# createTable() : void
+	+ removePermission(String, String) : void
+	+ retrieveAccount(String) : UserAccount
+	+ verifyAccount(String, String) : boolean
+}
+class BillRecordDatabase {
+	- orderDatabase : OrderDatabase
+	+ addOrUpdateBill(BillRecord) : void
+	# createTable() : void
+	+ getBillRecord(UUID) : BillRecord
+	+ retrieveAllBills() : List<BillRecord>
+}
+class ConnectionConsumer {
+}
+class ConnectionFunction {
+}
+class IngredientDatabase {
+	# createTable() : void
+	+ getAllIngredient() : List<Ingredient>
+	+ getIngredient(String) : Ingredient
+	+ registerIngredient(Ingredient) : void
+}
+class InventoryDatabase {
+	# createTable() : void
+	+ getIngredientCount(Ingredient) : int
+	+ setIngredientCount(Ingredient, Integer) : void
+}
+class MenuItemDatabase {
+	# createTable() : void
+	+ getAllMenuItems() : List<MenuItem>
+	+ getMenuItem(String) : MenuItem
+	+ registerMenuItem(MenuItem) : void
+}
+class OrderDatabase {
+	- ingredientDatabase : IngredientDatabase
+	- menuItems : MenuItemDatabase
+	# createTable() : void
+	+ insertOrUpdateOrder(Order) : void
+	+ retrieveAllOrders() : List<Order>
+	+ retrieveOrder(UUID) : Order
+}
+class SqlLibrary {
+	- dataSource : DataSource
+	# createTable() : void
+	# executeQuery(ConnectionFunction<T>) : T
+	# executeUpdate(ConnectionConsumer) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.model.implementations {
+class BillRecordImpl {
+	- billID : UUID
+	- billedDate : Instant
+	- billedOrders : List<Order>
+	- chargedGratuity : Double
+	- chargedSubtotal : Double
+	- chargedTax : Double
+	- paidAmount : Double
+	+ getBillID() : UUID
+	+ getBilledDate() : Instant
+	+ getBilledOrders() : List<Order>
+	+ getChargedGratuity() : Double
+	+ getChargedSubtotal() : Double
+	+ getChargedTax() : Double
+	+ getPaidAmount() : Double
+	+ setBillID(UUID) : void
+	+ setBilledDate(Instant) : void
+	+ setBilledOrders(List<Order>) : void
+	+ setChargedGratuity(Double) : void
+	+ setChargedSubtotal(Double) : void
+	+ setChargedTax(Double) : void
+	+ setPaidAmount(Double) : void
+	+ toString() : String
+}
+class IngredientImpl {
+	- cost : Double
+	- defaultReorderAmount : Integer
+	- name : String
+	- pricing : Double
+	- reorderThreshold : Integer
+	+ equals(Object) : boolean
+	+ getCost() : Double
+	+ getDefaultReorderAmount() : Integer
+	+ getName() : String
+	+ getPricing() : Double
+	+ getReorderThreshold() : Integer
+	+ setCost(Double) : void
+	+ setDefaultReorderAmount(Integer) : void
+	+ setName(String) : void
+	+ setPricing(Double) : void
+	+ setReorderThreshold(Integer) : void
+	+ toString() : String
+}
+class MenuItemImpl {
+	- ingredientRequirements : Map<Ingredient,Integer>
+	- name : String
+	- price : Double
+	+ equals(Object) : boolean
+	+ getIngredientRequirements() : Map<Ingredient,Integer>
+	+ getName() : String
+	+ getPrice() : Double
+	+ setIngredientRequirements(Map<Ingredient,Integer>) : void
+	+ setName(String) : void
+	+ setPrice(Double) : void
+	+ toString() : String
+}
+class OrderImpl {
+	- additions : Map<Ingredient,Integer>
+	- creatingUser : String
+	- menuItem : MenuItem
+	- orderCost : Double
+	- orderDate : Instant
+	- orderId : UUID
+	- orderNumber : Integer
+	- orderStatus : OrderStatus
+	- removals : List<Ingredient>
+	- tableNumber : Integer
+	+ getAdditions() : Map<Ingredient,Integer>
+	+ getCreatingUser() : String
+	+ getMenuItem() : MenuItem
+	+ getOrderCost() : Double
+	+ getOrderID() : UUID
+	+ getOrderNumber() : Integer
+	+ getOrderStatus() : OrderStatus
+	+ getOrderTimestamp() : Instant
+	+ getRemovals() : List<Ingredient>
+	+ getTableNumber() : Integer
+	+ setAdditions(Map<Ingredient,Integer>) : void
+	+ setCreatingUser(String) : void
+	+ setMenuItem(MenuItem) : void
+	+ setOrderCost(Double) : void
+	+ setOrderDate(Instant) : void
+	+ setOrderId(UUID) : void
+	+ setOrderNumber(Integer) : void
+	+ setOrderStatus(OrderStatus) : void
+	+ setRemovals(List<Ingredient>) : void
+	+ setTableNumber(Integer) : void
+	+ toString() : String
+}
+class UserAccountImpl {
+	- displayName : String
+	- permissions : List<String>
+	- username : String
+	+ getDisplayName() : String
+	+ getPermissions() : List<String>
+	+ getUsername() : String
+	+ setDisplayName(String) : void
+	+ setPermissions(List<String>) : void
+	+ setUsername(String) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.gui {
+class MasterGUI {
+	+ main(String[]) : void
+	+ start(Stage) : void
+}
+class NetworkContainer {
+	+ dataManager : DataManager
+	+ dataService : DataService
+	+ getSavedNetwork() : boolean
+}
+}
+package edu.toronto.csc207.restaurantsolution.gui.ui {
+class CashierController {
+	+ billTextValue : TextArea
+	+ billableList : JFXListView<Order>
+	+ discountField : JFXTextField
+	- manager : DataManager
+	- orderCache : ObservableList<Order>
+	+ orderList : JFXListView<Order>
+	+ tableNumber : JFXComboBox<Integer>
+	+ tipField : JFXTextField
+	- getBillString() : String
+	+ initialize() : void
+	+ sendBill(ActionEvent) : void
+	- tableNumberChanged() : void
+	+ update() : void
+	- updateBillableList() : void
+	- updateTableOrders() : void
+}
+class ChefController {
+	- inProgressOrderList : JFXListView<Order>
+	- incomingOrderList : JFXListView<Order>
+	- itemDisplayIngredientList : JFXTreeTableView<IngredientMapping>
+	- itemDisplayTitle : Label
+	- manager : DataManager
+	- initialize() : void
+	- refreshOrderView(Order) : void
+	+ setSelectedOrderSeen() : void
+	+ update() : void
+}
+class CreateAccountController {
+	- cashierBox : JFXCheckBox
+	- chefBox : JFXCheckBox
+	- confirmButton : JFXButton
+	- confirmPassword : JFXPasswordField
+	- firstName : JFXTextField
+	- lastName : JFXTextField
+	- manager : DataManager
+	- managerBox : JFXCheckBox
+	- password : JFXPasswordField
+	- receiverBox : JFXCheckBox
+	- serverBox : JFXCheckBox
+	- username : JFXTextField
+	+ confirmAction() : void
+	- errorAlert(String) : void
+	- setEmptyAlerts() : boolean
+	- setRegexAlerts() : void
+}
+class DeliverableOrderMapping {
+	- menuItem : ObjectProperty<MenuItem>
+	- order : Order
+	- orderNumber : IntegerProperty
+	- tableNumber : IntegerProperty
+	+ getOrder() : Order
+	+ menuItemProperty() : ObjectProperty<MenuItem>
+	+ orderNumberProperty() : IntegerProperty
+	+ tableNumberProperty() : IntegerProperty
+}
+class IngredientMapping {
+	- ingredient : ObjectProperty<Ingredient>
+	- quantity : IntegerProperty
+	+ ingredientProperty() : ObjectProperty<Ingredient>
+	+ quantityProperty() : IntegerProperty
+}
+class LoginController {
+	- manager : DataManager
+	- password : JFXPasswordField
+	- username : JFXTextField
+	- activateMainView(UserAccount, ActionEvent) : void
+	- validateUser(ActionEvent) : void
+}
+class MainViewController {
+	- cashierTab : Tab
+	- chefTab : Tab
+	- loginTab : Tab
+	- mainPane : JFXTabPane
+	- managerTab : Tab
+	- menuTabs : Map<String,Tab>
+	- receiverTab : Tab
+	- serverTab : Tab
+	+ activateUser(UserAccount) : void
+	- initialize() : void
+}
+class ManagerController {
+	- billCache : ObservableList<BillRecord>
+	+ billDatePicker : JFXDatePicker
+	+ billDescription : TextArea
+	+ billList : JFXListView<BillRecord>
+	+ emailText : TextArea
+	- manager : DataManager
+	- orderCache : ObservableList<Order>
+	+ orderDescription : TextArea
+	+ orderList : JFXListView<Order>
+	+ orderStatusCombobox : JFXComboBox<OrderStatus>
+	+ initialize() : void
+	+ update() : void
+	- updateBillTextArea() : void
+	- updateEmail() : void
+	- updateOrderSummary() : void
+}
+class MenuItemController {
+	+ cost : JFXTextField
+	+ inventoryList : JFXListView<Ingredient>
+	+ inventoryQuantityColumn : JFXTreeTableColumn<IngredientMapping,Integer>
+	+ inventoryTable : JFXTreeTableView<IngredientMapping>
+	- manager : DataManager
+	+ name : JFXTextField
+	+ initialize() : void
+	+ update() : void
+	+ updateItem(ActionEvent) : void
+}
+class NetworkController {
+	- ip : JFXTextField
+	- activateLoginView(ActionEvent) : void
+	- connect(ActionEvent) : void
+}
+class ReceiverController {
+	- cost : JFXTextField
+	- inventoryTable : JFXTreeTableView<IngredientMapping>
+	- manager : DataManager
+	- name : JFXTextField
+	- pricing : JFXTextField
+	- quantity : JFXTextField
+	+ quantityColumn : JFXTreeTableColumn<IngredientMapping,Integer>
+	- reorderAmount : JFXTextField
+	- reorderThreshold : JFXTextField
+	+ initialize() : void
+	- resetTextFields() : void
+	+ update() : void
+	- updateItem() : void
+}
+class ServerController {
+	- additionsList : JFXListView<Ingredient>
+	- deletionsList : JFXListView<Ingredient>
+	- deliverableOrdersTable : JFXTreeTableView<DeliverableOrderMapping>
+	- manager : DataManager
+	- menuList : JFXListView<MenuItem>
+	- orderSummaryTextArea : TextArea
+	- tableNumberSelection : JFXComboBox<Integer>
+	+ confirmSelectedOrder() : void
+	- getOrderCost(MenuItem, List<Ingredient>) : Double
+	+ initialize() : void
+	+ rejectSelectedOrder() : void
+	+ sendNewOrder() : void
+	+ update() : void
+	- updateAdditionsAndDeletions(MenuItem) : void
+	- updateOrderSummary() : void
+}
+}
+package chef {
+class TestChefGUI {
+	+ main(String[]) : void
+	+ start(Stage) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.model.interfaces {
+class BillRecord {
+}
+class Ingredient {
+}
+class MenuItem {
+}
+class Order {
+}
+class UserAccount {
+}
+}
+package edu.toronto.csc207.restaurantsolution.remoting.client {
+class DataClient {
+	- listeners : ArrayList<DataListener>
+	- remoteInterface : UpdateServer
+	+ getRemoteInterface() : UpdateServer
+	+ registerListener(DataListener) : void
+	+ update() : void
+}
+class RemoteListener {
+}
+}
+package edu.toronto.csc207.restaurantsolution.remoting {
+class DataListener {
+}
+class DataManager {
+}
+class DataService {
+	- dataClient : DataClient
+	- dataManager : DataManager
+	+ getDataManager() : DataManager
+	+ registerListener(DataListener) : void
+}
+}
+package edu.toronto.csc207.restaurantsolution.remoting.server {
+class DataServer {
+	- accountDatabase : AccountDatabase
+	- billRecordDatabase : BillRecordDatabase
+	- ingredientDatabase : IngredientDatabase
+	- inventoryDatabase : InventoryDatabase
+	- listeners : ArrayList<RemoteListener>
+	- logger : InfoLogger
+	- menuItemDatabase : MenuItemDatabase
+	- orderDatabase : OrderDatabase
+	+ checkLogin(String, String) : boolean
+	+ createAccount(String, String, String, List<String>) : void
+	+ getAllBills() : List<BillRecord>
+	+ getAllIngredients() : List<Ingredient>
+	+ getAllMenuItems() : List<MenuItem>
+	+ getAllOrders() : List<Order>
+	+ getBillRecord(UUID) : BillRecord
+	+ getIngredientCount(Ingredient) : int
+	+ getIngredient(String) : Ingredient
+	+ getMenuItem(String) : MenuItem
+	+ getOrder(UUID) : Order
+	+ getUserAccount(String) : UserAccount
+	+ modifyBillRecord(BillRecord) : void
+	+ modifyMenuItem(MenuItem) : void
+	+ modifyOrder(Order) : void
+	+ modifyOrder(Order, OrderStatus) : void
+	+ registerIngredient(Ingredient) : void
+	+ registerListener(RemoteListener) : void
+	+ setIngredientCount(Ingredient, Integer) : void
+	+ updateListeners() : void
+}
+class InfoLogger {
+	- logger : Logger
+	+ printError(String) : void
+	+ printInfo(String) : void
+}
+class RemoteObjectBinder {
+	- logger : Logger
+	- port : int
+	- registry : Registry
+	+ bind(String, Remote) : void
+	+ unbind(String) : void
+}
+class ServerInfo {
+	+ name : String
+	+ port : int
+}
+class ServerLauncher {
+	+ main(String[]) : void
+}
+class UpdateServer {
+}
+}
+SqlLibrary <|-- AccountDatabase
+SqlLibrary <|-- BillRecordDatabase
+SqlLibrary <|-- IngredientDatabase
+SqlLibrary <|-- InventoryDatabase
+SqlLibrary <|-- MenuItemDatabase
+SqlLibrary <|-- OrderDatabase
+Application <|-- MasterGUI
+RecursiveTreeObject <|-- DeliverableOrderMapping
+RecursiveTreeObject <|-- IngredientMapping
+Application <|-- TestChefGUI
+UnicastRemoteObject <|-- DataClient
+BillRecord <|.. BillRecordImpl
+Ingredient <|.. IngredientImpl
+MenuItem <|.. MenuItemImpl
+Order <|.. OrderImpl
+UserAccount <|.. UserAccountImpl
+DataListener <|.. CashierController
+DataListener <|.. ChefController
+DataListener <|.. ManagerController
+DataListener <|.. MenuItemController
+DataListener <|.. ReceiverController
+DataListener <|.. ServerController
+RemoteListener <|.. DataClient
+DataManager <|.. DataServer
+ManagerController --> "1" ObservableList
+IngredientDatabase "1" <-- OrderDatabase
+BillRecordImpl --> "1" UUID
+DeliverableOrderMapping --> "1" ObjectProperty
+DataServer --> "1" InventoryDatabase
+DataClient --> "1" UpdateServer
+JFXTreeTableView "1" <-- ReceiverController
+DataManager "1" <-- DataService
+CreateAccountController --> "1" JFXTextField
+DeliverableOrderMapping --> "1" Order
+ServerController --> "1" TextArea
+DataManager "1" <-- ServerController
+ManagerController --> "1" ObservableList
+JFXTextField "1" <-- MenuItemController
+JFXDatePicker "1" <-- ManagerController
+CashierController --> "1" JFXListView
+MainViewController --> "1" Tab
+CashierController --> "1" DataManager
+ChefController --> "1" DataManager
+DataClient "1" <-- DataService
+DataServer --> "1" MenuItemDatabase
+JFXTreeTableColumn "1" <-- ReceiverController
+JFXListView "1" <-- ManagerController
+MenuItemDatabase "1" <-- OrderDatabase
+DataSource "1" <-- SqlLibrary
+CreateAccountController --> "1" JFXCheckBox
+JFXListView "1" <-- MenuItemController
+CreateAccountController --> "1" JFXPasswordField
+JFXComboBox "1" <-- ServerController
+JFXListView "1" <-- ManagerController
+OrderImpl --> "1" OrderStatus
+DataManager "1" <-- NetworkContainer
+JFXTreeTableView "1" <-- MenuItemController
+ChefController --> "1" JFXTreeTableView
+JFXTabPane "1" <-- MainViewController
+Registry "1" <-- RemoteObjectBinder
+BillRecordDatabase --> "1" OrderDatabase
+BillRecordImpl --> "*" Order
+DataManager "1" <-- ManagerController
+DataManager "1" <-- LoginController
+DataManager "1" <-- ReceiverController
+CashierController --> "1" JFXTextField
+JFXComboBox "1" <-- ManagerController
+JFXTreeTableView "1" <-- ServerController
+JFXListView "1" <-- ServerController
+JFXTextField "1" <-- LoginController
+InfoLogger --> "1" Logger
+BillRecordDatabase "1" <-- DataServer
+Ingredient "*" <-- OrderImpl
+JFXTreeTableColumn "1" <-- MenuItemController
+CashierController --> "1" ObservableList
+JFXListView "1" <-- ServerController
+CreateAccountController --> "1" JFXButton
+DataService "1" <-- NetworkContainer
+BillRecordImpl --> "1" Instant
+ChefController --> "1" Label
+CashierController --> "1" TextArea
+ManagerController --> "1" TextArea
+AccountDatabase "1" <-- DataServer
+CashierController --> "1" JFXComboBox
+ChefController --> "1" JFXListView
+IngredientMapping --> "1" ObjectProperty
+JFXPasswordField "1" <-- LoginController
+MenuItem "1" <-- OrderImpl
+JFXTextField "1" <-- ReceiverController
+DataManager "1" <-- MenuItemController
+CreateAccountController --> "1" DataManager
+Logger "1" <-- RemoteObjectBinder
+JFXTextField "1" <-- NetworkController
+DataServer --> "*" RemoteListener
+Instant "1" <-- OrderImpl
+DataServer --> "1" InfoLogger
+OrderImpl --> "1" UUID
+DataServer --> "1" OrderDatabase
+DataClient --> "*" DataListener
+DataServer --> "1" IngredientDatabase
+@enduml
