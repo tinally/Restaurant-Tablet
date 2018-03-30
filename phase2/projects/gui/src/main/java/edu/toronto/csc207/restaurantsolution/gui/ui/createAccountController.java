@@ -17,40 +17,29 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class CreateAccountController {
-
-  private final DataManager manager;
   @FXML
   private JFXTextField firstName;
-
   @FXML
   private JFXTextField username;
-
   @FXML
   private JFXCheckBox serverBox;
-
   @FXML
   private JFXCheckBox receiverBox;
-
   @FXML
   private JFXCheckBox chefBox;
-
   @FXML
   private JFXCheckBox cashierBox;
-
   @FXML
   private JFXTextField lastName;
-
   @FXML
   private JFXCheckBox managerBox;
-
   @FXML
   private JFXPasswordField password;
-
   @FXML
   private JFXPasswordField confirmPassword;
-
   @FXML
   private JFXButton confirmButton;
+  private final DataManager manager;
 
   public CreateAccountController() {
     this.manager = NetworkContainer.dataManager;
@@ -88,7 +77,7 @@ public class CreateAccountController {
       return true;
     }
     if (!(chefBox.isSelected() || receiverBox.isSelected() ||
-        managerBox.isSelected() || cashierBox.isSelected() || //TODO: clumsy conditional
+        managerBox.isSelected() || cashierBox.isSelected() ||
         serverBox.isSelected())) {
       errorAlert("Please choose at least one permission");
       return true;
@@ -143,6 +132,8 @@ public class CreateAccountController {
       alert.initOwner(rootWindow);
       alert.show();
     } catch (RemoteException e) {
+      // Let data server handle exception
+      throw new RuntimeException(e);
     }
   }
 
