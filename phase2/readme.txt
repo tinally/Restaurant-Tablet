@@ -1,9 +1,11 @@
 # Group 0437
 
-* THE DEFAULT LOGIN IS admin/admin *
+Everything is located under the "projects" directory.
+Gradle should take care of everything.
 
 First run ServerLauncher.
 Then, at the same time, run MasterGUI.
+* THE DEFAULT LOGIN IS admin/admin *
 More details below.
 
 ## NOTE:
