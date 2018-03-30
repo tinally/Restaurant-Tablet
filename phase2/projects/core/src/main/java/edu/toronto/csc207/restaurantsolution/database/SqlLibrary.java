@@ -8,13 +8,13 @@ public abstract class SqlLibrary {
 
   private final DataSource dataSource;
 
-  protected SqlLibrary(DataSource dataSource) {
+  SqlLibrary(DataSource dataSource) {
     this.dataSource = dataSource;
   }
 
   protected abstract void createTable();
 
-  protected final void executeUpdate(ConnectionConsumer connectionExecutable) {
+  final void executeUpdate(ConnectionConsumer connectionExecutable) {
     Connection connection = null;
     try {
       connection = dataSource.getConnection();
@@ -29,12 +29,11 @@ public abstract class SqlLibrary {
       } catch (SQLException e) {
         // connection close failed.
         e.printStackTrace();
-        System.err.println(e);
       }
     }
   }
 
-  protected final <T> T executeQuery(ConnectionFunction<T> connectionExecutable) {
+  final <T> T executeQuery(ConnectionFunction<T> connectionExecutable) {
     Connection connection = null;
     try {
       connection = dataSource.getConnection();
@@ -49,7 +48,7 @@ public abstract class SqlLibrary {
         }
       } catch (SQLException e) {
         // connection close failed.
-        System.err.println(e);
+        e.printStackTrace();
       }
     }
     return null;

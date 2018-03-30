@@ -18,7 +18,6 @@ public final class RemoteObjectBinder {
   /** The RMI registry. */
   private Registry registry;
   private int port;
-  private Logger logger;
 
   /**
    * Constructs a new remote object binder on the local host.
@@ -28,7 +27,6 @@ public final class RemoteObjectBinder {
   public RemoteObjectBinder(int port) throws RemoteException {
     this.port = port;
     registry = LocateRegistry.createRegistry(port);
-    logger = Logger.getLogger("RemoteObjectBinder");
   }
 
   /**
