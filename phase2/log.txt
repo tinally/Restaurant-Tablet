@@ -1,0 +1,46 @@
+Mar 29, 2018 9:44:12 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 100
+Mar 29, 2018 9:44:22 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Beef Patties was set to 57
+Mar 29, 2018 9:44:33 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese Slices was set to 13
+Mar 29, 2018 9:44:45 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomatoes was set to 36
+Mar 29, 2018 9:44:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bread was set to 55
+Mar 29, 2018 9:45:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 117
+Mar 29, 2018 9:45:45 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 157
+Mar 29, 2018 9:45:53 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 36
+Mar 29, 2018 9:46:02 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 14
+Mar 29, 2018 9:46:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 65
+Mar 29, 2018 9:46:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 17
+Mar 29, 2018 9:46:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 0
+Mar 29, 2018 9:46:39 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 93
+Mar 29, 2018 9:47:49 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was CREATED
+Mar 29, 2018 9:47:56 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was SEEN
+Mar 29, 2018 9:48:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 13
+Mar 29, 2018 9:48:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 16
+Mar 29, 2018 9:48:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 64
+Mar 29, 2018 9:48:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 156
+Mar 29, 2018 9:48:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was FILLED
+Mar 29, 2018 9:48:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was DELIVERED
+Mar 29, 2018 9:48:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was PAID
+Mar 29, 2018 9:48:46 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of French Fries was set to 0
