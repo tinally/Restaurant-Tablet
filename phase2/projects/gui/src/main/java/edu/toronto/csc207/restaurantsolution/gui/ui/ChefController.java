@@ -86,15 +86,16 @@ public class ChefController implements DataListener {
     });
   }
 
-  private void refreshOrderView(Order o) {
-    // TODO: Change to subtract/add for removals/additions
+  private void refreshOrderView(Order order) {
     ObservableList<IngredientMapping> ingredients = FXCollections.observableArrayList();
-    if (o != null) {
-      itemDisplayTitle.setText(o.getMenuItem().getName());
-      for (Map.Entry<Ingredient, Integer> entry : o.getMenuItem().getIngredientRequirements().entrySet()) {
-        ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
+    if (order != null) {
+      itemDisplayTitle.setText(order.getMenuItem().getName());
+      for (Map.Entry<Ingredient, Integer> entry : order.getMenuItem().getIngredientRequirements().entrySet()) {
+        if (!order.getRemovals().contains(entry.getKey())) {
+          ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
+        }
       }
-      for (Map.Entry<Ingredient, Integer> entry : o.getAdditions().entrySet()) {
+      for (Map.Entry<Ingredient, Integer> entry : order.getAdditions().entrySet()) {
         ingredients.add(new IngredientMapping(entry.getKey(), entry.getValue()));
       }
     }

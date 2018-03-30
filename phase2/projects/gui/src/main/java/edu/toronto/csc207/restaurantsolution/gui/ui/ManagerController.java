@@ -127,8 +127,6 @@ public class ManagerController implements DataListener {
 
   private void updateBillTextArea() {
     BillRecord billRecord = this.billList.getSelectionModel().getSelectedItem();
-    String intRegex = "\\d+";
-    String doubleRegex = "\\d+(\\.\\d+)?";
     StringBuilder bill = new StringBuilder();
 
     bill.append("Restaurant Name")

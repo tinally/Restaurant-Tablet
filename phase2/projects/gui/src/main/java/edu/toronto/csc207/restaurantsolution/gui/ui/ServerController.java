@@ -129,16 +129,14 @@ public class ServerController implements DataListener {
       order.setOrderNumber(new Random().nextInt(10000));
       order.setOrderStatus(OrderStatus.CREATED);
       order.setOrderId(UUID.randomUUID());
-      order.setMenuItem(menuList.getSelectionModel().getSelectedItem());
+      order.setMenuItem(menuItem);
       order.setTableNumber(tableNumberSelection.getValue());
       order.setOrderDate(Instant.now());
 
       HashMap<Ingredient, Integer> additionsMap = new HashMap<>();
-      if (additions != null) {
-        order.setOrderCost(getOrderCost(menuItem, additions));
-        for (Ingredient i : additions) {
-          additionsMap.put(i, 1);
-        }
+      order.setOrderCost(getOrderCost(menuItem, additions));
+      for (Ingredient i : additions) {
+        additionsMap.put(i, 1);
       }
       order.setAdditions(additionsMap);
       order.setCreatingUser("system");
@@ -151,7 +149,7 @@ public class ServerController implements DataListener {
   /**
    * Gets the order cost with specific ingredient additions.
    *
-   * @param m the menu item.
+   * @param m         the menu item.
    * @param additions the extra ingredients.
    * @return the new order cost.
    */

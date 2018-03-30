@@ -82,19 +82,21 @@ public class MenuItemController implements DataListener {
     MenuItemImpl menuItem = new MenuItemImpl();
     Double price;
     try {
-      price = Double.parseDouble(this.cost.getText());
+      price = Double.parseDouble(cost.getText());
     } catch (NumberFormatException e) {
       price = 0d;
     }
 
     menuItem.setPrice(price);
-    menuItem.setName(this.name.getText());
+    menuItem.setName(name.getText());
     HashMap<Ingredient, Integer> requirements = new HashMap<Ingredient, Integer>();
     for (TreeItem<IngredientMapping> i : this.inventoryTable.getRoot().getChildren()) {
       requirements.put(i.valueProperty().get().ingredientProperty().get(),
           i.valueProperty().get().quantityProperty().get());
     }
     menuItem.setIngredientRequirements(requirements);
+    name.setText("");
+    cost.setText("");
     try {
       manager.modifyMenuItem(menuItem);
     } catch (RemoteException e) {
