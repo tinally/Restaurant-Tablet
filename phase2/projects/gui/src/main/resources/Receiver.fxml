@@ -56,7 +56,7 @@
         </JFXTextField>
         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
                    onAction="#updateItem" style="-fx-background-color: WHITE;"
-                   text="Update Ingredient"
+                   text="Add Ingredient"
                    textAlignment="CENTER">
         </JFXButton>
         <VBox.margin>

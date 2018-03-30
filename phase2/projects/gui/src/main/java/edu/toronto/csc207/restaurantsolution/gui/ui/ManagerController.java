@@ -97,7 +97,8 @@ public class ManagerController implements DataListener {
       }
       this.emailText.setText(emailBuilder.toString());
     }catch(RemoteException e) {
-
+      // Let data server handle exception
+      throw new RuntimeException(e);
     }
   }
 
