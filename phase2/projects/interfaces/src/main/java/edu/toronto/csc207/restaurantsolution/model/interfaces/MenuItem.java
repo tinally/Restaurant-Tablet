@@ -28,6 +28,13 @@ public interface MenuItem extends Serializable {
      */
     Map<Ingredient, Integer> getIngredientRequirements();
 
+  /**
+   * Sets the required ingredients of this menu item.
+   *
+   * @param ingredientRequirements a map of the required ingredients.
+   */
+  void setIngredientRequirements(Map<Ingredient, Integer> ingredientRequirements);
+
     /**
      * Checks whether m is the same MenuItem as this.
      *

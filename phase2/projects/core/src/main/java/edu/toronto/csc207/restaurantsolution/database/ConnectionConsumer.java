@@ -5,5 +5,5 @@ import java.sql.SQLException;
 
 @FunctionalInterface
 public interface ConnectionConsumer {
-  public void accept(Connection connection) throws SQLException;
+  void accept(Connection connection) throws SQLException;
 }

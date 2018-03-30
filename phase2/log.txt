@@ -142,3 +142,23 @@ INFO: Inventory of Test was set to 10
 Mar 29, 2018 8:06:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
 SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 169.254.230.206; nested exception is: 
 	java.net.ConnectException: Connection refused: connect
+Mar 29, 2018 8:10:15 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0571bbd1-0f82-407f-ad1c-999aa9b628ee was CREATED
+Mar 29, 2018 8:11:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Blah was set to 123
+Mar 29, 2018 8:11:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Help was set to 12
+Mar 29, 2018 8:11:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 0
+Mar 29, 2018 8:11:32 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Woohoo was set to 0
+Mar 29, 2018 8:11:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 0
+Mar 29, 2018 8:11:39 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 0
+Mar 29, 2018 8:12:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient was set to 1
+Mar 29, 2018 8:15:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Test Ingredient Two was set to 2
+Mar 29, 2018 8:15:47 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was PAID

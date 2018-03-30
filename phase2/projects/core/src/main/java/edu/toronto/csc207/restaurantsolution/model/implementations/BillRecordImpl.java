@@ -6,8 +6,6 @@ import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,38 +27,13 @@ public class BillRecordImpl implements BillRecord {
   }
 
   @Override
-  public List<Order> getBilledOrders() {
-    return this.billedOrders;
-  }
-
-  @Override
-  public Double getChargedSubtotal() {
-    return this.chargedSubtotal;
-  }
-
-  @Override
-  public Double getChargedTax() {
-    return this.chargedTax;
-  }
-
-  @Override
-  public Double getChargedGratuity() {
-    return this.chargedGratuity;
-  }
-
-  @Override
-  public Double getPaidAmount() {
-    return this.paidAmount;
-  }
-
-  @Override
-  public Instant getBilledDate() {
-    return this.billedDate;
-  }
-
-  @Override
   public void setBillID(UUID billID) {
     this.billID = billID;
+  }
+
+  @Override
+  public List<Order> getBilledOrders() {
+    return this.billedOrders;
   }
 
   @Override
@@ -69,8 +42,18 @@ public class BillRecordImpl implements BillRecord {
   }
 
   @Override
+  public Double getChargedSubtotal() {
+    return this.chargedSubtotal;
+  }
+
+  @Override
   public void setChargedSubtotal(Double chargedSubtotal) {
     this.chargedSubtotal = chargedSubtotal;
+  }
+
+  @Override
+  public Double getChargedTax() {
+    return this.chargedTax;
   }
 
   @Override
@@ -79,13 +62,28 @@ public class BillRecordImpl implements BillRecord {
   }
 
   @Override
+  public Double getChargedGratuity() {
+    return this.chargedGratuity;
+  }
+
+  @Override
   public void setChargedGratuity(Double chargedGratuity) {
     this.chargedGratuity = chargedGratuity;
   }
 
   @Override
+  public Double getPaidAmount() {
+    return this.paidAmount;
+  }
+
+  @Override
   public void setPaidAmount(Double paidAmount) {
     this.paidAmount = paidAmount;
+  }
+
+  @Override
+  public Instant getBilledDate() {
+    return this.billedDate;
   }
 
   @Override
@@ -96,6 +94,6 @@ public class BillRecordImpl implements BillRecord {
   @Override
   public String toString() {
     return LocalDateTime.ofInstant(this.getBilledDate(), ZoneId.systemDefault())
-        .toLocalDate().toString() + " " +getPaidAmount();
+        .toLocalDate().toString() + " " + getPaidAmount();
   }
 }

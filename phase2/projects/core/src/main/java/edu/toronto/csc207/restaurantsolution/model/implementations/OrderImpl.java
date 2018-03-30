@@ -26,7 +26,6 @@ public class OrderImpl implements Order {
   private OrderStatus orderStatus;
 
   public OrderImpl() {
-
   }
 
   @Deprecated
@@ -49,8 +48,18 @@ public class OrderImpl implements Order {
   }
 
   @Override
+  public void setTableNumber(Integer tableNumber) {
+    this.tableNumber = tableNumber;
+  }
+
+  @Override
   public Integer getOrderNumber() {
     return this.orderNumber;
+  }
+
+  @Override
+  public void setOrderNumber(Integer orderNumber) {
+    this.orderNumber = orderNumber;
   }
 
   @Override
@@ -59,8 +68,18 @@ public class OrderImpl implements Order {
   }
 
   @Override
+  public void setMenuItem(MenuItem menuItem) {
+    this.menuItem = menuItem;
+  }
+
+  @Override
   public List<Ingredient> getRemovals() {
     return this.removals;
+  }
+
+  @Override
+  public void setRemovals(List<Ingredient> removals) {
+    this.removals = removals;
   }
 
   @Override
@@ -69,8 +88,18 @@ public class OrderImpl implements Order {
   }
 
   @Override
+  public void setAdditions(Map<Ingredient, Integer> additions) {
+    this.additions = additions;
+  }
+
+  @Override
   public Double getOrderCost() {
     return this.orderCost;
+  }
+
+  @Override
+  public void setOrderCost(Double orderCost) {
+    this.orderCost = orderCost;
   }
 
   @Override
@@ -84,8 +113,18 @@ public class OrderImpl implements Order {
   }
 
   @Override
+  public void setCreatingUser(String creatingUser) {
+    this.creatingUser = creatingUser;
+  }
+
+  @Override
   public OrderStatus getOrderStatus() {
     return this.orderStatus;
+  }
+
+  @Override
+  public void setOrderStatus(OrderStatus orderStatus) {
+    this.orderStatus = orderStatus;
   }
 
   @Override
@@ -94,48 +133,8 @@ public class OrderImpl implements Order {
   }
 
   @Override
-  public void setTableNumber(Integer tableNumber) {
-    this.tableNumber = tableNumber;
-  }
-
-  @Override
-  public void setOrderNumber(Integer orderNumber) {
-    this.orderNumber = orderNumber;
-  }
-
-  @Override
-  public void setMenuItem(MenuItem menuItem) {
-    this.menuItem = menuItem;
-  }
-
-  @Override
-  public void setOrderCost(Double orderCost) {
-    this.orderCost = orderCost;
-  }
-
-  @Override
   public void setOrderDate(Instant orderDate) {
     this.orderDate = orderDate;
-  }
-
-  @Override
-  public void setRemovals(List<Ingredient> removals) {
-    this.removals = removals;
-  }
-
-  @Override
-  public void setAdditions(Map<Ingredient, Integer> additions) {
-    this.additions = additions;
-  }
-
-  @Override
-  public void setCreatingUser(String creatingUser) {
-    this.creatingUser = creatingUser;
-  }
-
-  @Override
-  public void setOrderStatus(OrderStatus orderStatus) {
-    this.orderStatus = orderStatus;
   }
 
   @Override

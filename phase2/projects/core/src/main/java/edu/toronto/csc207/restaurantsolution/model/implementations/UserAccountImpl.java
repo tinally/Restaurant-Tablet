@@ -18,13 +18,13 @@ public class UserAccountImpl implements UserAccount {
   }
 
   @Override
-  public String getUsername() {
-    return this.username;
+  public void setPermissions(List<String> permissions) {
+    this.permissions = permissions;
   }
 
   @Override
-  public String getDisplayName() {
-    return this.displayName;
+  public String getUsername() {
+    return this.username;
   }
 
   @Override
@@ -33,8 +33,8 @@ public class UserAccountImpl implements UserAccount {
   }
 
   @Override
-  public void setPermissions(List<String> permissions) {
-    this.permissions = permissions;
+  public String getDisplayName() {
+    return this.displayName;
   }
 
   @Override
