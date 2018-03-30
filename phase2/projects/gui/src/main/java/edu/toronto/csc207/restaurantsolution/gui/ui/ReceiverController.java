@@ -70,7 +70,8 @@ public class ReceiverController implements DataListener {
       try {
         manager.setIngredientCount(i, newValue);
       } catch (RemoteException e) {
-        e.printStackTrace();
+        // Let data server handle exception
+        throw new RuntimeException(e);
       }
     });
     update();
@@ -149,8 +150,11 @@ public class ReceiverController implements DataListener {
 
         manager.setIngredientCount(ingredient, quantityValue);
         manager.registerIngredient(ingredient);
-      } catch (NumberFormatException | RemoteException e) {
+      } catch (NumberFormatException e) {
         resetTextFields();
+      } catch (RemoteException e) {
+        // Let data server handle exception
+        throw new RuntimeException(e);
       }
     }
   }

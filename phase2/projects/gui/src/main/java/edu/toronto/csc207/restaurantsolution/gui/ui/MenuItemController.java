@@ -22,16 +22,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MenuItemController implements DataListener {
-
-  private final DataManager manager;
+  @FXML
   public JFXListView<Ingredient> inventoryList;
+  @FXML
   public JFXTreeTableView<IngredientMapping> inventoryTable;
+  @FXML
   public JFXTreeTableColumn<IngredientMapping, Integer> inventoryQuantityColumn;
+  @FXML
   public JFXTextField name;
+  @FXML
   public JFXTextField cost;
+  @FXML
+  private final DataManager manager;
 
   public MenuItemController() {
-
     manager = NetworkContainer.dataManager;
     NetworkContainer.dataService.registerListener(this);
   }
@@ -69,17 +73,18 @@ public class MenuItemController implements DataListener {
       List<Ingredient> ingredients = this.manager.getAllIngredients();
       this.inventoryList.setItems(FXCollections.observableArrayList(ingredients));
     } catch (RemoteException e) {
-      e.printStackTrace();
+      // Let data server handle exception
+      throw new RuntimeException(e);
     }
   }
 
-  public void updateItem(ActionEvent actionEvent) {
+  public void updateItem() {
     MenuItemImpl menuItem = new MenuItemImpl();
-    Double price = 0d;
+    Double price;
     try {
       price = Double.parseDouble(this.cost.getText());
     } catch (NumberFormatException e) {
-
+      price = 0d;
     }
 
     menuItem.setPrice(price);
@@ -93,7 +98,8 @@ public class MenuItemController implements DataListener {
     try {
       manager.modifyMenuItem(menuItem);
     } catch (RemoteException e) {
-      e.printStackTrace();
+      // Let data server handle exception
+      throw new RuntimeException(e);
     }
   }
 }

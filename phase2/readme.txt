@@ -1,5 +1,11 @@
 # Group 0437
 
+* THE DEFAULT LOGIN IS admin/admin *
+
+First run ServerLauncher.
+Then, at the same time, run MasterGUI.
+More details below.
+
 ## NOTE:
 
 This project uses Java RMI (Remote Method Invocation) since it is a distributed application.

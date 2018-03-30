@@ -15,7 +15,7 @@
                 <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
                            AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                     <VBox>
-                        <JFXComboBox fx:id="orderStatusCombobox">
+                        <JFXComboBox fx:id="orderStatusComboBox">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <OrderStatus fx:value="FILLED"/>

@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
  * Controls the Server graphics user interface.
  */
 public class ServerController implements DataListener {
-  private final DataManager manager;
   @FXML
   TextArea orderSummaryTextArea;
   @FXML
@@ -42,6 +41,7 @@ public class ServerController implements DataListener {
   JFXListView<Ingredient> additionsList;
   @FXML
   JFXTreeTableView<DeliverableOrderMapping> deliverableOrdersTable;
+  private final DataManager manager;
 
   public ServerController() {
     manager = NetworkContainer.dataManager;
@@ -120,7 +120,6 @@ public class ServerController implements DataListener {
   }
 
   public void sendNewOrder() throws RemoteException {
-    // TODO: Change to Order / add all to interface
     Order order = new OrderImpl();
 
     MenuItem menuItem = menuList.getSelectionModel().getSelectedItem();
@@ -143,12 +142,19 @@ public class ServerController implements DataListener {
       }
       order.setAdditions(additionsMap);
       order.setCreatingUser("system");
-      order.setRemovals(new ArrayList<>(this.deletionsList.getSelectionModel().getSelectedItems()));
+      order.setRemovals(new ArrayList<>(deletionsList.getSelectionModel().getSelectedItems()));
 
       manager.modifyOrder(order);
     }
   }
 
+  /**
+   * Gets the order cost with specific ingredient additions.
+   *
+   * @param m the menu item.
+   * @param additions the extra ingredients.
+   * @return the new order cost.
+   */
   private Double getOrderCost(MenuItem m, List<Ingredient> additions) {
     double sum = m.getPrice();
     for (Ingredient ingredient : additions)

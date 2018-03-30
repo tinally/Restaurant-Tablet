@@ -23,13 +23,19 @@ import java.util.stream.Collectors;
  * Controls the Manager graphics user interface.
  */
 public class ManagerController implements DataListener {
-
+  @FXML
   public TextArea orderDescription;
+  @FXML
   public JFXListView<Order> orderList;
+  @FXML
   public JFXListView<BillRecord> billList;
-  public JFXComboBox<OrderStatus> orderStatusCombobox;
+  @FXML
+  public JFXComboBox<OrderStatus> orderStatusComboBox;
+  @FXML
   public TextArea billDescription;
+  @FXML
   public TextArea emailText;
+  @FXML
   public JFXDatePicker billDatePicker;
 
   private ObservableList<Order> orderCache = FXCollections.observableArrayList();
@@ -59,9 +65,9 @@ public class ManagerController implements DataListener {
     this.orderCache.addListener((ListChangeListener<? super Order>) e -> {
 
     });
-    this.orderStatusCombobox.getSelectionModel().selectedItemProperty().addListener(e -> {
+    this.orderStatusComboBox.getSelectionModel().selectedItemProperty().addListener(e -> {
       this.orderList.setItems(FXCollections.observableArrayList(this.orderCache.stream()
-          .filter(o -> o.getOrderStatus() == this.orderStatusCombobox.getValue()).collect(Collectors.toList())));
+          .filter(o -> o.getOrderStatus() == this.orderStatusComboBox.getValue()).collect(Collectors.toList())));
     });
     this.billDatePicker.valueProperty().addListener(e -> {
       this.billList.setItems(FXCollections.observableArrayList(this.billCache.stream()
