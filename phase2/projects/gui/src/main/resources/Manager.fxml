@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextArea?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-
-<?import javafx.scene.layout.AnchorPane?>
-<?import com.jfoenix.controls.JFXTabPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TextArea?>
-<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.*?>
+<?import edu.toronto.csc207.restaurantsolution.model.interfaces.*?>
 <?import javafx.collections.FXCollections?>
-<?import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus?>
-<?import com.jfoenix.controls.JFXDatePicker?>
-<AnchorPane style="-fx-background-color: #f06292;" stylesheets="Style.css"
-            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: #f06292;"
+            stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
             fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.ManagerController">
-    <JFXTabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+    <JFXTabPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                AnchorPane.topAnchor="0">
         <Tab text="Orders">
             <AnchorPane>
-                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                           AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                     <VBox>
                         <JFXComboBox fx:id="orderStatusCombobox">
                             <items>
@@ -47,7 +36,8 @@
         </Tab>
         <Tab text="Bills">
             <AnchorPane>
-                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                <SplitPane AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                           AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
                     <VBox>
                         <JFXDatePicker fx:id="billDatePicker"/>
                         <JFXListView fx:id="billList" VBox.vgrow="ALWAYS"/>
@@ -58,17 +48,22 @@
         </Tab>
         <Tab text="Emails">
             <AnchorPane>
-                <TextArea fx:id="emailText" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+                <TextArea fx:id="emailText" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
+                          AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
             </AnchorPane>
         </Tab>
         <Tab text="Staff">
             <AnchorPane>
-                <fx:include source="CreateAccount.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+                <fx:include source="CreateAccount.fxml" AnchorPane.bottomAnchor="0"
+                            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                            AnchorPane.topAnchor="0"/>
             </AnchorPane>
         </Tab>
         <Tab text="Menu">
             <AnchorPane>
-                <fx:include source="MenuItem.fxml" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+                <fx:include source="MenuItem.fxml" AnchorPane.bottomAnchor="0"
+                            AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                            AnchorPane.topAnchor="0"/>
             </AnchorPane>
         </Tab>
     </JFXTabPane>

@@ -3,7 +3,6 @@ package edu.toronto.csc207.restaurantsolution.remoting.server;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 
 import java.rmi.RemoteException;
-import java.util.logging.*;
 
 /**
  * Launches a centralized RMI server for distributed client synchronization.

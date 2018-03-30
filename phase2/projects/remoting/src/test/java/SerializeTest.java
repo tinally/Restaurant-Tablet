@@ -2,9 +2,7 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import edu.toronto.csc207.restaurantsolution.remoting.DataService;
 import org.junit.jupiter.api.Test;
 
-import java.rmi.RemoteException;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SerializeTest {
   @Test

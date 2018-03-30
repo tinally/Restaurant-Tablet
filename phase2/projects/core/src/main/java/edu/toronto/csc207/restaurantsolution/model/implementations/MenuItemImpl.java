@@ -13,7 +13,8 @@ public class MenuItemImpl implements MenuItem {
   private Double price;
   private Map<Ingredient, Integer> ingredientRequirements;
 
-  public MenuItemImpl() {}
+  public MenuItemImpl() {
+  }
 
   public MenuItemImpl(String name, Map<Ingredient, Integer> ingredients, double price) {
     this.setName(name);

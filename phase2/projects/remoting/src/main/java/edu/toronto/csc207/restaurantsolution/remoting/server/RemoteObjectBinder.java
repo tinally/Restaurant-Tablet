@@ -6,11 +6,10 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.logging.*;
 
 /**
  * Binds remote objects to a network socket using Java RMI.
- *
+ * <p>
  * This class should only be instantiated once in any given JVM to avoid socket binding
  * conflicts.
  */
@@ -32,7 +31,7 @@ public final class RemoteObjectBinder {
   /**
    * Binds a remote object with a readable name on the local host.
    *
-   * @param name the name for RMI lookup of the bound object.
+   * @param name   the name for RMI lookup of the bound object.
    * @param object the remote object to be bound.
    */
   public void bind(String name, Remote object) throws RemoteException {
@@ -46,6 +45,6 @@ public final class RemoteObjectBinder {
    * @param name the name of the object to be released.
    */
   public void unbind(String name) throws RemoteException, NotBoundException {
-      registry.unbind(name);
+    registry.unbind(name);
   }
 }

@@ -6,8 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import java.lang.*?>
-<AnchorPane prefHeight="500.0" prefWidth="710.0" stylesheets="Style.css"
-            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="500.0" prefWidth="710.0"
+            stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
             fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.CashierController">
     <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"
                AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">

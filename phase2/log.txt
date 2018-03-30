@@ -162,3 +162,11 @@ Mar 29, 2018 8:15:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Inventory of Test Ingredient Two was set to 2
 Mar 29, 2018 8:15:47 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order 72ac5181-ed48-4e5a-bfcb-e1c490596bf8 was PAID
+Mar 29, 2018 8:30:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 2c0d1557-4910-4107-b18f-ca9dca1fc5b8 was CREATED
+Mar 29, 2018 8:30:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 0571bbd1-0f82-407f-ad1c-999aa9b628ee was SEEN
+Mar 29, 2018 8:30:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 8e0df17a-6b65-443e-9dba-f697061701bd was CREATED
+Mar 29, 2018 8:30:49 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 8e0df17a-6b65-443e-9dba-f697061701bd was SEEN

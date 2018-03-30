@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
 
 /**
  * Utility for maintaining network connection over multiple threads and configuring network
@@ -25,7 +24,7 @@ public class NetworkContainer {
    * Retrieves the hostname for the RMI server from a file and initializes remote data manager.
    *
    * @return true if the network configuration file was successfully read and contained a usable
-   *         host
+   * host
    */
   public static boolean getSavedNetwork() {
     try {

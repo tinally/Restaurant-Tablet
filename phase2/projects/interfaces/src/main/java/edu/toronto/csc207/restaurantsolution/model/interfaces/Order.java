@@ -24,12 +24,16 @@ public interface Order extends Serializable {
    */
   Integer getTableNumber();
 
+  void setTableNumber(Integer tableNumber);
+
   /**
    * Returns the order number of this Order.
    *
    * @return the order number of this Order
    */
   Integer getOrderNumber();
+
+  void setOrderNumber(Integer orderNumber);
 
   /**
    * Return the MenuItem corresponding to this Order.
@@ -38,12 +42,16 @@ public interface Order extends Serializable {
    */
   MenuItem getMenuItem();
 
+  void setMenuItem(MenuItem menuItem);
+
   /**
    * Returns the list of Ingredients needed for this Order.
    *
    * @return the list of Ingredients
    */
   List<Ingredient> getRemovals();
+
+  void setRemovals(List<Ingredient> removals);
 
   /**
    * Returns the map of Ingredients added with the corresponding amount.
@@ -52,12 +60,16 @@ public interface Order extends Serializable {
    */
   Map<Ingredient, Integer> getAdditions();
 
+  void setAdditions(Map<Ingredient, Integer> additions);
+
   /**
    * Returns the cost of this Order.
    *
    * @return the cost of this Order
    */
   Double getOrderCost();
+
+  void setOrderCost(Double orderCost);
 
   /**
    * Returns the time the Order was created.
@@ -73,6 +85,8 @@ public interface Order extends Serializable {
    */
   String getCreatingUser();
 
+  void setCreatingUser(String creatingUser);
+
   /**
    * Gets the status of the Order
    *
@@ -80,23 +94,9 @@ public interface Order extends Serializable {
    */
   OrderStatus getOrderStatus();
 
+  void setOrderStatus(OrderStatus orderStatus);
+
   void setOrderId(UUID orderId);
 
-  void setTableNumber(Integer tableNumber);
-
-  void setOrderNumber(Integer orderNumber);
-
-  void setMenuItem(MenuItem menuItem);
-
-  void setOrderCost(Double orderCost);
-
   void setOrderDate(Instant orderDate);
-
-  void setRemovals(List<Ingredient> removals);
-
-  void setAdditions(Map<Ingredient, Integer> additions);
-
-  void setCreatingUser(String creatingUser);
-
-  void setOrderStatus(OrderStatus orderStatus);
 }

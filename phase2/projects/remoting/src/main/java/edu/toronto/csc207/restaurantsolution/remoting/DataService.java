@@ -20,7 +20,7 @@ public final class DataService {
    * Constructs a new data service.
    *
    * @param host the host of the server from which to obtain the remote data manager.
-   * @throws RemoteException if a network error occurs.
+   * @throws RemoteException   if a network error occurs.
    * @throws NotBoundException if the remote data manager is not bound on the specified host.
    */
   public DataService(String host) throws RemoteException, NotBoundException {

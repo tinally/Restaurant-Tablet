@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
-import edu.toronto.csc207.restaurantsolution.gui.ui.IngredientMapping;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.OrderStatus;

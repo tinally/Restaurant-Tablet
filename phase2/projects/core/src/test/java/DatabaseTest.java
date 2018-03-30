@@ -1,10 +1,9 @@
 import edu.toronto.csc207.restaurantsolution.database.*;
 import edu.toronto.csc207.restaurantsolution.model.implementations.BillRecordImpl;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
-import edu.toronto.csc207.restaurantsolution.model.interfaces.Order;
 import edu.toronto.csc207.restaurantsolution.model.implementations.IngredientImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.MenuItemImpl;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
+import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import org.junit.jupiter.api.Test;
 import org.sqlite.SQLiteDataSource;
 

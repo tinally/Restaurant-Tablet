@@ -17,7 +17,6 @@ import java.rmi.RemoteException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -84,7 +83,7 @@ public class ManagerController implements DataListener {
   private void updateEmail() {
     StringBuilder emailBuilder = new StringBuilder();
     emailBuilder.append("Please deliver the following ingredients.")
-    .append(System.lineSeparator());
+        .append(System.lineSeparator());
     try {
       List<Ingredient> ingredients = manager.getAllIngredients();
       for (Ingredient i : ingredients) {
@@ -96,7 +95,7 @@ public class ManagerController implements DataListener {
         }
       }
       this.emailText.setText(emailBuilder.toString());
-    }catch(RemoteException e) {
+    } catch (RemoteException e) {
       // Let data server handle exception
       throw new RuntimeException(e);
     }
@@ -104,7 +103,7 @@ public class ManagerController implements DataListener {
 
   private void updateOrderSummary() {
     StringBuilder orderSummary = new StringBuilder();
-    if(this.orderList.getSelectionModel().getSelectedItem() == null) return;
+    if (this.orderList.getSelectionModel().getSelectedItem() == null) return;
     MenuItem selectedItem = this.orderList.getSelectionModel().getSelectedItem().getMenuItem();
     if (selectedItem != null) {
       orderSummary.append(selectedItem.getName()).append(System.lineSeparator());

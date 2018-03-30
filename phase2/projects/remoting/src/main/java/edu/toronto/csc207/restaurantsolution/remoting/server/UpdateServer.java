@@ -8,7 +8,7 @@ import java.rmi.RemoteException;
 /**
  * A remote interface to facilitate the use of data update listeners over a network in the
  * distributed RMI application.
- *
+ * <p>
  * <p>An update, as used called remote listeners, occurs on the change of any data within this
  * server; remote listeners are informed of this update in order to respond accordingly.
  */

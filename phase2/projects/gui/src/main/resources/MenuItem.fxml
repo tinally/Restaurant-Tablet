@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.control.TreeTableView?>
-
-<?import javafx.scene.control.SplitPane?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
-<?import com.jfoenix.controls.JFXTreeTableColumn?>
 <?import javafx.scene.control.cell.TreeItemPropertyValueFactory?>
-<?import javafx.scene.control.ListView?>
-<SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
-           xmlns:fx="http://javafx.com/fxml/1"
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.layout.*?>
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.9" stylesheets="Style.css"
+           xmlns="http://javafx.com/javafx/8.0.121"
            fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.MenuItemController">
     <VBox alignment="CENTER">
         <AnchorPane>
@@ -31,7 +19,8 @@
         </AnchorPane>
         <SplitPane orientation="VERTICAL" VBox.vgrow="ALWAYS">
             <JFXListView fx:id="inventoryList"/>
-            <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS" editable="true">
+            <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS"
+                              editable="true">
                 <columns>
                     <JFXTreeTableColumn text="Ingredient">
                         <cellValueFactory>
@@ -40,7 +29,7 @@
                     </JFXTreeTableColumn>
                     <JFXTreeTableColumn text="Quantity" fx:id="inventoryQuantityColumn">
                         <cellValueFactory>
-                            <TreeItemPropertyValueFactory property="quantity" />
+                            <TreeItemPropertyValueFactory property="quantity"/>
                         </cellValueFactory>
                     </JFXTreeTableColumn>
                 </columns>

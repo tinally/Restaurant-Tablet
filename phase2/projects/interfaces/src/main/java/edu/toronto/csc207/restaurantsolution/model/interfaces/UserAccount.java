@@ -14,6 +14,8 @@ public interface UserAccount extends Serializable {
    */
   List<String> getPermissions();
 
+  void setPermissions(List<String> permissions);
+
   /**
    * Returns the username of this account.
    *
@@ -21,16 +23,7 @@ public interface UserAccount extends Serializable {
    */
   String getUsername();
 
-  /**
-   * Returns the name for display of this account.
-   *
-   * @return the name for display
-   */
-  String getDisplayName();
-
   void setUsername(String username);
-
-  void setPermissions(List<String> permissions);
 
   void setDisplayName(String displayName);
 }

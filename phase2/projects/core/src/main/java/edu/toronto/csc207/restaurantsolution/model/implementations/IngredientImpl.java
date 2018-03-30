@@ -11,7 +11,9 @@ public final class IngredientImpl implements Ingredient {
   private Double pricing;
   private Integer reorderThreshold;
   private Integer defaultReorderAmount;
-  public IngredientImpl() {}
+
+  public IngredientImpl() {
+  }
 
   public IngredientImpl(String name, Double cost, Double pricing, Integer reorderThreshold) {
     this.setName(name);

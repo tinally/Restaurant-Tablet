@@ -16,12 +16,16 @@ public interface BillRecord extends Serializable {
    */
   UUID getBillID();
 
+  void setBillID(UUID billID);
+
   /**
    * Returns List of Orders that are billed.
    *
    * @return List of Orders that are billed
    */
   List<Order> getBilledOrders();
+
+  void setBilledOrders(List<Order> billedOrders);
 
   /**
    * Returns the subtotal of the bill.
@@ -30,12 +34,16 @@ public interface BillRecord extends Serializable {
    */
   Double getChargedSubtotal();
 
+  void setChargedSubtotal(Double chargedSubtotal);
+
   /**
    * Returns the tax included for the bill.
    *
    * @return the tax included for the bill
    */
   Double getChargedTax();
+
+  void setChargedTax(Double chargedTax);
 
   /**
    * Returns the gratuity included for the bill.
@@ -44,6 +52,8 @@ public interface BillRecord extends Serializable {
    */
   Double getChargedGratuity();
 
+  void setChargedGratuity(Double chargedGratuity);
+
   /**
    * Returns the total amount paid.
    *
@@ -51,24 +61,14 @@ public interface BillRecord extends Serializable {
    */
   Double getPaidAmount();
 
+  void setPaidAmount(Double paidAmount);
+
   /**
    * Returns the date of the bill.
    *
    * @return the date of the bill
    */
   Instant getBilledDate();
-
-  void setBillID(UUID billID);
-
-  void setBilledOrders(List<Order> billedOrders);
-
-  void setChargedSubtotal(Double chargedSubtotal);
-
-  void setChargedTax(Double chargedTax);
-
-  void setChargedGratuity(Double chargedGratuity);
-
-  void setPaidAmount(Double paidAmount);
 
   void setBilledDate(Instant billedDate);
 }

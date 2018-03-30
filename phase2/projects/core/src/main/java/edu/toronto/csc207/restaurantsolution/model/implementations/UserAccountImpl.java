@@ -33,11 +33,6 @@ public class UserAccountImpl implements UserAccount {
   }
 
   @Override
-  public String getDisplayName() {
-    return this.displayName;
-  }
-
-  @Override
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }

@@ -10,13 +10,12 @@ import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.logging.*;
 
 /**
  * A client of the distributed RMI application that translates the remote server interface into a
  * local object and transforms remote data updates into local data updates for system threading
  * coordination.
- *
+ * <p>
  * <p>This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
  * networking conflicts may occur.
  */
@@ -30,7 +29,7 @@ public final class DataClient extends UnicastRemoteObject implements RemoteListe
    * Constructs a new data client.
    *
    * @param registry the RMI registry to be used for lookup of the remote server interface.
-   * @throws RemoteException if a network error occurs.
+   * @throws RemoteException   if a network error occurs.
    * @throws NotBoundException if the remote data manager is not bound on the specified host.
    */
   public DataClient(Registry registry) throws RemoteException, NotBoundException {

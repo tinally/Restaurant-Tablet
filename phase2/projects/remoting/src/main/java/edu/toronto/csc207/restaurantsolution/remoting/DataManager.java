@@ -3,19 +3,14 @@ package edu.toronto.csc207.restaurantsolution.remoting;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import edu.toronto.csc207.restaurantsolution.remoting.server.UpdateServer;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * A remote data manager to be used by synchronized clients of the distributed RMI application in
  * updating and distributing data.
  */
 public interface DataManager extends UpdateServer {
-  // TODO: Delete unused ones
-  BillRecord getBillRecord(UUID billRecordId) throws RemoteException;
-
   List<BillRecord> getAllBills() throws RemoteException;
 
   void modifyBillRecord(BillRecord billRecord) throws RemoteException;
@@ -30,8 +25,6 @@ public interface DataManager extends UpdateServer {
 
   int getIngredientCount(Ingredient ingredient) throws RemoteException;
 
-  MenuItem getMenuItem(String name) throws RemoteException;
-
   List<MenuItem> getAllMenuItems() throws RemoteException;
 
   UserAccount getUserAccount(String username) throws RemoteException;
@@ -41,8 +34,6 @@ public interface DataManager extends UpdateServer {
   void modifyOrder(Order order, OrderStatus newstatus) throws RemoteException;
 
   void modifyMenuItem(MenuItem m) throws RemoteException;
-
-  Order getOrder(UUID orderId) throws RemoteException;
 
   List<Order> getAllOrders() throws RemoteException;
 

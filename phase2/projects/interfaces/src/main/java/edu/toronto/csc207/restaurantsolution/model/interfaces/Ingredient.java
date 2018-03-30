@@ -13,6 +13,8 @@ public interface Ingredient extends Serializable {
    */
   String getName();
 
+  void setName(String name);
+
   /**
    * Returns the cost of the Ingredient.
    *
@@ -20,12 +22,16 @@ public interface Ingredient extends Serializable {
    */
   Double getCost();
 
+  void setCost(Double cost);
+
   /**
    * Returns the pricing of a single unit of Ingredient.
    *
    * @return the pricing of a single unit of Ingredient
    */
   Double getPricing();
+
+  void setPricing(Double pricing);
 
   /**
    * Returns the threshold for reordering.
@@ -35,20 +41,14 @@ public interface Ingredient extends Serializable {
    */
   Integer getReorderThreshold();
 
+  void setReorderThreshold(Integer reorderThreshold);
+
   /**
    * Returns the default amount of Ingredient for reordering.
    *
    * @return the default amount of Ingredient for reordering
    */
   Integer getDefaultReorderAmount();
-
-  void setName(String name);
-
-  void setCost(Double cost);
-
-  void setPricing(Double pricing);
-
-  void setReorderThreshold(Integer reorderThreshold);
 
   void setDefaultReorderAmount(Integer defaultReorderAmount);
 }

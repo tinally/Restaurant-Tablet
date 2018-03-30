@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
-import edu.toronto.csc207.restaurantsolution.gui.ui.DeliverableOrderMapping;
 import edu.toronto.csc207.restaurantsolution.model.implementations.OrderImpl;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.Ingredient;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.MenuItem;
@@ -54,8 +53,8 @@ public class ServerController implements DataListener {
     try {
       ObservableList<MenuItem> menuItems = FXCollections.observableArrayList();
       // Only add items with adequate ingredients
-      List<MenuItem> availableItems =manager.getAllMenuItems().stream().filter(m -> {
-        for(Map.Entry<Ingredient, Integer> requirement : m.getIngredientRequirements().entrySet()) {
+      List<MenuItem> availableItems = manager.getAllMenuItems().stream().filter(m -> {
+        for (Map.Entry<Ingredient, Integer> requirement : m.getIngredientRequirements().entrySet()) {
           try {
             if (manager.getIngredientCount(requirement.getKey()) < requirement.getValue()) {
               return false;

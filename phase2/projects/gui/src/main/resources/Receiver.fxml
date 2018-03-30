@@ -7,8 +7,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.*?>
-<SplitPane dividerPositions="0.9" stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
-           xmlns:fx="http://javafx.com/fxml/1"
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.9" stylesheets="Style.css"
+           xmlns="http://javafx.com/javafx/8.0.121"
            fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.ReceiverController">
     <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
         <AnchorPane>
@@ -17,7 +17,8 @@
                    AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             </Label>
         </AnchorPane>
-        <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS" editable="true">
+        <JFXTreeTableView fx:id="inventoryTable" showRoot="false" VBox.vgrow="ALWAYS"
+                          editable="true">
             <columns>
                 <JFXTreeTableColumn text="Ingredient">
                     <cellValueFactory>
@@ -48,10 +49,12 @@
         <JFXTextField fx:id="pricing" alignment="CENTER" focusColor="#f06292" promptText="Pricing"
                       unFocusColor="#1d1d1d">
         </JFXTextField>
-        <JFXTextField fx:id="reorderAmount" alignment="CENTER" focusColor="#f06292" promptText="Reorder Amount"
+        <JFXTextField fx:id="reorderAmount" alignment="CENTER" focusColor="#f06292"
+                      promptText="Reorder Amount"
                       unFocusColor="#1d1d1d">
         </JFXTextField>
-        <JFXTextField fx:id="reorderThreshold" alignment="CENTER" focusColor="#f06292" promptText="Reorder Threshold"
+        <JFXTextField fx:id="reorderThreshold" alignment="CENTER" focusColor="#f06292"
+                      promptText="Reorder Threshold"
                       unFocusColor="#1d1d1d">
         </JFXTextField>
         <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"

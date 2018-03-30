@@ -8,7 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * Utility for logging events to a local text file.
- *
+ * <p>
  * <p>This class cannot be subclassed and should be instantiated only once per JVM; otherwise,
  * file conflicts may occur.
  */
@@ -18,7 +18,7 @@ public final class InfoLogger {
   /**
    * Constructs a new info logger.
    *
-   * @param loggerName the name that will be used in the log file.
+   * @param loggerName  the name that will be used in the log file.
    * @param logFileName the name that will be used for creating and appending to the log file.
    */
   public InfoLogger(String loggerName, String logFileName) {
@@ -29,7 +29,7 @@ public final class InfoLogger {
       SimpleFormatter sf = new SimpleFormatter();
       fh.setFormatter(sf);
       logger.addHandler(fh);
-    } catch(IOException e) {
+    } catch (IOException e) {
       throw new RuntimeException(e);
     }
   }

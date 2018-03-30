@@ -3,9 +3,9 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0" stylesheets="Style.css"
-            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+            stylesheets="Style.css" xmlns="http://javafx.com/javafx/8.0.121"
             fx:controller="edu.toronto.csc207.restaurantsolution.gui.ui.MainViewController">
     <JFXTabPane fx:id="mainPane" layoutX="24.0" layoutY="22.0" prefHeight="200.0" prefWidth="200.0"
                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"

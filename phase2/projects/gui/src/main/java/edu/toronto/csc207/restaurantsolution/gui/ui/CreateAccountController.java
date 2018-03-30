@@ -6,17 +6,19 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.stage.Modality;
 import javafx.stage.Window;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+/**
+ * Controller for creating new accounts.
+ */
 public class CreateAccountController {
+  private final DataManager manager;
   @FXML
   private JFXTextField firstName;
   @FXML
@@ -39,11 +41,11 @@ public class CreateAccountController {
   private JFXPasswordField confirmPassword;
   @FXML
   private JFXButton confirmButton;
-  private final DataManager manager;
 
   public CreateAccountController() {
     this.manager = NetworkContainer.dataManager;
   }
+
   private void errorAlert(String message) {
     Window rootWindow = confirmButton.getScene().getWindow();
     Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -102,19 +104,19 @@ public class CreateAccountController {
     }
     setRegexAlerts();
     ArrayList<String> permissions = new ArrayList<>();
-    if(managerBox.isSelected()) {
+    if (managerBox.isSelected()) {
       permissions.add("view.manager");
     }
-    if(serverBox.isSelected()) {
+    if (serverBox.isSelected()) {
       permissions.add("view.server");
     }
-    if(cashierBox.isSelected()) {
+    if (cashierBox.isSelected()) {
       permissions.add("view.cashier");
     }
-    if(chefBox.isSelected()) {
+    if (chefBox.isSelected()) {
       permissions.add("view.chef");
     }
-    if(receiverBox.isSelected()) {
+    if (receiverBox.isSelected()) {
       permissions.add("view.receiver");
     }
 
@@ -128,7 +130,7 @@ public class CreateAccountController {
       Window rootWindow = confirmButton.getScene().getWindow();
       alert.setTitle("Account Created");
       alert.setHeaderText("Account Created");
-      alert.setContentText("New account "  + accountName + " registered.");
+      alert.setContentText("New account " + accountName + " registered.");
       alert.initOwner(rootWindow);
       alert.show();
     } catch (RemoteException e) {

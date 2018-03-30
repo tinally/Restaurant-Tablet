@@ -12,19 +12,14 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.cell.TextFieldTreeCell;
 import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.util.converter.IntegerStringConverter;
 
-import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
 
 public class MenuItemController implements DataListener {
 
@@ -59,12 +54,12 @@ public class MenuItemController implements DataListener {
           for (Ingredient added : e.getAddedSubList()) {
             boolean isDupe = inventoryTable.getRoot().getChildren().stream()
                 .anyMatch(f -> f.valueProperty().get().ingredientProperty().get().equals(added));
-            if(!isDupe) {
+            if (!isDupe) {
               inventoryTable.getRoot().getChildren().add(new TreeItem<>(new IngredientMapping(added, 0)));
             }
           }
 
-    });
+        });
     this.update();
   }
 
@@ -90,7 +85,7 @@ public class MenuItemController implements DataListener {
     menuItem.setPrice(price);
     menuItem.setName(this.name.getText());
     HashMap<Ingredient, Integer> requirements = new HashMap<Ingredient, Integer>();
-    for(TreeItem<IngredientMapping> i : this.inventoryTable.getRoot().getChildren()) {
+    for (TreeItem<IngredientMapping> i : this.inventoryTable.getRoot().getChildren()) {
       requirements.put(i.valueProperty().get().ingredientProperty().get(),
           i.valueProperty().get().quantityProperty().get());
     }

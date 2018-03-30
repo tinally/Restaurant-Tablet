@@ -13,7 +13,6 @@ import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextFormatter;
@@ -145,7 +144,7 @@ public class CashierController implements DataListener {
     return bill.toString();
   }
 
-  public void sendBill(ActionEvent actionEvent) throws RemoteException {
+  public void sendBill() throws RemoteException {
     String intRegex = "\\d+";
     String doubleRegex = "\\d+(\\.\\d+)?";
     BillRecord bill = new BillRecordImpl();
