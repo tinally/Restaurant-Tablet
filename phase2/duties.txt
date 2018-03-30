@@ -10,12 +10,20 @@
     - Refactored UI components, improved efficiency of data logic checks
 
 # Ronny Chan
-  - Initial UI design .
+  - Initial UI design.
   - SQLite database implementation (core/src/.../database), including unit test cases.
   - Initial implementation of core JavaBean interfaces.
   - Gradle build infrastructure and project organization.
   - Hooking up various JavaFX views with the backend API from "remoting".
   - UML diagram generation.
+
+# Lun Yu Li
+  - Javadoc for all 50 classes.
+  - Contributed to early stage UI Controllers and GUI classes, which are later combined and simplified to files under ui package/directory.
+  - Contributed to final UI design, including layout and colors/style.
+  - Finalized interfaces, which are all under "interfaces" package/directory.
+  - Added data managers and loggers to files under "removing" package/directory.
+  - Fixed some minor null pointer warnings, modified unnecessary design of public/protected accesses, removed unused methods/imports and in general provided assistance wherever was needed.
 
 # Nasir Hemed
     - Created FXML files for Manager, MenuItem, Server, Receiver, Cashier, Chef, CreateAccount
