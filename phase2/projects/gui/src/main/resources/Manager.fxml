@@ -18,9 +18,11 @@
                         <JFXComboBox fx:id="orderStatusComboBox">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
-                                    <OrderStatus fx:value="FILLED"/>
                                     <OrderStatus fx:value="CREATED"/>
+                                    <OrderStatus fx:value="SEEN"/>
+                                    <OrderStatus fx:value="FILLED"/>
                                     <OrderStatus fx:value="DELIVERED"/>
+                                    <OrderStatus fx:value="RETURNED"/>
                                     <OrderStatus fx:value="PAID"/>
                                 </FXCollections>
                             </items>

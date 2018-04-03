@@ -3,6 +3,7 @@ package edu.toronto.csc207.restaurantsolution.database;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public abstract class SqlLibrary {
 
@@ -18,6 +19,8 @@ public abstract class SqlLibrary {
     Connection connection = null;
     try {
       connection = dataSource.getConnection();
+      Statement nonBlocking = connection.createStatement();
+      nonBlocking.executeUpdate("PRAGMA journal_mode = WAL; PRAGMA recursive_triggers = ON; PRAGMA synchronous = NORMAL;");
       connectionExecutable.accept(connection);
     } catch (SQLException e) {
       e.printStackTrace();
@@ -37,6 +40,8 @@ public abstract class SqlLibrary {
     Connection connection = null;
     try {
       connection = dataSource.getConnection();
+      Statement nonBlocking = connection.createStatement();
+      nonBlocking.executeUpdate("PRAGMA journal_mode = WAL; PRAGMA recursive_triggers = ON; PRAGMA synchronous = NORMAL;");
       return connectionExecutable.call(connection);
     } catch (SQLException e) {
       e.printStackTrace();

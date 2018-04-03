@@ -44,3 +44,400 @@ Mar 29, 2018 9:48:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Order 0db9272b-8701-40fb-acdf-26c9d03cfb96 was PAID
 Mar 29, 2018 9:48:46 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Inventory of French Fries was set to 0
+Apr 03, 2018 2:29:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f509b354-2acb-46e0-b53f-c8f9deae890f was CREATED
+Apr 03, 2018 2:30:04 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ffcd99f8-1b1f-49b8-a533-4521a4ab6d94 was CREATED
+Apr 03, 2018 2:30:56 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was CREATED
+Apr 03, 2018 2:31:21 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was SEEN
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 92
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 15
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 35
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 155
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 12
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 13
+Apr 03, 2018 2:31:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was FILLED
+Apr 03, 2018 2:32:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was RETURNED
+Apr 03, 2018 2:32:06 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was SEEN
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 14
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 34
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 12
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 154
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 91
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 13
+Apr 03, 2018 2:32:08 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was FILLED
+Apr 03, 2018 2:32:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was DELIVERED
+Apr 03, 2018 2:32:42 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order d3c0841c-f5da-4f62-850a-28952945eac6 was PAID
+Apr 03, 2018 2:49:43 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 782fc8fb-f50e-41af-957b-b5f85e8ade1b was CREATED
+Apr 03, 2018 2:49:57 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 443cb374-15e9-4183-b406-ee5a7874ed26 was CREATED
+Apr 03, 2018 2:50:26 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b060cb9e-0ac5-4da2-b2c0-45e84cc3dfb3 was CREATED
+Apr 03, 2018 2:50:44 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 3bb90a0d-76df-416c-b07c-32a2e571987f was CREATED
+Apr 03, 2018 2:54:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order adfe8652-4c23-44e5-a669-603eaa1814d8 was CREATED
+Apr 03, 2018 2:54:55 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 82222ba8-fb44-4a75-b267-f894f42f3095 was CREATED
+Apr 03, 2018 2:55:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 443cb374-15e9-4183-b406-ee5a7874ed26 was SEEN
+Apr 03, 2018 2:56:00 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 153
+Apr 03, 2018 2:56:00 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 33
+Apr 03, 2018 2:56:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 90
+Apr 03, 2018 2:56:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 12
+Apr 03, 2018 2:56:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 13
+Apr 03, 2018 2:56:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 63
+Apr 03, 2018 2:56:07 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 443cb374-15e9-4183-b406-ee5a7874ed26 was FILLED
+Apr 03, 2018 2:56:22 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 443cb374-15e9-4183-b406-ee5a7874ed26 was DELIVERED
+Apr 03, 2018 2:57:11 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 3bb90a0d-76df-416c-b07c-32a2e571987f was SEEN
+Apr 03, 2018 2:57:14 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 82222ba8-fb44-4a75-b267-f894f42f3095 was SEEN
+Apr 03, 2018 2:57:16 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order adfe8652-4c23-44e5-a669-603eaa1814d8 was SEEN
+Apr 03, 2018 2:57:16 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:19 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 782fc8fb-f50e-41af-957b-b5f85e8ade1b was SEEN
+Apr 03, 2018 2:57:19 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:22 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b060cb9e-0ac5-4da2-b2c0-45e84cc3dfb3 was SEEN
+Apr 03, 2018 2:57:22 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:24 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f509b354-2acb-46e0-b53f-c8f9deae890f was SEEN
+Apr 03, 2018 2:57:24 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:26 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ffcd99f8-1b1f-49b8-a533-4521a4ab6d94 was SEEN
+Apr 03, 2018 2:57:26 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 62
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 11
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 12
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 10
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ffcd99f8-1b1f-49b8-a533-4521a4ab6d94 was FILLED
+Apr 03, 2018 2:57:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 9
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 11
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 61
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 89
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f509b354-2acb-46e0-b53f-c8f9deae890f was FILLED
+Apr 03, 2018 2:57:30 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 88
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 10
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 33
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 152
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 8
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 151
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b060cb9e-0ac5-4da2-b2c0-45e84cc3dfb3 was FILLED
+Apr 03, 2018 2:57:34 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 7
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 9
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 60
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 87
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order adfe8652-4c23-44e5-a669-603eaa1814d8 was FILLED
+Apr 03, 2018 2:57:36 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 32
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 6
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 8
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 150
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 86
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 9
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 82222ba8-fb44-4a75-b267-f894f42f3095 was FILLED
+Apr 03, 2018 2:57:37 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:39 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 8
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 31
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 5
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 85
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 149
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 30
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 782fc8fb-f50e-41af-957b-b5f85e8ade1b was FILLED
+Apr 03, 2018 2:57:40 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 84
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 4
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 148
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 29
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 7
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 147
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 3bb90a0d-76df-416c-b07c-32a2e571987f was FILLED
+Apr 03, 2018 2:57:41 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:58:21 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order b060cb9e-0ac5-4da2-b2c0-45e84cc3dfb3 was DELIVERED
+Apr 03, 2018 2:58:22 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 2:58:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order f509b354-2acb-46e0-b53f-c8f9deae890f was DELIVERED
+Apr 03, 2018 2:58:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Connection refused (Connection refused)
+Apr 03, 2018 3:00:02 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order adfe8652-4c23-44e5-a669-603eaa1814d8 was DELIVERED
+Apr 03, 2018 3:00:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Operation timed out (Connection timed out)
+Apr 03, 2018 3:00:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order adfe8652-4c23-44e5-a669-603eaa1814d8 was DELIVERED
+Apr 03, 2018 3:00:32 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Operation timed out (Connection timed out)
+Apr 03, 2018 3:00:59 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order ffcd99f8-1b1f-49b8-a533-4521a4ab6d94 was DELIVERED
+Apr 03, 2018 3:01:14 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printError
+SEVERE: Critical network error - reboot and reconnect clients...java.rmi.ConnectException: Connection refused to host: 100.65.88.159; nested exception is: 
+	java.net.ConnectException: Operation timed out (Connection timed out)
+Apr 03, 2018 3:03:46 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was CREATED
+Apr 03, 2018 3:03:52 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was CREATED
+Apr 03, 2018 3:12:15 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was SEEN
+Apr 03, 2018 3:12:17 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was SEEN
+Apr 03, 2018 3:12:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 59
+Apr 03, 2018 3:12:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 6
+Apr 03, 2018 3:12:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 3
+Apr 03, 2018 3:12:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 58
+Apr 03, 2018 3:12:28 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was FILLED
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 83
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 2
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Hamburger was set to 28
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 146
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 5
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Cheese was set to 147
+Apr 03, 2018 3:12:31 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was FILLED
+Apr 03, 2018 3:12:44 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was RETURNED
+Apr 03, 2018 3:12:47 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was SEEN
+Apr 03, 2018 3:12:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 57
+Apr 03, 2018 3:12:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 4
+Apr 03, 2018 3:12:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 1
+Apr 03, 2018 3:12:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 56
+Apr 03, 2018 3:12:51 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was FILLED
+Apr 03, 2018 3:13:01 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was DELIVERED
+Apr 03, 2018 3:13:04 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was DELIVERED
+Apr 03, 2018 3:13:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was PAID
+Apr 03, 2018 3:14:32 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 782fc8fb-f50e-41af-957b-b5f85e8ade1b was DELIVERED

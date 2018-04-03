@@ -7,6 +7,7 @@ import edu.toronto.csc207.restaurantsolution.gui.NetworkContainer;
 import edu.toronto.csc207.restaurantsolution.model.interfaces.*;
 import edu.toronto.csc207.restaurantsolution.remoting.DataListener;
 import edu.toronto.csc207.restaurantsolution.remoting.DataManager;
+import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -62,12 +63,15 @@ public class ManagerController implements DataListener {
 
   @FXML
   public void initialize() {
+    update();
     this.orderCache.addListener((ListChangeListener<? super Order>) e -> {
 
     });
-    this.orderStatusComboBox.getSelectionModel().selectedItemProperty().addListener(e -> {
+    this.orderStatusComboBox.getSelectionModel().selectedItemProperty()
+            .addListener((ChangeListener<? super OrderStatus>) (e, oldVal, newVal) -> {
+
       this.orderList.setItems(FXCollections.observableArrayList(this.orderCache.stream()
-          .filter(o -> o.getOrderStatus() == this.orderStatusComboBox.getValue()).collect(Collectors.toList())));
+          .filter(o -> o.getOrderStatus().equals(newVal)).collect(Collectors.toList())));
     });
     this.billDatePicker.valueProperty().addListener(e -> {
       this.billList.setItems(FXCollections.observableArrayList(this.billCache.stream()
