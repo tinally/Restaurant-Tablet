@@ -441,3 +441,45 @@ Apr 03, 2018 3:13:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.In
 INFO: Order bab53f03-e002-4275-ab37-ea5e4c6b02a1 was PAID
 Apr 03, 2018 3:14:32 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
 INFO: Order 782fc8fb-f50e-41af-957b-b5f85e8ade1b was DELIVERED
+Apr 03, 2018 3:14:42 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 82
+Apr 03, 2018 3:14:48 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 83
+Apr 03, 2018 3:14:57 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Buns was set to 82
+Apr 03, 2018 7:16:09 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was CREATED
+Apr 03, 2018 7:16:20 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order bb596947-ce41-4cd8-a4d8-e3a9a4fcc4f4 was CREATED
+Apr 03, 2018 7:16:45 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was SEEN
+Apr 03, 2018 7:16:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 55
+Apr 03, 2018 7:16:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to 0
+Apr 03, 2018 7:16:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 3
+Apr 03, 2018 7:16:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 2
+Apr 03, 2018 7:16:58 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was FILLED
+Apr 03, 2018 7:17:18 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was RETURNED
+Apr 03, 2018 7:17:23 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was SEEN
+Apr 03, 2018 7:17:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Bacon was set to 54
+Apr 03, 2018 7:17:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 1
+Apr 03, 2018 7:17:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Lettuce was set to -1
+Apr 03, 2018 7:17:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Inventory of Tomato was set to 0
+Apr 03, 2018 7:17:25 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was FILLED
+Apr 03, 2018 7:17:29 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 76912f31-0919-4176-888f-fab76e7617c7 was DELIVERED
+Apr 03, 2018 7:20:13 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 90a1a153-efc1-41ac-968e-ce63ee3ccd25 was PAID
+Apr 03, 2018 7:21:50 PM edu.toronto.csc207.restaurantsolution.remoting.server.InfoLogger printInfo
+INFO: Order 82222ba8-fb44-4a75-b267-f894f42f3095 was DELIVERED
